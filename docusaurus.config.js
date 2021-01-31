@@ -2,7 +2,7 @@ module.exports = {
   title: 'DHIS2 Developer Portal',
   tagline: 'Welcome to the DHIS2 application development community!',
   url: 'https://deboragaleano.github.io',
-  baseUrl: '/dev-portal-demo/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
