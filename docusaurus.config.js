@@ -52,11 +52,11 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
+              label: 'CoP',
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
             {
-              label: 'Discord',
+              label: 'Slack',
               href: 'https://discordapp.com/invite/docusaurus',
             }
           ],
