@@ -21,7 +21,7 @@ If you are using OSX or Windows,
 yarn global add @dhis/cli
 ```
 
-Now that you have installed Docker and the DHIS CLI you are ready to start up DHIS2
+Now that you have installed Docker and the DHIS CLI you are ready to start up DHIS2.
 
 ### Starting a local DHIS2 instance
 
@@ -29,9 +29,11 @@ Now that you have installed Docker and the DHIS CLI you are ready to start up DH
 ```shell
 d2 cluster up 2.35.0 --db-version 2.35 --seed
 ```
-2. From the browser, navigate to [http://localhost:8080](http://localhost:8080). If DHIS2 is running, you should see the following page,
+2. From the browser, navigate to [http://localhost:8080](http://localhost:8080). If DHIS2 is running, you should see the following page: 
 
-If you can load DHIS in the browser, you are ready to create a new app
+![Login Page](./assets/quickstart_guides/image-of-login.png)
+
+Sign in as `admin` (username) and `district` (password). If you can load DHIS in the browser, you are ready to create a new app. 
 
 ### Creating a new app
 1. From the terminal, create a new DHIS2 app called "my-app"
@@ -46,7 +48,10 @@ cd my-app && yarn start
 ```
 
 ### Connecting your app to DHIS2
-1. From the browser, navigate to [http://localhost:3000](http://localhost:3000){:target="\_blank"}. You will see the following page
+1. From the browser, navigate to [http://localhost:3000](http://localhost:3000). You will see the following page: 
+
+![](./assets/quickstart_guides/new-app-login-page.png)
+
 2. Enter your DHIS2 server URL and the username and password of the default admin user
 ```
 server: http://localhost:8080
@@ -54,6 +59,8 @@ username: admin
 password: district
 ```
 3. You will see the default admin user name and a welcome message
+
+![](./assets/quickstart_guides/new-app-login-success.png)
 
 
 Congratulations! You are ready to start developing a DHIS2 app 🎊 

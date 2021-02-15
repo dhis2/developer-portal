@@ -1,13 +1,13 @@
 module.exports = {
   title: 'DHIS2 Developer Portal',
   tagline: 'Welcome to the DHIS2 application development community!',
-  url: 'https://deboragaleano.github.io',
-  baseUrl: '/dev-portal-demo/',
+  url: 'https://dhis2.github.io',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'deboragaleano', // Usually your GitHub org/user name.
-  projectName: 'dev-portal-demo', // Usually your repo name.
+  organizationName: 'dhis2', 
+  projectName: 'developer-portal', 
   themeConfig: {
     navbar: {
       // title: 'DHIS2 Developer Portal',
@@ -26,7 +26,7 @@ module.exports = {
         {to: 'events', label: 'Events', position: 'left'},
         {to: 'community', label: 'Community', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/dhis2/developer-portal',
           label: 'GitHub',
           position: 'right',
         },
@@ -52,12 +52,12 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'CoP',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Community of Practice',
+              href: 'https://community.dhis2.org/',
             },
             {
               label: 'Slack',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: '#',
             }
           ],
         },
@@ -70,7 +70,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/dhis2/developer-portal',
             },
           ],
         },
@@ -84,15 +84,13 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com//dhis2/developer-portal/edit/main/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/dhis2/developer-portal/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
