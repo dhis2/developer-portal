@@ -1,6 +1,6 @@
 ---
+id: submit-apphub
 title: How to submit an app to the DHIS2 App Hub
-layout: page
 ---
 
 Upload your app to the [DHIS2 App Hub](https://apps.dhis2.org/) in a few easy steps! Follow this quick guide on how to submit your app and make it available to the entire DHIS2 community ✨
@@ -31,7 +31,7 @@ Here are some guidelines for the required fields:
 
 ##### Version
 
--   **Version**: The version number of your app. [Semantic versioning](https://semver.org/){:target="\_blank"} is recommended (i.e. 1.0.0)
+-   **Version**: The version number of your app. [Semantic versioning](https://semver.org/) is recommended (i.e. 1.0.0)
 -   **Minimum/Maximum DHIS Version**: Which DHIS2 versions are compatible with your app? Enter the minimum and maximum DHIS2 version required for the app to work.
 -   Add a **Demo URL** and **upload** the `.zip` file of your application.
 
@@ -57,7 +57,7 @@ What's next? Your app will be reviewed by the DHIS2 core team and feedback will 
 
 ### What is the DHIS2 App Hub?
 
-The [DHIS2 App Hub](https://apps.dhis2.org/){:target="\_blank"} is a service where DHIS2 app developers can easily share their apps with the DHIS2 Community around the world. On the App Hub, you can search, upload _and_ download apps. The App Hub is basically a collection of apps which are general, re-usable and available for anyone.
+The [DHIS2 App Hub](https://apps.dhis2.org/) is a service where DHIS2 app developers can easily share their apps with the DHIS2 Community around the world. On the App Hub, you can search, upload _and_ download apps. The App Hub is basically a collection of apps which are general, re-usable and available for anyone.
 
 ### Why submit an app?
 

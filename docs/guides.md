@@ -12,10 +12,10 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 - How to debug common errors 
 
 ### Fetching data
-- [How to fetch data from a DHIS2 instance](#)
+- [How to fetch data from a DHIS2 instance](/docs/guides/fetch-data)
 
 ### DHIS2 UI Components
-- [How to add a DHIS2 UI Button to my application](#)
+- [How to add a DHIS2 UI Button to my application](/docs/guides/ui-components)
 
 ### App Hub
 - [How to submit an application to the DHIS2 App Hub](/docs/guides/how-to-submit-apphub)
