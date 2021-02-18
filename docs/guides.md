@@ -1,5 +1,5 @@
 ---
-id: doc3
+id: guides
 title: Overview
 ---
 
@@ -18,5 +18,5 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 - [How to add a DHIS2 UI Button to my application](#)
 
 ### App Hub
-- [How to submit an application to the DHIS2 App Hub](/docs/how-to-submit-apphub)
+- [How to submit an application to the DHIS2 App Hub](/docs/guides/how-to-submit-apphub)
 

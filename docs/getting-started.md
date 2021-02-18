@@ -1,5 +1,5 @@
 ---
-id: doc1
+id: getting-started
 title: Getting started with DHIS2  
 sidebar_label: Getting started with DHIS2 
 slug: /
@@ -33,7 +33,7 @@ d2 cluster up 2.35.0 --db-version 2.35 --seed
 
 ![Login Page](./assets/quickstart_guides/image-of-login.png)
 
-Sign in as `admin` (username) and `district` (password). If you can load DHIS in the browser, you are ready to create a new app. 
+Sign in as `admin` (username) and `district` (password). If you can load DHIS2 in the browser, you are ready to create a new app. 
 
 ### Creating a new app
 1. From the terminal, create a new DHIS2 app called "my-app"

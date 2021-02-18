@@ -1,9 +1,9 @@
 module.exports = {
   docs: {
-    'Quick Start': ['doc1'],
-    Tutorials: ['doc2', 'git-workflow'], 
-    'How-to Guides': ['doc3'], 
-    Reference: ['doc4'], 
-    Conceptual: ['doc5'],
+    'Quick Start': ['getting-started'],
+    Tutorials: ['tutorials', 'tutorials/spin-up-local-instance'], 
+    'How-to Guides': ['guides'], 
+    Reference: ['reference'], 
+    Conceptual: ['conceptual'],
   },
 };

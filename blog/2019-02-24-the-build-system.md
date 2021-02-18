@@ -1,7 +1,7 @@
 ---
 slug: the-build-system
 title: The Build System
-# author: [varl, jennifer]
+author: [varl, jennifer]
 author_title: DHIS2 Core Team
 tags: [build system, architecture]
 ---
