@@ -45,7 +45,7 @@ Here are some guidelines for the required fields:
 -   **Image logo**: The logo should capture the core idea of the app. Upload in high-resolution (at least 512x512px in size). Images should be unique and correctly licensed. Additional images can be uploaded later.
 -   **Additional images**: Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
 
-> Make sure to check the [App Hub Submission Guidelines]({{ site.baseurl }}{% link _guides/app-hub-submission-guidelines.md %}) for detailed instructions.
+> Make sure to check the [App Hub Submission Guidelines](./apphub-guidelines) for detailed instructions.
 
 #### 4. Click FINISH 🎊
 
@@ -73,7 +73,7 @@ For an app to be approved it needs to meet the following requirements:
 -   **Open Source.** The app must have an open source license. Make sure that components, libraries and resources running on a DHIS2 instance are open source.
 -   **Useful.** The app must be meaningful and useful for a large audience.
 
-For more information on these requirements, please check the [App Hub Submission Guidelines]({{ site.baseurl }}{% link _guides/app-hub-submission-guidelines.md %}).
+For more information on these requirements, please check the [App Hub Submission Guidelines](./apphub-guidelines).
 
 ### What happens after I submit my app?
 

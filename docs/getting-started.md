@@ -11,7 +11,7 @@ You can start developing a DHIS2 app on OSX, Windows or Linux using Docker and t
 
 #### Installing prerequisites
 If you are using Debian Linux, 
-1. Follow the [DHIS2 Docker guide](https://developers.dhis2.org/guides/dhis2-docker) to install the prerequisites
+1. Follow the [DHIS2 Docker guide](./tutorials/dhis2-docker) to install the prerequisites
 
 If you are using OSX or Windows,
 1. Install [Docker](https://docs.docker.com/get-docker/)

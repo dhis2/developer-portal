@@ -133,7 +133,7 @@ reports](https://dhis2.vardevs.se/reports/) for analysis.
 ## Check out the common ancestor of multiple branches
 
 It is possible to teach `mr` a lot of tricks, some handier than others,
-for example [figuring out the merge-base for different branches](../docs/tutorials/git-workflow):
+for example [figuring out the merge-base for different branches](../docs/conceptual/git-workflow):
 
 ```
 octo = git checkout $(git merge-base --octopus $(for b in "$@"; do echo "origin/${b}"; done))
