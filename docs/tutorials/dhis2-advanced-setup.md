@@ -1,7 +1,6 @@
 ---
+id: dhis2-advanced-setup
 title: Advanced DHIS2 setup
-category: guide
-layout: page
 ---
 
 # DHIS2 versions

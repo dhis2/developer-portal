@@ -16,7 +16,7 @@ Along the way, you'll learn more about the DHIS2 ecosystem as well as the fundam
     - Follow this tutorial from the [UiO DHIS2 Design Lab](https://www.fiftythreetwenty.com/learn/dhis2/cli/)
 * [D2 CLI and Docker](./tutorials/dhis2-docker)
 * [Basic setup (Generic host)](./tutorials/dhis2-basic-setup)
-* [Advanced setup (Generic host)]((./tutorials/dhis2-advanced-setup))
+* [Advanced setup (Generic host)](./tutorials/dhis2-advanced-setup)
 
 ### 1 - Learn about the DHIS2 App Platform 
 * [DHIS2 App Platform](https://platform.dhis2.nu/#/) - build, test, and development tooling for app development
