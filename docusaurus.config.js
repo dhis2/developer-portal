@@ -10,7 +10,6 @@ module.exports = {
   projectName: "developer-portal",
   themeConfig: {
     navbar: {
-      // title: 'DHIS2 Developer Portal',
       logo: {
         alt: "DHIS2 Developer Portal",
         src: "img/dhis2developers.svg",
@@ -32,6 +31,13 @@ module.exports = {
         },
       ],
     },
+    colorMode: {
+      defaultMode: "light",
+
+      // Hides the switch in the navbar
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
+    },
     footer: {
       style: "dark",
       links: [
@@ -39,7 +45,7 @@ module.exports = {
           title: "Docs",
           items: [
             {
-              label: "Style Guide",
+              label: "Getting Started",
               to: "docs/",
             },
           ],
@@ -48,12 +54,8 @@ module.exports = {
           title: "Community",
           items: [
             {
-              label: "Community of Practice",
-              href: "https://community.dhis2.org/",
-            },
-            {
-              label: "Slack",
-              href: "#",
+              label: "DHIS2 Developer Community",
+              to: "community",
             },
           ],
         },
@@ -62,16 +64,12 @@ module.exports = {
           items: [
             {
               label: "Blog",
-              to: "blog",
-            },
-            {
-              label: "GitHub",
-              href: "https://github.com/dhis2/developer-portal",
+              to: "docs/",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} The DHIS2 Core Team`,
     },
   },
   plugins: [

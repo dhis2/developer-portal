@@ -10,6 +10,7 @@ const features = [
   {
     title: "Getting Started",
     imageUrl: "img/getting-started.svg",
+    url: '/docs/', 
     description: (
       <>
         A step-by-step guide on how to get started with DHIS2 application development.
@@ -19,6 +20,7 @@ const features = [
   {
     title: "DHIS2 App Platform",
     imageUrl: "img/app-platform.svg",
+    url: '/docs/tutorials/', 
     description: (
       <>
         Common build system, development tools, runtime support, and standard
@@ -27,8 +29,9 @@ const features = [
     ),
   },
   {
-    title: "Component & Helper Libraries",
+    title: "Components & Libraries",
     imageUrl: "img/undraw_docusaurus_react.svg",
+    url: '/docs/tutorials/', 
     description: (
       <>
         Learn more about the DHIS2 UI components, analytics helper functions the
@@ -38,7 +41,7 @@ const features = [
   },
 ];
 
-function Feature({ imageUrl, title, description }) {
+function Feature({ imageUrl, url, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx("col col--4", styles.feature)}>
@@ -49,6 +52,9 @@ function Feature({ imageUrl, title, description }) {
       )}
       <h3>{title}</h3>
       <p>{description}</p>
+      <p>
+        <a href={url}>Learn more →</a> 
+      </p>
     </div>
   );
 }
@@ -58,7 +64,7 @@ function Home() {
   const { siteConfig = {} } = context;
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`Welcome to the ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
       <header className={clsx("hero hero--primary", styles.heroBanner)}>

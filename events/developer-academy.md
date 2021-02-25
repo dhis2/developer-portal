@@ -5,6 +5,8 @@ title: Developer Academy
 
 ## Web & Android App Development Workshops
 
+> Upcoming events 👇
+
 ### Workshop 1: The Basics - March 17-18, 2021
 
 Learn how to build high-quality, maintainable DHIS2 applications using the latest tools from the core team in this hands-on 2-day workshop. This workshop will be a combination of presented material and hands-on development time. Each participant will build their own DHIS2 application by the end of the course.

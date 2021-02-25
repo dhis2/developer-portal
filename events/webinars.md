@@ -6,7 +6,11 @@ title: Webinars
 
 ### Web & Android App Development - February 8, 2021
 
-* [Recordings](https://www.youtube.com/playlist?list=PLo6Seh-066RyEqf0tz0705F5P8oAtr340)
+Recordings: 
+
+* [Goals for 2021](https://youtu.be/x8OFhRHsr6o)
+* [Web Platform Updates & Roadmap](https://youtu.be/YJqA0DbC8yo)
+* [Android SDK Updates & Roadmap](https://youtu.be/nS5YV540mWA)
 
 This high-level webinar includes a non-technical overview of the Application Platform, Android SDK, and developer outreach initiatives at DHIS2. It will also cover the progress made in 2020, the current state of DHIS2 developer tools and more.
 
