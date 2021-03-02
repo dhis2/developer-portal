@@ -18,7 +18,7 @@ If you are using OSX or Windows,
 3. Install [yarn](https://classic.yarnpkg.com/en/docs/install)
 4. From the command line or terminal, install the DHIS [CLI](https://cli.dhis2.nu/#/getting-started) globally
 ```shell
-yarn global add @dhis/cli
+yarn global add @dhis2/cli
 ```
 
 Now that you have installed Docker and the DHIS CLI you are ready to start up DHIS2.

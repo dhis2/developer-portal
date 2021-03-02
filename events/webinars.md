@@ -24,7 +24,7 @@ The DHIS2 Core Team gave a lightly-technical introduction to the tools for DHIS2
 
 ### Introduction Webinar - June 2, 2020
 
-* [Recording](https://community.dhis2.org/t/webinar-on-web-app-development-questions-answers/39390)
+* [Recording](https://www.youtube.com/watch?v=ot0GI8DHAV8)
 * [Community Q&A](https://community.dhis2.org/t/webinar-on-web-app-development-questions-answers/39390)
 * [Slides](https://docs.google.com/presentation/d/e/2PACX-1vRpCjq364s3qB3KK8DQv5KF8xXZlFbkZmhb7v-ykiUR5lcOcgX0uQA30q0fHZzNthwmkGu_9XR6sPF5/pub?start=false&loop=false&delayms=10000&slide=id.g8800a8e866_0_25)
 
