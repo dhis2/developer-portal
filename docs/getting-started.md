@@ -16,12 +16,12 @@ If you are using Debian Linux,
 If you are using OSX or Windows,
 1. Install [Docker](https://docs.docker.com/get-docker/)
 3. Install [yarn](https://classic.yarnpkg.com/en/docs/install)
-4. From the command line or terminal, install the DHIS [CLI](https://cli.dhis2.nu/#/getting-started) globally
+4. From the command line or terminal, install the DHIS2 [CLI](https://cli.dhis2.nu/#/getting-started) globally
 ```shell
 yarn global add @dhis2/cli
 ```
 
-Now that you have installed Docker and the DHIS CLI you are ready to start up DHIS2.
+Now that you have installed Docker and the CLI you are ready to start up a local DHIS2 instance.
 
 ### Starting a local DHIS2 instance
 

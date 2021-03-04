@@ -30,7 +30,7 @@ Along the way, you'll learn more about the DHIS2 ecosystem as well as the fundam
 * Watch this [short video presentation](https://youtu.be/drLUFP93mFk?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=133) 
 
 #### DHIS2 Web API 
-* Get an overview of the [DHIS2 Web API](https://youtu.be/_1bkoE-UKy0) in this short video presentation 
+* Get an overview of the [DHIS2 Web API](https://youtu.be/_1bkoE-UKy0) in this short video presentation or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation 
 
 ### Learn about DHIS2 Components and Libraries 
 * [DHIS2 UI Components](https://ui.dhis2.nu/#/) the [DHIS2 Design System](https://github.com/dhis2/design-system) 

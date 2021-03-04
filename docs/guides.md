@@ -20,25 +20,27 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 <!-- - How to add a DHIS2 UI Button to my application -->
 <!-- - How to use a sidebar layout in my application -->
 
-### Adding Common Features (comming soon)
-- How to add a Form 
-- How to add a DHIS2 Org Unit Tree selector to my application 
-
-### Plugins (coming soon)
-- How to embed a plugin in my application
-- How to build a dashboard plugin 
-
-### Translation (coming soon)
-- How to add translation support to an application
-
-### Security (coming soon) 
-- How to ensure security and privacy in DHIS2 apps
-
-### Testing (coming soon) 
-- How to test my application for a specific DHIS2 version (with `d2 cluster`)
-- How to write automated tests for my application
-
 ### App Hub
 - [How to submit an application to the DHIS2 App Hub](./guides/submit-apphub)
 - [App Hub Submission Guidelines](./guides/apphub-guidelines)
+
+> _COMING SOON!_ 👇
+
+### Adding Common Features 
+- How to add a Form 
+- How to add a DHIS2 Org Unit Tree selector to my application 
+
+### Plugins 
+- How to embed a plugin in my application
+- How to build a dashboard plugin 
+
+### Translation 
+- How to add translation support to an application
+
+### Security 
+- How to ensure security and privacy in DHIS2 apps
+
+### Testing 
+- How to test my application for a specific DHIS2 version (with `d2 cluster`)
+- How to write automated tests for my application
 
