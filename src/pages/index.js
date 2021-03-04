@@ -30,7 +30,7 @@ const features = [
   },
   {
     title: "Components & Libraries",
-    imageUrl: "img/undraw_docusaurus_react.svg",
+    imageUrl: "img/components.svg",
     url: '/docs/tutorials/', 
     description: (
       <>
