@@ -31,3 +31,11 @@
 .markdown a:visited {
   color: #551A8B;
 }
+
+.footer__links {
+  margin-bottom: 3rem;
+}
+.footer__copyright {
+  font-size: 0.8rem;
+  color: var(--ifm-color-secondary);
+}
