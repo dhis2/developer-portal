@@ -52,3 +52,12 @@
 .menu__link {
   border-radius: unset;
 }
+
+.table-of-contents__link.table-of-contents__link--active::before {
+  content: '—';
+  height: 4px;
+  width: 4px;
+  position: absolute;
+  left: 0px;
+  color: #a0adba;
+}
