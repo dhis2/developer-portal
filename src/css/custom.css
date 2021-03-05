@@ -24,3 +24,10 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+.markdown a {
+  text-decoration: underline;
+}
+.markdown a:visited {
+  color: #551A8B;
+}
