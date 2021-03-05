@@ -16,6 +16,8 @@
   --ifm-color-primary-lightest: #032a67;
   --ifm-footer-link-hover-color: var(--ifm-color-secondary);
   --ifm-code-font-size: 90%;
+
+  --ifm-menu-color-background-hover: #eaedf0;
 }
 
 .docusaurus-highlight-code-line {
@@ -38,4 +40,15 @@
 .footer__copyright {
   font-size: 0.8rem;
   color: var(--ifm-color-secondary);
+}
+
+.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage- {
+  background:#f8f9fa;
+}
+.menu__link--active:not(.menu__link--sublist) {
+  background: #eaedf0;
+  border-left: 3px solid #404b5a;
+}
+.menu__link {
+  border-radius: unset;
 }
