@@ -35,7 +35,7 @@ module.exports = {
       },
     ], 
     Reference: ['reference'], 
-    Conceptual: ['conceptual'],
+    Conceptual: ['conceptual', 'conceptual/contribute'],
   },
 };
 
