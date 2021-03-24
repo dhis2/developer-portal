@@ -41,6 +41,10 @@ In this hands-on 2-day workshop, participants learned how to build high-quality,
 * [App Runtime: Data Queries & Mutations](https://www.youtube.com/watch?v=dnagTunwHls&list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&index=7)
 * [Web App Q&A and intro to Project 1](https://www.youtube.com/watch?v=PkD6IqbgLeM&list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&index=7)
 
+**Slides:**
+
+* [DHIS2 Application Development](https://drive.google.com/file/d/1LA4K04htB6vwwN8q1-GjvK6I5z_lKpan/view?usp=sharing)
+* [App Runtime Introduction](https://drive.google.com/file/d/1hQfQ3kIbUT8BcpkprKmtbRMvMUmxF2rV/view?usp=sharing)
 
 > **Academy 2020**
 
