@@ -4,24 +4,14 @@ module.exports = {
     Tutorials:  
     [
       'tutorials',
-      {
-        'Set up Development': [
-          // 'tutorials/dhis2-docker', 
-        ],
-        'Learn about the App Platform': [
-          // 'tutorials/app-platform',
-        ],
-        'DHIS2 components & Helper Libraries': [
-          // 'tutorials/ui-components',
-        ],
-      },
+      'tutorials/setup-env'
     ], 
     Guides: [
       'guides',
       {
         'Local Development': [
           'guides/spin-up-local-instance',
-          // 'guides/create-app-from-scratch',
+          'guides/debug-instance',
         ],
         'Fetching data': [
           // 'guides/fetch-data',
