@@ -11,7 +11,7 @@ module.exports = {
       {
         'Local Development': [
           'guides/spin-up-local-instance',
-          'guides/debug-instance',
+          // 'guides/debug-instance',
         ],
         'Fetching data': [
           // 'guides/fetch-data',
