@@ -45,6 +45,7 @@ In this hands-on 2-day workshop, participants learned how to build high-quality,
 
 * [DHIS2 Application Development](https://drive.google.com/file/d/1LA4K04htB6vwwN8q1-GjvK6I5z_lKpan/view?usp=sharing)
 * [App Runtime Introduction](https://drive.google.com/file/d/1hQfQ3kIbUT8BcpkprKmtbRMvMUmxF2rV/view?usp=sharing)
+* [DHIS2 Data Model & REST API](https://drive.google.com/file/d/1aAUvgTBg1yhSgho_zDJw4UNAuU4CY1hh/view?usp=sharing)
 
 > **Academy 2020**
 
