@@ -86,6 +86,8 @@ Make sure all components, libraries and resources that are running on the DHIS2 
 The [DHIS2 Design System](https://github.com/dhis2/design-system) provides principles, guidelines and components for designing and building user-friendly apps. Follow the [principles](https://github.com/dhis2/design-system#design-principles) and use the [available components](https://github.com/dhis2/design-system#components) where possible. Apps should be user-friendly and respect a users' time and resources.
 The Design System components are available as a set of pre-built React components via [@dhis2/ui](https://github.com/dhis2/ui#readme).
 
+Apps built using the [DHIS2 App Platform](https://platform.dhis2.nu/#/) will automatically include the necessary `Header Bar` component and functionality. Apps not using the App Platform need to manually include and set up the standalone [Header Bar component](https://ui.dhis2.nu/demo/?path=/story/utils-header-bar--default) from `@dhis2/ui`. All DHIS2 apps must include the `Header Bar` component.
+
 ### Documentation
 
 Providing thorough documentation is essential for all apps. Documentation can be hosted on your website or a source control platform like Github. Think of documentation like an instruction manual for your app. Most users installing your app from the App Hub will not know how the app works. Documentation helps bridge this gap, introducing the main app interactions and providing guidance for common use cases.
