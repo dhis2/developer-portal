@@ -43,9 +43,29 @@ You could also try disabling the cache from the network tab in Chrome DevTools. 
 
 ![](./assets/disable-cache.png)
 
+## Using DHIS2 Play instances
+
+**DHIS2 Play instances**: [https://play.dhis2.org/](https://play.dhis2.org/) allow you to test out the DHIS2 platform using demo databases on the DHIS2 Play server. 
+
+If you try to connect your application or localhost to the DHIS2 Play server and encounter some errors, please note that DHIS2 Play instances use [nginx](https://nginx.org/) as reverse proxy and this configuration is designed for security reasons, preventing cross-site cookies completely. 
+
+To work around this issue during application development is to run a local instance of DHIS2 using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster). Check [this guide](./spin-up-local-instance) on how to spin up a local instance. 
+
 ## Node version
 
 Make sure that you are running a compatible version of [Node.js](https://nodejs.org/en/download/) as using older versions may throw some errors during setup. 
+
+## HTTPs Everywhere Extension 
+
+[HTTPs Everywhere](https://www.eff.org/https-everywhere) is a Firefox, Chrome, Opera extension created by EFF and the Tor Project which automatically switches thousands of sites from insecure "http" to secure "https". 
+
+If you use this extension in your browser and the **Encrypt All Sites Eligible** is set to **ON**, it will break and cause errors when using unencrypted http://localhost:3000 as the extension is trying to use https://localhost:3000 for CORS. 
+
+The best solution would be to disable the extension for `localhost`. Under **Settings for this site** click the button **Disable on this site**.  
+
+Setting the **Encrypt All Sites Eligible** to **OFF** should work as well. See below: 
+
+![](./assets/https-everywhere.gif)
 
 ## Others?
 
