@@ -96,6 +96,27 @@ Providing thorough documentation is essential for all apps. Documentation can be
 
 All apps should follow modern, up-to-date security best practices.
 
+Consider implementing the following guidelines to address harden application security: 
+
+- **Never hard-code security parameters in application source-code**: It is never acceptable to hard-code credentials or encryption keys into application source-code, even if an environment variable is used to inject the key in the application .zip file at build-time.  Everything in the .zip application archive is publicly-accessible to anyone with a browser and should never include any sensitive information.  Encryption keys should never be shared between app installations in different DHIS2 instances.
+    - Use `.gitignore` and environment variables to ensure that development environment credentials are not accidentally committed with the source-code. 
+
+- **DataStore and UserDataStore**: It is more secure to put configuration in the UserDataStore in DHIS2, rather than in the DataStore which is shared with all users.  When using either the UserDataStore or DataStore, be sure to:
+    - Choose a unique and specific namespace which will not conflict with other applications
+    - Reserve the namespace used by your application by specifying it in the `manifest.webapp` file, so that only users with access to that application can access it (see an example of a manifest file [here](https://docs.dhis2.org/en/develop/loading-apps.html#apps_creating_apps)). Functionality to reserve namespaces is coming soon to the Application Platform tools.
+    - When storing sensitive information (such as credentials for external systems) in the datastore, set the `?encrypt=true` [query string parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_create_values) in order to ensure that the value is encrypted at rest.
+    - Whenever possible, use the [DataStore sharing API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_sharing) to explicitly grant read and write permissions to the users which need them and **prevent access by any unprivileged users**.  It is particularly important to lock down **write access** as much as possible.
+
+- **Authentication**: Using basic authentication to communicate with DHIS2 from a DHIS2 application which already uses cookie session authentication is not recommended. Consider implementing the following:  
+    - Leverage the existing user session (using a cookie in the browser) instead of basic authentication
+    - If possible, perform all synchronization processes on the server-side instead of in the browser.  This is more secure and more performant but puts some onus on the server administrator to maintain an additional server-side service. 
+
+- **XSS**: If your framework of choice can be configured to provide XSS protection, ensure that it is enabled. For example, React protects against XSS injection by default as long as [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml) is not used.
+
+- **Set `rel="noreferrer"` attribute on external links with `target="_blank"`**: When linking to external resources that should open in a new tab (using `target="_blank"`) ensure that the `rel="noreferrer"` attribute is set. This will prevent the external resource from being able to manipulate your page using `window.opener`. See this [short article](https://web.dev/external-anchors-use-rel-noopener/) for more information. 
+
+- **Avoid externally hosted scripts and stylesheets**: External scripts and stylesheets, such as those served by global CDNs, should be avoided unless absolutely necessary - these can cause security and performance issues when accessed in various global contexts.
+
 ### Performance
 
 Apps should run smoothly on widely available hardware and with a reasonable internet connection. Consider the following guidelines to make sure your app is available to a wide range of users:
