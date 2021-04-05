@@ -47,13 +47,13 @@ You could also try disabling the cache from the network tab in Chrome DevTools. 
 
 **DHIS2 Play instances**: [https://play.dhis2.org/](https://play.dhis2.org/) allow you to test out the DHIS2 platform using demo databases on the DHIS2 Play server. 
 
-If you try to connect your application or localhost to the DHIS2 Play server and encounter some errors, please note that DHIS2 Play instances use [nginx](https://nginx.org/) as reverse proxy and this configuration is designed for security reasons, preventing cross-site cookies completely. 
+If you try to connect your application on localhost to the DHIS2 Play server and encounter some errors, please note that DHIS2 Play instances use [nginx](https://nginx.org/) as a reverse proxy which has been configured for hardened security, preventing cross-site cookies completely. 
 
-To work around this issue during application development is to run a local instance of DHIS2 using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster). Check [this guide](./spin-up-local-instance) on how to spin up a local instance. 
+To work around this issue during application development, run your own development instance of DHIS2 or spin up a local instance using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster). Check [this guide](./spin-up-local-instance) on how to spin up a local instance. 
 
 ## Node version
 
-Make sure that you are running a compatible version of [Node.js](https://nodejs.org/en/download/) as using older versions may throw some errors during setup. 
+Make sure that you are running a compatible version of [Node.js](https://nodejs.org/en/download/), version 10 or later, as using older versions may throw some errors during setup. 
 
 ## HTTPs Everywhere Extension 
 
