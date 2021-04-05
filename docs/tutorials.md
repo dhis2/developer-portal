@@ -11,7 +11,7 @@ The goal of this tutorial is to guide you through setting up and deploying your 
 
 Along the way, you'll learn more about the DHIS2 ecosystem as well as the fundamentals of building a DHIS2 app.
 
-### [Set Up Your Development Environment](./setup-env)
+### [Set Up Your Development Environment](./tutorials/setup-env)
 
 This tutorial will help you set up your local development environment to build your first DHIS2 app using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). 
 
