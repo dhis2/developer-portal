@@ -4,14 +4,15 @@ module.exports = {
     Tutorials:  
     [
       'tutorials',
-      'tutorials/setup-env'
+      'tutorials/setup-env', 
     ], 
     Guides: [
       'guides',
       {
         'Local Development': [
           'guides/spin-up-local-instance',
-//           'guides/debug-instance',
+          'guides/code-style',
+          'guides/debug-instance',
         ],
         'Fetching data': [
           // 'guides/fetch-data',

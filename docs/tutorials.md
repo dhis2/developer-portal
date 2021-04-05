@@ -15,11 +15,7 @@ Along the way, you'll learn more about the DHIS2 ecosystem as well as the fundam
 
 This tutorial will help you set up your local development environment to build your first DHIS2 app using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). 
 
-In this tutorial you will: 
-
-1. Learn about the [DHIS2 CLI](https://cli.dhis2.nu/#/)
-2. Learn how to spin up a DHIS2 instance with [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) 
-3. Create a new DHIS2 application!  
+In this tutorial you will learn about the [DHIS2 CLI](https://cli.dhis2.nu/#/) and create a new DHIS2 application!  
 
 ### Learn about DHIS2 Components and Libraries 
 * [DHIS2 UI Components](https://ui.dhis2.nu/#/) the [DHIS2 Design System](https://github.com/dhis2/design-system) 
