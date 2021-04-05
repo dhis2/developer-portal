@@ -5,7 +5,7 @@ title: How to spin up a DHIS2 local instance
 
 This is a quick guide on how to easily create a DHIS2 instance on your local machine and setup the DHIS2 CLI.
 
-Some of the benefits of using local instances is that we can run multiple different DHIS2 versions at the same time and also makes testing easier as it runs locally (and it's not dependent on a network connection). 
+Some of the benefits of using local instances are: (1) we can run multiple different DHIS2 versions at the same time and (2) testing is easier as the DHIS2 server runs locally and is not dependent on a network connection. 
 
 > These steps will help you quickly spin up a server and get you started with DHIS2 application development!
 

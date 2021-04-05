@@ -2,7 +2,7 @@
 id: setup-env
 title: Environment Setup 
 ---
-This tutorial will help you set up your local development environment to build your first DHIS2 app using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/), which provides a fully-featured DHIS2 app, with out-of-the-box tools and components ready to be customized for your use case. 
+This tutorial will help you set up your local development environment to build your first DHIS2 app using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/), which provides a full-featured DHIS2 app, with out-of-the-box tools and components ready to be customized for your use case. 
 
 In this section we will:
 
@@ -55,6 +55,7 @@ d2 app scripts init <app-name>
 We can now navigate into the newly created folder and start your application locally: 
 
 ```shell
+cd <app-name>
 yarn start
 ```
 
@@ -78,4 +79,3 @@ You will then see your newly initialized application greeting screen like this o
 **NOTE**: If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../guides/debug-instance). 
 
 **Congratulations! You are now ready to start developing a DHIS2 application!** 👏🏽
-

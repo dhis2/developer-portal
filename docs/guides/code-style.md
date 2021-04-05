@@ -21,12 +21,12 @@ yarn add @dhis2/cli-style --dev
 
 ## 2. Set up a pre-configured project 
 
-`d2-style` comes with code style for a range of projects. The project/react should be a good starting point for a React project, as it adds `eslint-plugin-react`.
+`d2-style` comes with code style for a range of presets. The preset `project/react` should be a good starting point for a React project, as it adds `eslint-plugin-react`.
 
 Run this command to automatically set up the project to follow the DHIS2 code style: 
 
 ```shell
-d2 style install project/react
+yarn d2-style install project/react
 ```
 
 ## 3. Set up scripts 
