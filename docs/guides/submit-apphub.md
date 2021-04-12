@@ -17,7 +17,7 @@ Use a Google account. Click on the login button at the top right corner of the p
 
 Click `Upload` on the sidebar menu. The upload page has four main sections to be completed. Your screen should look like this 👇
 
-<!-- ![](/assets/apphub/upload.gif) -->
+![](./assets/apphub-upload.gif)
 
 #### 3. Fill in all fields
 

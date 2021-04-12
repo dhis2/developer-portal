@@ -24,7 +24,9 @@ In addition, observing the following guidelines will help create a helpful app n
 
 ### App Icon
 
-All apps submitted to the App Hub should have a unique app icon. App icons are shown in the apps menu and help users to quickly navigate around DHIS2.
+All apps submitted to the App Hub should have a unique app icon. App icons are shown in the apps menu and help users to quickly navigate around DHIS2. 
+
+> See [how App Icons can be included](https://platform.dhis2.nu/#/usage/app-icon) in your application using the [App Platform](https://platform.dhis2.nu/#/)
 
 Keep the following guidelines in mind when creating an app icon:
 
