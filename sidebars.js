@@ -5,6 +5,7 @@ module.exports = {
     [
       'tutorials',
       'tutorials/setup-env', 
+      'tutorials/ui-library', 
     ], 
     Guides: [
       'guides',

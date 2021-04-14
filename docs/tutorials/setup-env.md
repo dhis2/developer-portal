@@ -63,7 +63,7 @@ yarn start
 
 After running `yarn start` a web-browser window should have popped up greeting you with a login dialog at [http://localhost:3000](http://localhost:3000). 
 
-Enter your DHIS2 server URL and the username and password of the default admin user (as shown in the example below): 
+Enter your own development instance of DHIS2 as the server URL and the username and password of the default admin user (as shown in the example below): 
 
 ```
 server: http://localhost:8080
@@ -79,3 +79,7 @@ You will then see your newly initialized application greeting screen like this o
 **NOTE**: If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../guides/debug-instance). 
 
 **Congratulations! You are now ready to start developing a DHIS2 application!** 👏🏽
+
+## What's next? 
+
+In the next tutorial you will learn how to use the DHIS2 UI library and add its components to your application!
