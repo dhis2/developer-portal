@@ -32,10 +32,7 @@ yarn add @dhis2/ui
 
 ## 2. Import and use UI components 
 
-In this example, we'll create a very simple application that will be using the following UI components:
-
-* `Button` 
-* `Table` and its child components 
+In this example, we'll be adding a simple `Button` component to get familiar with the UI library and learn how to import and use its components. 
 
 ### Add a Button
 
@@ -46,7 +43,9 @@ First, open up the `src/App.js` file and import a [Button](https://ui.dhis2.nu/d
 import { Button } from '@dhis2/ui'
 ```
 
-Then, we'll add a `Button` component that's `primary` and `large`. Remember that you can easily copy and paste the code from the [documentation](https://ui.dhis2.nu/demo/?path=/docs/actions-buttons-button--basic). 
+Then, we'll add a `Button` component that's `primary` and `large`. 
+
+Remember that you can easily copy and paste the code from the [documentation](https://ui.dhis2.nu/demo/?path=/docs/actions-buttons-button--basic). 
 
 You should have something like this: 
 
@@ -75,7 +74,7 @@ export default MyApp
 
 #### The `onClick` event handler 
 
-As we copied this code directly from the documentation, we get the function `onClick={logger}` as the event handler. However, `logger` hasn't been defined so you may get an error. To test if this function works, let's pass the following instead: 
+As we copied this code directly from the documentation, we get the function `onClick={logger}` as the event handler. However, `logger` hasn't been defined so you may get an error. To test if this function works, let's pass the following function instead: 
 
 ```jsx {3}
     <Button 
@@ -98,7 +97,7 @@ That's it for the `Button` component! 👏🏽
 
 * Check the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system) repo or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43 ) (less than 15 min)
 
-* Chek the [UI Library Storybook documentation](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min) 
+* Check the [UI Library Storybook documentation](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min) 
 
 ## What's next? 
 
