@@ -70,7 +70,7 @@ server: http://localhost:8080
 username: admin
 password: district
 ```
-> If you want to learn how to spin up a local DHIS2 instance using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster) please follow [this guide](../guides/spin-up-local-instance). 
+> If you want to learn how to spin up a local DHIS2 instance using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster) please follow [this guide](/docs/guides/spin-up-local-instance). 
 
 You will then see your newly initialized application greeting screen like this one 👇 
 
