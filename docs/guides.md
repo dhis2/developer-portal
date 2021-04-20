@@ -6,7 +6,7 @@ title: How-to-Guides
 Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done. 
 
 ### Local Development
-- [How to spin up a DHIS2 local instance](./guides/spin-up-local-instance)
+- [How to spin up a DHIS2 local instance](/docs/guides/spin-up-local-instance)
 - How to create a new DHIS2 application from scratch - [Watch this short video](https://youtu.be/oi9mSa62G0Q?t=497)
 
 ### Fetching data
@@ -43,4 +43,3 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 ### Testing 
 - How to test my application for a specific DHIS2 version (with `d2 cluster`)
 - How to write automated tests for my application
-
