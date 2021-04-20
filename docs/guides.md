@@ -7,6 +7,8 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 
 ### Local Development
 - [How to spin up a DHIS2 local instance](/docs/guides/spin-up-local-instance)
+- [How to set up code style for DHIS2](/docs/guides/code-style)
+- [How to debug common development errors](/docs/guides/debug-instance)
 
 ### DHIS2 UI Components
 - How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/oi9mSa62G0Q?t=2358)  
