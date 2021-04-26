@@ -3,7 +3,7 @@ id: apphub-guidelines
 title: App Hub Submission Guidelines
 ---
 
-Submitting your app to the App Hub is an easy way to share your app with the DHIS2 community around the world. Apps submitted to the App Hub are reviewed by the DHIS2 core team. Apps approved by the DHIS2 core team will be available publicly on the App Hub.
+Submitting your app to the [DHIS2 App Hub](https://apps.dhis2.org/) is an easy way to share your app with the DHIS2 community around the world. Apps submitted to the App Hub are reviewed by the DHIS2 core team. Apps approved by the DHIS2 core team will be available publicly on the App Hub.
 
 The following guidelines are intended to make the App Hub submission and approval process simple and transparent. Following these guidelines will ensure your app works well on the DHIS2 platform and is well documented on the App Hub.
 
@@ -68,8 +68,7 @@ To provide helpful screenshots, follow these guidelines:
 
 ### Source code
 
-Sharing the source code of your app helps the DHIS2 core team carry out a quick review process and lets technical users evaluate if the app is right for their instance.
-You can share your source code with a link to a public repository on a source control platform like Github.
+When uploading you app, you will be required to provide your source code with a link to a public repository on a source control platform like Github. Sharing the source code of your app helps the DHIS2 core team carry out a quick review process and lets technical users evaluate if the app is right for their instance.
 
 ## App guidelines
 
@@ -81,7 +80,7 @@ Apps available in the App Hub should, by default, run on any DHIS2 instance. App
 
 ### Open-source
 
-Make sure all components, libraries and resources that are running on the DHIS2 instance are open-source. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
+Make sure all components, libraries and resources that are running on the DHIS2 instance **are open-source**. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
 
 ### Design System
 
