@@ -24,9 +24,11 @@ They describe how it works and how to use it but assume that you have a basic un
 * [SMS Syncing](https://github.com/dhis2/dhis2-android-capture-app/blob/master/docs/src/commonmark/en/content/tech-guides/SMS-Sync.md) - how the SMS syncing works at every level (server, gateway, Android SDK, Android App) and how to test it
 
 ### Command-line tools
-* [d2](https://cli.dhis2.nu/#/) - command-line interface for DHIS2 development
-* [d2-style](https://cli-style.dhis2.nu/#/) - standardized code and commit style enforcement
-* [d2-utils-docsite](https://cli-utils-docsite.dhis2.nu/#/) - generate a documentation website with consistent structure and design
+* [DHIS2 CLI](https://cli.dhis2.nu/#/) - Command-line interface for DHIS2 development
+* [d2 style](https://cli-style.dhis2.nu/#/) - Standardized code and commit style enforcement
+* [d2 utils docsite](https://cli-utils-docsite.dhis2.nu/#/) - Generate a documentation website with consistent structure and design
+* [d2 utils cypress](https://cli-utils-cypress.dhis2.nu/#/) - The cypress utilities is a collection of npm modules that help with running cypress, cucumber/gherkin feature files and provide some commands for a more convenient test development process.
+
 
 ### Legacy libraries
 
