@@ -1,17 +1,17 @@
 ---
-id: developer-academy
-title: Developer Academy
+id: academy-workshops-2021
+title: Academy 2021
 ---
 
-## Android & Web App Development Workshop 2 
+### Android & Web App Development Workshops 
 
-#### May 4-7, 2021
+> ### Workshop 2: Advanced - May 4-7, 2021 👇
 
 ### Android Track
 
 Learn how to use the different capabilities of the DHIS2 Android SDK to build fully reliable DHIS2 Android applications compatible with many DHIS2 versions. This workshop  focuses on how android developers can use the SDK to sync metadata and data following the best practises while preventing sync erros. Also, among other topics, it covers how to use the validation rules and program indicators engines to perform data quality and analytic tasks.
 
-### Session Recordings:
+#### Session Recordings:
 
 - [Day 1: Recap and Logistics](https://www.youtube.com/watch?v=e0JjUsS_I38&list=PLo6Seh-066Rzibv76TT25xoDVYtsxEsyg)
 - [Debugging and Data download](https://youtu.be/ilc2zDFnD00?list=PLo6Seh-066Rzibv76TT25xoDVYtsxEsyg)
@@ -29,7 +29,7 @@ Learn how to use the different capabilities of the DHIS2 Android SDK to build fu
 
 Learn more about the App Runtime and how to use advanced hooks and techniques to interact with the DHIS2 Web API. This workshop will also focus on how to build generic DHIS2 web apps and how to use tools such as i18n for translations and the DHIS2 data store. These sessions also include application performance and security tips and best practices. Learn more about testing DHIS2 web apps and how to publish your apps using the App Hub. 
 
-### Session Recordings:
+#### Session Recordings:
 
 - [Advanced App Runtime](https://www.youtube.com/watch?v=rPvkAWurDoY&list=PLo6Seh-066RxLIq-xSS5rO_b9GVPYibWj&index=1) - Review mutations, handling loading, error states, refetching data. Learn about dynamic queries and variables and how to useDataEngine and the Alerts Service for showing alerts
 - [Making Apps Generic - Overview](https://www.youtube.com/watch?v=uDP6Tu7zWl8&list=PLo6Seh-066RxLIq-xSS5rO_b9GVPYibWj&index=3) - How to build generic DHIS2 apps. Learn about available tools such as translations (i18n) and how to use the Data Store.  
@@ -41,15 +41,16 @@ Learn more about the App Runtime and how to use advanced hooks and techniques to
 - [App Hub Overview](https://www.youtube.com/watch?v=i_KtpQDVMeY&list=PLo6Seh-066RxLIq-xSS5rO_b9GVPYibWj&index=9) - Publish workflows, App Hub guidelines and updates 
 - [App Testing](https://www.youtube.com/watch?v=z14QkN0U-Fc&list=PLo6Seh-066RxLIq-xSS5rO_b9GVPYibWj&index=10) - End-to-End tests - @dhis2/cli-utils-cypress, unit tests with jest
 
-> For more information on exercises and other resources, please check the [Web App Academy 2021 repository](https://github.com/dhis2/academy-web-app-dev-2021)
+#### For more information on exercises and other resources, please check the [Web App Academy 2021 repository](https://github.com/dhis2/academy-web-app-dev-2021). 
 
-### Workshop 1: The Basics - March 17-18, 2021
+
+> ### Workshop 1: The Basics - March 17-18, 2021 👇
 
 In this hands-on 2-day workshop, participants learned how to build high-quality, maintainable DHIS2 Android and Web applications using the latest tools from the core team. 
 
-##### Session Recordings:
+#### Session Recordings:
 
-#### Android Track
+### Android Track
 
 * [Android SDK Overview](https://www.youtube.com/watch?v=ObdYRiB2s3Y&list=PLo6Seh-066RwitNsmWeMDLCVVJ_kAQ1cn&index=3)
 * [Skeleton App Overview](https://www.youtube.com/watch?v=WuQBm_D7lBU&list=PLo6Seh-066RwitNsmWeMDLCVVJ_kAQ1cn&index=3)
@@ -62,7 +63,7 @@ In this hands-on 2-day workshop, participants learned how to build high-quality,
 * [SDK Roadmap & What's next](https://www.youtube.com/watch?v=oTawaGYv3gg&list=PLo6Seh-066RwitNsmWeMDLCVVJ_kAQ1cn&index=13)
 
 
-#### Web App Track 
+### Web App Track 
 
 * [Introduction and Logistics](https://www.youtube.com/watch?v=nys-zQyj-TU&list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&index=1)
 * [Application Development Overview](https://www.youtube.com/watch?v=WP6ZWbsTz-Q&list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&index=2)
@@ -79,18 +80,3 @@ In this hands-on 2-day workshop, participants learned how to build high-quality,
 * [App Runtime Introduction](https://drive.google.com/file/d/1hQfQ3kIbUT8BcpkprKmtbRMvMUmxF2rV/view?usp=sharing)
 * [DHIS2 Data Model & REST API](https://drive.google.com/file/d/1aAUvgTBg1yhSgho_zDJw4UNAuU4CY1hh/view?usp=sharing)
 
-> **Academy 2020**
-
-### Workshop 2: Advanced - August 18-21, 2020
-
-* [session recording](https://www.youtube.com/playlist?list=PLo6Seh-066Rx3CPMv-i2gdzo8qxZ4cfSQ)
-* [course materials](https://github.com/dhis2/academy-web-app-dev-2020)
-
-Continuation of the hands-on DHIS2 Application Development workshop series for academy-track participants
-
-### Workshop 1: The Basics - June 24-25, 2020
-
-* [session recording](https://www.youtube.com/playlist?list=PLo6Seh-066RynhjhnJNUITOZykA7397We)
-* [course materials](https://github.com/dhis2/academy-web-app-dev-2020)
-
-Learn how to build a high-quality, maintainable DHIS2 applications using the latest tools from the core team in this hands-on 2-day workshop. This workshop will be a combination of presented material and hands-on development time - each participant will build their own DHIS2 application by the end of the course.
