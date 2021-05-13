@@ -53,10 +53,16 @@ username: admin
 password: district
 ```
 
-### Stopping an instance
+### Destroy and cleanup commands    
 
-The `down` command followed by the name of the cluster shuts down all Docker processes connected to that cluster.
+The `down` command followed by the name of the cluster shuts down all Docker processes connected to that cluster (it basically destroys a running container):  
 
 ```shell
 d2 cluster down 2.35.0
+```
+
+The command `down --clean` destroys that cluster _and_ clears out all data volumes as well as ephemeral containers: 
+
+```shell
+d2 cluster down 2.35.0 --clean
 ```
