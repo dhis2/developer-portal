@@ -5,6 +5,7 @@ module.exports = {
     [
       'tutorials',
       'tutorials/setup-env', 
+      'tutorials/app-runtime', 
     ], 
     Guides: [
       'guides',
