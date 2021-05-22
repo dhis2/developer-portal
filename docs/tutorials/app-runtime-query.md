@@ -1,12 +1,12 @@
 ---
-id: app-runtime
-title: DHIS2 App Runtime
+id: app-runtime-query
+title: Data Query  
 ---
 
 In this tutorial, you will do the following: 
 
 1. Get started with `@dhis2/app-runtime` 
-2. Define data queries 
+2. Learn how to define data queries 
 3. Fetch data using the `useDataQuery` hook
 
 ## 1. Getting started 
@@ -51,11 +51,11 @@ const myQuery = {
 // ...
 ```
 
-<!-- TODO: ADD data query playground guide!!! -->
+> **Useful tool** 💡: The [Data Query Playground](https://runtime.dhis2.nu/playground/) is a DHIS2 application that will help you explore the DHIS2 API and test data queries and mutations. Follow [this guide](/docs/guides/query-playground) to learn how to use it! 
 
 ## 3. Fetching data 
 
-As mentioned earlier, the app runtime makes it very easy to fetch data from a DHIS2 instance without having to manually construct these requests.
+As mentioned earlier, the app runtime makes it very easy to fetch data from a DHIS2 instance without having to manually make these requests.
 
 To do this, it uses [React Hooks](https://reactjs.org/docs/hooks-intro.html) and all we need to do is define declarative queries and then use the provided hook to perform the actual request. 
 
@@ -75,9 +75,9 @@ import { useDataQuery } from '@dhis2/app-runtime'
 
 Next, let's define a React functional component `MyApp` which will use the `useDataQuery` hook. 
 
-Notice that it also gives us easy access to `error` and `loading` variables or states as well as a `data` object where the fetched data is going to be stored. 
+Notice that it also gives us easy access to the `error` and `loading` variables (which respond to state changes) as well as a `data` object where the fetched data is going to be stored. 
 
-We then pass `myQuery` object to the `useDataQuery` hook - see the highlighted line of code below: 
+We then pass the `myQuery` object to the `useDataQuery` hook - see the highlighted line of code below: 
 
 ```jsx {15} title="src/App.js"
 import React from 'react'
@@ -141,8 +141,9 @@ https://github.com/dhis2/academy-web-app-dev-2021/tree/main/workshop-1/04-app-ru
 
 * Get an overview of the DHIS2 Web API in this [video presentation](https://youtu.be/F95LTzAzESQ?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) (about 30 min) or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation 
 
-
-<!-- 
 ## What's next? 
 
-TODO: Deploy or mutation?  -->
+In the next section, you’ll learn how to use the `useDataMutation` hook to mutate or write data! 
+
+
+

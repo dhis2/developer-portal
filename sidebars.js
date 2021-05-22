@@ -1,11 +1,14 @@
 module.exports = {
   docs: {
     'Quick Start': ['getting-started'],
-    Tutorials:  
-    [
-      'tutorials',
-      'tutorials/setup-env', 
-      'tutorials/app-runtime', 
+    Tutorials:  [
+    'tutorials',
+    'tutorials/setup-env', 
+      {
+        'DHIS2 App Runtime': [
+          'tutorials/app-runtime-query',
+        ],
+      },
     ], 
     Guides: [
       'guides',
