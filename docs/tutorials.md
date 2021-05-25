@@ -41,5 +41,5 @@ You will also see how to import and use UI components into your application.
 ### Learn about DHIS2 Components and Libraries 
   
 * [Analytics](https://github.com/dhis2/analytics) - helper functions and common components for analytics applications
-* [SMS Compression & Syncing](https://github.com/dhis2/dhis2-android-capture-app/tree/master/docs/src/commonmark/en/content/tech-guides) - how the SMS library works and how it is used in server and Android side
+
 
