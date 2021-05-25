@@ -61,7 +61,7 @@ The `down` command followed by the name of the cluster shuts down all Docker pro
 d2 cluster down 2.35.0
 ```
 
-The command `down --clean` destroys that cluster _and_ clears out all data volumes as well as ephemeral containers: 
+The command `down --clean` destroys that cluster _and also_ clears out all saved configuration, data volumes, and ephemeral containers: 
 
 ```shell
 d2 cluster down 2.35.0 --clean
