@@ -25,8 +25,6 @@ You can manually install the DHIS2 app runtime in your project by adding the `@d
 yarn add @dhis2/app-runtime
 ```
 
-> **Note:** It's not necessary to install the app runtime on apps initialized with the DHIS2 Application Platform as it's included by default. If you have followed this tutorial from [Environment Setup](/docs/tutorials/setup-env) then you already have the app runtime installed in your application. 
-
 ## 2. Define data queries
 
 First, let's define a simple data query to fetch and display the results.  
@@ -50,8 +48,6 @@ const myQuery = {
 }
 // ...
 ```
-
-> **Useful tool** 💡: The [Data Query Playground](https://runtime.dhis2.nu/playground/) is a DHIS2 application that will help you explore the DHIS2 API and test data queries and mutations. Follow [this guide](/docs/guides/query-playground) to learn how to use it! 
 
 ## 3. Fetching data 
 
