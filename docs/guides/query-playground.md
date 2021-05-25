@@ -50,7 +50,11 @@ In this example, we want to fetch the first 3 programs in the system. Feel free 
 }
 ```
 
-> **Note:** This application uses [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) syntax which requires **double quotes** to be used around strings and property names.
+:::note 
+
+This application uses [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) syntax which requires **double quotes** to be used around strings and property names.
+
+:::
 
 ### Data Mutation
 
@@ -75,6 +79,12 @@ In the example below, we're creating a new program. Notice that the `data` prope
 Before running this request, we select the **Mutation** option and click **Execute**. See the results on the left: 
 
 ![](./assets/query-playground-create.png)
+
+:::note Tip 
+
+Useful keyboard shortcut: You can also execute **`Query`** and **`Mutation`** without a mouse by pressing **`Ctrl+Enter`** ⚡️
+
+:::
 
 After we've created a new program, we can verify the result of this action by going back to the programs query and executing it again to see the response - as you can see, **"A new Program"** was successfully added: 
 
@@ -107,8 +117,7 @@ For `update` and `delete` types, the `id` property is required. See the query de
 }
 ```
 
-> You can find more examples of data mutations [here](https://runtime.dhis2.nu/#/hooks/useDataMutation?id=example).
-
 ## Want to learn more?
 
+- You can find more examples of data mutations on the App Runtime documentation [here](https://runtime.dhis2.nu/#/hooks/useDataMutation?id=example).
 - Check this [short video](https://youtu.be/dnagTunwHls?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) from the [Developer Academy 2021](/events/academy-workshops-2021) to learn more about using the Data Query Playground. 
