@@ -9,20 +9,16 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 - [How to spin up a DHIS2 local instance](/docs/guides/spin-up-local-instance)
 - How to create a new DHIS2 application from scratch - [Watch this short video](https://youtu.be/oi9mSa62G0Q?t=497)
 
-### Fetching data
-- How to fetch data from a DHIS2 instance - Watch this [short video](https://youtu.be/zw0UwsZ2Pww?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=349) using the Query Playground of the [DHIS2 Application Runtime](https://runtime.dhis2.nu/#/)
-
-### Data mutations 
-- How to mutate data - Watch this [short video](https://youtu.be/dLoOWGJU0Cg) to learn more about mutation types and how to perform simple mutations 
-
 ### DHIS2 UI Components
-- How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/oi9mSa62G0Q?t=2358)  
-<!-- - How to add a DHIS2 UI Button to my application -->
-<!-- - How to use a sidebar layout in my application -->
+- How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=801) from the Developer Academy 2021
+
+### DHIS2 App Runtime 
+- [How to use the Data Query Playground](/docs/guides/query-playground)
+<!-- - How to mutate data - Watch this [short video](https://youtu.be/dLoOWGJU0Cg) to learn more about mutation types and how to perform simple mutations  -->
 
 ### App Hub
-- [How to submit an application to the DHIS2 App Hub](./guides/submit-apphub)
-- [App Hub Submission Guidelines](./guides/apphub-guidelines)
+- [How to submit an application to the DHIS2 App Hub](/docs/guides/submit-apphub)
+- [App Hub Submission Guidelines](/docs/guides/apphub-guidelines)
 
 > _COMING SOON!_ 👇
 

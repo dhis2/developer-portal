@@ -14,8 +14,8 @@ module.exports = {
           'guides/code-style',
           'guides/debug-instance',
         ],
-        'Fetching data': [
-          // 'guides/fetch-data',
+        'DHIS2 App Runtime': [
+          'guides/query-playground',
         ],
         'UI components': [
           // 'guides/ui-components',
