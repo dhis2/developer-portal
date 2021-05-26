@@ -23,20 +23,9 @@ In this short [tutorial](/docs/tutorials/ui-library) you will learn more about [
 
 You will also see how to import and use UI components into your application. 
 
-### Learn about the DHIS2 App Platform 
+### DHIS2 App Runtime
 
-#### DHIS2 App Platform
-
-* The [Application Platform](https://platform.dhis2.nu/#/getting-started) provides common build system, development tools, runtime support, and standard functionality for DHIS2 applications. The basic features of a modern, compliant, and functional application are all provided out-of-the-box. 
-* Watch this [short introduction](https://youtu.be/_lSrvFVvdRs?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=249) to learn more about the DHIS2 Application Platform 
-
-#### DHIS2 App Runtime
-* The [DHIS2 application runtime](https://runtime.dhis2.nu/#/) provides a common, consistent, single-dependency runtime dependency for DHIS2 applications
-* Watch this [short video presentation](https://youtu.be/drLUFP93mFk?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=133) 
-
-#### DHIS2 Web API 
-* Get an overview of the [DHIS2 Web API](https://youtu.be/_1bkoE-UKy0) in this short video presentation or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation 
-
+In this short tutorial you will learn how to interact with the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) to access and mutate data using the [DHIS2 App Runtime](https://runtime.dhis2.nu/#/).
 
 ### Learn about DHIS2 Components and Libraries 
   
