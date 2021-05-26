@@ -4,6 +4,7 @@ module.exports = {
     Tutorials:  [
     'tutorials',
     'tutorials/setup-env', 
+    'tutorials/ui-library', 
       {
         'DHIS2 App Runtime': [
           'tutorials/app-runtime-query',
@@ -20,9 +21,6 @@ module.exports = {
         ],
         'UI Library': [
           'guides/ui-table',
-        ],
-        'Fetching data': [
-          // 'guides/fetch-data',
         ],
         'App Hub': [
           'guides/submit-apphub', 'guides/apphub-guidelines'

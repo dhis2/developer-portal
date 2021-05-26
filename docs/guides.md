@@ -15,10 +15,8 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 - [How to add a Table component](/docs/guides/ui-table) 
 - How to create a new DHIS2 application from scratch - [Watch this short video](https://youtu.be/oi9mSa62G0Q?t=497)
 
-### Fetching data
+### DHIS2 App Runtime
 - How to fetch data from a DHIS2 instance - Watch this [short video](https://youtu.be/zw0UwsZ2Pww?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=349) using the Query Playground of the [DHIS2 Application Runtime](https://runtime.dhis2.nu/#/)
-
-### Data mutations 
 - How to mutate data - Watch this [short video](https://youtu.be/dLoOWGJU0Cg) to learn more about mutation types and how to perform simple mutations 
 
 ### App Hub

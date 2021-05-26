@@ -76,9 +76,17 @@ You will then see your newly initialized application greeting screen like this o
 
 ![Sign In](./assets/sign-in-app.gif)
 
-**NOTE**: If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../guides/debug-instance). 
+:::note 
+If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../guides/debug-instance). 
+:::
 
 **Congratulations! You are now ready to start developing a DHIS2 application!** 👏🏽
+
+### Want to learn more?
+
+* Watch this short [video](https://youtu.be/WP6ZWbsTz-Q?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) to get an overview of DHIS2 application development and the App Platform (30 min)
+
+* Check the [App Platform](https://platform.dhis2.nu/#/getting-started) documentation 
 
 ## What's next? 
 
