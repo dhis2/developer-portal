@@ -7,14 +7,15 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 
 ### Local Development
 - [How to spin up a DHIS2 local instance](/docs/guides/spin-up-local-instance)
-- How to create a new DHIS2 application from scratch - [Watch this short video](https://youtu.be/oi9mSa62G0Q?t=497)
+- [How to set up code style for DHIS2](/docs/guides/code-style)
+- [How to debug common development errors](/docs/guides/debug-instance)
 
 ### DHIS2 UI Components
-- How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=801) from the Developer Academy 2021
+- How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=801) from the Developer Academy 2021  
+- [How to add a Table component](/docs/guides/ui-table) 
 
 ### DHIS2 App Runtime 
 - [How to use the Data Query Playground](/docs/guides/query-playground)
-<!-- - How to mutate data - Watch this [short video](https://youtu.be/dLoOWGJU0Cg) to learn more about mutation types and how to perform simple mutations  -->
 
 ### App Hub
 - [How to submit an application to the DHIS2 App Hub](/docs/guides/submit-apphub)
