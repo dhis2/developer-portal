@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, {useEffect} from 'react';
+import React from 'react';
 import Head from '@docusaurus/Head';
 import { useTitleFormatter } from '@docusaurus/theme-common';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -18,20 +18,6 @@ import styles from './styles.module.css';
 import { useActivePlugin, useVersions, useActiveVersion } from '@theme/hooks/useDocs';
 
 function DocItem(props) {
-  useEffect(() => {
-    const script = document.createElement('script');
-
-    script.src = "https://utteranc.es/client.js";
-    script.setAttribute('repo', "dhis2/developer-portal");
-    script.setAttribute('issue-term', "pathname");
-    script.setAttribute('label', "comment");
-    script.setAttribute('theme',"github-light");
-    script.crossOrigin = "anonymous";
-    script.async = true;
-
-    document.getElementById("comment-system").appendChild(script);
-  }, []);
-
   const {
     siteConfig
   } = useDocusaurusContext();
@@ -142,7 +128,6 @@ function DocItem(props) {
             <div className="margin-vert--lg">
               <DocPaginator metadata={metadata} />
             </div>
-            <div id="comment-system"></div>
           </div>
         </div>
         {!hideTableOfContents && DocContent.toc && <div className="col col--3">
