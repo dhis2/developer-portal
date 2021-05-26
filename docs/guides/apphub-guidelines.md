@@ -142,7 +142,7 @@ Including any of the following **will result in immediate App Hub rejection or r
 -   Repackaged DHIS2 core apps.
 -   Forked existing DHIS2 apps without meaningful functionality or feature changes.
 
-### Submission Process
+## Submission Process
 
 Upon submitting to the App Hub, the DHIS2 core team will review your app. Note that the core team does not have the resources to carry out extensive testing and bug reporting, this is the responsibility of the app author(s). Keep in mind the following points when you're ready to submit your app:
 
