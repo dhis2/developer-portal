@@ -3,7 +3,7 @@ id: query-playground
 title: How to use the Data Query Playground
 ---
 
-This short guide will show you how to use the [Data Query Playground](runtime.dhis2.nu/playground) application for exploring the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-236/metadata.html#webapi_browsing_the_web_api) and for testing data queries and mutations. 
+This short guide will show you how to use the [Data Query Playground](https://runtime.dhis2.nu/playground/) application for exploring the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-236/metadata.html#webapi_browsing_the_web_api) and for testing data queries and mutations. 
 
 ## What is the Query Playground?
 
