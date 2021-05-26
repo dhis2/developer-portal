@@ -5,6 +5,7 @@ module.exports = {
     [
       'tutorials',
       'tutorials/setup-env', 
+      'tutorials/ui-library', 
     ], 
     Guides: [
       'guides',
@@ -14,11 +15,11 @@ module.exports = {
           'guides/code-style',
           'guides/debug-instance',
         ],
+        'UI Library': [
+          'guides/ui-table',
+        ],
         'Fetching data': [
           // 'guides/fetch-data',
-        ],
-        'UI components': [
-          // 'guides/ui-components',
         ],
         'App Hub': [
           'guides/submit-apphub', 'guides/apphub-guidelines'
