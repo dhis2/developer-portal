@@ -65,8 +65,7 @@ function Home() {
   return (
     <Layout
       title={`Welcome to the ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
-    >
+      description="This portal serves as essential resources for developers building web applications upon the DHIS2 platform. You can find additional documentation, how-to-guides, information on events and blog posts.">
       <header className={clsx("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>

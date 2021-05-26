@@ -1,12 +1,11 @@
 module.exports = {
     events: [
       'webinars',
-      'developer-academy',
+      {
+        type: 'category',
+        label: 'Developer Academy',
+        items: ['academy-workshops-2021', 'academy-workshops-2020'],
+      },
       'annual-conference',
-    //   {
-    //     type: 'link',
-    //     href: '/showcase',
-    //     label: 'Showcase',
-    //   },
     ],
   };

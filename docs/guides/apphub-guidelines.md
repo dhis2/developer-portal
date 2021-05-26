@@ -3,7 +3,7 @@ id: apphub-guidelines
 title: App Hub Submission Guidelines
 ---
 
-Submitting your app to the App Hub is an easy way to share your app with the DHIS2 community around the world. Apps submitted to the App Hub are reviewed by the DHIS2 core team. Apps approved by the DHIS2 core team will be available publicly on the App Hub.
+Submitting your app to the [DHIS2 App Hub](https://apps.dhis2.org/) is an easy way to share your app with the DHIS2 community around the world. Apps submitted to the App Hub are reviewed by the DHIS2 core team. Apps approved by the DHIS2 core team will be available publicly on the App Hub.
 
 The following guidelines are intended to make the App Hub submission and approval process simple and transparent. Following these guidelines will ensure your app works well on the DHIS2 platform and is well documented on the App Hub.
 
@@ -68,33 +68,38 @@ To provide helpful screenshots, follow these guidelines:
 
 ### Source code
 
-Sharing the source code of your app helps the DHIS2 core team carry out a quick review process and lets technical users evaluate if the app is right for their instance.
-You can share your source code with a link to a public repository on a source control platform like Github.
+When uploading your app, you will be required to provide your source code with a link to a public repository on a source control platform like Github. Sharing the source code of your app helps the DHIS2 core team carry out a quick review process and lets technical users evaluate if the app is right for their instance.
 
-## App guidelines
+## App guidelines 📝 
 
-These guidelines are for the app itself, rather than how it appears on the App Hub. Apps that meet these criteria will be secure, performant and appropriate for the DHIS2 platform.
+These guidelines are for the app itself, rather than how it appears on the App Hub. Apps that meet these criteria will be generic, useful, open-source, well-designed, documented, secure, performant and appropriate for the DHIS2 platform. 
 
 ### Generic
 
 Apps available in the App Hub should, by default, run on any DHIS2 instance. Apps that are flexible and generic are useful for a large audience and can help many DHIS2 users around the world.
 
+### Useful
+
+Apps must be meaningful and useful. To best benefit DHIS2 users and maintain an easy-to-use App Hub, apps should solve specific problems and use-cases that are not already covered by other applications.
+
+Forking existing DHIS2 applications without providing new, different functionality and features is not recommended and may result in rejection. Apps which are forks or replicas of existing DHIS2 App Hub applications must include justification for and documentation of the changes which were made to the original app.
+
 ### Open-source
 
-Make sure all components, libraries and resources that are running on the DHIS2 instance are open-source. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
+Make sure all components, libraries and resources that are running on the DHIS2 instance **are open-source**. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
 
-### Design System
+### Well-designed
 
 The [DHIS2 Design System](https://github.com/dhis2/design-system) provides principles, guidelines and components for designing and building user-friendly apps. Follow the [principles](https://github.com/dhis2/design-system#design-principles) and use the [available components](https://github.com/dhis2/design-system#components) where possible. Apps should be user-friendly and respect a users' time and resources.
 The Design System components are available as a set of pre-built React components via [@dhis2/ui](https://github.com/dhis2/ui#readme).
 
 Apps built using the [DHIS2 App Platform](https://platform.dhis2.nu/#/) will automatically include the necessary `Header Bar` component and functionality. Apps not using the App Platform need to manually include and set up the standalone [Header Bar component](https://ui.dhis2.nu/demo/?path=/story/utils-header-bar--default) from `@dhis2/ui`. All DHIS2 apps must include the `Header Bar` component.
 
-### Documentation
+### Documented
 
 Providing thorough documentation is essential for all apps. Documentation can be hosted on your website or a source control platform like Github. Think of documentation like an instruction manual for your app. Most users installing your app from the App Hub will not know how the app works. Documentation helps bridge this gap, introducing the main app interactions and providing guidance for common use cases.
 
-### Security
+### Secure
 
 All apps should follow modern, up-to-date security best practices.
 
@@ -119,7 +124,7 @@ Consider implementing the following guidelines to address harden application sec
 
 - **Avoid externally hosted scripts and stylesheets**: External scripts and stylesheets, such as those served by global CDNs, should be avoided unless absolutely necessary - these can cause security and performance issues when accessed in various global contexts.
 
-### Performance
+### Performant
 
 Apps should run smoothly on widely available hardware and with a reasonable internet connection. Consider the following guidelines to make sure your app is available to a wide range of users:
 
@@ -127,16 +132,17 @@ Apps should run smoothly on widely available hardware and with a reasonable inte
 -   Some users will have limited-resource hardware. If necessary, test your app with virtual limiting tools to check performance and usability on devices with limited memory and processing power.
 -   Don't assume a stable or fast internet connection. If necessary, test your app with network throttling tools to see how a slow or intermittent connection affects the user experience. As much as possible, try to anticipate and allow for a wide range of network types and performances.
 
-### Not allowed on the App Hub
+### Appropriate for DHIS2 
 
-Including any of the following will result in App Hub rejection or removal:
+Including any of the following **will result in immediate App Hub rejection or removal**:
 
 -   In-app advertisement.
 -   Cryptocurrency mining.
 -   Background downloads not initiated by the user.
 -   Repackaged DHIS2 core apps.
+-   Forked existing DHIS2 apps without meaningful functionality or feature changes.
 
-### Submission Process
+## Submission Process
 
 Upon submitting to the App Hub, the DHIS2 core team will review your app. Note that the core team does not have the resources to carry out extensive testing and bug reporting, this is the responsibility of the app author(s). Keep in mind the following points when you're ready to submit your app:
 

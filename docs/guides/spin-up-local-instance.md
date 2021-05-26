@@ -30,7 +30,7 @@ The [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) command will allow 
 ```shell
 d2 cluster up <name>
 # or:
-d2 cluster up 2.35.0 --db-vesion 2.35 —-seed
+d2 cluster up 2.35.0 --db-version 2.35 —-seed
 # this will populate a database with sample data
 ```
 
@@ -53,10 +53,16 @@ username: admin
 password: district
 ```
 
-### Stopping an instance
+### Destroy and cleanup commands    
 
-The `down` command followed by the name of the cluster shuts down all Docker processes connected to that cluster.
+The `down` command followed by the name of the cluster shuts down all Docker processes connected to that cluster (it basically destroys a running container):  
 
 ```shell
 d2 cluster down 2.35.0
+```
+
+The command `down --clean` destroys that cluster _and also_ clears out all saved configuration, data volumes, and ephemeral containers: 
+
+```shell
+d2 cluster down 2.35.0 --clean
 ```
