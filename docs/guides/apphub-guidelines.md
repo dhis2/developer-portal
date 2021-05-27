@@ -36,6 +36,7 @@ Keep the following guidelines in mind when creating an app icon:
 -   Use contrasting colors to make your icon clear at all sizes.
 -   Icons should be uploaded in high-resolution, at least 512×512px in size.
 -   Make sure all images and icons are correctly licensed. Do not take images or icons from a web image search without obtaining a license.
+-   Do not use the DHIS2 logo in your app icon. The DHIS2 logo is a protected asset and we ask you not to modify it.
 
 ### Description
 
