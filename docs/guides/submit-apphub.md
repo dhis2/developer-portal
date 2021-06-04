@@ -40,7 +40,7 @@ Here are some guidelines for the required fields:
 ##### Image
 
 -   **Logo**: The logo should capture the core idea of the app. Upload in high-resolution (at least 512x512px in size). Images should be unique and correctly licensed. Additional images can be uploaded later.
--   **Additional images**: Additional screenshots can be uploaded once the app is uploaded. Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
+-   **Additional images**: Additional screenshots can be uploaded once the app is submitted. Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
 
 > Make sure to check the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines) for detailed instructions.
 
