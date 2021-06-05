@@ -36,7 +36,37 @@ By far the most secure way to work around this issue during application developm
 
 ### In Google Chrome or Chromium-based browsers
 
-It is possible to disable the default SameSite=Lax behavior in Chrome and Chromium by setting the "SameSite by default cookies" flag (chrome://flags/#same-site-by-default-cookies) to **Disabled**. Note that this disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application
+To check your current Google Chrome version: click on the three dots menu > Help > About Google Chrome > Your Chrome version number will be displayed.   
+
+#### Chrome 90 and earlier versions
+
+It is possible to disable the default SameSite=Lax behavior in Chrome and Chromium by setting the "SameSite by default cookies" flag [chrome://flags/#same-site-by-default-cookies](chrome://flags/#same-site-by-default-cookies) to **Disabled**. Note that this disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application
+
+#### Chrome version 91 
+
+The flags `#same-site-by-default-cookies` and `#cookies-without-same-site-must-be-secure` have been removed from chrome://flags as of Chrome 91, as the behavior is now enabled by default. [Learn more here](https://www.chromium.org/updates/same-site)
+
+**Disable using the command-line flag**: 
+
+You can mention flags that you need to disable on your terminal. Note that you will need to close all instances of Chrome that are running before executing the following commands: 
+
+1.  For Mac users: 
+
+```
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure
+```
+
+2. For Windows users: 
+
+```sh
+Chrome Application Path 
+--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure
+```
+
+:::note
+**Note:** In Chrome 94, the command-line flag `--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure` will be removed.
+::: 
 
 ### In Mozilla Firefox
 
