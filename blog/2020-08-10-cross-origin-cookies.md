@@ -40,11 +40,13 @@ To check your current Google Chrome version: click on the three dots menu > Help
 
 #### Chrome 90 and earlier versions
 
-It is possible to disable the default SameSite=Lax behavior in Chrome and Chromium by setting the "SameSite by default cookies" flag [chrome://flags/#same-site-by-default-cookies](chrome://flags/#same-site-by-default-cookies) to **Disabled**. Note that this disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application
+It is possible to disable the default `SameSite=Lax` behavior in Chrome and Chromium by setting the "SameSite by default cookies" flag [chrome://flags/#same-site-by-default-cookies](chrome://flags/#same-site-by-default-cookies) to **Disabled**.
+
+Note that this **disables legitimate security behaviors** in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application.
 
 #### Chrome version 91 
 
-The flags `#same-site-by-default-cookies` and `#cookies-without-same-site-must-be-secure` have been removed from chrome://flags as of Chrome 91, as the behavior is now enabled by default. [Learn more here](https://www.chromium.org/updates/same-site)
+The flags `#same-site-by-default-cookies` and `#cookies-without-same-site-must-be-secure` have been removed from chrome://flags as of Chrome 91, as the behavior is now **enabled by default**. [Learn more over the update docs from chromium.org](https://www.chromium.org/updates/same-site).
 
 **Disable using the command-line flag**: 
 
