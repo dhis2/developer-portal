@@ -11,39 +11,36 @@ Upload your app to the [DHIS2 App Hub](https://apps.dhis2.org/) in a few easy st
 
 #### 1. Sign in to the [DHIS2 App Hub](https://apps.dhis2.org/)
 
-Use a Google account. Click on the login button at the top right corner of the page and follow the instructions for authentication.
+Use a Google or GitHub account. Click on the signin button at the top right corner of the page and follow the instructions for authentication.
 
 #### 2. Go to the upload page
 
-Click `Upload` on the sidebar menu. The upload page has four main sections to be completed. Your screen should look like this 👇
+Click `Upload a new app` button on the top left. The upload page has four main sections to be completed. Your screen should look like this 👇
 
-![](./assets/apphub-upload.gif)
+![](./assets/apphub-upload.png)
 
 #### 3. Fill in all fields
 
 Here are some guidelines for the required fields:
 
-##### General
+##### Basic information
 
--   **App name**: Be clear and specific. Try to capture the core functionality of your app.
+-   **App name**: Be clear and specific. Try to capture the core functionality of your app. This must match the name in the manifest/`d2.config.js`.
 -   **App Description**: What's the purpose of your app? What does the app allow a user to do? What are the main functionalities? Any technical requirements?
 -   **Source Code URL**: Please provide a link to a public repository. This will allow the DHIS2 core team to quickly review your app.
-
-##### Version
-
 -   **Version**: The version number of your app. [Semantic versioning](https://semver.org/) is recommended (i.e. 1.0.0)
 -   **Minimum/Maximum DHIS Version**: Which DHIS2 versions are compatible with your app? Enter the minimum and maximum DHIS2 version required for the app to work.
 -   Add a **Demo URL** and **upload** the `.zip` file of your application.
 
 ##### Developer
 
--   Enter your name and email address
+-   Enter the contact email for the app. This is used by the DHIS2 core team to contact you with feedback during the review process.
 -   If you're not a member of any organisation, create a new one by clicking the `+` icon to the right.
 
 ##### Image
 
--   **Image logo**: The logo should capture the core idea of the app. Upload in high-resolution (at least 512x512px in size). Images should be unique and correctly licensed. Additional images can be uploaded later.
--   **Additional images**: Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
+-   **Logo**: The logo should capture the core idea of the app. Upload in high-resolution (at least 512x512px in size). Images should be unique and correctly licensed. Additional images can be uploaded later.
+-   **Additional images**: Additional screenshots can be uploaded once the app is submitted. Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
 
 > Make sure to check the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines) for detailed instructions.
 
