@@ -72,7 +72,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} The DHIS2 Core Team`,
     },
     googleAnalytics: {
-      trackingID: 'UA-UA-157707339-4',
+      trackingID: 'UA-157707339-4',
       anonymizeIP: true
     }
   },
