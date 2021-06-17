@@ -23,7 +23,7 @@ module.exports = {
           'guides/ui-table',
         ],
         'App Hub': [
-          'guides/submit-apphub', 'guides/apphub-guidelines'
+          'guides/submit-apphub', 'guides/apphub-guidelines', 'guides/publish-apphub'
         ],
       },
     ], 
