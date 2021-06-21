@@ -5,9 +5,13 @@ title: How to setup continuous delivery to the App Hub
 
 Once you have [submitted](/docs/guides/submit-apphub) your app and it's been reviewed by the DHIS2 Core Team, your app is live on the App Hub and can be installed directly from other DHIS2 instances through the App Management App. However, it is annoying and time consuming to upload new app versions manually, and difficult to keep it in sync with your development process. This guide will walk you through how to setup continuous delivery to the App Hub, so new versions are automatically built and pushed to the App Hub.
 
-> Note that this guide assumes that your app built using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
+:::note
 
-> We will use [Github Actions](https://docs.github.com/en/actions) to power the continuous integration process. It is recommended that you to familiar yourself with the Github Actions' documentation, but it's not necessary for completion of this tutorial.
+This guide assumes that your app built using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
+
+:::
+
+> We will use [GitHub Actions](https://docs.github.com/en/actions) to power the continuous integration process. It is recommended that you to familiarize yourself with the Github Actions' documentation, but it's not necessary for a simple CI setup.
 
 #### 1. Sign in to the [DHIS2 App Hub](https://apps.dhis2.org/)
 
@@ -19,7 +23,7 @@ Click "Generate API key". Write this key down, you will not be able to see it ag
 
 #### 3. Setting the repository secret
 
-Navigate to the Github repository of your app. Click "Settings" -> "Secrets". Click "New repostory secret". Use `D2_APP_HUB_API_KEY` as the name and paste the API-key in the previous step as the value.
+Navigate to the GitHub repository of your app. Click "Settings" -> "Secrets". Click "New repository secret". Use `D2_APP_HUB_API_KEY` as the name and paste the API-key in the previous step as the value.
 
 #### 4. Setting the app id
 
@@ -29,35 +33,31 @@ Navigate to the App Hub and find your app in the list. Click on the app, and cop
 
 Set the `id` field in the `d2.config.js` in your app to the id of the app on the App Hub.
 
-The `minDHIS2Version` is compulsory as well, so set the minimum DHIS2 version that your app is compatible with.
+The `minDHIS2Version` is also required, so set the minimum DHIS2 version that your app is compatible with.
 
-Double check that all the information is correct, the upload will fail if there's a mismatch betweent he App Hub information and the config-information.
+Double check that all the information is correct, the upload will fail if there's a mismatch between he App Hub information and the config-information.
 
-```
-// d2.config.js
-
- const config = {
-    id: 'b783bf32-0cc2-4d31-aadc-22d4c4807c30',
-    title: 'Simple Example App', // this should match the name of your app on the App Hub
-    type: 'app',
-    entryPoints: {
-        app: './src/App.js',
-    },
-    minDHIS2Version: '2.34',
-}
-module.exports = config
+```js title="d2.config.js"
+const config = {
+  id: "b783bf32-0cc2-4d31-aadc-22d4c4807c30",
+  title: "Simple Example App", // this should match the name of your app on the App Hub
+  type: "app",
+  entryPoints: {
+    app: "./src/App.js",
+  },
+  minDHIS2Version: "2.34",
+};
+module.exports = config;
 ```
 
-#### 4. Adding Github Action Workflow
+#### 4. Adding GitHub Action Workflow
 
-Here's an exmaple of a minimal workflow that you can use. This will build the app and publish it to the App Hub whenever a release is created on GitHub.
+Here's an example of a minimal workflow that you can use. This will build the app and publish it to the App Hub whenever a release is created on GitHub.
 Copy this file to `.github/workflows/apphub-release.yml` in your repository. Remember to push the file. You may also use the GitHub interface for this (Actions -> New Workflow).
 
-```
-
+```yml title="apphub-release.yml"
 # This is a basic workflow to help you get started with Actions
-
-name: CI
+name: App Hub publish
 
 env:
   D2_APP_HUB_API_KEY: ${{secrets.D2_APP_HUB_API_KEY}}
@@ -105,7 +105,7 @@ Navigate to the app repository on GitHub and Click `Releases` on the Section on 
 Click `draft a new release`. Use the tag-version that was created in the previous step (eg `v1.1.5`).
 Optionally type in a release title and description and click `Publish release`.
 
-The GitHub action should be triggered and after a couple of minutes your new version should be pushed to the App Hub!
+The GitHub action should be triggered and after a couple of minutes your new version should be pushed to the App Hub! 🎉
 
 You can check the Action status and logs by clicking the Actions-tab in GitHub.
 
@@ -123,6 +123,6 @@ Publishing to the App Hub should be easy, and the heavy lifting is done by the `
 
 ### My app is not a DHIS2 Application Platform app, can I still take advantage of continuous delivery?
 
-We encourage you to migrate to the Application Platform to get a lot of the setup and platform features for free, however in many cases this might not be a viable option.
+We encourage you to migrate to the Application Platform to get a lot of the setup and platform features included, however in many cases this might not be a viable option.
 
 Please refer to the [documentation for the publish command](https://platform.dhis2.nu/#/scripts/publish?id=upload-a-non-platform-app) to learn how to upload any app to the App Hub.
