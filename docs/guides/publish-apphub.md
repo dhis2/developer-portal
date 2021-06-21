@@ -3,11 +3,11 @@ id: publish-apphub
 title: How to setup continuous delivery to the App Hub
 ---
 
-Once you have [submitted](/docs/guides/submit-apphub) your app and it's been reviewed by the DHIS2 Core Team, your app is live on the App Hub and can be installed directly from other DHIS2 instances through the App Management App. However, it is annoying and time consuming to upload new app versions manually, and difficult to keep it in sync with your development process. This guide will walk you through how to setup continuous delivery to the App Hub, so new versions are automatically built and pushed to the App Hub.
+Once you have [submitted](/docs/guides/submit-apphub) your app and it's been reviewed by the DHIS2 Core Team, your app is live on the App Hub and can be installed directly from other DHIS2 instances through the App Management App. However, it is annoying and time consuming to upload new app versions manually, and difficult to keep it in sync with your development process. This guide will walk you through how to setup continuous delivery to the App Hub, so new versions are automatically built and published on the App Hub.
 
 :::note
 
-This guide assumes that your app built using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
+This guide assumes that your app is built using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
 
 :::
 
