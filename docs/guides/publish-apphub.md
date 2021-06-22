@@ -75,9 +75,7 @@ on:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -123,6 +121,6 @@ Publishing to the App Hub should be easy, and the heavy lifting is done by the `
 
 ### My app is not a DHIS2 Application Platform app, can I still take advantage of continuous delivery?
 
-We encourage you to migrate to the Application Platform to get a lot of the setup and platform features included, however in many cases this might not be a viable option.
+We encourage you to migrate to the Application Platform to get a lot of the setup and platform features included, however in some cases this might not be a viable option.
 
-Please refer to the [documentation for the publish command](https://platform.dhis2.nu/#/scripts/publish?id=upload-a-non-platform-app) to learn how to upload any app to the App Hub.
+It is possible to use the `publish` command to publish any `.zip`-file to the App Hub, but some more configuration is necessary. Please refer to the [documentation for the publish command](https://platform.dhis2.nu/#/scripts/publish?id=upload-a-non-platform-app) to learn how to upload any app to the App Hub.
