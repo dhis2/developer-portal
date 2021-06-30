@@ -66,6 +66,10 @@ module.exports = {
               label: "Blog",
               to: "docs/",
             },
+            {
+              label: "DHIS2.org",
+              to: "https://dhis2.org",
+            },
           ],
         },
       ],
