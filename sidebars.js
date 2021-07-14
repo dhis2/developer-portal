@@ -22,6 +22,9 @@ module.exports = {
         'UI Library': [
           'guides/ui-table',
         ],
+        'DHIS2 App Runtime': [
+          'guides/query-playground',
+        ],
         'App Hub': [
           'guides/submit-apphub', 'guides/apphub-guidelines', 'guides/publish-apphub'
         ],
