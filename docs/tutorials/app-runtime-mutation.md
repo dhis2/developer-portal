@@ -91,7 +91,7 @@ Check the highlighted code below and notice a few things:
 
 1. We get the `mutate` function in the array that's returned by the `useDataMutation` hook. We can call this function to execute the mutation: 
     - So we then pass the `myMutation` object to the `useDataMutation` hook 
-3. We have created an `onClick` [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) that will be passed to the `Button` component. Here, the `mutate()` function is called as well as `refetch()`
+2. We have created an `onClick` [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) that will be passed to the `Button` component. Here, the `mutate()` function is called as well as `refetch()`
 
     - **Note**: The `refetch` function comes from the parent component `src/App.js` and the `useDataQuery` hook (see next section below) which can be called to refetch data and has the behaviour of updating the information after the first load has completed. In this case, after a new program has been created. 
 
@@ -166,7 +166,7 @@ export default MyApp
 
 ### Check your browser 
 
-When you click the button **`+ New`** a new program will be added to the list 👏🏽
+When you click the button **`+ New`** a new program will be added to the list 👏
 
 ![](./assets/app-runtime-mutation-create.png)
 
@@ -242,4 +242,4 @@ import { DeleteProgram } from './DeleteProgram'
 ## What's next? 
 
 Learn how to submit your DHIS2 application to the [App Hub](https://apps.dhis2.org/) by checking out this 
-[guide](/docs/guides/submit-apphub) as well as as the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines).
+[guide](/docs/guides/submit-apphub) as well as the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines).
