@@ -1,6 +1,6 @@
 ---
 id: contribute
-title: Contribute
+title: Contribute to the DHIS2 source code
 ---
 
 This is an overview of the process of contributing to the DHIS2 source code.
