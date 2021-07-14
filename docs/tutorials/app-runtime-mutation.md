@@ -37,7 +37,7 @@ With the DHIS2 app runtime, we have 3 different types of mutation which translat
 
 ## 2. Define data mutations 
 
-In this example, we will continue building on the application from the [previous tutorial](/docs/tutorials/app-runtime-query) and create a new program by clicking a button. 
+In this example, we will continue building on the application from the [previous tutorial](/docs/tutorials/app-runtime-query) and **create a new program** by clicking a button. 
 
 To start, let's create a separate file for our `src/NewProgram.js` component which we will import in the `src/App.js`. 
 
@@ -47,7 +47,7 @@ Next, let's define a simple create mutation 👇
 
 As with the data query definition from the previous tutorial, the create mutation below is also an object that specifies the resource `programs` from the DHIS2 Web API as well as the following required properties: 
 
-* The property `type` as `create` 
+* The property `type` as `create` (since we're creating a new program in this example)
 * The `data` property which is required in type `create` 
 
 :::note 
@@ -57,7 +57,7 @@ The property names of **`data`** must correspond to the property names in the DH
 ```jsx title="src/NewProgram.js"
 // ...
 
-const mutation = {
+const myMutation = {
     resource: 'programs',
     type: 'create',
     data: {
@@ -73,32 +73,33 @@ const mutation = {
 
 We have already declared our data mutation above so now we're ready to use it! 
 
-Let's start by importing the [`useDataQuery` hook](https://runtime.dhis2.nu/#/hooks/useDataMutation) from the `@dhis2/app-runtime`  
+Let's start by importing the [`useDataMutation` hook](https://runtime.dhis2.nu/#/hooks/useDataMutation) from the `@dhis2/app-runtime`  
 
 ### Import `useDataMutation` 
 
 ```jsx title="src/NewProgram.js"
-import { useDataQuery } from '@dhis2/app-runtime'
+import { useDataMutation } from '@dhis2/app-runtime'
 // ...
 
 ```
 
-### Use the `useDataQuery` hook
+### Use the `useDataMutation` hook
 
-Next, let's define our React functional component `NewProgram` which will use the `useDataQuery` hook. 
+Next, let's define our React functional component `NewProgram` which will use the `useDataMutation` hook. 
 
 Check the highlighted code below and notice a few things: 
 
-1. We get the `mutate` function in the array that's returned by the `useDataMutation` hook. We can call this function to execute the mutation 
-2. We then pass the `mutation` object to the `useDataQuery` hook 
-3. We have created an `onClick` function that will be passed to the `Button` component. Here, the `mutate()` function is called as well as `refetch()`
-    - `refetch` is a function that can be called to refetch data - which has the behaviour of updating the information after the first load has completed (in this case after a new program has been created) 
+1. We get the `mutate` function in the array that's returned by the `useDataMutation` hook. We can call this function to execute the mutation: 
+    - So we then pass the `myMutation` object to the `useDataMutation` hook 
+3. We have created an `onClick` [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) that will be passed to the `Button` component. Here, the `mutate()` function is called as well as `refetch()`
 
-```jsx {15-18,20} title="src/NewProgram.js"
+    - **Note**: The `refetch` function comes from the parent component `src/App.js` and the `useDataQuery` hook (see next section below) which can be called to refetch data and has the behaviour of updating the information after the first load has completed. In this case, after a new program has been created. 
+
+```jsx {15-19} title="src/NewProgram.js"
 import { useDataMutation } from '@dhis2/app-runtime'
 import { Button } from '@dhis2/ui'
 
-const mutation = {
+const myMutation = {
     resource: 'programs',
     type: 'create',
     data: {
@@ -109,7 +110,8 @@ const mutation = {
 }
 
 export const NewProgram = ({ refetch }) => {
-    const [mutate, { loading }] = useDataMutation(mutation)
+    const [mutate, { loading }] = useDataMutation(myMutation)
+
     const onClick = async () => {
         await mutate()
         refetch()
@@ -120,11 +122,11 @@ export const NewProgram = ({ refetch }) => {
 
 ### Use the `NewProgram` component
 
-We can now import the `NewProgram` component in `MyApp`. 
+We can now import the `src/NewProgram.js` component in `src/MyApp.js`. 
 
-The highlighted code shows the `refetch` function mentioned above which is passed as props to its child component `NewProgram`:
+The highlighted code inside the `MyApp` functional component shows the `refetch` function mentioned above which is passed as props to its child component `NewProgram`:
 
-```jsx {2,16,24} title="src/App.js"
+```jsx {3,16,24} title="src/App.js"
 import React from 'react'
 import { useDataQuery } from '@dhis2/app-runtime'
 import { NewProgram } from './NewProgram'
@@ -164,7 +166,7 @@ export default MyApp
 
 ### Check your browser 
 
-When you click the button **`+ New`** a new program will be added to the list: 
+When you click the button **`+ New`** a new program will be added to the list 👏🏽
 
 ![](./assets/app-runtime-mutation-create.png)
 
@@ -180,14 +182,14 @@ When you click the button **`+ New`** a new program will be added to the list:
 import { useDataMutation } from '@dhis2/app-runtime'
 import { Button } from '@dhis2/ui'
 
-const mutation = {
+const deleteMutation = {
     resource: 'programs',
     type: 'delete',
     id: ({ id }) => id
 }
 
 export const DeleteProgram = ({ id, refetch }) => {
-    const [mutate, { loading }] = useDataMutation(mutation)
+    const [mutate, { loading }] = useDataMutation(deleteMutation)
 
     const onClick = () => {
         mutate({ id }).then(refetch)
@@ -239,4 +241,5 @@ import { DeleteProgram } from './DeleteProgram'
 
 ## What's next? 
 
-In the next section, you’ll learn how to deploy and publish this application to the DHIS2 App Hub! 😬
+Learn how to submit your DHIS2 application to the [App Hub](https://apps.dhis2.org/) by checking out this 
+[guide](/docs/guides/submit-apphub) as well as as the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines).
