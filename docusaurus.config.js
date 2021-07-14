@@ -66,11 +66,19 @@ module.exports = {
               label: "Blog",
               to: "docs/",
             },
+            {
+              label: "DHIS2.org",
+              to: "https://dhis2.org",
+            },
           ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} The DHIS2 Core Team`,
     },
+    googleAnalytics: {
+      trackingID: 'UA-157707339-4',
+      anonymizeIP: true
+    }
   },
   plugins: [
     [
@@ -81,7 +89,7 @@ module.exports = {
         routeBasePath: "events",
         sidebarPath: require.resolve("./sidebarsEvents.js"),
       },
-    ],
+    ]
   ],
   presets: [
     [

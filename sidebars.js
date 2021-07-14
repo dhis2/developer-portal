@@ -4,6 +4,7 @@ module.exports = {
     Tutorials:  [
     'tutorials',
     'tutorials/setup-env', 
+    'tutorials/ui-library', 
       {
         'DHIS2 App Runtime': [
           'tutorials/app-runtime-query',
@@ -25,12 +26,12 @@ module.exports = {
           'guides/query-playground',
         ],
         'App Hub': [
-          'guides/submit-apphub', 'guides/apphub-guidelines'
+          'guides/submit-apphub', 'guides/apphub-guidelines', 'guides/publish-apphub'
         ],
       },
     ], 
     Reference: ['reference'], 
-    Conceptual: ['conceptual', 'conceptual/contribute'],
+    Conceptual: ['conceptual', 'conceptual/contribute-dev-portal', 'conceptual/contribute'],
   },
 };
 

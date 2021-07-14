@@ -29,13 +29,44 @@ See below:
 
 There are a few things that you could do if you're using Chrome and the problem persists: 
 
-### SameSite by default cookies flag
+### Disable SameSite by Default Cookies  
 
-Disable the default SameSite Cookie behavior in Chrome by setting the "SameSite by default cookies" flag [chrome://flags/#same-site-by-default-cookies](chrome://flags/#same-site-by-default-cookies) to **Disabled**. You may need to restart your browser to apply the new setting. 
+To check your current Google Chrome version: click on the three dots menu > Help > About Google Chrome > Your Chrome version number will be displayed.   
 
-**Note**: this disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application. 
+#### Chrome 90 and earlier versions
 
-Read this blog to learn more about [SameSite Cookie Policies and DHIS2 Applications](../../blog/cross-origin-cookies).  
+Disable the default SameSite Cookies behavior in Chrome by setting the "SameSite by default cookies" flag [chrome://flags/#same-site-by-default-cookies](chrome://flags/#same-site-by-default-cookies) to **Disabled**. 
+
+You may need to restart your browser to apply the new setting. 
+
+#### Chrome version 91 
+
+The flags `#same-site-by-default-cookies` and `#cookies-without-same-site-must-be-secure` have been removed from chrome://flags as of Chrome 91, as the behavior is now enabled by default. [Learn more here](https://www.chromium.org/updates/same-site)
+
+**Disable using the command-line flag**: 
+
+You can mention flags that you need to disable on your terminal. Note that you will need to close all instances of Chrome that are running before executing the following commands: 
+
+1.  For Mac users: 
+
+```
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure
+```
+
+2. For Windows users: 
+
+```sh
+Chrome Application Path 
+--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure
+```
+
+:::note
+**Note:** In Chrome 94, the command-line flag `--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure` will be removed.
+::: 
+
+> This disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application. 
+Read this blog to learn more about [SameSite Cookie Policies and DHIS2 Applications](../../blog/cross-origin-cookies). 
 
 ### Disabling cache
 
