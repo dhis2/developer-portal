@@ -23,7 +23,7 @@ module.exports = {
         },
         { to: "blog", label: "Blog", position: "left" },
         { to: "events/webinars", label: "Events", position: "left" },
-        { to: "community", label: "Community", position: "left" },
+        { to: "community/support", label: "Community", position: "left" },
         {
           href: "https://github.com/dhis2/developer-portal",
           label: "GitHub",
@@ -88,6 +88,15 @@ module.exports = {
         path: "events",
         routeBasePath: "events",
         sidebarPath: require.resolve("./sidebarsEvents.js"),
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        sidebarPath: require.resolve("./sidebarsCommunity.js"),
       },
     ]
   ],

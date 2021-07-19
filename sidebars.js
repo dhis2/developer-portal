@@ -32,7 +32,7 @@ module.exports = {
       },
     ], 
     Reference: ['reference'], 
-    Conceptual: ['conceptual', 'conceptual/contribute-dev-portal', 'conceptual/contribute'],
+    Conceptual: ['conceptual']
   },
 };
 
