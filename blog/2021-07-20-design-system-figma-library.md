@@ -7,13 +7,11 @@ author_image_url: https://avatars.githubusercontent.com/u/33054985?s=400&u=0fa29
 tags: [design, developer tools]
 ---
 
-The [DHIS2 Design System](https://github.com/dhis2/design-system) is now available as a [Figma Community library](/).
-<!-- LINK PENDING -->
+The [DHIS2 Design System](https://github.com/dhis2/design-system) is now available as a [Figma Community library](https://www.figma.com/community/file/999207206720939258/DHIS2-Design-System).
 
 <!--truncate-->
 
-**[Click here to open the library in the Figma Community](/)**.
-<!-- LINK PENDING -->
+**[Click here to open the library in the Figma Community](https://www.figma.com/community/file/999207206720939258/DHIS2-Design-System)**.
 
 The file has Design System components, colors and example layouts that you can use in your Figma files. Build realistic, interactive prototypes with all the same components and elements that are available in the DHIS2 Design System and UI.
 
