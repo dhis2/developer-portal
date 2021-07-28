@@ -39,8 +39,8 @@ Then, add the following scripts to `package.json`:
     // ...
     "scripts": {
         // ...
-        "lint": "d2-style js check && d2-style text check",
-        "format": "d2-style js apply && d2-style text apply"
+        "lint": "d2-style check js && d2-style check text",
+        "format": "d2-style apply js && d2-style apply text"
     }
 }
 ```
