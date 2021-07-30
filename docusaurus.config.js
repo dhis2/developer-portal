@@ -75,6 +75,13 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} The DHIS2 Core Team`,
     },
+    announcementBar: {
+      content: '<a href="https://www.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >DHIS2.org</a > <a href="https://play.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >Demo</a > <a href="https://docs.dhis2.org/" target="_blank" rel="noopener" class="domain-nav-item" >Documentation</a > <a href="https://community.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >Community</a >',
+      backgroundColor: '#f8fafc',
+      textColor: '#051841',
+      isCloseable: false,
+      id: 'domainNav',
+    },
     googleAnalytics: {
       trackingID: 'UA-157707339-4',
       anonymizeIP: true
