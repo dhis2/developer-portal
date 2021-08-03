@@ -66,7 +66,7 @@ Chrome Application Path
 ::: 
 
 > This disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application. 
-Read this blog to learn more about [SameSite Cookie Policies and DHIS2 Applications](../../blog/cross-origin-cookies). 
+Read this blog to learn more about [SameSite Cookie Policies and DHIS2 Applications](/blog/cross-origin-cookies). 
 
 ### Disabling cache
 
