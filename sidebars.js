@@ -3,15 +3,15 @@ module.exports = {
     'Quick Start': ['getting-started'],
     Tutorials:  [
     'tutorials',
-    'tutorials/setup-env', 
-    'tutorials/ui-library', 
+    'tutorials/setup-env',
+    'tutorials/ui-library',
       {
         'DHIS2 App Runtime': [
           'tutorials/app-runtime-query',
           'tutorials/app-runtime-mutation',
         ],
       },
-    ], 
+    ],
     Guides: [
       'guides',
       {
@@ -29,11 +29,12 @@ module.exports = {
         'App Hub': [
           'guides/submit-apphub', 'guides/apphub-guidelines', 'guides/publish-apphub'
         ],
+        'Translation': [
+          'guides/translation-support'
+        ]
       },
-    ], 
-    Reference: ['reference'], 
+    ],
+    Reference: ['reference'],
     Conceptual: ['conceptual']
   },
 };
-
-
