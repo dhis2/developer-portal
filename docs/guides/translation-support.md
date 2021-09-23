@@ -17,7 +17,7 @@ Install `d2-i18n` and `d2-app-scripts` using the following command:
 yarn add @dhis2/d2-i18n @dhis2/cli-app-scripts
 ```
 
-## Translate a file manually
+## Translate a file
 
 Follow the steps below to translate a file:
 
@@ -47,14 +47,14 @@ For more syntax examples, read the [i18next Syntax](#i18next-syntax) section.
 
 ![](./assets/es-po-file.png)
 
-5. In the `.po` file, type your translation in the `msgstr` string:
+5. In the `.po` file, type your translations in the `msgstr` strings:
 
 ```md
 msgid "Hello world!"
 msgstr "Hola el mundo!"
 ```
 
-6. Run `yarn start` or `yarn build` to rebuild your application. The translation has been added to the `./src/locales/en/translations.json` and a new `./src/locales/{your_new_locale}/translations.json` file has been created.
+6. Run `yarn start` or `yarn build` to rebuild your application. This automatically adds the translations to the `./src/locales/en/translations.json` and creates a new `./src/locales/{your_new_locale}/translations.json` localization file.
 
 
 ## Extract translation strings
