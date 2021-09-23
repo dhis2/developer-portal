@@ -47,9 +47,7 @@ For more syntax examples, read the [i18next Syntax](#i18next-syntax) section.
 
 ![](./assets/es-po-file.png)
 
-5. In the `.po` file, type your translation in the `msgstr` string.
-
-Example:
+5. In the `.po` file, type your translation in the `msgstr` string:
 
 ```md
 msgid "Hello world!"
