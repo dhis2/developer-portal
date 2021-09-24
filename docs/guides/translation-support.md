@@ -21,7 +21,7 @@ yarn add @dhis2/d2-i18n @dhis2/cli-app-scripts
 
 Follow the steps below to add a locale to your application:
 
-1. Add the `import i18n from '@dhis2/d2-i18n'` statement to your `App.js` file:
+1. Add the `import i18n from '.src/locales/index.js'` statement to your `App.js` file:
 
 ```jsx {43-60} title="src/App.js"
 import React from "react";
@@ -54,7 +54,18 @@ msgid "Hello world!"
 msgstr "Hola el mundo!"
 ```
 
-6. Run `yarn start` or `yarn build` to rebuild your application. This time the translations you provided are added to the `./src/locales/en/translations.json` and a new `./src/locales/{your_new_locale}/translations.json` file is created. Your application will pull translations from these files whenever a user switches to another locale in the UI.
+6. Run `yarn start` or `yarn build` to rebuild your application. This time the translations you provided are added to the `./src/locales/en/translations.json` and a new `./src/locales/{your_new_locale}/translations.json` file is created. Your application will fetch translations from these files whenever a user switches to another locale in the UI.
+
+
+:::important
+
+- Make sure you only have one `@dhis2/d2-i18n`.
+- The `i18n.t()` translation lookup needs to happen at render time.
+- The generated files (`src/locales/{locale}/translations.json`) should not be committed to your repo.
+- Ensure only one version of dependencies having translations.
+- The App Platform generates `./src/locales/index.js` which MUST be imported somewhere in the app, usually in `./src/App.js`.
+
+:::
 
 ## Extract translation strings
 
