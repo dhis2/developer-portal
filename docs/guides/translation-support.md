@@ -17,9 +17,9 @@ Install the `d2-i18n` and `d2-app-scripts` packages using the following command:
 yarn add @dhis2/d2-i18n @dhis2/cli-app-scripts
 ```
 
-## Add a language to your application
+## Add a locale to an application
 
-Follow the steps below to add a language to your application:
+Follow the steps below to add a locale to your application:
 
 1. Add the `import i18n from '@dhis2/d2-i18n'` statement to your `App.js` file:
 
@@ -68,9 +68,9 @@ d2-app-scripts i18n extract
 
 ## Generate localization files
 
-Once you have installed the `d2-i18n` and `d2-app-scripts`packages, localization files (`translations.json`) are automatically generated whenever you run `yarn start` or `yarn build`.
+Once you have installed the `d2-i18n` and `d2-app-scripts` packages, localization files (`translations.json`) are automatically generated whenever you run `yarn start` or `yarn build`.
 
-To run the generation of the localization file individually, use the following command:
+To run the generation of the localization files individually, use the following command:
 
 ```shell
 d2-app-scripts i18n generate
