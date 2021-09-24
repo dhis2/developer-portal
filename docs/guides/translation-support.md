@@ -11,17 +11,17 @@ This guide assumes that you're developing an application using the [DHIS2 Applic
 
 ## Install required packages
 
-Install `d2-i18n` and `d2-app-scripts` using the following command:
+Install the `d2-i18n` and `d2-app-scripts` packages using the following command:
 
 ```shell
 yarn add @dhis2/d2-i18n @dhis2/cli-app-scripts
 ```
 
-## Translate a file
+## Add a language to your application
 
-Follow the steps below to translate a file:
+Follow the steps below to add a language to your application:
 
-1. Add the `import i18n from '@dhis2/d2-i18n'` statement at the beginning of your file:
+1. Add the `import i18n from '@dhis2/d2-i18n'` statement to your `App.js` file:
 
 ```jsx {43-60} title="src/App.js"
 import React from "react";
@@ -30,7 +30,7 @@ import Test from "./test.js";
 import i18n from '@dhis2/d2-i18n'
 ```
 
-2. Indicate the strings you want translated by using the `i18n.t` syntax in your file:
+2. In the files containing strings you want translated in your application interface, indicate these using the `i18n.t` syntax:
 
 ```jsx {43-60} title="src/App.js"
 const MyApp = () => (
@@ -40,7 +40,7 @@ const MyApp = () => (
 );
 ```
 
-For more syntax examples, read the [i18next Syntax](#i18next-syntax) section.
+For more syntax examples, read the [i18next syntax](#i18next-syntax) section.
 
 3. Run `yarn start` or `yarn build` to build or rebuild your application. This will generate two files: `./i18n/en.pot` and `./src/locales/en/translations.json`.
 4. Navigate to the `./i18n/en.pot` file and create a copy of it. Name the copy using the locale you want to add to your application and the `.po` extension. For example: `es.po` if you want to add Spanish support.
@@ -54,12 +54,11 @@ msgid "Hello world!"
 msgstr "Hola el mundo!"
 ```
 
-6. Run `yarn start` or `yarn build` to rebuild your application. This automatically adds the translations to the `./src/locales/en/translations.json` and creates a new `./src/locales/{your_new_locale}/translations.json` localization file.
-
+6. Run `yarn start` or `yarn build` to rebuild your application. This time the translations you provided are added to the `./src/locales/en/translations.json` and a new `./src/locales/{your_new_locale}/translations.json` file is created. Your application will pull translations from these files whenever a user switches to another locale in the UI.
 
 ## Extract translation strings
 
-Once you have installed `d2-i18n` and `d2-app-scripts`, all `i18n.t` strings are automatically extracted and stored into the `i18n/en.pot` source file when running `yarn start` or `yarn build`.
+Once you have installed the `d2-i18n` and `d2-app-scripts` packages, all `i18n.t` strings are automatically extracted and stored into the `i18n/en.pot` source file whenever you run `yarn start` or `yarn build`.
 
 To run the extraction of the translation strings individually, use the following command:
 
@@ -69,7 +68,7 @@ d2-app-scripts i18n extract
 
 ## Generate localization files
 
-Once you have installed `d2-i18n` and `d2-app-scripts`, localization files (`translations.json`) are automatically generated when running `yarn start` or `yarn build`.
+Once you have installed the `d2-i18n` and `d2-app-scripts`packages, localization files (`translations.json`) are automatically generated whenever you run `yarn start` or `yarn build`.
 
 To run the generation of the localization file individually, use the following command:
 
@@ -77,7 +76,7 @@ To run the generation of the localization file individually, use the following c
 d2-app-scripts i18n generate
 ```
 
-## i18next Syntax
+## i18next syntax
 
 ### Simple translation
 
