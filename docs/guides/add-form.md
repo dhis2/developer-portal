@@ -47,11 +47,13 @@ import {
 
 ## 3. Customize the form components with props
 
-Now, you'll use the UI library to help you customize your form components through its props. Each final form component is made up of a base component and a set of props which we can also find the in the UI library. For example, if [Single Select (final form)](https://ui.dhis2.nu/demo/?path=/docs/forms-single-select-single-select-field-final-form--default) is lacking in information, we could also look at the documentation for [Single Select Field](https://ui.dhis2.nu/demo/?path=/docs/forms-single-select-single-select-field--default) or even [Single Select](https://ui.dhis2.nu/demo/?path=/docs/forms-single-select-single-select--with-options-and-on-change).
+Now, you'll use the UI library to help you customize each form component through its props. 
+
+Each final form component is made up of a base component and a set of props which you can also find in the UI library. For example, if [Single Select (final form)](https://ui.dhis2.nu/demo/?path=/docs/forms-single-select-single-select-field-final-form--default) is lacking in information, you could also look at the documentation for [Single Select Field](https://ui.dhis2.nu/demo/?path=/docs/forms-single-select-single-select-field--default) or even [Single Select](https://ui.dhis2.nu/demo/?path=/docs/forms-single-select-single-select--with-options-and-on-change).
 
 ### Single select
 
-For our single select field, we'll want to provide a name, label, an initial value, and options. It looks like this:
+For the single select fields in our example, you'll want to provide a name, label, an initial value, and options. It looks like this:
 
 ```js
 <Field
@@ -69,7 +71,7 @@ For our single select field, we'll want to provide a name, label, an initial val
 
 ### Input fields
 
-Our input fields are the user's first name, surname, and email address. All the input fields are declared similarly, for example:
+The input fields in our example are the user's first name, surname, and email address. Declare the input fields by declaring whether they're required, and by giving them a name, label, and the name of the component.
 
 ```js
 <Field
@@ -103,7 +105,7 @@ Our input fields are the user's first name, surname, and email address. All the 
 
 ### Switch field
 
-The switch field is a boolean field, and we'll want to provide a label, initial value, and a help text. It looks like this:
+The switch field is a boolean. Provide a label, an initial value, and a help text. 
 
 ```js
 <Field
@@ -117,7 +119,7 @@ The switch field is a boolean field, and we'll want to provide a label, initial 
 
 ### Button
 
-The button is used to submit the form:
+Finally use the button component to submit the form:
 
 ```js
 <Button type="submit" primary>
@@ -125,11 +127,11 @@ The button is used to submit the form:
 </Button>
 ```
 
-## 3. Choose validators for the form component
+## 4. Choose validators for the form component
 
 Validators are available via React Final Form. See [Validators](https://ui.dhis2.nu/demo/?path=/docs/forms-validators--page) in the UI library documentation for a list of validators.
 
-For our example, we'll validate that:
+For our example, you'll validate that:
 - Surname, first name, email, and email confirmation are not empty
 - Email is a valid email address
 - Email confirmation matches the email address
@@ -216,7 +218,7 @@ We'll use the `createEqualTo` to validate that the email addresses match. We'll 
 />
 ```
 
-## 4. Assemble the form
+## 5. Assemble the form
 
 The final form is assembled as follows:
 
