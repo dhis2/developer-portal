@@ -13,6 +13,7 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 ### DHIS2 UI Components
 - How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=801) from the Developer Academy 2021  
 - [How to add a Table component](/docs/guides/ui-table) 
+- [How to add a Form](/docs/guides/add-form)
 
 ### DHIS2 App Runtime 
 - [How to use the Data Query Playground](/docs/guides/query-playground)
@@ -26,7 +27,6 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 > _COMING SOON!_ 👇
 
 ### Adding Common Features 
-- How to add a Form 
 - How to add a DHIS2 Org Unit Tree selector to my application 
 
 ### Plugins 
