@@ -30,7 +30,7 @@ The [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) command will allow 
 ```shell
 d2 cluster up <name>
 # or:
-d2 cluster up 2.35.0 --db-version 2.35 —-seed
+d2 cluster up 2.35.0 --db-version 2.35 --seed
 # this will populate a database with sample data
 ```
 
