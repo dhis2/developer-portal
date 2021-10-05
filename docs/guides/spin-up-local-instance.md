@@ -29,12 +29,13 @@ The [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) command will allow 
 
 ```shell
 d2 cluster up <name>
-# or:
-d2 cluster up 2.35.0 --db-version 2.35 —-seed
-# this will populate a database with sample data
 ```
 
-The command above uses the `d2 cluster` tool with the `up` command, the `--db-version` flag and the `--seed` flag to spin up a new DHIS2 2.35.0 instance seeded with data from the Sierra Leone [demo database](https://dhis2.org/demo).
+Or spin up a new DHIS2 instance of a specific version seeded with data from the Sierra Leone [demo database](https://dhis2.org/demo).
+
+```shell
+d2 cluster up 2.35.0 --db-version 2.35 --seed
+```
 
 **Note:** Once the `up` command completes, the server might take up to a couple of minutes to start. You can then run `d2 cluster logs 2.35.0` and wait until you see the line `Server startup in xxx ms`. 
 
