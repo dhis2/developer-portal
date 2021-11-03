@@ -1,14 +1,7 @@
 ---
-<<<<<<< HEAD:blog/2021-11-03-app-platform-v8.md
 slug: app-platform-v8
 title: App Platform v8
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
-=======
-title: App Platform updates
 authors: varl
->>>>>>> 467fad6 (refactor(blog): organize blog post with assets):blog/2021-11-03-app-platform-updates/index.md
 tags: [app platform, developer tools, webapp, announcement]
 ---
 
