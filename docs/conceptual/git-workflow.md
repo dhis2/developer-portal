@@ -80,9 +80,9 @@ name so we can keep track of it. This will be backported to `v1`
 through `v3`, so we are going to end up with feature branches for all
 those branches, based on this patch branch:
 
-- `dhis2-1234/my-feature-branch-v1`
-- `dhis2-1234/my-feature-branch-v2`
-- `dhis2-1234/my-feature-branch-v3`
+-   `dhis2-1234/my-feature-branch-v1`
+-   `dhis2-1234/my-feature-branch-v2`
+-   `dhis2-1234/my-feature-branch-v3`
 
 So we are going to use the `-patch` suffix for this one:
 
@@ -99,9 +99,9 @@ used to merge your changes into the different target branches.
 Sometimes it is possible to set up a PR from the patch branch straight
 to the target version branch, e.g.:
 
-- `dhis2-1234/my-feature-patch` to `v1`
-- `dhis2-1234/my-feature-patch` to `v2`
-- `dhis2-1234/my-feature-patch` to `v3`
+-   `dhis2-1234/my-feature-patch` to `v1`
+-   `dhis2-1234/my-feature-patch` to `v2`
+-   `dhis2-1234/my-feature-patch` to `v3`
 
 If that gives you conflicts you need to add an intermittent step, where
 you create a feature branch for each target version branch:
@@ -124,9 +124,9 @@ You will get same the conflicts at this point, and here you can safely
 resolve them and test that it still works. This is now the branch you
 will setup a pull request for to merge into the target version branch:
 
-- `dhis2-1234/my-feature-branch-v1` to `v1`
-- `dhis2-1234/my-feature-branch-v2` to `v2`
-- `dhis2-1234/my-feature-branch-v3` to `v3`
+-   `dhis2-1234/my-feature-branch-v1` to `v1`
+-   `dhis2-1234/my-feature-branch-v2` to `v2`
+-   `dhis2-1234/my-feature-branch-v3` to `v3`
 
 The [conventional
 commit](https://www.conventionalcommits.org) rules
@@ -192,33 +192,33 @@ exchange for a minor annoyance.
 
 1. **Auto-generate changelogs**
 
-   Change logs are a very important part of software documentation, and
-   it is extremely easy to omit during the development process. It is
-   also difficult and time consuming to create an accurate changelog
-   for software as time passes. For example, the manually updated
-   changelog in d2 lacks updates between 2017 and 2019, but looking at
-   the commit history a lot has happened in that timespan.
+    Change logs are a very important part of software documentation, and
+    it is extremely easy to omit during the development process. It is
+    also difficult and time consuming to create an accurate changelog
+    for software as time passes. For example, the manually updated
+    changelog in d2 lacks updates between 2017 and 2019, but looking at
+    the commit history a lot has happened in that timespan.
 
-   By autogenerating the changelogs we can integrate it into the
-   release scripts to always have it up-to-date.
+    By autogenerating the changelogs we can integrate it into the
+    release scripts to always have it up-to-date.
 
-   Example: [ui/CHANGELOG.md](https://github.com/dhis2/ui/blob/master/CHANGELOG.md)
+    Example: [ui/CHANGELOG.md](https://github.com/dhis2/ui/blob/master/CHANGELOG.md)
 
 2. **Automatically determine the correct semantic version**
 
-   Should the release be a patch, minor, or major version? To know you
-   have to go through everything that has changed since the last
-   version and understand if it is a breaking change, a new feature, or
-   a bug fix.
+    Should the release be a patch, minor, or major version? To know you
+    have to go through everything that has changed since the last
+    version and understand if it is a breaking change, a new feature, or
+    a bug fix.
 
-   This is also timeconsuming and very sensitive work as an incorrect
-   bump will have consequences for the consumers of the library or
-   application.
+    This is also timeconsuming and very sensitive work as an incorrect
+    bump will have consequences for the consumers of the library or
+    application.
 
-   By following the conventional commits specification we can infer
-   what version should be the next version from the Git history itself
-   which removes the human factor from the equation when determining
-   the next version bump.
+    By following the conventional commits specification we can infer
+    what version should be the next version from the Git history itself
+    which removes the human factor from the equation when determining
+    the next version bump.
 
 The price of these two wins is to write commit messages complying to a
 standard, i.e. a developer needs to learn and understand the
@@ -240,21 +240,21 @@ The [conventional commits
 site](https://www.conventionalcommits.org/en/v1.0.0-beta.3/#summary) has
 examples and the rules documented, but the cheat sheet is this:
 
-- `fix:` a commit which fixes a bug and will result in a `PATCH` version
-  change.
+-   `fix:` a commit which fixes a bug and will result in a `PATCH` version
+    change.
 
-- `feat:` a commit which introduces a new feature and will result in a
-  `MINOR` version change.
+-   `feat:` a commit which introduces a new feature and will result in a
+    `MINOR` version change.
 
-- `BREAKING CHANGE:` if the commit message has the text `BREAKING CHANGE:` in its optional body/footer part, the version will change
-  to the next `MAJOR` version.
+-   `BREAKING CHANGE:` if the commit message has the text `BREAKING CHANGE:` in its optional body/footer part, the version will change
+    to the next `MAJOR` version.
 
-  A `BREAKING CHANGE:` commit can be of any type (`fix:`, `feat:`,
-  etc.).
+    A `BREAKING CHANGE:` commit can be of any type (`fix:`, `feat:`,
+    etc.).
 
-- There are [additional types
-  allowed](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional),
-  for example `chore:`, `ci:`, `docs:`, etc.
+-   There are [additional types
+    allowed](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional),
+    for example `chore:`, `ci:`, `docs:`, etc.
 
 # Why is `cherry-pick` a problem when used to port code between branches?
 

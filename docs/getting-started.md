@@ -79,5 +79,5 @@ Congratulations! You are ready to start developing a DHIS2 app 🎊
 
 Now that you have created a DHIS2 app and connected it to a local DHIS2 instance you can learn more about developing apps on DHIS2.
 
-- Learn more about DHIS2 apps from the [developer documentation](https://docs.dhis2.org/dhis2_developer_manual/apps.html)
-- Watch training videos from the [developer academy](https://www.youtube.com/playlist?list=PLo6Seh-066RynhjhnJNUITOZykA7397We)
+-   Learn more about DHIS2 apps from the [developer documentation](https://docs.dhis2.org/dhis2_developer_manual/apps.html)
+-   Watch training videos from the [developer academy](https://www.youtube.com/playlist?list=PLo6Seh-066RynhjhnJNUITOZykA7397We)

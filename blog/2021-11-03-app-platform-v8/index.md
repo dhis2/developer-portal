@@ -360,10 +360,10 @@ configuration object in `.eslintrc.js`:
 
 ```js
 module.exports = {
-  rules: {
-    "import/extensions": ["warn", "ignorePackages"],
-  },
-};
+    rules: {
+        'import/extensions': ['warn', 'ignorePackages'],
+    },
+}
 ```
 
 ## Changelogs
@@ -371,10 +371,10 @@ module.exports = {
 For a full list of bug fixes and changes, please refer to the changelogs for
 each package, included below.
 
-- [dhis2/app-platform/CHANGELOG.md](https://github.com/dhis2/app-platform/blob/master/CHANGELOG.md)
-- [dhis2/app-runtime/CHANGELOG.md](https://github.com/dhis2/app-runtime/blob/master/CHANGELOG.md)
-- [dhis2/ui/CHANGELOG.md](https://github.com/dhis2/ui/blob/master/CHANGELOG.md)
-- [dhis2/cli-style/CHANGELOG.md](https://github.com/dhis2/cli-style/blob/master/CHANGELOG.md)
+-   [dhis2/app-platform/CHANGELOG.md](https://github.com/dhis2/app-platform/blob/master/CHANGELOG.md)
+-   [dhis2/app-runtime/CHANGELOG.md](https://github.com/dhis2/app-runtime/blob/master/CHANGELOG.md)
+-   [dhis2/ui/CHANGELOG.md](https://github.com/dhis2/ui/blob/master/CHANGELOG.md)
+-   [dhis2/cli-style/CHANGELOG.md](https://github.com/dhis2/cli-style/blob/master/CHANGELOG.md)
 
 ## Reporting issues
 

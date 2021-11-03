@@ -5,12 +5,12 @@ title: Basic DHIS2 setup
 
 # You will need
 
-- Java 8
-- Tomcat 8
-- PostgreSQL 9.6.5
-- Git 2.7
-- Maven 3.5
-- (MacOS) [Homebrew](https://brew.sh/)
+-   Java 8
+-   Tomcat 8
+-   PostgreSQL 9.6.5
+-   Git 2.7
+-   Maven 3.5
+-   (MacOS) [Homebrew](https://brew.sh/)
 
 ## Mac OSX
 
@@ -22,9 +22,9 @@ brew install maven
 
 ### Install Java for Mac OSX manually
 
-- Install JDK 8, [get it here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+-   Install JDK 8, [get it here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-- Set your JAVA_HOME to jdk 8 (9 will not work), i.e. add the following line to your `~/.profile`:
+-   Set your JAVA_HOME to jdk 8 (9 will not work), i.e. add the following line to your `~/.profile`:
 
 ```shell
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/Current/commands/java_home`
@@ -68,8 +68,8 @@ Create the file `$DHIS2_HOME/config.json` and add the following:
 
 ```json
 {
-  "baseUrl": "http://localhost:8080/dhis",
-  "authorization": "Basic YWRtaW46ZGlzdHJpY3Q="
+    "baseUrl": "http://localhost:8080/dhis",
+    "authorization": "Basic YWRtaW46ZGlzdHJpY3Q="
 }
 ```
 

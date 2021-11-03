@@ -18,8 +18,8 @@ keep the URI to the builds uniform and simple. As we don't have any
 conflicts on the base URIs in a new org, there is no reason to use a
 suffix.
 
-- In a `package.json` file, this dep: `"maps-app": "github:dhis2/maps-app-builds"`
-- Becomes: `"maps-app": "github:d2-ci/maps-app"`
+-   In a `package.json` file, this dep: `"maps-app": "github:dhis2/maps-app-builds"`
+-   Becomes: `"maps-app": "github:d2-ci/maps-app"`
 
 This leaves the main org free from the extra noise of build repos.
 
@@ -56,6 +56,6 @@ manual reconfiguration on each of them.
 
 # Related PRs for the interested
 
-- [dhis2-core 2.29](https://github.com/dhis2/dhis2-core/pull/2476)
-- [dhis2-core 2.30](https://github.com/dhis2/dhis2-core/pull/2475)
-- [dhis2-core 2.31](https://github.com/dhis2/dhis2-core/pull/2477)
+-   [dhis2-core 2.29](https://github.com/dhis2/dhis2-core/pull/2476)
+-   [dhis2-core 2.30](https://github.com/dhis2/dhis2-core/pull/2475)
+-   [dhis2-core 2.31](https://github.com/dhis2/dhis2-core/pull/2477)

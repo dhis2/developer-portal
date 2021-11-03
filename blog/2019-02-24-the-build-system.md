@@ -176,10 +176,10 @@ waste.
 
 Let's take a look at what we have and where we are:
 
-- A build of a front-end application, stored and tracked on _d2-ci_
-- A build of a library, stored and tracked on _d2-ci_, and if it was built from a
-  tag, published to _NPM_
-- A verification that a PR against dhis2 core is safe to merge
+-   A build of a front-end application, stored and tracked on _d2-ci_
+-   A build of a library, stored and tracked on _d2-ci_, and if it was built from a
+    tag, published to _NPM_
+-   A verification that a PR against dhis2 core is safe to merge
 
 Ok, so our library has been released into the wild. But our front-end application artifact
 is just sitting there in a _build artifact repository_. How does it go from there into a
@@ -246,9 +246,9 @@ what is it all for?
 
 The three most important reasons are these:
 
-- Flexibility to create different builds
-- Ability to reproduce builds in a deterministic way
-- Have exact information about what a build contains
+-   Flexibility to create different builds
+-   Ability to reproduce builds in a deterministic way
+-   Have exact information about what a build contains
 
 And now that you know the theory...
 

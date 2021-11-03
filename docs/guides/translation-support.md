@@ -24,20 +24,20 @@ Follow the steps below to add a locale to your application:
 1. Add an `import i18n from './locales/index.js'` statement to your `src/App.js` file:
 
 ```jsx {43-60} title="src/App.js"
-import React from "react";
-import classes from "./App.module.css";
-import Test from "./test.js";
-import i18n from "./locales/index.js";
+import React from 'react'
+import classes from './App.module.css'
+import Test from './test.js'
+import i18n from './locales/index.js'
 ```
 
 2. In the source files containing strings you want translated in your application interface, indicate the strings to translate using the `i18n.t()` syntax:
 
 ```jsx {43-60} title="src/App.js"
 const MyApp = () => (
-  <div className={classes.container}>
-    <h1>{i18n.t("Hello world!")}</h1>
-  </div>
-);
+    <div className={classes.container}>
+        <h1>{i18n.t('Hello world!')}</h1>
+    </div>
+)
 ```
 
 :::note
@@ -62,11 +62,11 @@ msgstr "¡Hola el mundo!"
 
 :::important
 
-- Make sure you only have one `@dhis2/d2-i18n`.
-- The `i18n.t()` translation lookup needs to happen at render time.
-- The generated files (`src/locales/{locale}/translations.json`) should not be committed to your repo.
-- Ensure only one version of dependencies having translations.
-- The App Platform generates `./src/locales/index.js` which MUST be imported somewhere in the app, usually in `./src/App.js`.
+-   Make sure you only have one `@dhis2/d2-i18n`.
+-   The `i18n.t()` translation lookup needs to happen at render time.
+-   The generated files (`src/locales/{locale}/translations.json`) should not be committed to your repo.
+-   Ensure only one version of dependencies having translations.
+-   The App Platform generates `./src/locales/index.js` which MUST be imported somewhere in the app, usually in `./src/App.js`.
 
 :::
 
@@ -95,7 +95,7 @@ d2-app-scripts i18n generate
 ### Simple translation
 
 ```js
-i18n.t("translation string");
+i18n.t('translation string')
 ```
 
 ### Interpolation
@@ -103,8 +103,8 @@ i18n.t("translation string");
 Interpolation is one of the most used functionalities in `i18next`. It allows for the integration of dynamic values into your translations.
 
 ```js
-const numberOfDevs = 30;
-i18n.t("hello world We are {{numberOfDevs}} developers", { numberOfDevs });
+const numberOfDevs = 30
+i18n.t('hello world We are {{numberOfDevs}} developers', { numberOfDevs })
 ```
 
 ### Plurals

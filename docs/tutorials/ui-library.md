@@ -39,7 +39,7 @@ In this example, we'll be adding a simple `Button` component to get familiar wit
 First, open up the `src/App.js` file and import a [Button](https://ui.dhis2.nu/demo/?path=/docs/actions-buttons-button--basic) into our application as shown below:
 
 ```js
-import { Button } from "@dhis2/ui";
+import { Button } from '@dhis2/ui'
 ```
 
 Then, we'll add a `Button` component that's `primary` and `large`.
@@ -49,30 +49,30 @@ Remember that you can easily copy and paste the code from the [documentation](ht
 You should have something like this:
 
 ```jsx {5,11-13} title="src/App.js"
-import { DataQuery } from "@dhis2/app-runtime";
-import i18n from "@dhis2/d2-i18n";
-import React from "react";
-import classes from "./App.module.css";
-import { Button } from "@dhis2/ui";
+import { DataQuery } from '@dhis2/app-runtime'
+import i18n from '@dhis2/d2-i18n'
+import React from 'react'
+import classes from './App.module.css'
+import { Button } from '@dhis2/ui'
 
 // ...
 
 const MyApp = () => (
-  <div className={classes.container}>
-    <Button
-      name="Primary button"
-      onClick={logger}
-      primary
-      large
-      value="default"
-    >
-      Click me!
-    </Button>
-    // ...
-  </div>
-);
+    <div className={classes.container}>
+        <Button
+            name="Primary button"
+            onClick={logger}
+            primary
+            large
+            value="default"
+        >
+            Click me!
+        </Button>
+        // ...
+    </div>
+)
 
-export default MyApp;
+export default MyApp
 ```
 
 #### The `onClick` event handler
@@ -81,12 +81,12 @@ As we copied this code directly from the documentation, we get the function `onC
 
 ```jsx {3}
 <Button
-  name="Primary button"
-  onClick={() => window.alert("It works!")}
-  primary
-  value="default"
+    name="Primary button"
+    onClick={() => window.alert('It works!')}
+    primary
+    value="default"
 >
-  Click me!
+    Click me!
 </Button>
 ```
 
@@ -102,9 +102,9 @@ If you want to add more components to your application, make sure to follow this
 
 ### Want to learn more?
 
-- Check the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system) repo or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
+-   Check the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system) repo or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
 
-- Check the [UI Library Storybook documentation](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
+-   Check the [UI Library Storybook documentation](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
 
 ## What's next?
 

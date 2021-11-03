@@ -88,7 +88,7 @@ Please contribute! The CLI is modular in design, so it's built to be easily exte
 
 This helper library provides low-level primitives like:
 
-- `namespace` for declaring groups of commands
-- `makeEntryPoint` for turning a command or namespace into an executable program
-- `reporter` which supports console output to stderr and stdout at different log levels, including support for `--verbose` and `--quiet` CLI options
-- `cache` which is a bit more complex but supports local caching of downloaded files and archives for use in the CLI program. See `d2 debug cache --help` to manage your local cache and the [d2 cluster source](https://github.com/dhis2/cli/tree/master/packages/cluster/src/commands) for an example of the cache in action.
+-   `namespace` for declaring groups of commands
+-   `makeEntryPoint` for turning a command or namespace into an executable program
+-   `reporter` which supports console output to stderr and stdout at different log levels, including support for `--verbose` and `--quiet` CLI options
+-   `cache` which is a bit more complex but supports local caching of downloaded files and archives for use in the CLI program. See `d2 debug cache --help` to manage your local cache and the [d2 cluster source](https://github.com/dhis2/cli/tree/master/packages/cluster/src/commands) for an example of the cache in action.

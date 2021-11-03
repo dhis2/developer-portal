@@ -39,13 +39,13 @@ In this example, we want to fetch the first 3 programs in the system. Feel free 
 
 ```json
 {
-  "results": {
-    "resource": "programs",
-    "params": {
-      "pageSize": 3,
-      "fields": ["id", "displayName"]
+    "results": {
+        "resource": "programs",
+        "params": {
+            "pageSize": 3,
+            "fields": ["id", "displayName"]
+        }
     }
-  }
 }
 ```
 
@@ -65,13 +65,13 @@ In the example below, we're creating a new program. Notice that the `data` prope
 
 ```json
 {
-  "resource": "programs",
-  "type": "create",
-  "data": {
-    "name": "A new Program",
-    "shortName": "A new Program",
-    "programType": "WITH_REGISTRATION"
-  }
+    "resource": "programs",
+    "type": "create",
+    "data": {
+        "name": "A new Program",
+        "shortName": "A new Program",
+        "programType": "WITH_REGISTRATION"
+    }
 }
 ```
 
@@ -95,14 +95,14 @@ For `update` and `delete` types, the `id` property is required. See the query de
 
 ```json
 {
-  "resource": "programs",
-  "type": "update",
-  "id": "DaFkEec7Qbw",
-  "data": {
-    "name": "A program - Updated",
-    "shortName": "A program - Updated",
-    "programType": "WITH_REGISTRATION"
-  }
+    "resource": "programs",
+    "type": "update",
+    "id": "DaFkEec7Qbw",
+    "data": {
+        "name": "A program - Updated",
+        "shortName": "A program - Updated",
+        "programType": "WITH_REGISTRATION"
+    }
 }
 ```
 
@@ -110,13 +110,13 @@ For `update` and `delete` types, the `id` property is required. See the query de
 
 ```json
 {
-  "resource": "programs",
-  "type": "delete",
-  "id": "DaFkEec7Qbw"
+    "resource": "programs",
+    "type": "delete",
+    "id": "DaFkEec7Qbw"
 }
 ```
 
 ## Want to learn more?
 
-- You can find more examples of data mutations on the App Runtime documentation [here](https://runtime.dhis2.nu/#/hooks/useDataMutation?id=example).
-- Check this [short video](https://youtu.be/dnagTunwHls?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) from the [Developer Academy 2021](/events/academy-workshops-2021) to learn more about using the Data Query Playground.
+-   You can find more examples of data mutations on the App Runtime documentation [here](https://runtime.dhis2.nu/#/hooks/useDataMutation?id=example).
+-   Check this [short video](https://youtu.be/dnagTunwHls?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) from the [Developer Academy 2021](/events/academy-workshops-2021) to learn more about using the Data Query Playground.

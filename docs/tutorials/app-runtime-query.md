@@ -38,14 +38,14 @@ The data query below is an object that specifies the type of resource that we wa
 ```jsx title="src/App.js"
 // ...
 const myQuery = {
-  results: {
-    resource: "programs",
-    params: {
-      pageSize: 5, //fetches 5 first programs in the system
-      fields: ["id", "displayName"],
+    results: {
+        resource: 'programs',
+        params: {
+            pageSize: 5, //fetches 5 first programs in the system
+            fields: ['id', 'displayName'],
+        },
     },
-  },
-};
+}
 // ...
 ```
 
@@ -62,7 +62,7 @@ We have already declared our data query above, now let's use it! 👇
 Let's start by importing the `useDataQuery` hook from the `@dhis2/app-runtime`:
 
 ```jsx title="src/App.js"
-import { useDataQuery } from "@dhis2/app-runtime";
+import { useDataQuery } from '@dhis2/app-runtime'
 // ...
 ```
 
@@ -75,45 +75,45 @@ Notice that it also gives us easy access to the `error` and `loading` variables 
 We then pass the `myQuery` object to the `useDataQuery` hook - see the highlighted line of code below:
 
 ```jsx {15} title="src/App.js"
-import React from "react";
-import { useDataQuery } from "@dhis2/app-runtime";
+import React from 'react'
+import { useDataQuery } from '@dhis2/app-runtime'
 
 const myQuery = {
-  results: {
-    resource: "programs",
-    params: {
-      pageSize: 5,
-      fields: ["id", "displayName"],
+    results: {
+        resource: 'programs',
+        params: {
+            pageSize: 5,
+            fields: ['id', 'displayName'],
+        },
     },
-  },
-};
+}
 
 const MyApp = () => {
-  const { loading, error, data } = useDataQuery(myQuery);
+    const { loading, error, data } = useDataQuery(myQuery)
 
-  if (error) {
-    return <span>ERROR: {error.message}</span>;
-  }
+    if (error) {
+        return <span>ERROR: {error.message}</span>
+    }
 
-  if (loading) {
-    return <span>Loading...</span>;
-  }
+    if (loading) {
+        return <span>Loading...</span>
+    }
 
-  return (
-    <div>
-      <h1>Programs</h1>
-      <ul>
-        {" "}
-        // Render a list of 5 programs
-        {data.results.programs.map((prog) => (
-          <li key={prog.id}>{prog.displayName}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    return (
+        <div>
+            <h1>Programs</h1>
+            <ul>
+                {' '}
+                // Render a list of 5 programs
+                {data.results.programs.map((prog) => (
+                    <li key={prog.id}>{prog.displayName}</li>
+                ))}
+            </ul>
+        </div>
+    )
+}
 
-export default MyApp;
+export default MyApp
 ```
 
 ### Check your browser
@@ -126,14 +126,14 @@ That's it for fetching and displaying data from a DHIS2 instance API! 👏🏽
 
 ### More examples?
 
-- Please check the app runtime documentation for more examples [like this one](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/IndicatorList.js)
-- You can also try to follow [this exercise](https://github.com/dhis2/academy-web-app-dev-2021/tree/main/workshop-1/04-app-runtime/query) on data queries from the [web app academy 2021](/events/academy-workshops-2021)
+-   Please check the app runtime documentation for more examples [like this one](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/IndicatorList.js)
+-   You can also try to follow [this exercise](https://github.com/dhis2/academy-web-app-dev-2021/tree/main/workshop-1/04-app-runtime/query) on data queries from the [web app academy 2021](/events/academy-workshops-2021)
 
 ### Want to learn more?
 
-- Check the [DHIS2 application runtime](https://runtime.dhis2.nu/#/) documentation or watch this [short video presentation](https://youtu.be/pvIppH5plMU?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=54) introducing the app runtime (about 30 min)
+-   Check the [DHIS2 application runtime](https://runtime.dhis2.nu/#/) documentation or watch this [short video presentation](https://youtu.be/pvIppH5plMU?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=54) introducing the app runtime (about 30 min)
 
-- Get an overview of the DHIS2 Web API in this [video presentation](https://youtu.be/F95LTzAzESQ?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) (about 30 min) or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation
+-   Get an overview of the DHIS2 Web API in this [video presentation](https://youtu.be/F95LTzAzESQ?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) (about 30 min) or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation
 
 ## What's next?
 

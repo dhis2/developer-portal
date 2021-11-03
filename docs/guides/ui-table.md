@@ -15,14 +15,14 @@ First, let's import the [Table](https://ui.dhis2.nu/demo/?path=/docs/data-displa
 
 ```js
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableCellHead,
-  TableHead,
-  TableRow,
-  TableRowHead,
-} from "@dhis2/ui";
+    Table,
+    TableBody,
+    TableCell,
+    TableCellHead,
+    TableHead,
+    TableRow,
+    TableRowHead,
+} from '@dhis2/ui'
 ```
 
 ## 2. Use components
@@ -32,66 +32,68 @@ In this example, we are using the [DHIS2 App Runtime](https://runtime.dhis2.nu/#
 See the highlighted lines of code - this is how we can represent the programs data in a `Table` component:
 
 ```jsx {43-60} title="src/App.js"
-import { useDataQuery } from "@dhis2/app-runtime";
-import React from "react";
-import classes from "./App.module.css";
+import { useDataQuery } from '@dhis2/app-runtime'
+import React from 'react'
+import classes from './App.module.css'
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableCellHead,
-  TableHead,
-  TableRow,
-  TableRowHead,
-} from "@dhis2/ui";
+    Table,
+    TableBody,
+    TableCell,
+    TableCellHead,
+    TableHead,
+    TableRow,
+    TableRowHead,
+} from '@dhis2/ui'
 
 const query = {
-  results: {
-    resource: "programs",
-    params: {
-      pageSize: 5,
-      fields: ["id", "created", "displayName"],
+    results: {
+        resource: 'programs',
+        params: {
+            pageSize: 5,
+            fields: ['id', 'created', 'displayName'],
+        },
     },
-  },
-};
+}
 
 const MyApp = () => {
-  const { loading, error, data } = useDataQuery(query);
+    const { loading, error, data } = useDataQuery(query)
 
-  if (error) {
-    return <span>ERROR: {error.message}</span>;
-  }
+    if (error) {
+        return <span>ERROR: {error.message}</span>
+    }
 
-  if (loading) {
-    return <span>Loading...</span>;
-  }
+    if (loading) {
+        return <span>Loading...</span>
+    }
 
-  return (
-    <div className={classes.container}>
-      <div>
-        <h1>Programs Table</h1>
-        <Table>
-          <TableHead>
-            <TableRowHead>
-              <TableCellHead>Name</TableCellHead>
-              <TableCellHead>Created</TableCellHead>
-            </TableRowHead>
-          </TableHead>
-          <TableBody>
-            {data.results.programs.map(({ id, created, displayName }) => (
-              <TableRow key={id}>
-                <TableCell>{displayName}</TableCell>
-                <TableCell>{created}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
-};
+    return (
+        <div className={classes.container}>
+            <div>
+                <h1>Programs Table</h1>
+                <Table>
+                    <TableHead>
+                        <TableRowHead>
+                            <TableCellHead>Name</TableCellHead>
+                            <TableCellHead>Created</TableCellHead>
+                        </TableRowHead>
+                    </TableHead>
+                    <TableBody>
+                        {data.results.programs.map(
+                            ({ id, created, displayName }) => (
+                                <TableRow key={id}>
+                                    <TableCell>{displayName}</TableCell>
+                                    <TableCell>{created}</TableCell>
+                                </TableRow>
+                            )
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
+        </div>
+    )
+}
 
-export default MyApp;
+export default MyApp
 ```
 
 ## 3. Check your browser

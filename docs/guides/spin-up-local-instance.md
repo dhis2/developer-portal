@@ -13,9 +13,9 @@ Some of the benefits of using local instances are: (1) we can run multiple diffe
 
 First, make sure to install the following 👇
 
-- Install [yarn](https://classic.yarnpkg.com/en/docs/install/) and [Node.js](https://nodejs.org/en/)
-- Download [Docker](https://www.docker.com/)
-- Install the DHIS2 [CLI](https://cli.dhis2.nu/#/getting-started) globally:
+-   Install [yarn](https://classic.yarnpkg.com/en/docs/install/) and [Node.js](https://nodejs.org/en/)
+-   Download [Docker](https://www.docker.com/)
+-   Install the DHIS2 [CLI](https://cli.dhis2.nu/#/getting-started) globally:
 
 ```shell
 yarn global add @dhis2/cli

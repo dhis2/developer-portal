@@ -29,4 +29,4 @@ In this short tutorial you will learn how to interact with the [DHIS2 Web API](h
 
 ### Learn about DHIS2 Components and Libraries
 
-- [Analytics](https://github.com/dhis2/analytics) - helper functions and common components for analytics applications
+-   [Analytics](https://github.com/dhis2/analytics) - helper functions and common components for analytics applications

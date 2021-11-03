@@ -25,22 +25,22 @@ Here are some guidelines for the required fields:
 
 ##### Basic information
 
-- **App name**: Be clear and specific. Try to capture the core functionality of your app. This must match the name in the manifest/`d2.config.js`.
-- **App Description**: What's the purpose of your app? What does the app allow a user to do? What are the main functionalities? Any technical requirements?
-- **Source Code URL**: Please provide a link to a public repository. This will allow the DHIS2 core team to quickly review your app.
-- **Version**: The version number of your app. [Semantic versioning](https://semver.org/) is recommended (i.e. 1.0.0)
-- **Minimum/Maximum DHIS Version**: Which DHIS2 versions are compatible with your app? Enter the minimum and maximum DHIS2 version required for the app to work.
-- Add a **Demo URL** and **upload** the `.zip` file of your application.
+-   **App name**: Be clear and specific. Try to capture the core functionality of your app. This must match the name in the manifest/`d2.config.js`.
+-   **App Description**: What's the purpose of your app? What does the app allow a user to do? What are the main functionalities? Any technical requirements?
+-   **Source Code URL**: Please provide a link to a public repository. This will allow the DHIS2 core team to quickly review your app.
+-   **Version**: The version number of your app. [Semantic versioning](https://semver.org/) is recommended (i.e. 1.0.0)
+-   **Minimum/Maximum DHIS Version**: Which DHIS2 versions are compatible with your app? Enter the minimum and maximum DHIS2 version required for the app to work.
+-   Add a **Demo URL** and **upload** the `.zip` file of your application.
 
 ##### Developer
 
-- Enter the contact email for the app. This is used by the DHIS2 core team to contact you with feedback during the review process.
-- If you're not a member of any organisation, create a new one by clicking the `+` icon to the right.
+-   Enter the contact email for the app. This is used by the DHIS2 core team to contact you with feedback during the review process.
+-   If you're not a member of any organisation, create a new one by clicking the `+` icon to the right.
 
 ##### Image
 
-- **Logo**: The logo should capture the core idea of the app. Upload in high-resolution (at least 512x512px in size). Images should be unique and correctly licensed. Additional images can be uploaded later.
-- **Additional images**: Additional screenshots can be uploaded once the app is submitted. Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
+-   **Logo**: The logo should capture the core idea of the app. Upload in high-resolution (at least 512x512px in size). Images should be unique and correctly licensed. Additional images can be uploaded later.
+-   **Additional images**: Additional screenshots can be uploaded once the app is submitted. Try to capture the main use-case of the app. Add 3–5 screenshots (1280×800px recommended). Better if images show the app in-use with data.
 
 > Make sure to check the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines) for detailed instructions.
 
@@ -66,17 +66,17 @@ By building and uploading your app, you're helping the entire DHIS2 community!
 
 For an app to be approved it needs to meet the following requirements:
 
-- **Generic.** The app must be generic, meaning it must be able to work against any DHIS2 instance. It is okay if the app depends on some configuration to be present in the system instance. If so, these steps must be documented.
-- **Open Source.** The app must have an open source license. Make sure that components, libraries and resources running on a DHIS2 instance are open source.
-- **Useful.** The app must be meaningful and useful for a large audience.
+-   **Generic.** The app must be generic, meaning it must be able to work against any DHIS2 instance. It is okay if the app depends on some configuration to be present in the system instance. If so, these steps must be documented.
+-   **Open Source.** The app must have an open source license. Make sure that components, libraries and resources running on a DHIS2 instance are open source.
+-   **Useful.** The app must be meaningful and useful for a large audience.
 
 For more information on these requirements, please check the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines).
 
 ### What happens after I submit my app?
 
-- The DHIS2 core team will review your app (the process will be quicker if your app is well-documented and follows the requirements)
-- If your app is rejected, the core team will provide feedback by email. You can resubmit your app after addressing any issues.
-- If your app is approved, it'll soon be available publicly on the App Hub. You can manage your app through your App Hub account.
+-   The DHIS2 core team will review your app (the process will be quicker if your app is well-documented and follows the requirements)
+-   If your app is rejected, the core team will provide feedback by email. You can resubmit your app after addressing any issues.
+-   If your app is approved, it'll soon be available publicly on the App Hub. You can manage your app through your App Hub account.
 
 ### Updating an app
 

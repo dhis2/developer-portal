@@ -5,13 +5,13 @@ title: Stay connected
 
 ## Official channels
 
-- **Twitter**
+-   **Twitter**
 
 <!-- Follow the [DHIS2 Developers Twitter account](https://twitter.com/dhis2devs) for all developer news and events.  -->
 
 Follow the [DHIS2 Twitter account](https://twitter.com/dhis_2) to find out what's happening in the world of DHIS2.
 
-- **YouTube**
+-   **YouTube**
 
 Check the official [DHIS2 YouTube channel](https://www.youtube.com/c/Dhis2Org) to watch recordings of Developer Academies, Annual Conferences and much more!
 

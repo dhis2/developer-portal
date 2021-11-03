@@ -11,18 +11,18 @@ why the quality of the content is important to our process.
 
 # Roles of JIRA
 
-- Planning development
-- Tracking dependencies
-- Visualising progress
-- Capturing decisions and information
-- Displaying relevant information
-- Release management
-- Exposing our process
-- Managing expectations
-- Roadmap
-- Quality assurance
-- Bug tracking
-- Communication hub
+-   Planning development
+-   Tracking dependencies
+-   Visualising progress
+-   Capturing decisions and information
+-   Displaying relevant information
+-   Release management
+-   Exposing our process
+-   Managing expectations
+-   Roadmap
+-   Quality assurance
+-   Bug tracking
+-   Communication hub
 
 # Hard and fast rules
 
@@ -73,28 +73,28 @@ stops someone else from starting on those issues.
 
 # Statuses and what they mean
 
-- **Open**: a fresh issue which isn't evaluated if and when it is going
-  to be implemented. As a developer ignore these unless asked to help
-  out with them.
+-   **Open**: a fresh issue which isn't evaluated if and when it is going
+    to be implemented. As a developer ignore these unless asked to help
+    out with them.
 
-- **Todo**: these issues have been considered by the product manager and
-  are deemed to be important enough to be implemented. These issues are
-  considered as part of the backlog.
+-   **Todo**: these issues have been considered by the product manager and
+    are deemed to be important enough to be implemented. These issues are
+    considered as part of the backlog.
 
-- **In progress**: a developer has assigned himself to the issue and has
-  started work on it.
+-   **In progress**: a developer has assigned himself to the issue and has
+    started work on it.
 
-- **In review**: the implementing developer thinks this issue is complete and
-  needs someone to review it.
+-   **In review**: the implementing developer thinks this issue is complete and
+    needs someone to review it.
 
-- **Testing**: hand-over to the QA-team for verification.
+-   **Testing**: hand-over to the QA-team for verification.
 
-- **Done**: issue has passed QA tests and is closed and ready for release.
+-   **Done**: issue has passed QA tests and is closed and ready for release.
 
-- **Needs update**: issue fails some QA tests, which might be lack of test case,
-  documentation, or something else.
+-   **Needs update**: issue fails some QA tests, which might be lack of test case,
+    documentation, or something else.
 
-- **Re-opened**: issues that were at one point considered closed and done, but no longer are.
+-   **Re-opened**: issues that were at one point considered closed and done, but no longer are.
 
 # Workflow
 
@@ -114,39 +114,39 @@ pipeline.
 
 ### Open
 
-- Product manager prioritises
+-   Product manager prioritises
 
 ### Todo
 
-- Part of backlog
-- Plan for milestone
-- [Evaluate issue completeness](#is-an-issue-ready-to-be-worked-on)
+-   Part of backlog
+-   Plan for milestone
+-   [Evaluate issue completeness](#is-an-issue-ready-to-be-worked-on)
 
 ### In progress
 
-- Assign to self
-- Work has started
+-   Assign to self
+-   Work has started
 
 ### In review
 
-- As _assignee_:
-- - Unassign issue when transitioning so anyone on the team can review
-- As _reviewer_:
-- - [Review checklist](#review-checklist)
+-   As _assignee_:
+-   -   Unassign issue when transitioning so anyone on the team can review
+-   As _reviewer_:
+-   -   [Review checklist](#review-checklist)
 
 ### Testing
 
-- Unassign issue when transitioning to "testing"
-- Picked up by testers automatically, they assign it to themselves when testing
-  starts
+-   Unassign issue when transitioning to "testing"
+-   Picked up by testers automatically, they assign it to themselves when testing
+    starts
 
 ### Needs update
 
-- Happens when QA fails
+-   Happens when QA fails
 
 ### Re-opened
 
-- Happens when there is a regression in relation to the issue
+-   Happens when there is a regression in relation to the issue
 
 # Detailed workflow for developers
 
@@ -202,25 +202,25 @@ If everything looks fine, you can then unassign youself and set the ticket to "I
 
 ## Bugs
 
-- Is the Pull Request good to merge?
-- Did you test the branch locally?
-- Is there a test case linked to the JIRA issue?
+-   Is the Pull Request good to merge?
+-   Did you test the branch locally?
+-   Is there a test case linked to the JIRA issue?
 
 ## Features
 
-- Is the Pull Request good to merge?
-- Did you test the branch locally?
-- Is the user documentation updated?
-- Is the implementer documentation updated?
-- Is there a test case linked to the JIRA issue?
+-   Is the Pull Request good to merge?
+-   Did you test the branch locally?
+-   Is the user documentation updated?
+-   Is the implementer documentation updated?
+-   Is there a test case linked to the JIRA issue?
 
 # Is an issue ready to be worked on?
 
 After reading the description of an issue, ask yourself these questions:
 
-- Do I understand _why_ this needs to be done?
-- Do I understand _what_ needs to be done?
-- Do I have an idea of _how_ this can be done?
+-   Do I understand _why_ this needs to be done?
+-   Do I understand _what_ needs to be done?
+-   Do I have an idea of _how_ this can be done?
 
 Our job is to determine if the description is well enough defined that
 we understand the _functional requirements_ of how this is going to be
