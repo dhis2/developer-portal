@@ -10,17 +10,18 @@ const features = [
   {
     title: "Getting Started",
     imageUrl: "img/getting-started.svg",
-    url: '/docs/', 
+    url: "/docs/",
     description: (
       <>
-        A step-by-step guide on how to get started with DHIS2 application development.
+        A step-by-step guide on how to get started with DHIS2 application
+        development.
       </>
     ),
   },
   {
     title: "DHIS2 App Platform",
     imageUrl: "img/app-platform.svg",
-    url: '/docs/tutorials/', 
+    url: "/docs/tutorials/",
     description: (
       <>
         Common build system, development tools, runtime support, and standard
@@ -31,7 +32,7 @@ const features = [
   {
     title: "Components & Libraries",
     imageUrl: "img/components.svg",
-    url: '/docs/tutorials/', 
+    url: "/docs/tutorials/",
     description: (
       <>
         Learn more about the DHIS2 UI components, analytics helper functions the
@@ -53,7 +54,7 @@ function Feature({ imageUrl, url, title, description }) {
       <h3>{title}</h3>
       <p>{description}</p>
       <p>
-        <a href={url}>Learn more →</a> 
+        <a href={url}>Learn more →</a>
       </p>
     </div>
   );
@@ -65,7 +66,8 @@ function Home() {
   return (
     <Layout
       title={`Welcome to the ${siteConfig.title}`}
-      description="This portal serves as essential resources for developers building web applications upon the DHIS2 platform. You can find additional documentation, how-to-guides, information on events and blog posts.">
+      description="This portal serves as essential resources for developers building web applications upon the DHIS2 platform. You can find additional documentation, how-to-guides, information on events and blog posts."
+    >
       <header className={clsx("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>

@@ -1,8 +1,7 @@
 ---
 slug: the-build-system
 title: The Build System
-author: [varl, jennifer]
-author_title: DHIS2 Core Team
+authors: [varl, jennifer]
 tags: [build system, architecture]
 ---
 
@@ -12,7 +11,6 @@ system. The release and development processes which drive the build
 system is out of scope for this post and subsequently left out.
 
 There are a few moving pieces, so let's get started!
-
 
 <!--truncate-->
 

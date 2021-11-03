@@ -5,7 +5,7 @@ title: How to add translation support to an application
 
 Follow this quick guide to add translation support to your application using the [d2-i18n package](https://cnpmjs.org/package/d2-i18n). The `d2-i18n` package uses the `i18next` library to monitor and generate translations in your application, check out the [i18next documentation](https://www.i18next.com/) for more information on how the library works.
 
-## Prerequisites  
+## Prerequisites
 
 This guide assumes that you're developing an application using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
 
@@ -27,7 +27,7 @@ Follow the steps below to add a locale to your application:
 import React from "react";
 import classes from "./App.module.css";
 import Test from "./test.js";
-import i18n from './locales/index.js'
+import i18n from "./locales/index.js";
 ```
 
 2. In the source files containing strings you want translated in your application interface, indicate the strings to translate using the `i18n.t()` syntax:
@@ -35,7 +35,7 @@ import i18n from './locales/index.js'
 ```jsx {43-60} title="src/App.js"
 const MyApp = () => (
   <div className={classes.container}>
-      <h1>{i18n.t('Hello world!')}</h1>
+    <h1>{i18n.t("Hello world!")}</h1>
   </div>
 );
 ```
@@ -59,7 +59,6 @@ msgstr "¡Hola el mundo!"
 ```
 
 6. Run `yarn start` or `yarn build` to rebuild your application. This time the translations you provided in the `.po` file are added to the `src/locales/en/translations.json` and a new `src/locales/{your_new_locale}/translations.json` file is created. Your application will fetch translations from these files whenever a user switches to another locale in the UI.
-
 
 :::important
 
@@ -96,7 +95,7 @@ d2-app-scripts i18n generate
 ### Simple translation
 
 ```js
-i18n.t('translation string')
+i18n.t("translation string");
 ```
 
 ### Interpolation
@@ -104,8 +103,8 @@ i18n.t('translation string')
 Interpolation is one of the most used functionalities in `i18next`. It allows for the integration of dynamic values into your translations.
 
 ```js
-const numberOfDevs = 30
-i18n.t('hello world We are {{numberOfDevs}} developers', {numberOfDevs})
+const numberOfDevs = 30;
+i18n.t("hello world We are {{numberOfDevs}} developers", { numberOfDevs });
 ```
 
 ### Plurals

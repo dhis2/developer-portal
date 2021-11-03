@@ -61,5 +61,3 @@ manual reconfiguration on each of them.
 - [dhis2-core 2.29](https://github.com/dhis2/dhis2-core/pull/2476)
 - [dhis2-core 2.30](https://github.com/dhis2/dhis2-core/pull/2475)
 - [dhis2-core 2.31](https://github.com/dhis2/dhis2-core/pull/2477)
-
-

@@ -157,6 +157,7 @@ This simplifies backporting bugfixes a bit.
   the new branch to origin in a new PR.
 
 ---
+
 # Future work
 
 At some point it might make sense to integrate this type of

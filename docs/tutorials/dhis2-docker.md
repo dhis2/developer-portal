@@ -11,21 +11,21 @@ this can be applied to MacOS X or other Linux flavors.
 
 Guide tested on:
 
--   Linux 4.19.0-6-cloud-amd64 #1 SMP Debian 4.19.67-2+deb10u1 (2019-09-20) x86_64 GNU/Linux
--   Linux 4.19.0-6-amd64 #1 SMP Debian 4.19.67-2+deb10u2 (2019-11-11) x86_64 GNU/Linux
+- Linux 4.19.0-6-cloud-amd64 #1 SMP Debian 4.19.67-2+deb10u1 (2019-09-20) x86_64 GNU/Linux
+- Linux 4.19.0-6-amd64 #1 SMP Debian 4.19.67-2+deb10u2 (2019-11-11) x86_64 GNU/Linux
 
 ## Overview
 
--   Update system
--   Setup user account
--   Install Node
--   Install Yarn
--   Install Docker
--   Install Nginx (_Optional_)
--   Install Certbot (_Optional_)
--   Install D2 CLI
--   Launch development cluster
--   System cleanup (_Optional_)
+- Update system
+- Setup user account
+- Install Node
+- Install Yarn
+- Install Docker
+- Install Nginx (_Optional_)
+- Install Certbot (_Optional_)
+- Install D2 CLI
+- Launch development cluster
+- System cleanup (_Optional_)
 
 ## Make sure the system is updated
 
@@ -130,9 +130,9 @@ fundamentally is.
 Installing Docker is more involved than the other commands, the full
 instructions used for the abbreviated set are provided here:
 
--   [Install Docker](https://docs.docker.com/install/linux/docker-ce/debian/)
--   [Post-installation](https://docs.docker.com/install/linux/linux-postinstall/)
--   [Install Docker Compose](https://docs.docker.com/compose/install/)
+- [Install Docker](https://docs.docker.com/install/linux/docker-ce/debian/)
+- [Post-installation](https://docs.docker.com/install/linux/linux-postinstall/)
+- [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 Install the dependencies.
 

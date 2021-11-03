@@ -108,8 +108,7 @@ Run yarn install to deduplicate node_modules
 Done in 0.85s.
 ```
 
-The `deduplicate` command fixes the lock-file, but you must run `yarn
-install` to re-install corrected dependencies to `node_modules`. The
+The `deduplicate` command fixes the lock-file, but you must run `yarn install` to re-install corrected dependencies to `node_modules`. The
 automatic resolution in `build` does the `yarn install` automatically.
 
 With the new features out of the way, time to turn an eye to the nuts
@@ -146,7 +145,6 @@ you are doing special things in your tests, you may need to research if
 you need additional configuration.
 
 ## App Runtime 3.x
-
 
 ### New feature: `useDataQuery` caches and deduplicates queries
 
@@ -221,7 +219,7 @@ references.
 ### Breaking change: `data` and `error` are not cleared during refetch
 
 Logic that depends on `data` and/or `error` to be cleared when
-refetching data will need to be adjusted accordingly. 
+refetching data will need to be adjusted accordingly.
 
 For example, placing an `if` condition that checks if `error` is `true`
 before a condition that checks for `loading` being `true` will now
@@ -247,7 +245,6 @@ introducing a `waitFor` assertion from `@testing-library/react` it
 neatly resolved the issue and made the test more stable.
 
 ## UI 7.x
-
 
 ### New feature: Add `hidePageSummary` to Pagination component
 
@@ -342,8 +339,7 @@ yarn upgrade --latest @dhis2/cli-style
 ### Breaking change: Prettier configuration updated
 
 Some deprecated properties in Prettier have been dropped, and other options
-have been tweaked, so after updating to `10.x` you will need to run `yarn
-d2-style apply` to reformat the code according to the new rules.
+have been tweaked, so after updating to `10.x` you will need to run `yarn d2-style apply` to reformat the code according to the new rules.
 
 There are no large changes so the code will look and feel the same, but there
 are some tweaks to improve the diff experience and quality of life improvements
@@ -359,7 +355,7 @@ resolved manually.
 -	import { CustomButton } from './custom-button'
 -	import styles from './custom-button.styles'
 +	import config from './config/sample.json'
-+ 	import { CustomButton } from './custom-button.js' 
++ 	import { CustomButton } from './custom-button.js'
 +	import styles from './custom-button.styles.css'
 ```
 
@@ -371,10 +367,10 @@ configuration object in `.eslintrc.js`:
 
 ```js
 module.exports = {
-	rules: {
-		'import/extensions': ['warn', 'ignorePackages'],
-	},
-}
+  rules: {
+    "import/extensions": ["warn", "ignorePackages"],
+  },
+};
 ```
 
 ## Changelogs
@@ -382,10 +378,10 @@ module.exports = {
 For a full list of bug fixes and changes, please refer to the changelogs for
 each package, included below.
 
--	[dhis2/app-platform/CHANGELOG.md](https://github.com/dhis2/app-platform/blob/master/CHANGELOG.md)
--	[dhis2/app-runtime/CHANGELOG.md](https://github.com/dhis2/app-runtime/blob/master/CHANGELOG.md)
--	[dhis2/ui/CHANGELOG.md](https://github.com/dhis2/ui/blob/master/CHANGELOG.md)
--	[dhis2/cli-style/CHANGELOG.md](https://github.com/dhis2/cli-style/blob/master/CHANGELOG.md)
+- [dhis2/app-platform/CHANGELOG.md](https://github.com/dhis2/app-platform/blob/master/CHANGELOG.md)
+- [dhis2/app-runtime/CHANGELOG.md](https://github.com/dhis2/app-runtime/blob/master/CHANGELOG.md)
+- [dhis2/ui/CHANGELOG.md](https://github.com/dhis2/ui/blob/master/CHANGELOG.md)
+- [dhis2/cli-style/CHANGELOG.md](https://github.com/dhis2/cli-style/blob/master/CHANGELOG.md)
 
 ## Reporting issues
 
