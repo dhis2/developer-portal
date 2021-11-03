@@ -1,16 +1,16 @@
 module.exports = {
   docs: {
     'Quick Start': ['getting-started'],
-    Tutorials:  [
-    'tutorials',
-    'tutorials/setup-env',
-    'tutorials/ui-library',
+    Tutorials: [
+      'tutorials',
+      'tutorials/setup-env',
+      'tutorials/ui-library',
       {
         'DHIS2 App Runtime': [
           'tutorials/app-runtime-query',
-          'tutorials/app-runtime-mutation',
-        ],
-      },
+          'tutorials/app-runtime-mutation'
+        ]
+      }
     ],
     Guides: [
       'guides',
@@ -18,23 +18,24 @@ module.exports = {
         'Local Development': [
           'guides/spin-up-local-instance',
           'guides/code-style',
-          'guides/debug-instance',
+          'guides/debug-instance'
         ],
         'UI Library': [
           'guides/ui-table',
+          'guides/add-form'
         ],
         'DHIS2 App Runtime': [
-          'guides/query-playground',
+          'guides/query-playground'
         ],
         'App Hub': [
           'guides/submit-apphub', 'guides/apphub-guidelines', 'guides/publish-apphub'
         ],
-        'Translation': [
+        Translation: [
           'guides/translation-support'
         ]
-      },
+      }
     ],
     Reference: ['reference'],
     Conceptual: ['conceptual']
-  },
-};
+  }
+}
