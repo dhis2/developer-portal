@@ -1,5 +1,5 @@
 ---
-slug: dhis2-dev-portal
+slug: 2021/03/dhis2-dev-portal
 title: Revamped Developer Portal
 author: Debora Galeano
 author_url: https://github.com/deboragaleano

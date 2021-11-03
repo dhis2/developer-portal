@@ -1,5 +1,5 @@
 ---
-slug: the-build-system
+slug: 2019/02/the-build-system
 title: The Build System
 authors: [varl, jennifer]
 tags: [build system, architecture]

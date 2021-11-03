@@ -1,9 +1,7 @@
 ---
-slug: packages-and-conventions
+slug: 2018/12/packages-and-conventions
 title: Packages and style conventions
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 tags: [js, style, packages, code-style]
 ---
 
@@ -15,7 +13,7 @@ JavaScript conventions.
 
 <!--truncate-->
 
-> **EDIT MARCH 28, 2019** - While the concepts in this post still very much hold true, the **code-style** and **packages** (with the exception of `packages exec`) are being deprecated. Please use [d2](./introducing-d2) instead of these older stand-alone tools where possible!
+> **EDIT MARCH 28, 2019** - While the concepts in this post still very much hold true, the **code-style** and **packages** (with the exception of `packages exec`) are being deprecated. Please use [d2](2019-03-28-introducing-d2.md) instead of these older stand-alone tools where possible!
 
 # 1 - [code-style](https://github.com/dhis2/code-style)
 

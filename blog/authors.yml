@@ -1,9 +1,19 @@
-varl:
-  name: Viktor Varland
-  url: https://github.com/varl
-  image_url: https://github.com/varl.png
+austin:
+  name: Austin McGee
+  url: https://github.com/amcgee
+  image_url: https://github.com/amcgee.png
 
 jennifer:
   name: Jennifer Arnesen
   url: https://github.com/jenniferarnesen
   image_url: https://github.com/jenniferarnesen.png
+
+joe:
+  name: Joe Cooper
+  url: https://github.com/cooper-joe
+  image_url: https://github.com/cooper-joe.png
+
+varl:
+  name: Viktor Varland
+  url: https://github.com/varl
+  image_url: https://github.com/varl.png

@@ -1,5 +1,5 @@
 ---
-slug: app-platform-v8
+slug: 2021/11/app-platform-v8
 title: App Platform v8
 authors: varl
 tags: [app platform, developer tools, webapp, announcement]

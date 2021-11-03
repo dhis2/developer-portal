@@ -1,5 +1,5 @@
 ---
-slug: dhis2-and-docker
+slug: 2019/10/dhis2-and-docker
 title: DHIS2 with Docker
 author: Gintare Vilkelyte
 author_url: https://github.com/vilkg

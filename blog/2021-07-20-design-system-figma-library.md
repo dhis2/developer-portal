@@ -1,9 +1,7 @@
 ---
-slug: design-system-figma-library
+slug: 2021/07/design-system-figma-library
 title: Design System Figma library available now
-author: Joe Cooper
-author_url: https://github.com/cooper-joe
-author_image_url: https://avatars.githubusercontent.com/u/33054985?s=400&u=0fa29eea95dc43633e26bd41f871524bdee4b07a&v=4
+authors: joe
 tags: [design, developer tools]
 ---
 

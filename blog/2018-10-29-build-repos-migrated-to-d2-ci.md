@@ -1,9 +1,7 @@
 ---
-slug: build-repos-migrated-to-d2-ci
+slug: 2018/10/build-repos-migrated-to-d2-ci
 title: Build repos migrated to d2-ci organization on GitHub
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 ---
 
 Now that the amount of build repos are ranging in the fifties, it's time

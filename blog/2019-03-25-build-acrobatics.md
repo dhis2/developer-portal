@@ -1,9 +1,7 @@
 ---
-slug: build-acrobatics
+slug: 2019/03/build-acrobatics
 title: Build acrobatics
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 tags: [build system, architecture]
 ---
 
@@ -13,8 +11,9 @@ more!
 
 <!--truncate-->
 
-> This is a follow-up to the [build system overview](./the-build-system), if you haven't, read
-> that first!
+> This is a follow-up to the [build system
+> overview](2019-02-24-the-build-system.md), if you haven't, read that
+> first!
 
 Below are some examples of use cases, and if you want to cross-reference the
 build system diagrams, the services interacting from this point are:

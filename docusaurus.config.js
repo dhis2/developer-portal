@@ -1,3 +1,5 @@
+const redirects = require("./redirects.config.js");
+
 module.exports = {
   title: "DHIS2 Developer Portal",
   tagline: "Welcome to the DHIS2 application development community!",
@@ -16,7 +18,7 @@ module.exports = {
       },
       items: [
         {
-          to: "docs/",
+          to: "docs",
           activeBasePath: "docs",
           label: "Docs",
           position: "left",
@@ -46,7 +48,7 @@ module.exports = {
           items: [
             {
               label: "Getting Started",
-              to: "docs/",
+              to: "docs",
             },
           ],
         },
@@ -64,7 +66,7 @@ module.exports = {
           items: [
             {
               label: "Blog",
-              to: "docs/",
+              to: "docs",
             },
             {
               label: "DHIS2.org",
@@ -105,6 +107,12 @@ module.exports = {
         path: "community",
         routeBasePath: "community",
         sidebarPath: require.resolve("./sidebarsCommunity.js"),
+      },
+    ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects,
       },
     ],
   ],

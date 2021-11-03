@@ -1,9 +1,7 @@
 ---
-slug: managing-multiple-repositories
+slug: 2019/06/managing-multiple-repositories
 title: Command a fleet of repositories
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 tags: [cli, developer tools]
 ---
 
