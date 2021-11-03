@@ -1,6 +1,6 @@
 ---
-slug: 2021/11/app-platform-updates
-title: App Platform updates
+slug: app-platform-v8
+title: App Platform v8
 author: Viktor Varland
 author_url: https://github.com/varl
 author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
