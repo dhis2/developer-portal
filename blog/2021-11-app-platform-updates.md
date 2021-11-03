@@ -148,8 +148,9 @@ you need additional configuration.
 The `useDataQuery` hook now automatically caches, and deduplicates,
 identical queries client-side.
 
-This means that multiple components requesting the same data within an
-arbitrary timeframe will not trigger multiple requests to the server.
+This means that multiple components requesting the same data will not
+trigger multiple requests to the server as long as the originating
+request is in progress.
 
 Only a single request will be dispatched and the result fed to each
 component that requested the data. This reduces network overhead and
