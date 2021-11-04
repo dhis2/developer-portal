@@ -31,7 +31,7 @@ What’s more, we’ve developed an API in the App Runtime library that can be u
 
 ## How to use PWA in your app
 
-To use the basic PWA features (offline caching and installability) in an app, simply opt-in to PWA using and option in [`d2.config.js`](https://platform.dhis2.nu/#/config/d2-config-js-reference):
+To use the basic PWA features (offline caching and installability) in an app, simply opt-in to PWA using an option in [`d2.config.js`](https://platform.dhis2.nu/#/config/d2-config-js-reference):
 
 ```js
 // d2.config.js
