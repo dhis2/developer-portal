@@ -232,7 +232,7 @@ right thing**.
 
 For _features_ that might mean asking for use cases, diagrams, flow
 charts, better description of the problem we are attempting to solve,
-etc.
+etc. 
 
 For _bugs_ it might mean asking for a _test case_ to reproduce the issue
 (which saves you the trouble of writing one later), or a step-by-step

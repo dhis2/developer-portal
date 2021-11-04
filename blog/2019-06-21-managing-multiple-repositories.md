@@ -1,7 +1,9 @@
 ---
-slug: 2019/06/managing-multiple-repositories
+slug: managing-multiple-repositories
 title: Command a fleet of repositories
-authors: varl
+author: Viktor Varland
+author_url: https://github.com/varl
+author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
 tags: [cli, developer tools]
 ---
 
@@ -40,13 +42,13 @@ the start, however, first you must install the `mr` command.
 `mr` is a Perl script, and it is available anywhere Perl runs. To name
 a few ways to install it:
 
--   Git: `git clone git://myrepos.branchable.com/ myrepos`
--   Debian/Ubuntu: `apt install myrepos`
--   Arch: `pacman -Sy myrepos`
--   Alpine: `apk add myrepos`
--   Nix: `nix-env -i mr`
--   FreeBSD: `pkg install myrepos`
--   Homebrew: `brew install mr`
+- Git: `git clone git://myrepos.branchable.com/ myrepos`
+- Debian/Ubuntu: `apt install myrepos`
+- Arch: `pacman -Sy myrepos`
+- Alpine: `apk add myrepos`
+- Nix: `nix-env -i mr`
+- FreeBSD: `pkg install myrepos`
+- Homebrew: `brew install mr`
 
 ---
 
@@ -74,14 +76,14 @@ work related, simply by running your commands in the relevant directory.
 
 The primary commands you will want to use are:
 
--   `mr checkout` clones any repositories which don't already exist
--   `mr update` updates all the repositories
--   `mr clean` prints the ignored/untracked files in repos, use `-f` to
-    remove files as well
--   `mr status` shows you the status of each repo; handy to figure out if
-    any repos have pending changes
--   `mr diff` shows you the diffs from all repos
--   `mr run` allows you to run an arbitrary command in all repos
+- `mr checkout` clones any repositories which don't already exist
+- `mr update` updates all the repositories
+- `mr clean` prints the ignored/untracked files in repos, use `-f` to
+  remove files as well
+- `mr status` shows you the status of each repo; handy to figure out if
+  any repos have pending changes
+- `mr diff` shows you the diffs from all repos
+- `mr run` allows you to run an arbitrary command in all repos
 
 Check out the manual of `myrepos`, it is not long and has some nice
 tidbits about parallel execution. Alright, I will give up that last one:
@@ -147,15 +149,14 @@ This simplifies backporting bugfixes a bit.
 
 # Some other ideas for scripts to try and set up
 
--   `mr unlink`: Remove any symlinks (created through e.g. `yarn link`) between packages
--   `mr link <package>`: Create a symlink to a specific package and link
-    it to all packages that depend on it.
--   `mr boil`: Setup all the standards for code, repos, packages,
-    continuous integration on a new branch, commit the changes, and push
-    the new branch to origin in a new PR.
+- `mr unlink`: Remove any symlinks (created through e.g. `yarn link`) between packages
+- `mr link <package>`: Create a symlink to a specific package and link
+  it to all packages that depend on it.
+- `mr boil`: Setup all the standards for code, repos, packages,
+  continuous integration on a new branch, commit the changes, and push
+  the new branch to origin in a new PR.
 
 ---
-
 # Future work
 
 At some point it might make sense to integrate this type of
