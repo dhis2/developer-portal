@@ -1,5 +1,5 @@
 ---
-slug: 2019/10/dhis2-and-docker
+slug: dhis2-and-docker
 title: DHIS2 with Docker
 author: Gintare Vilkelyte
 author_url: https://github.com/vilkg
@@ -17,8 +17,8 @@ This guide requires familiarity with containerization as a concept, running shel
 
 Additionally, you will need:
 
--   Docker downloaded and installed on your machine.
--   Docker Compose downloaded and installed on your machine.
+- Docker downloaded and installed on your machine.
+- Docker Compose downloaded and installed on your machine.
 
 ---
 
@@ -72,8 +72,8 @@ Docker tags are meant to convey useful information about a specific version/vari
 
 _dev_ channels images are versioned the same way we version branches in GitHub:
 
--   `master` tag will correspond to the latest _major_ DHIS2 version being developed. At the time of writing this guide, the last version we released is 2.33, which means that we are currently working on the 2.34 version and that's what the version image `dhis2/core-dev:master` will contain.
--   `2.31` to `2.33` tags will have the war of the latest _minor_ dhis2 version. So, if we released 5 patches for 2.31 version in total, we are working on the 6th patch and that will be represented by `dhis2/core-dev:2.31` tag.
+- `master` tag will correspond to the latest _major_ DHIS2 version being developed. At the time of writing this guide, the last version we released is 2.33, which means that we are currently working on the 2.34 version and that's what the version image `dhis2/core-dev:master` will contain.
+- `2.31` to `2.33` tags will have the war of the latest _minor_ dhis2 version. So, if we released 5 patches for 2.31 version in total, we are working on the 6th patch and that will be represented by `dhis2/core-dev:2.31` tag.
 
 Versioning of _stable_ images corresponds to the versioning scheme we use for DHIS2 releases and you might be already familiar with it. Examples: `2.31.5`, `2.32.1`, `2.33.0` and etc.
 
@@ -83,14 +83,14 @@ Image variants describe what is the image based on and what environment DHIS2 wi
 
 Debian:
 
--   `tomcat-9.0-jdk8-openjdk-slim`
--   `tomcat-8.5-jdk8-openjdk-slim`
--   `tomcat-8.5.46-jdk8-openjdk-slim`
--   `tomcat-8.0-jre8-slim`
+- `tomcat-9.0-jdk8-openjdk-slim`
+- `tomcat-8.5-jdk8-openjdk-slim`
+- `tomcat-8.5.46-jdk8-openjdk-slim`
+- `tomcat-8.0-jre8-slim`
 
 Alpine:
 
--   `tomcat-8.5.34-jre8-alpine`
+- `tomcat-8.5.34-jre8-alpine`
 
 For more information, see [versioning scheme notes](https://github.com/dhis2/notes/blob/master/decisions/2019/05/25-war-docker-schemes.md).
 
@@ -98,13 +98,13 @@ For more information, see [versioning scheme notes](https://github.com/dhis2/not
 
 When you decide which DHIS2 version and image variant you are interested in, here's how you can pull it from Docker hub:
 
--   `docker pull dhis2/core-dev:master-tomcat-9.0-jdk8-openjdk-slim` - this command will pull the image from `core-dev` repository. The image has the DHIS2 war build from the `master` branch. The image is built on top of `tomcat-9.0-jdk8-openjdk-slim` base image.
+- `docker pull dhis2/core-dev:master-tomcat-9.0-jdk8-openjdk-slim` - this command will pull the image from `core-dev` repository. The image has the DHIS2 war build from the `master` branch. The image is built on top of `tomcat-9.0-jdk8-openjdk-slim` base image.
 
--   `docker pull dhis2/core:2.32.2-tomcat-8.5.34-jre8-alpine` - this command will pull the image from `core` repository. The image has DHIS2 version 2.32.2 and is based on `tomcat-8.5.34-jre8-alpine` tomcat image.
+- `docker pull dhis2/core:2.32.2-tomcat-8.5.34-jre8-alpine` - this command will pull the image from `core` repository. The image has DHIS2 version 2.32.2 and is based on `tomcat-8.5.34-jre8-alpine` tomcat image.
 
 If you don't care about image variant, you can use default one and pull the image like this:
 
--   `docker pull dhis2/core:2.31.6` - this will pull the image with DHIS2 version 2.31.6. Before 2.33, the default image was based on `tomcat-8.5.34-jre8-alpine`, but we decided that `8.5-jdk8-openjdk-slim` will suite us better. Note, that you should use this option only when you don't care about the tomcat version, java environment or OS variant. If you want more control, use the explicit image variants.
+- `docker pull dhis2/core:2.31.6` - this will pull the image with DHIS2 version 2.31.6. Before 2.33, the default image was based on `tomcat-8.5.34-jre8-alpine`, but we decided that `8.5-jdk8-openjdk-slim` will suite us better. Note, that you should use this option only when you don't care about the tomcat version, java environment or OS variant. If you want more control, use the explicit image variants.
 
 ---
 
@@ -248,19 +248,20 @@ Example: `d2 cluster up myimage --image dhis2/core:2.32.2-tomcat-8.5.34-jre8-alp
 
 Q: **Can I set JAVA_OPTS for the docker container?**
 A: Sure, it's simple. You need to add additional environment variable to the 'environment' section of your `docker-compose.yml`. Variable should be called `JAVA_OPTS`.
-Example with command line invocation: `docker run -v $pathToYourDhisConf:/DHIS2_home/dhis.conf dhis2/core:2.33.0 -e JAVA_OPTS=$yourJavaOpts`
+Example with command line invocation: `docker run -v $pathToYourDhisConf:/DHIS2_home/dhis.conf dhis2/core:2.33.0 -e JAVA_OPTS=$yourJavaOpts` 
+
 
 ---
 
 # Resources:
 
--   [https://docker.com: Official Docker webpage](https://docker.com)
--   [https://docs.docker.com: Docker Compose documentation](https://docs.docker.com/compose/)
--   [https://github.com/dhis2/docker-compose](https://github.com/dhis2/docker-compose)
+- [https://docker.com: Official Docker webpage](https://docker.com)
+- [https://docs.docker.com: Docker Compose documentation](https://docs.docker.com/compose/)
+- [https://github.com/dhis2/docker-compose](https://github.com/dhis2/docker-compose)
 
 Great hands-on resources to help you to become a true _Dockerist_!
 
--   [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
--   [https://docker-curriculum.com/](https://docker-curriculum.com/)
--   [https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/](https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/)
--   [https://github.com/docker/labs](https://github.com/docker/labs)
+- [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/)
+- [https://docker-curriculum.com/](https://docker-curriculum.com/)
+- [https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/](https://www.freecodecamp.org/news/docker-simplified-96639a35ff36/)
+- [https://github.com/docker/labs](https://github.com/docker/labs)

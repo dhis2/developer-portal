@@ -1,7 +1,9 @@
 ---
-slug: 2019/12/library-deprecations
+slug: library-deprecations
 title: Web Application Library deprecations
-authors: varl
+author: Viktor Varland
+author_url: https://github.com/varl
+author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
 tags: [deprecation, libraries, webapp]
 ---
 

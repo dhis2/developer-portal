@@ -5,7 +5,7 @@ title: How to add translation support to an application
 
 Follow this quick guide to add translation support to your application using the [d2-i18n package](https://cnpmjs.org/package/d2-i18n). The `d2-i18n` package uses the `i18next` library to monitor and generate translations in your application, check out the [i18next documentation](https://www.i18next.com/) for more information on how the library works.
 
-## Prerequisites
+## Prerequisites  
 
 This guide assumes that you're developing an application using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
 
@@ -24,9 +24,9 @@ Follow the steps below to add a locale to your application:
 1. Add an `import i18n from './locales/index.js'` statement to your `src/App.js` file:
 
 ```jsx {43-60} title="src/App.js"
-import React from 'react'
-import classes from './App.module.css'
-import Test from './test.js'
+import React from "react";
+import classes from "./App.module.css";
+import Test from "./test.js";
 import i18n from './locales/index.js'
 ```
 
@@ -34,10 +34,10 @@ import i18n from './locales/index.js'
 
 ```jsx {43-60} title="src/App.js"
 const MyApp = () => (
-    <div className={classes.container}>
-        <h1>{i18n.t('Hello world!')}</h1>
-    </div>
-)
+  <div className={classes.container}>
+      <h1>{i18n.t('Hello world!')}</h1>
+  </div>
+);
 ```
 
 :::note
@@ -60,13 +60,14 @@ msgstr "¡Hola el mundo!"
 
 6. Run `yarn start` or `yarn build` to rebuild your application. This time the translations you provided in the `.po` file are added to the `src/locales/en/translations.json` and a new `src/locales/{your_new_locale}/translations.json` file is created. Your application will fetch translations from these files whenever a user switches to another locale in the UI.
 
+
 :::important
 
--   Make sure you only have one `@dhis2/d2-i18n`.
--   The `i18n.t()` translation lookup needs to happen at render time.
--   The generated files (`src/locales/{locale}/translations.json`) should not be committed to your repo.
--   Ensure only one version of dependencies having translations.
--   The App Platform generates `./src/locales/index.js` which MUST be imported somewhere in the app, usually in `./src/App.js`.
+- Make sure you only have one `@dhis2/d2-i18n`.
+- The `i18n.t()` translation lookup needs to happen at render time.
+- The generated files (`src/locales/{locale}/translations.json`) should not be committed to your repo.
+- Ensure only one version of dependencies having translations.
+- The App Platform generates `./src/locales/index.js` which MUST be imported somewhere in the app, usually in `./src/App.js`.
 
 :::
 
@@ -104,7 +105,7 @@ Interpolation is one of the most used functionalities in `i18next`. It allows fo
 
 ```js
 const numberOfDevs = 30
-i18n.t('hello world We are {{numberOfDevs}} developers', { numberOfDevs })
+i18n.t('hello world We are {{numberOfDevs}} developers', {numberOfDevs})
 ```
 
 ### Plurals

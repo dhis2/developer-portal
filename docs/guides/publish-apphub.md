@@ -39,15 +39,15 @@ Double check that all the information is correct, the upload will fail if there'
 
 ```js title="d2.config.js"
 const config = {
-    id: 'b783bf32-0cc2-4d31-aadc-22d4c4807c30',
-    title: 'Simple Example App', // this should match the name of your app on the App Hub
-    type: 'app',
-    entryPoints: {
-        app: './src/App.js',
-    },
-    minDHIS2Version: '2.34',
-}
-module.exports = config
+  id: "b783bf32-0cc2-4d31-aadc-22d4c4807c30",
+  title: "Simple Example App", // this should match the name of your app on the App Hub
+  type: "app",
+  entryPoints: {
+    app: "./src/App.js",
+  },
+  minDHIS2Version: "2.34",
+};
+module.exports = config;
 ```
 
 #### 4. Adding GitHub Action Workflow
@@ -60,36 +60,36 @@ Copy this file to `.github/workflows/apphub-release.yml` in your repository. Rem
 name: App Hub publish
 
 env:
-    D2_APP_HUB_API_KEY: ${{secrets.D2_APP_HUB_API_KEY}}
+  D2_APP_HUB_API_KEY: ${{secrets.D2_APP_HUB_API_KEY}}
 
 # Controls when the action will run.
 on:
-    # Triggers the workflow when a new release is created
-    release:
-        types: [created]
+  # Triggers the workflow when a new release is created
+  release:
+    types: [created]
 
-    # Allows you to run this workflow manually from the Actions tab
-    workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-    build:
-        # The type of runner that the job will run on
-        runs-on: ubuntu-latest
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v2
-              with:
-                  node-version: 12.x
-            - uses: c-hive/gha-yarn-cache@v1
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+      - uses: c-hive/gha-yarn-cache@v1
 
-            - name: Install JS dependencies
-              run: yarn install
+      - name: Install JS dependencies
+        run: yarn install
 
-            - name: Build
-              run: yarn build
+      - name: Build
+        run: yarn build
 
-            - name: Release to DHIS2 App Hub
-              run: yarn run d2-app-scripts publish
+      - name: Release to DHIS2 App Hub
+        run: yarn run d2-app-scripts publish
 ```
 
 #### 5. Prepare a release
