@@ -1,9 +1,7 @@
 ---
-slug: what-is-this-app-platform
+slug: 2019/07/what-is-this-app-platform
 title: What is this DHIS2 Application Platform?
-author: Austin McGee
-author_url: https://github.com/amcgee
-author_image_url: https://avatars.githubusercontent.com/u/947888?s=400&u=2051953d3237171aee830b7b3ee266a10995dcb2&v=4
+authors: austin
 tags: [app platform, developer tools, build system, architecture]
 ---
 

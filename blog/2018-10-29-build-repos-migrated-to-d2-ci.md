@@ -1,9 +1,7 @@
 ---
-slug: build-repos-migrated-to-d2-ci
+slug: 2018/10/build-repos-migrated-to-d2-ci
 title: Build repos migrated to d2-ci organization on GitHub
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 ---
 
 Now that the amount of build repos are ranging in the fifties, it's time
@@ -20,8 +18,8 @@ keep the URI to the builds uniform and simple. As we don't have any
 conflicts on the base URIs in a new org, there is no reason to use a
 suffix.
 
-- In a `package.json` file, this dep: `"maps-app": "github:dhis2/maps-app-builds"`
-- Becomes: `"maps-app": "github:d2-ci/maps-app"`
+-   In a `package.json` file, this dep: `"maps-app": "github:dhis2/maps-app-builds"`
+-   Becomes: `"maps-app": "github:d2-ci/maps-app"`
 
 This leaves the main org free from the extra noise of build repos.
 
@@ -58,8 +56,6 @@ manual reconfiguration on each of them.
 
 # Related PRs for the interested
 
-- [dhis2-core 2.29](https://github.com/dhis2/dhis2-core/pull/2476)
-- [dhis2-core 2.30](https://github.com/dhis2/dhis2-core/pull/2475)
-- [dhis2-core 2.31](https://github.com/dhis2/dhis2-core/pull/2477)
-
-
+-   [dhis2-core 2.29](https://github.com/dhis2/dhis2-core/pull/2476)
+-   [dhis2-core 2.30](https://github.com/dhis2/dhis2-core/pull/2475)
+-   [dhis2-core 2.31](https://github.com/dhis2/dhis2-core/pull/2477)

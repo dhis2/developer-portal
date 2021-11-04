@@ -1,17 +1,17 @@
 ---
 id: ui-table
-title: How to add a Table component 
+title: How to add a Table component
 ---
 
-Follow this quick guide to add a `Table` component to your application using the [DHIS2 UI Library](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page). 
+Follow this quick guide to add a `Table` component to your application using the [DHIS2 UI Library](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page).
 
-## Prerequisites  
+## Prerequisites
 
-This guide assumes that you're developing an application using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).  
+This guide assumes that you're developing an application using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
 
 ## 1. Import `Table`
 
-First, let's import the [Table](https://ui.dhis2.nu/demo/?path=/docs/data-display-table--static-layout) component as well as its child components: 
+First, let's import the [Table](https://ui.dhis2.nu/demo/?path=/docs/data-display-table--static-layout) component as well as its child components:
 
 ```js
 import {
@@ -25,12 +25,11 @@ import {
 } from '@dhis2/ui'
 ```
 
-## 2. Use components 
+## 2. Use components
 
-In this example, we are using the [DHIS2 App Runtime](https://runtime.dhis2.nu/#/hooks/useDataQuery) to fetch and display the `programs` resource from the DHIS2 Web API (as you can see in the `query` object defined in the `src/App.js` file below). 
+In this example, we are using the [DHIS2 App Runtime](https://runtime.dhis2.nu/#/hooks/useDataQuery) to fetch and display the `programs` resource from the DHIS2 Web API (as you can see in the `query` object defined in the `src/App.js` file below).
 
 See the highlighted lines of code - this is how we can represent the programs data in a `Table` component:
-
 
 ```jsx {43-60} title="src/App.js"
 import { useDataQuery } from '@dhis2/app-runtime'
@@ -51,11 +50,7 @@ const query = {
         resource: 'programs',
         params: {
             pageSize: 5,
-            fields: [
-                'id',
-                'created',
-                'displayName',
-            ],
+            fields: ['id', 'created', 'displayName'],
         },
     },
 }
@@ -107,7 +102,7 @@ In your browser, you should be able to see the following `Table` 👇
 
 ![](./assets/ui-table.png)
 
-### More examples? 
+### More examples?
 
 Please check the [UI Library documentation](https://ui.dhis2.nu/demo/?path=/docs/data-display-table--static-layout) for more examples and a list of demos as well as **code snippets** that let you easily copy and paste into your application! 👌🏽
 

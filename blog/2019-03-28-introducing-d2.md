@@ -1,9 +1,7 @@
 ---
-slug: introducing-d2
+slug: 2019/03/introducing-d2
 title: Introducing d2, the DHIS2 CLI
-author: Austin McGee
-author_url: https://github.com/amcgee
-author_image_url: https://avatars.githubusercontent.com/u/947888?s=400&u=2051953d3237171aee830b7b3ee266a10995dcb2&v=4
+authors: austin
 tags: [cli, developer tools, best practices, style, packages]
 ---
 
@@ -71,7 +69,7 @@ If either installing `d2` with `npm` or just by downloading an executable appeal
 
 The goal of `@dhis2/cli` is to consolidate and standardize the various fragmented command-line utilities in the `dhis2` ecosystem. If possible, other tools which can be implemented as Node.js scripts should be ported to `d2` namespaces moving forward.
 
-As an initial example of this transition, the code-style and packages tools introduced by Viktor Varland [in an earlier post](./packages-and-conventions) are now deprecated in favor of their `d2` equivalents (`d2 style` instead of `code-style`. Yarn workspaces should be used instead of `packages` for simple mono-repo support, and `d2 utils release` replaces `packages release`, although this should only need to run in CI environments like [travis](https://www.travis-ci.com))
+As an initial example of this transition, the code-style and packages tools introduced by Viktor Varland [in an earlier post](2018-12-07-packages-and-conventions.md) are now deprecated in favor of their `d2` equivalents (`d2 style` instead of `code-style`. Yarn workspaces should be used instead of `packages` for simple mono-repo support, and `d2 utils release` replaces `packages release`, although this should only need to run in CI environments like [travis](https://www.travis-ci.com))
 
 **Note** The `packages` command `packages exec` which multiplexes commands across a mono-repo has not yet been ported to `d2`, so you might still need to use `packages` to run i.e. `packages exec yarn build`
 
@@ -90,7 +88,7 @@ Please contribute! The CLI is modular in design, so it's built to be easily exte
 
 This helper library provides low-level primitives like:
 
-- `namespace` for declaring groups of commands
-- `makeEntryPoint` for turning a command or namespace into an executable program
-- `reporter` which supports console output to stderr and stdout at different log levels, including support for `--verbose` and `--quiet` CLI options
-- `cache` which is a bit more complex but supports local caching of downloaded files and archives for use in the CLI program. See `d2 debug cache --help` to manage your local cache and the [d2 cluster source](https://github.com/dhis2/cli/tree/master/packages/cluster/src/commands) for an example of the cache in action.
+-   `namespace` for declaring groups of commands
+-   `makeEntryPoint` for turning a command or namespace into an executable program
+-   `reporter` which supports console output to stderr and stdout at different log levels, including support for `--verbose` and `--quiet` CLI options
+-   `cache` which is a bit more complex but supports local caching of downloaded files and archives for use in the CLI program. See `d2 debug cache --help` to manage your local cache and the [d2 cluster source](https://github.com/dhis2/cli/tree/master/packages/cluster/src/commands) for an example of the cache in action.
