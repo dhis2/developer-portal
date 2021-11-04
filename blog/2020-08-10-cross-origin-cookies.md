@@ -1,10 +1,7 @@
 ---
-slug: cross-origin-cookies
+slug: 2020/08/cross-origin-cookies
 title: SameSite Cookie Policies and DHIS2 Applications
-author: Austin McGee
-# author_title: 
-author_url: https://github.com/amcgee
-author_image_url: https://avatars.githubusercontent.com/u/947888?s=400&u=2051953d3237171aee830b7b3ee266a10995dcb2&v=4
+authors: austin
 tags: [app platform, developer tools, webapp, troubleshooting, authentication]
 ---
 
@@ -36,7 +33,7 @@ By far the most secure way to work around this issue during application developm
 
 ### In Google Chrome or Chromium-based browsers
 
-To check your current Google Chrome version: click on the three dots menu > Help > About Google Chrome > Your Chrome version number will be displayed.   
+To check your current Google Chrome version: click on the three dots menu > Help > About Google Chrome > Your Chrome version number will be displayed.
 
 #### Chrome 90 and earlier versions
 
@@ -44,31 +41,31 @@ It is possible to disable the default `SameSite=Lax` behavior in Chrome and Chro
 
 Note that this **disables legitimate security behaviors** in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application.
 
-#### Chrome version 91 
+#### Chrome version 91
 
 The flags `#same-site-by-default-cookies` and `#cookies-without-same-site-must-be-secure` have been removed from chrome://flags as of Chrome 91, as the behavior is now **enabled by default**. [Learn more over the update docs from chromium.org](https://www.chromium.org/updates/same-site).
 
-**Disable using the command-line flag**: 
+**Disable using the command-line flag**:
 
-You can mention flags that you need to disable on your terminal. Note that you will need to close all instances of Chrome that are running before executing the following commands: 
+You can mention flags that you need to disable on your terminal. Note that you will need to close all instances of Chrome that are running before executing the following commands:
 
-1.  For Mac users: 
+1.  For Mac users:
 
 ```
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 --disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure
 ```
 
-2. For Windows users: 
+2. For Windows users:
 
 ```sh
-Chrome Application Path 
+Chrome Application Path
 --disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure
 ```
 
 :::note
 **Note:** In Chrome 94, the command-line flag `--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure` will be removed.
-::: 
+:::
 
 ### In Mozilla Firefox
 
@@ -78,7 +75,7 @@ Firefox stable channel does not yet enforce this cookie policy, so for the momen
 
 > **NOTE** Applications installed directly on a DHIS2 application (using the DHIS2 App Management app) will be available on the same domain as the DHIS2 instance, and so **are not affected by this issue**
 
-If a production application is hosted on a separate server and domain than the DHIS2 instance, and it uses cookies for authentication (the most common setup), it **will be affected** by this issue. In order to restore funtionality to external applications it is necessary to set the `SameSite=None; Secure` attributes on the DHIS2 authentication cookie and to run the DHIS2 instance with SSL/TLS enabled (so that it is only accessible over HTTPS). DHIS2 does not currently support this behavior by default, so it is necessary to modify the server's cookie responses in a gateway such as NGINX or Apache.  If you are hosting a production application outside of your DHIS2 instance and affected by this issue **please reach out to the DHIS2 core team so that we can be made aware of use-cases and can help you work around the issue with a gateway setup**
+If a production application is hosted on a separate server and domain than the DHIS2 instance, and it uses cookies for authentication (the most common setup), it **will be affected** by this issue. In order to restore funtionality to external applications it is necessary to set the `SameSite=None; Secure` attributes on the DHIS2 authentication cookie and to run the DHIS2 instance with SSL/TLS enabled (so that it is only accessible over HTTPS). DHIS2 does not currently support this behavior by default, so it is necessary to modify the server's cookie responses in a gateway such as NGINX or Apache. If you are hosting a production application outside of your DHIS2 instance and affected by this issue **please reach out to the DHIS2 core team so that we can be made aware of use-cases and can help you work around the issue with a gateway setup**
 
 ## Will the DHIS2 Core address this long-term?
 

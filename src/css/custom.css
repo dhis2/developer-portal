@@ -15,7 +15,7 @@
   --ifm-color-primary-lighter: #02255b;
   --ifm-color-primary-lightest: #032a67;
   --ifm-footer-link-hover-color: var(--ifm-color-secondary);
-  --ifm-code-font-size: 90%;
+  --ifm-code-font-size: 100%;
 
   --ifm-menu-color-background-hover: #eaedf0;
 }
