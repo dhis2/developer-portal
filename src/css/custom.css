@@ -15,7 +15,7 @@
   --ifm-color-primary-lighter: #02255b;
   --ifm-color-primary-lightest: #032a67;
   --ifm-footer-link-hover-color: var(--ifm-color-secondary);
-  --ifm-code-font-size: 90%;
+  --ifm-code-font-size: 100%;
 
   --ifm-menu-color-background-hover: #eaedf0;
 }
@@ -81,10 +81,18 @@
   flex-shrink: 0;
 }
 
-.announcementBarContent_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar- a.domain-nav-item:hover, .announcementBarContent_2EqR a.domain-nav-item:hover {
-  text-decoration: underline;
+.announcementBarContent_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module a.domain-nav-item:hover, .announcementBarContent_2EqR a.domain-nav-item:hover {
+  text-decoration: none;
 }
 
+.announcementBarContent_node_modules-\@docusaurus-theme-classic-lib-next-theme-AnnouncementBar-styles-module a.domain-nav-item {
+  text-decoration: none;
+}
+
+a.domain-nav-item {
+  padding-left: 8px;
+  font-size: 12px;
+}
 a.domain-nav-item:after {
   padding-left: 4px;
   content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3IiBoZWlnaHQ9IjciIHZpZXdCb3g9IjAgMCA3IDciPgogIDxwYXRoIGZpbGw9IiMyOTNGNkYiIGQ9Ik03LDAgTDcsNCBMNiw0IEw1Ljk5OTQ0NjYxLDEuNzA3IEwxLjM1MzU1MzM5LDYuMzUzNTUzMzkgTDAuNjQ2NDQ2NjA5LDUuNjQ2NDQ2NjEgTDUuMjkyNDQ2NjEsMSBMMywxIEwzLDAgTDcsMCBaIi8+Cjwvc3ZnPgo=');

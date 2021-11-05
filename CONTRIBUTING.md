@@ -1,14 +1,14 @@
-# Contribute to the Developer Portal 
+# Contribute to the Developer Portal
 
 Check the information below on how to set up the environment and contribute.
 
-## Fork and Open a Pull Request 
+## Fork and Open a Pull Request
 
-Fork the repository under your account and propose your changes from there. 
+Fork the repository under your account and propose your changes from there.
 
 This will allow you to commit your proposed changes to a fork of this repo. It will also create a new branch in your fork, and then you will be able to submit a pull request.
 
-## Run locally 
+## Run locally
 
 Clone the repository:
 
@@ -39,4 +39,3 @@ This command generates static content into the `build` directory and can be serv
 ## Website
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
-
