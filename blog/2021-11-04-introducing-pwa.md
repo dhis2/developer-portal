@@ -1,9 +1,9 @@
 ---
-slug: introducing-pwa
+slug: 2021/11/introducing-pwa
 title: Introducing PWA in the App Platform
 author: Kai Vandivier
 author_url: https://github.com/KaiVandivier
-author_image_url: https://avatars.githubusercontent.com/u/49666798?v=4
+author_image_url: https://github.com/KaiVandivier.png
 tags: [app platform, pwa, announcement]
 ---
 
@@ -76,7 +76,7 @@ The Dashboards app available in DHIS2 version 2.37 (viewable at https://play.dhi
 
 ![Dashboard not available offline](./assets/introducing-pwa/dashboard-not-available-offline.png)
 
-The dashboard here is the **cacheable section** – it’s only made available offline when you do so explicitly. The rest of the app that continues to work while offline is called the **app shell**, and includes content like the scripts that run the app’s behavior, some user and server data, and the user’s list of dashboards.
+The dashboard here is the **cacheable section** – it’s only made available offline when you do so explicitly. The rest of the app that continues to work while offline includes content like the scripts that run the app’s behavior, some user and server data, and the user’s list of dashboards.
 
 #### Setting up the sections
 
@@ -163,6 +163,6 @@ Encryption of the offline data will be the next feature for these PWA tools howe
 
 If you would like to learn more about adding offline caching, cacheable sections, or using other PWA features to your app, take a look at the documentation at the [App Platform](https://platform.dhis2.nu/#/pwa/pwa) and [App Runtime](https://runtime.dhis2.nu/#/advanced/offline) sites which go into greater detail about the API and provide more examples.
 
-In the near future we will also post an detailed article about the technical development of these PWA features because we’re using these tools in a pretty unique and cool way that we want to share, so keep an eye out for that post!
+In the near future we will also post a detailed article about the technical development of these PWA features because we’re using these tools in a pretty unique and cool way that we want to share, so keep an eye out for that post!
 
 Have any questions or feedback about these PWA features? Let us know at the [Community of Practice](https://community.dhis2.org/c/development/10) and we’ll be happy to hear from you!
