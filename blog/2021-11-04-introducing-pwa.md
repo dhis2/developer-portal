@@ -7,7 +7,7 @@ author_image_url: https://github.com/KaiVandivier.png
 tags: [app platform, pwa, announcement]
 ---
 
-The DHIS2 App Platform now supports PWA capabilities in apps made with the platform! The Dashboards App will be the first core app to take advantage of these features to enable offline capability, and it will be used as an example in this article to describe the details of these features.
+The DHIS2 App Platform now supports PWA capabilities in apps made with the platform! The Dashboard App will be the first core app to take advantage of these features to enable offline capability, and it will be used as an example in this article to describe the details of these features.
 
 This article will give a brief overview of the new features available and some examples that illustrate how they can be used. A future article will go into detail about the technical decisions behind these features and their designs.
 
@@ -27,7 +27,7 @@ Apps can now be configured to take advantage of these features on an opt-in basi
 1. A **manifest.json** file that describes the static assets the app needs to be installed, and
 2. A **service worker** script that enables offline capability by handling the app’s network traffic and caching data to serve it offline.
 
-What’s more, we’ve developed an API in the App Runtime library that can be used in combination with these PWA features to enable **on-demand caching of individual sections of an app**. This feature is called **cacheable sections** and was developed with the Dashboards App in mind, which will use it to cache individual dashboards for offline use.
+What’s more, we’ve developed an API in the App Runtime library that can be used in combination with these PWA features to enable **on-demand caching of individual sections of an app**. This feature is called **cacheable sections** and was developed with the Dashboard App in mind, which will use it to cache individual dashboards for offline use.
 
 ## How to use PWA in your app
 
@@ -68,11 +68,11 @@ If possible, it’s best to encourage users to save their data and update the ap
 
 ### Cacheable Sections
 
-This is a set of features designed with the Dashboards app in mind to enable saving individual dashboards in the offline cache while leaving other dashboards uncached. They are designed in a generalized way to save any chunks of content with a React API, so you can use them if they suit your app too.
+This is a set of features designed with the Dashboard app in mind to enable saving individual dashboards in the offline cache while leaving other dashboards uncached. They are designed in a generalized way to save any chunks of content with a React API, so you can use them if they suit your app too.
 
-![Dashboards app](./assets/introducing-pwa/dashboard-save-offline.png)
+![Dashboard app](./assets/introducing-pwa/dashboard-save-offline.png)
 
-The Dashboards app available in DHIS2 version 2.37 (viewable at https://play.dhis2.org/2.37dev) can be used an example of how cacheable sections work: when you visit the app and confirm any update prompts, you can go offline and still view the app. If you try to visit another dashboard though, you’ll see a “not available offline” notice.
+The Dashboard app available in DHIS2 version 2.37 (viewable at https://play.dhis2.org/2.37dev) can be used an example of how cacheable sections work: when you visit the app and confirm any update prompts, you can go offline and still view the app. If you try to visit another dashboard though, you’ll see a “not available offline” notice.
 
 ![Dashboard not available offline](./assets/introducing-pwa/dashboard-not-available-offline.png)
 
@@ -80,7 +80,7 @@ The dashboard here is the **cacheable section** – it’s only made available o
 
 #### Setting up the sections
 
-Normally, the default caching strategies cache _all_ data that gets requested when a user is using an app. To _not_ cache the data in cacheable sections until specifically requested to do so, use **URL filter patterns** to omit those requests from the app shell cache by setting PWA caching options in `d2.config.js` – here is a [reference](https://platform.dhis2.nu/#/pwa/pwa?id=opting-in) of the options available. Here is what the configuration looks like for the Dashboards app, to avoid caching content in the dashboards until the cacheable section is saved offline:
+Normally, the default caching strategies cache _all_ data that gets requested when a user is using an app. To _not_ cache the data in cacheable sections until specifically requested to do so, use **URL filter patterns** to omit those requests from the app shell cache by setting PWA caching options in `d2.config.js` – here is a [reference](https://platform.dhis2.nu/#/pwa/pwa?id=opting-in) of the options available. Here is what the configuration looks like for the Dashboard app, to avoid caching content in the dashboards until the cacheable section is saved offline:
 
 ```js
 // d2.config.js
@@ -109,7 +109,7 @@ The way the cacheable sections work to save the data in that section offline is 
 
 To cache the content despite this lack of knowledge, when a cacheable section is to be saved for offline use, it will _reload_ the section then **record all of the data that’s requested while the section loads** and save it in the offline cache. This way, all the requests initiated by plugins and other widgets inside the section will be captured and cached.
 
-The `@dhis2/app-runtime` package provides a React API to use a cacheable section that’s comprised of a `useCacheableSection(id)` hook and a `<CacheableSection id="">` component. In an _extremely_ simplified hypothetical version of the Dashboards app, the usage looks like this:
+The `@dhis2/app-runtime` package provides a React API to use a cacheable section that’s comprised of a `useCacheableSection(id)` hook and a `<CacheableSection id="">` component. In an _extremely_ simplified hypothetical version of the Dashboard app, the usage looks like this:
 
 ```jsx
 import { useCacheableSection, CacheableSection } from "@dhis2/app-runtime";
@@ -137,9 +137,9 @@ To learn more about the usage of cacheable sections, including an example of a L
 
 ### Online status
 
-If you took a look at the 2.37 version of the Dashboards app while offline, you may have noticed that many features of the app are disabled while offline, and some items in the interface change appearance.
+If you took a look at the 2.37 version of the Dashboard app while offline, you may have noticed that many features of the app are disabled while offline, and some items in the interface change appearance.
 
-The App Runtime provides a `useOnlineStatus` hook that can access the online or offline status of the app, which the Dashboards app uses to enable or disable those features. Using the hook looks like this:
+The App Runtime provides a `useOnlineStatus` hook that can access the online or offline status of the app, which the Dashboard app uses to enable or disable those features. Using the hook looks like this:
 
 ```jsx
 import { useOnlineStatus } from "@dhis2/app-runtime";
@@ -161,7 +161,7 @@ Encryption of the offline data will be the next feature for these PWA tools howe
 
 ## Want to know more?
 
-If you would like to learn more about adding offline caching, cacheable sections, or using other PWA features to your app, take a look at the documentation at the [App Platform](https://platform.dhis2.nu/#/pwa/pwa) and [App Runtime](https://runtime.dhis2.nu/#/advanced/offline) sites which go into greater detail about the API and provide more examples.
+If you would like to learn more about adding offline caching, cacheable sections, or using other PWA features to your app, take a look at the documentation at the [App Platform](https://platform.dhis2.nu/#/pwa/pwa) and [App Runtime](https://runtime.dhis2.nu/#/advanced/offline) sites which go into greater detail about the API and provide more examples. If you would like to take a closer look at the implementation in the Dashboard app, you can browse the source code at its [GitHub repository](https://github.com/dhis2/dashboard-app).
 
 In the near future we will also post a detailed article about the technical development of these PWA features because we’re using these tools in a pretty unique and cool way that we want to share, so keep an eye out for that post!
 
