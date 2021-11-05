@@ -83,7 +83,7 @@ module.exports = {
         },
         announcementBar: {
             content:
-                '<a href="https://www.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >DHIS2.org</a > <a href="https://play.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >Demo</a > <a href="https://docs.dhis2.org/" target="_blank" rel="noopener" class="domain-nav-item" >Documentation</a > <a href="https://community.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >Community</a >',
+                '<div style="text-align:right;margin-right:8px;"><a href="https://www.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >DHIS2.org</a > <a href="https://play.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >Demo</a > <a href="https://docs.dhis2.org/" target="_blank" rel="noopener" class="domain-nav-item" >Documentation</a > <a href="https://community.dhis2.org" target="_blank" rel="noopener" class="domain-nav-item" >Community</a ></diV>',
             backgroundColor: '#f8fafc',
             textColor: '#051841',
             isCloseable: false,
