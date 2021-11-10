@@ -92,4 +92,8 @@ module.exports = [
         to: '/blog/2021/11/app-platform-v8',
         from: '/blog/app-platform-v8',
     },
+    {
+        to: '/community/contribute',
+        from: '/docs/conceptual/contribute',
+    },
 ]
