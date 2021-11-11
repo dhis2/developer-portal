@@ -155,9 +155,9 @@ const OnlineComponent = () => {
 
 These features are exciting and the opportunity to take apps offline can be very useful when taken into areas with low network connectivity, but there is an important limitation that you should know before using the PWA features.
 
-In its current implementation, **cached data is not encrypted** when stored offline, and a malicious actor could inspect access and inspect the cached data if they gain access to a user’s device. For this reason, it is **not recommended** to use PWA features in an app that will handle sensitive data, especially if the app is likely to be used on shared devices.  Some protections are currently provided by the platform to guard against unauthorized access to data when a user logs out or when a new user logs in, but without encryption it might still be possible for a savvy attacker to access some offline data.  Importantly, the data cached by the PWA is the same as might be cached at the browser layer in a non-PWA application, and so the risk of data exposure has not significantly increased.
+In its current implementation, **cached data is not encrypted** when stored offline, and a malicious actor could inspect access and inspect the cached data if they gain access to a user’s device. For this reason, it is **highly recommended** to take additional security steps when using PWA features in an app that will handle sensitive data, especially if the app is likely to be used on shared devices.  Some protections are currently provided by the platform to guard against unauthorized access to data when a user logs out or when a new user logs in, but without encryption it might still be possible for a savvy attacker to access some offline data.  Importantly, the data can only be accessed by someone with direct access to a browser which has been used to log in and download data for offline use.
 
-Encryption of the offline data will be the next feature for these PWA tools however, so keep an eye out for the announcement of that release.
+Encryption of offline data will be the next feature for these PWA tools however, so keep an eye out for the announcement of that release.
 
 ## Want to know more?
 
