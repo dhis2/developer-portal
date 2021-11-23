@@ -139,7 +139,7 @@ All Platform apps generate a PWA web manifest, even if PWA is not enabled, but t
 
 Basic offline capability is added to the platform by adding a **service worker** to the app. A service worker is a script that installs and runs alongside the app and has access to the app’s network traffic by listening to `fetch` events from the app and handling what to do with the requests and responses it receives. 
 
-The service worker can maintain offline caches with data that the app uses. Then, when the user’s device is offline and the app makes a `fetch` event to request data, the service worker can access the response to that request from the offline cache instead of the network. This allows the app to work offline. You can read more about the basics of service workers [here](https://developers.google.com/web/fundamentals/primers/service-workers).
+The service worker can maintain offline caches with data that the app uses. Then, when the user’s device is offline and the app makes a `fetch` event to request data, the service worker can access the response to that request from the offline cache instead of the network. This allows the app to work offline. You can read more about the basics of service workers [here](https://developers.google.com/web/fundamentals/primers/service-workers); the following sections assume some knowledge about the basics of how they work.
 
 Implementing the service worker in the app platform takes several steps:
 
