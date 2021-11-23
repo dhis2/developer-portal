@@ -7,7 +7,7 @@ author_image_url: https://github.com/KaiVandivier.png
 tags: [app platform, pwa, tech]
 ---
 
-We are excited about the recent release of PWA features in the App Platform, which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think the design challenges we faced in making these features available in a generalized way and the ways we used available technologies to solve those challenges are quite unique and interesting, so we want to share some excerpts from the development process here! This article will also help provide a deeper understanding of how the PWA features work under the hood, which may be relevant to your development purposes.
+We are excited about the recent release of PWA features in the App Platform, which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think the design challenges we faced in making these features generalizable to any app and the ways we used available technologies to solve those challenges are quite unique and interesting, so we want to share some excerpts from the development process here! This article will also help provide a deeper understanding of how the PWA features work under the hood, which may be relevant to your development purposes.
 
 <!--truncate-->
 
@@ -35,11 +35,11 @@ We are excited about the recent release of PWA features in the App Platform, whi
 
 ## The goals
 
-Implementing PWA features can be complex enough in a single app (with some aspects being *famously* tricky), and on top of that, we have some other unique design criteria that add complexity to our project: the features should work in and be easy to add to *any* Platform app, they should support the Dashboard app’s unique “cacheable sections” use-case (described in the intro blog above) in a way that can be generalized to any other app, and they should not cause side effects for apps that *don’t* use the PWA features.
+Our overarching goal is to add PWA features, especially offline capability, in the DHIS2 App Platform. This is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being *famously* tricky), and on top of that, we have some other unique design criteria that add complexity to our project: the features should work in and be easy to add to *any* Platform app, they should support the Dashboard app’s unique “cacheable sections” use-case (described in the intro blog above) in a way that can be generalized to any other app, and they should not cause side effects for apps that *don’t* use the PWA features.
 
 This post will cover how we extended the Platform to add the basic PWA features to DHIS2 apps in a way that meets those unique criteria and the decisions we made along the way, and includes the topics of adding installability, service worker compilation, offline caching strategies, and managing service worker updates and lifecycle.
 
-To keep this article digestible, another post will follow this one to describe the tools we developed for “cacheable sections” and their technical development, which warrant a long discussion of their own!
+To keep this article digestible, another post will follow this one to describe the tools we developed for “cacheable sections” and their technical development, which warrant a discussion of their own!
 
 ## Some necessary context: how the App Platform works
 
@@ -47,13 +47,13 @@ Much of the discussion here about what we’ve added requires some understanding
 
 ### Some notes on terminology
 
-Admittedly, the terminology around the App Platform is a bit complicated, so hopefully a short explanation will help avoid any confusion.
+To make this article clearer and avoid any confusion, here are a few comments to help clarify the terminology around the App Platform, which can sometimes be a bit complicated.
 
-The “App Platform” generally refers to a suite of tools and packages for developing, building, and deploying high-quality, standardized DHIS2 apps, including the `@dhis2/cli-app-scripts` library for build and development tools, the `@dhis2/app-runtime` library for runtime tools, and the `@dhis2/ui` library for reusable React user interface components that implement the DHIS2 design system. An app can be called a “Platform app” if it uses, at minimum, the `@dhis2/cli-app-scripts` library to build the app inside a common, standardized wrapper.
+The “App Platform” generally refers to a suite of tools and packages for developing, building, and deploying high-quality, standardized DHIS2 apps. It includes the `@dhis2/cli-app-scripts` library for build and development tooling, the `@dhis2/app-runtime` library for runtime tools, and the `@dhis2/ui` library for reusable React user interface components that implement the DHIS2 design system. An app can be called a “Platform app” if it uses, at minimum, the `@dhis2/cli-app-scripts` library to build the app inside a common, standardized wrapper.
 
-One point of confusion that you may encounter while browsing the source code of these tools (which will be linked to in this article) is that the `@dhis2/cli-app-scripts` package lives in a *repository* called `/dhis2/app-platform` on GitHub, which is relevant since it houses other packages of interest to this article, but shouldn’t be confused with the wider “App Platform” concept described above. The two will be distinguished by formatting to emphasize the difference: the repository will be lower-case and hyphenated (app-platform), and the overarching development service will be capitalized (App Platform).
+One point of confusion that you may encounter while browsing the source code of these tools (which will be linked to in this article) is that the `@dhis2/cli-app-scripts` package lives in a *repository* called `/dhis2/app-platform` on GitHub, which is relevant since it houses other packages of interest to this article. This `app-platform` repository shouldn’t be confused with the wider “App Platform” concept described above; the two will be distinguished by formatting to emphasize the difference: the repository will be lower-case and hyphenated (app-platform), and the overarching development service will be capitalized (App Platform).
 
-Lastly, “App under development” refers to the unique source code that a developer is writing for a Platform app, before it gets injected into the App Shell which is introduced below. For example, when a Platform app template is generated by using the [`d2` global CLI](https://cli.dhis2.nu/#/), all the app code in the `src/` directory is the “app under development”.
+Lastly, the term “app under development” refers to the unique source code that a developer is writing for a Platform app, before it gets injected into the standardized wrapper (called the "App Shell") which is introduced below. For example, when a Platform app template is generated by using the [`d2` global CLI](https://cli.dhis2.nu/#/), all the app code in the `src/` directory is the “app under development”.
 
 ### What the Platform offers
 
@@ -73,38 +73,36 @@ The App Platform is made up of a number of components that will be referenced wh
       4. Reads some environment variables and passes them to the App Adapter
    3. An **App Scripts CLI** which provides development tools and performs build-time jobs (accessed under the `d2-app-scripts` alias):
       1. Builds the app:
-         1. Handling internationalization (“i18n”) jobs (which outside of the scope of this article)
-         2. Creating a shell directory from the App Shell package to inject that app under development into
-         3. Generating manifests for the app
-         4. Transpiling and injecting the app’s code into the shell directory
-         5. Adding environment variables according to the app’s config file
-         6. Creating a production build of the app in the shell and creating a bundle for upload to a DHIS2 instance
+         1. Handles internationalization (“i18n”) jobs (which outside of the scope of this article)
+         2. Creates a shell directory from the App Shell package to inject the app under development into
+         3. Generates manifests for the app
+         4. Transpiles and injectes the app’s code into the shell directory
+         5. Adds environment variables according to the app’s config file
+         6. Creates a production build of the app in the shell and creating a bundle for upload to a DHIS2 instance
       2. Runs a development server: transpiles the app, injects it into a shell, and serves it from a development server
-      3. And does some other jobs that are not relevant to PWA:
+      3. And does some other jobs that won't be relevant to PWA but can be read about in [its documentation](https://platform.dhis2.nu/#/scripts):
          1. Internationalization (i18n) extraction and generation
          2. Automated testing infrastructure
          3. Publication and release scripts
-2. Run-time tools: React components and hooks that provide services to the app
-   1. The **App Runtime**, which provides several services listed below. It depend on a universal `<Provider>` component to provide context, which the App Adapter wraps the app under development with. Source code can be found in the [`app-runtime` repository](https://github.com/dhis2/app-runtime/)
-      1. A **Data Service** which provides a declarative API for sending and receiving data to and from the DHIS2 backend
-      2. A **Config Service** which exposes several app configuration parameters
-      3. An **Alerts Service** which provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component described in the App Adapter above)
-
-   2. A **UI Library** for reusable interface components. [`ui` repository](https://github.com/dhis2/ui)
-
+2. Run-time tools: React components and hooks that provide services to the app under development
+   1. The **App Runtime**, which provides several services listed below. It depends on a universal `<Provider>` component to provide context, which the App Adapter normally provides. Read more at the [App Runtime documentation](https://runtime.dhis2.nu), and source code can be found in the [`app-runtime` repository](https://github.com/dhis2/app-runtime/)
+      1. A **Data Service** provides a declarative API for sending and receiving data to and from the DHIS2 backend
+      2. A **Config Service** exposes several app configuration parameters
+      3. An **Alerts Service** provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component described in the App Adapter above)
+   2. A **UI Library** provides reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui)
 
 #### Example build sequence
 
 That list is a lot to take in; to illustrate how these features work together, consider this series of events that happens when you initialize and build an app:
 
-1. Using the [d2 CLI](https://cli.dhis2.nu/#/) (which includes the App Scripts CLI mentioned above), a new Platform app is [initialized](https://platform.dhis2.nu/#/scripts/init) using `d2 app scripts init new-app`.
+1. Using the [d2 global CLI](https://cli.dhis2.nu/#/) (which includes the App Scripts CLI mentioned above), a new Platform app is [bootstrapped](https://platform.dhis2.nu/#/bootstrapping) using `d2 app scripts init new-app` in the terminal.
 2. Inside the `new-app/` directory that the above script just created, the `yarn build` command is run which runs [`d2-app-scripts build`](https://platform.dhis2.nu/#/scripts/build), which initiates the following steps. Any directory or file paths described below are relative to `new-app/`.
 3. i18n jobs are executed. (Not important to this article)
-4. The `build` scripts creates a new app shell in the `.d2/shell/` directory.
+4. The `build` script creates a new app shell in the `.d2/shell/` directory.
 5. A web app manifest is generated.
 6. The app code written in `src/` is transpiled and copied into the `.d2/shell/src/D2App/` directory.
-7. At this stage, the shell is importing the component exported from `src/App.js` (the default entry point, now copied into `.d2/shell/src/D2App/App.js`), and wraps it with the App Adapter before rendering the wrapped app into an anchor node in the DOM.
-8. Using this shell-encapsulated app in the `.d2/shell/` directory, a minified production build is compiled (the encapsulated app is now basically a “Create React App” app, and the build is performed by the `react-scripts build` script) and output to the `build/app/` directory in the app root.
+7. Inside the shell at this stage, the files are set up so that the root component exported from the "entry point" in the app under development (which would be `<App />` from `src/App.js` by default, which has now been copied into `.d2/shell/src/D2App/App.js`) is _imported_ by a file in the shell [that wraps it with the App Adapter](https://github.com/dhis2/app-platform/blob/master/shell/src/App.js), and then the [wrapped app gets rendered](https://github.com/dhis2/app-platform/blob/master/shell/src/index.js) into an anchor node in the DOM.
+8. Using this shell-encapsulated app that's now set up in the `.d2/shell/` directory, a minified production build is compiled. The encapsulated app is now basically a “Create React App” app, and the build is performed by the `react-scripts build` script and output to the `build/app/` directory in the app root.
 9. A zipped bundle of the app is also created and output to `build/bundle/`, which can be uploaded to a DHIS2 instance.
 
 Hopefully this sequence of events illustrates how the App Adapter, App Shell, and App Scripts CLI work together.
