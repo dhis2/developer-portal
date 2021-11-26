@@ -7,7 +7,7 @@ author_image_url: https://github.com/KaiVandivier.png
 tags: [app platform, pwa, tech]
 ---
 
-We are excited about the recent release of PWA features in the App Platform, which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think the design challenges we faced in making these features generalizable to any app and the ways we used available technologies to solve those challenges are quite unique and interesting, so we want to share some excerpts from the development process here! This article will also help provide a deeper understanding of how the PWA features work under the hood, which may be relevant to your development purposes.
+We are excited about the recent release of PWA features in the App Platform, which you can read about in [this blog post introducing them](2021-11-04-introducing-pwa.md), and we think the design challenges we faced in making these features generalizable to any app and the ways we used available technologies to solve those challenges are quite unique and interesting, so we want to share some excerpts from the development process here! This article will also help provide a deeper understanding of how the PWA features work under the hood, which may be relevant to your development purposes.
 
 <!--truncate-->
 
@@ -266,7 +266,7 @@ By including this kill-switch mode, we prevent apps from getting stuck in the fu
 
 This concludes the discussion of the foundational PWA features that have been introduced in the App Platform, including installability, build tooling to read an app’s config and compile a service worker, caching strategies, and service worker updates and lifecycle management. Hopefully this closer look is interesting for its technical design and is helpful for a deeper understanding of how these features work together to enable offline capability that you’ll start to see in DHIS2 apps, starting with the Dashboard app in version 2.37.0.
 
-A following article will describe design challenges and solutions for creating the “cacheable sections” and some other App Runtime features that were described in the [PWA introduction article](https://developers.dhis2.org/blog/2021/11/introducing-pwa) released last week; look out for that one if you found this one interesting!
+A following article will describe design challenges and solutions for creating the “cacheable sections” and some other App Runtime features that were described in the [PWA introduction article](2021-11-04-introducing-pwa.md) released last week; look out for that one if you found this one interesting!
 
 Is there anything you’d like to know more about on this subject, or have any other questions or comments? Feel free to reach out to us at the [Community of Practice](https://community.dhis2.org/c/development/10)! We’re always happy to hear from interested developers and community members.
 
