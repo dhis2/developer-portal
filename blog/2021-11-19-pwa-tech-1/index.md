@@ -17,6 +17,8 @@ We are excited about the recent release of PWA features in the App Platform, whi
 -   [Some necessary context: how the App Platform works](#some-necessary-context-how-the-app-platform-works)
     -   [Some notes on terminology](#some-notes-on-terminology)
     -   [What the Platform offers](#what-the-platform-offers)
+        -   [Build-time and development tools](#build-time-and-development-tools)
+        -   [Run-time tools](#run-time-tools)
         -   [Example build sequence](#example-build-sequence)
 -   [Adding PWA tools to the Platform](#adding-pwa-tools-to-the-platform)
     -   [Adding installability](#adding-installability)
@@ -30,6 +32,7 @@ We are excited about the recent release of PWA features in the App Platform, whi
         -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
             -   [User experience](#user-experience)
             -   [Implementation](#implementation)
+                -   [How the update flow works under the hood](#how-the-update-flow-works-under-the-hood)
             -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
             -   [Adding a kill switch](#adding-a-kill-switch)
 -   [Conclusion](#conclusion)
@@ -299,12 +302,12 @@ export function setUpKillSwitchServiceWorker() {
         self.registration.unregister()
         // Delete all caches
         const keys = await self.caches.keys()
-        await Promise.all(keys.map(key => self.caches.delete(key)))
+        await Promise.all(keys.map((key) => self.caches.delete(key)))
         // Delete DB
         await deleteSectionsDB()
         // Force refresh all windows
         const clients = await self.clients.matchAll({ type: 'window' })
-        clients.forEach(client => client.navigate(client.url))
+        clients.forEach((client) => client.navigate(client.url))
     })
 }
 ```
