@@ -282,7 +282,34 @@ If, for some reason, the service worker lifecycle gets out of control and an app
 
 To handle this “rogue service worker” case, we added a **kill-switch mode** to the service worker in the platform which will help unstick apps with a SW that’s serving an old version of the app. This takes advantage of browsers’ service worker update design: in response to a registration event or a navigation in scope of an active service worker, the browser will check the server for a new version of the service worker with the same filename, even if that service worker is cached. If there is a SW on the server and it is byte-different from the active one, the browser will initiate the installation process of the new SW on the server (this was relevant to the update process described above as well).
 
-To take advantage of that process, _every_ Platform app actually gets a compiled service worker called `service-worker.js` added to the built app whether or not PWA is enabled, and the service worker behaves differently depending on the app configuration (and only gets _registered_ if PWA is enabled). If PWA is _not_ enabled, the service worker behaves in the [kill-switch mode](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/service-worker/utils.js#L25-L46), where it will skip waiting as soon as it’s done installing to claim all open clients, and upon taking control, will unregister itself, delete all caches, then reload the page. After this reload, the service worker will be inactive, and the new app assets will be fetched from the server instead of served by the offline cache, allowing the app will run normally.
+To take advantage of that process, _every_ Platform app actually gets a compiled service worker called `service-worker.js` added to the built app whether or not PWA is enabled, and the service worker behaves differently depending on the app configuration (and only gets _registered_ if PWA is enabled). If PWA is _not_ enabled, the service worker behaves in the [kill-switch mode](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/service-worker/utils.js#L25-L46), which uses this code:
+
+```js
+/** Called if the `pwaEnabled` env var is not `true` */
+export function setUpKillSwitchServiceWorker() {
+    // A simple, no-op service worker that takes immediate control and tears
+    // everything down. Has no fetch handler.
+    self.addEventListener('install', () => {
+        self.skipWaiting()
+    })
+
+    self.addEventListener('activate', async () => {
+        console.log('Removing previous service worker')
+        // Unregister, in case app doesn't
+        self.registration.unregister()
+        // Delete all caches
+        const keys = await self.caches.keys()
+        await Promise.all(keys.map(key => self.caches.delete(key)))
+        // Delete DB
+        await deleteSectionsDB()
+        // Force refresh all windows
+        const clients = await self.clients.matchAll({ type: 'window' })
+        clients.forEach(client => client.navigate(client.url))
+    })
+}
+```
+
+It will skip waiting as soon as it’s done installing to claim all open clients, and upon taking control, will unregister itself, delete all caches (and a "sections" IndexedDB that will be introduced in the article about cacheable sections), then reload the page. After this reload, the service worker will be inactive, and the new app assets will be fetched from the server instead of served by the offline cache, allowing the app will run normally.
 
 Putting these things together, here’s what happens in a scenario where the kill switch is used:
 
