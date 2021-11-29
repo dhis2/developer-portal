@@ -208,7 +208,7 @@ module.exports = {
     type: 'app',
     title: 'My App',
 
-+   pwa: { enabled: true, },
++   pwa: { enabled: true },
 
     entryPoints: {
         app: './src/App.js',
