@@ -60,41 +60,48 @@ Lastly, the term “app under development” refers to the unique source code th
 
 The App Platform is made up of a number of components that will be referenced when describing the PWA features. Before adding PWA tools, this is the feature list:
 
-1. Build-time and development tools (found in the [`app-platform` repository](https://github.com/dhis2/app-platform/)):
-    1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point, like `<App />` in the template created by `d2 app scripts init`, and performs some jobs:
-        1. Initializes a user’s locale
-        2. Adds a standardized Header Bar and Alerts manager to the app
-        3. Adds context providers for App Runtime services (described below)
-        4. Wraps the app in a React error boundary to gracefully handle app errors
-        5. Also adds an error boundary at the top level of the wrapper to catch any errors that might happen above the app and inside the wrapper
-    2. An **App Shell** which provides the HTML skeleton for the app and other assets:
-        1. Provides static assets for the app, including icons and `index.html`
-        2. Provides root nodes in the HTML in which to render the React app and other components
-        3. Organizes the app structure by importing the root `<App>` component from the app under development’s entry point and wraps it with the App Adapter
-        4. Reads some environment variables and passes them to the App Adapter
-    3. An **App Scripts CLI** which provides development tools and performs build-time jobs (accessed under the `d2-app-scripts` alias):
-        1. Builds the app:
-            1. Handles internationalization (“i18n”) jobs (which outside of the scope of this article)
-            2. Creates a shell directory from the App Shell package to inject the app under development into
-            3. Generates manifests for the app
-            4. Transpiles and injectes the app’s code into the shell directory
-            5. Adds environment variables according to the app’s config file
-            6. Creates a production build of the app in the shell and creating a bundle for upload to a DHIS2 instance
-        2. Runs a development server: transpiles the app, injects it into a shell, and serves it from a development server
-        3. And does some other jobs that won't be relevant to PWA but can be read about in [its documentation](https://platform.dhis2.nu/#/scripts):
-            1. Internationalization (i18n) extraction and generation
-            2. Automated testing infrastructure
-            3. Publication and release scripts
-2. Run-time tools: React components and hooks that provide services to the app under development
-    1. The **App Runtime**, which provides several services listed below. It depends on a universal `<Provider>` component to provide context, which the App Adapter normally provides. Read more at the [App Runtime documentation](https://runtime.dhis2.nu), and source code can be found in the [`app-runtime` repository](https://github.com/dhis2/app-runtime/)
-        1. A **Data Service** provides a declarative API for sending and receiving data to and from the DHIS2 backend
-        2. A **Config Service** exposes several app configuration parameters
-        3. An **Alerts Service** provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component described in the App Adapter above)
-    2. A **UI Library** provides reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui)
+#### Build-time and development tools
+
+These can be found in the [`app-platform` repository](https://github.com/dhis2/app-platform/).
+
+1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point, like `<App />` in the template created by `d2 app scripts init`, and performs some jobs:
+    1. Initializes a user’s locale
+    2. Adds a standardized Header Bar and Alerts manager to the app
+    3. Adds context providers for App Runtime services (described below)
+    4. Wraps the app in a React error boundary to gracefully handle app errors
+    5. Also adds an error boundary at the top level of the wrapper to catch any errors that might happen above the app and inside the wrapper
+2. An **App Shell** which provides the HTML skeleton for the app and other assets:
+    1. Provides static assets for the app, including icons and `index.html`
+    2. Provides root nodes in the HTML in which to render the React app and other components
+    3. Organizes the app structure by importing the root `<App>` component from the app under development’s entry point and wraps it with the App Adapter
+    4. Reads some environment variables and passes them to the App Adapter
+3. An **App Scripts CLI** which provides development tools and performs build-time jobs (accessed under the `d2-app-scripts` alias):
+    1. Builds the app:
+        1. Handles internationalization (“i18n”) jobs (which outside of the scope of this article)
+        2. Creates a shell directory from the App Shell package to inject the app under development into
+        3. Generates manifests for the app
+        4. Transpiles and injectes the app’s code into the shell directory
+        5. Adds environment variables according to the app’s config file
+        6. Creates a production build of the app in the shell and creating a bundle for upload to a DHIS2 instance
+    2. Runs a development server: transpiles the app, injects it into a shell, and serves it from a development server
+    3. And does some other jobs that won't be relevant to PWA but can be read about in [its documentation](https://platform.dhis2.nu/#/scripts):
+        1. Internationalization (i18n) extraction and generation
+        2. Automated testing infrastructure
+        3. Publication and release scripts
+
+#### Run-time tools
+
+These are React components and hooks that provide services to the app under development.
+
+1. The **App Runtime**, which provides several services listed below. It depends on a universal `<Provider>` component to provide context, which the App Adapter normally provides. Read more at the [App Runtime documentation](https://runtime.dhis2.nu), and source code can be found in the [`app-runtime` repository](https://github.com/dhis2/app-runtime/)
+    1. A **Data Service** provides a declarative API for sending and receiving data to and from the DHIS2 backend
+    2. A **Config Service** exposes several app configuration parameters
+    3. An **Alerts Service** provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component described in the App Adapter above)
+2. A **UI Library** provides reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui)
 
 #### Example build sequence
 
-That list is a lot to take in; to illustrate how these features work together, consider this series of events that happens when you initialize and build an app:
+This list of features is a lot to take in; to illustrate how they work together, consider this series of events that happens when you initialize and build an app:
 
 1. Using the [d2 global CLI](https://cli.dhis2.nu/#/) (which includes the App Scripts CLI mentioned above), a new Platform app is [bootstrapped](https://platform.dhis2.nu/#/bootstrapping) using `d2 app scripts init new-app` in the terminal.
 2. Inside the `new-app/` directory that the above script just created, the `yarn build` command is run which runs [`d2-app-scripts build`](https://platform.dhis2.nu/#/scripts/build), which initiates the following steps. Any directory or file paths described below are relative to `new-app/`.
