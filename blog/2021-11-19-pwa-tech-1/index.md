@@ -197,7 +197,23 @@ As described in the section above, a service worker is also compiled when runnin
 
 #### Registering the service worker from the app if PWA is enabled in the app’s config
 
-To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app’s [configuration](https://platform.dhis2.nu/#/config). We added an option to the [`d2.config.js` app config file](https://platform.dhis2.nu/#/config/d2-config-js-reference) that can enable PWA, which looks like `pwa: { enabled: true }`. During the `d2-app-scripts` `start` or `build` processes, the config file is read, and a `PWA_ENABLED` value is added to the app’s environment variables. Then, in the App Adapter’s initialization logic, it registers or unregisters the service worker based on the the `PWA_ENABLED` environment variable.
+To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app’s [configuration](https://platform.dhis2.nu/#/config). We added an option to the [`d2.config.js` app config file](https://platform.dhis2.nu/#/config/d2-config-js-reference) that can enable PWA, which looks like this:
+
+```diff
+// d2.config.js
+module.exports = {
+    type: 'app',
+    title: 'My App',
+
++   pwa: { enabled: true, },
+
+    entryPoints: {
+        app: './src/App.js',
+    },
+}
+```
+
+During the `d2-app-scripts` `start` or `build` processes, the config file is read, and a `PWA_ENABLED` value is added to the app’s environment variables. Then, in the App Adapter’s initialization logic, it registers or unregisters the service worker based on the the `PWA_ENABLED` environment variable.
 
 #### Managing the service worker’s updates and lifecycle
 
