@@ -32,7 +32,8 @@ We are excited about the recent release of PWA features in the App Platform, whi
         -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
             -   [User experience](#user-experience)
             -   [Implementation](#implementation)
-                -   [How the update flow works under the hood](#how-the-update-flow-works-under-the-hood)
+                -   [Registration](#registration)
+                -   [Updates](#updates)
             -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
             -   [Adding a kill switch](#adding-a-kill-switch)
 -   [Conclusion](#conclusion)
@@ -250,7 +251,7 @@ To simplify communicating with the service worker from the React environment and
 
 Our service worker registration functions draw much from the Create React App PWA Template [registration boilerplate](https://github.com/cra-template/pwa/blob/master/packages/cra-template-pwa/template/src/serviceWorkerRegistration.js), which includes some useful logic like checking for a valid SW, handling development situations on localhost, and some basic update-checking procedures.These features are a useful starting place, but our use-case requires more complexity, which leads to the additions described below.
 
-###### How the update flow works under the hood
+###### Registration
 
 If PWA is enabled, a [`register()` function](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/lib/registration.js#L112) is [called](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L24-L30) when an Offline Interface object is [instantiated in the App Adapter](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/adapter/src/index.js#L8) while the app is loading. The `register()` function listens for the `load` event on the `window` object before calling `navigator.serviceWorker.register()`, because the browser checks for a new service worker upon registration, and if there is one, the service worker will install and download the assets it needs to precache. The installation and downloads may be resource-intensive and affect the page load performance, so the registration and thus installation is delayed until after the window `load` event.
 
@@ -271,6 +272,8 @@ self.addEventListener('message', (event) => {
 ```
 
 These messages will be mentioned more the following steps below.
+
+###### Updates
 
 At the top level, the update flow is controlled by a [PWA update manager component](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/PWAUpdateManager.js#L53) that's [rendered in the App Adapter](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/AppWrapper.js#L30) and is supported by the Offline Interface. The code for the component, which we'll walk through below, looks like this -- notice the `confirmReload()` function, the `useEffect` hook, and the `ConfirmReloadModal` that's rendered:
 
