@@ -202,8 +202,7 @@ As described in the section above, a service worker is also compiled when runnin
 
 To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app’s [configuration](https://platform.dhis2.nu/#/config). We added an option to the [`d2.config.js` app config file](https://platform.dhis2.nu/#/config/d2-config-js-reference) that can enable PWA, which looks like this:
 
-```diff
-// d2.config.js
+```diff title="d2.config.js"
 module.exports = {
     type: 'app',
     title: 'My App',
@@ -257,15 +256,85 @@ If PWA is enabled, a [`register()` function](https://github.com/dhis2/app-platfo
 
 The Offline Interface also [registers a listener](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L36-L46) to the `controllerchange` event on `navigator.serviceWorker` that will reload the page when a new service worker takes control, i.e. starts handling fetch events. This is to make sure the app uses the latest assets that the new service worker just installed.
 
-Unlike some implementations, our service worker is designed to wait patiently once it installs. Once it installs and activates for the first time, it does not ‘claim’ the open clients, i.e. take control of those pages and start handling fetch events using the `clients.claim()` API; instead it waits for the page to reload before taking control. This design ensures that a page is only ever controlled during its lifetime by _one_ service worker or _none_; a reload is required for a service worker to take control of a page that was previously uncontrolled or to take over from a previous one. This makes sure the app only uses the core scripts and assets from _one_ version of the app due to precaching. The service worker also does not automatically ‘skip waiting’ and take control of a page when a new update has installed; it will continue waiting for a signal from the app or for the default condition described in part 4 of the UX flow above. What the SW _does_ do is listen for messages from the client instructing it to ‘claim clients’ or ‘skip waiting’ in response to the user’s actions and depending on the circumstance – more on that in the following steps below.
+Unlike some implementations, our service worker is designed to wait patiently once it installs. Once it installs and activates for the first time, it does not ‘claim’ the open clients, i.e. take control of those pages and start handling fetch events using the `clients.claim()` API; instead it waits for the page to reload before taking control. This design ensures that a page is only ever controlled during its lifetime by _one_ service worker or _none_; a reload is required for a service worker to take control of a page that was previously uncontrolled or to take over from a previous one. This makes sure the app only uses the core scripts and assets from _one_ version of the app due to precaching. The service worker also does not automatically ‘skip waiting’ and take control of a page when a new update has installed; it will continue waiting for a signal from the app or for the default condition described in part 4 of the UX flow above. What the SW _does_ do is [listen for messages](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/service-worker/service-worker.js#L187-L196) from the client instructing it to ‘claim clients’ or ‘skip waiting’ in response to the user’s actions and depending on the circumstance, which looks like this:
 
-When the app UI loads, a [PWA update manager component](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/PWAUpdateManager.js#L53) in the App Adapter [uses the Offline Interface](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L61-L65) to check for new service workers, both checking if any are all ready and listening for new updates becoming available or installing. Given the several steps of the SW lifecycle (installing, installed, activating, activated), multiple SWs present in the [SW registration object](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) (installing, waiting, active), and the fact that sometimes the ‘active’ SW is not in _control_ because it’s the first SW installation for this app, a good amount of condition-checking is necessary to determine if a new service worker is ready and waiting to take over the open tabs. You can see our resulting `checkForUpdates()` function [here](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/pwa/src/lib/registration.js#L1-L75).
+```js
+self.addEventListener('message', (event) => {
+    if (event.data.type === 'CLAIM_CLIENTS') {
+        // Calls clients.claim() and reloads all tabs:
+        claimClients()
+    }
+    if (event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting()
+    }
+})
+```
 
-If there _is_ a new SW ready, then the PWA update manager checks for how many tabs of this app are open by using the Offline Interface to ‘ask’ the ready SW how many clients are associated with this domain in order to handle the “one-client” or “multiple-client” conditions described in the UX flow. The Offline Interface object has a [`getClientsInfo()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L67-L89) that requests the necessary clients info from the service worker and returns a promise that resolves to the correct data (or rejects with a failure reason that can be handled).
+These messages will be mentioned more the following steps below.
 
-Once the clients info is received, if there is one client open for this service worker scope, the PWA update manager will use the Offline Interface’s [`useNewSW()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L91-L112) to instruct new SW to activate or take control. The `useNewSW()` method detects if this new SW is the first one that has installed for this app or an update to an existing SW and handles the situations accordingly, either sending a ‘claim clients’ message to a first-install SW, or a ‘skip waiting’ message to an updated SW. The SWs are designed to [listen to messages of those types](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/service-worker/service-worker.js#L187-L196) and act accordingly. Both actions inside the service worker result in a `controllerchange` event in open clients, which triggers a page reload because of the event listener the Offline Interface registered on `navigator.serviceWorker` that was described above.
+At the top level, the update flow is controlled by a [PWA update manager component](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/PWAUpdateManager.js#L53) that's [rendered in the App Adapter](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/AppWrapper.js#L30) and is supported by the Offline Interface. The code for the component, which we'll walk through below, looks like this -- notice the `confirmReload()` function, the `useEffect` hook, and the `ConfirmReloadModal` that's rendered:
 
-If there are multiple clients open (or if the `getClientsInfo` request fails), then a dialog is shown to the user that warns that _all_ open tabs of the app will be reloaded if they continue, and they will lose any unsaved data. If a number of clients _was_ returned by `getClientsInfo`, that number is shown in the warning dialog to remind the user about open tabs that might be have forgotten about across multiple windows or on a mobile device for example. If the user clicks the ‘Reload’ action, the `useNewSW()` method is called and the open pages will reload as a result.
+```jsx
+export default function PWAUpdateManager({ offlineInterface }) {
+    const [confirmReloadModalOpen, setConfirmReloadModalOpen] = useState(false)
+    const [clientsCountState, setClientsCountState] = useState(null)
+    const { show } = useAlert(
+        i18n.t("There's an update available for this app."),
+        ({ onConfirm }) => ({
+            permanent: true,
+            actions: [
+                { label: i18n.t('Update and reload'), onClick: onConfirm },
+                { label: i18n.t('Not now'), onClick: () => {} },
+            ],
+        })
+    )
+
+    const confirmReload = () => {
+        offlineInterface
+            .getClientsInfo()
+            .then(({ clientsCount }) => {
+                setClientsCountState(clientsCount)
+                if (clientsCount === 1) {
+                    // Just one client; go ahead and reload
+                    offlineInterface.useNewSW()
+                } else {
+                    // Multiple clients; warn about data loss before reloading
+                    setConfirmReloadModalOpen(true)
+                }
+            })
+            .catch((reason) => {
+                // Didn't get clients info
+                console.warn(reason)
+                // Go ahead with confirmation modal with `null` as clientsCount
+                setConfirmReloadModalOpen(true)
+            })
+    }
+
+    useEffect(() => {
+        offlineInterface.checkForNewSW({
+            onNewSW: () => {
+                show({ onConfirm: confirmReload })
+            },
+        })
+    }, [])
+
+    return confirmReloadModalOpen ? (
+        <ConfirmReloadModal
+            onConfirm={() => offlineInterface.useNewSW()}
+            onCancel={() => setConfirmReloadModalOpen(false)}
+            clientsCount={clientsCountState}
+        />
+    ) : null
+}
+```
+
+By using the `useEffect` hook with an empty dependency array, upon first render the update manager checks for new service workers by calling the Offline Interface's [`checkForNewSW()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L61-L65) (and by extension the [`checkForUpdates()` registration function](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/pwa/src/lib/registration.js#L1-L75)). `checkForUpdates()` checks for service workers installed and ready, listens for new ones becoming available, and checks for installing service workers between those states. Given the several steps of the SW lifecycle (installing, installed, activating, activated), multiple SWs present in the [SW registration object](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) (installing, waiting, active), and the fact that sometimes the ‘active’ SW is not in _control_ because it’s the first SW installation for this app, a good amount of condition-checking is necessary to determine if a new service worker is ready and waiting to take over the open tabs. For the full control flow, take a look at the `checkForUpdates()` source code linked above.
+
+If there _is_ a new SW ready, then the `onNewSW()` callback function provided to `checkForNewSW()` is called, which shows the "Updates are available" alert. If a user clicks the "Update and reload" action on the alert, the `confirmReload()` function is called, which handles the next part of the update flow by checking for how many tabs of this app are open in order to handle the “one-client” or “multiple-client” conditions described in the UX flow above. It uses the Offline Interface's [`getClientsInfo()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L67-L89), which ‘asks’ the ready SW how many clients are associated with this domain and returns a promise that resolves to the correct data (or rejects with a failure reason that can be handled).
+
+Once the clients info is received, if there is one client open for this service worker scope, `confirmReload()` will use the Offline Interface’s [`useNewSW()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L91-L112) to instruct new SW to activate or take control. The `useNewSW()` method detects if this new SW is the first one that has installed for this app or an update to an existing SW and handles the situations accordingly, either sending a ‘claim clients’ message to a first-install SW, or a ‘skip waiting’ message to an updated SW. Both actions inside the service worker result in a `controllerchange` event in open clients, which triggers a page reload because of the event listener the Offline Interface registered on `navigator.serviceWorker` that was described above.
+
+If there are multiple clients open (or if the `getClientsInfo()` request fails), then the [`ConfirmReloadModal` dialog](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/PWAUpdateManager.js#L14-L44) is rendered that warns the user that _all_ open tabs of the app will be reloaded if they continue, and they will lose any unsaved data. If a number of clients _was_ returned by `getClientsInfo()`, that number is shown in the warning dialog to remind the user about open tabs that might be have forgotten about across multiple windows or on a mobile device for example. If the user clicks the ‘Reload’ action, the `useNewSW()` method is called and the open pages will reload as a result.
 
 All these steps under the hood coordinate to create the robust user experience described above and make sure service workers and apps update correctly.
 
