@@ -1,3 +1,12 @@
+---
+slug: 2022/01/pwa-tech-blog-2
+title: Adding PWA Tech to the App Platform - Cacheable Sections
+author: Kai Vandivier
+author_url: https://github.com/KaiVandivier
+author_image_url: https://github.com/KaiVandivier.png
+tags: [app platform, pwa, tech]
+---
+
 #### “Cacheable Sections” and Complex Offline Capability
 
 As mentioned in the “Introducing PWA” post, to support the Dashboard app to save individual dashboards offline, we created a React API that’s exported from the [`@dhis2/app-runtime` package](https://runtime.dhis2.nu/) that can capture and cache the data required for a contentful component, e.g. a dashboard. 
