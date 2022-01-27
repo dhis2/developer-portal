@@ -1,6 +1,6 @@
 ---
 id: academy-workshops-2020
-title: Academy 2020
+title: Web App Development Academy 2020
 ---
 
 ## Workshop 1: The Basics - June 24-25, 2020
