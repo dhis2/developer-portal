@@ -1,9 +1,7 @@
 ---
 id: academy-workshops-2021
-title: Academy 2021
+title: Android & Web App Development Academy 2021
 ---
-
-# Android & Web App Development Workshops
 
 ## Workshop 1: The Basics - March 17-18, 2021 👇
 
