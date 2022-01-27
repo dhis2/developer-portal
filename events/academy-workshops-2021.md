@@ -3,7 +3,9 @@ id: academy-workshops-2021
 title: Android & Web App Development Academy 2021
 ---
 
-## Workshop 1: The Basics - March 17-18, 2021 👇
+## Workshop 1: The Basics
+
+> Originally hosted March 17-18, 2021
 
 In this hands-on 2-day workshop, participants learned how to build high-quality, maintainable DHIS2 Android and Web applications using the latest tools from the core team.
 
@@ -40,7 +42,9 @@ In this hands-on 2-day workshop, participants learned how to build high-quality,
 -   [App Runtime Introduction](https://drive.google.com/file/d/1hQfQ3kIbUT8BcpkprKmtbRMvMUmxF2rV/view?usp=sharing)
 -   [DHIS2 Data Model & REST API](https://drive.google.com/file/d/1aAUvgTBg1yhSgho_zDJw4UNAuU4CY1hh/view?usp=sharing)
 
-## Workshop 2: Advanced - May 4-7, 2021 👇
+## Workshop 2: Advanced
+
+> Originally hosted May 4-7, 2021
 
 ### Android Track
 
