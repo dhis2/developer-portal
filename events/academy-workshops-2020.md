@@ -3,7 +3,9 @@ id: academy-workshops-2020
 title: Web App Development Academy 2020
 ---
 
-## Workshop 1: The Basics - June 24-25, 2020
+## Workshop 1: The Basics
+
+> Originally hosted June 24-25, 2020
 
 Learn how to build a high-quality, maintainable DHIS2 applications using the latest tools from the core team in this hands-on 2-day workshop. This workshop will be a combination of presented material and hands-on development time - each participant will build their own DHIS2 application by the end of the course.
 
@@ -21,7 +23,9 @@ Learn how to build a high-quality, maintainable DHIS2 applications using the lat
     -   [Part 1](https://www.youtube.com/watch?v=drLUFP93mFk&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=14&t=411s), [Part 2](https://www.youtube.com/watch?v=zw0UwsZ2Pww&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=16&t=4s), [Part 3](https://www.youtube.com/watch?v=YWbiqbwbTjU&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=20), [Part 4](https://www.youtube.com/watch?v=dLoOWGJU0Cg&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=17), [Part 5](https://www.youtube.com/watch?v=lrFP5htMRMA&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=19), [Part 6](https://www.youtube.com/watch?v=rO2pIf5k7IM&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=21), [Part 7](https://www.youtube.com/watch?v=F_9z8PXO6GU&list=PLo6Seh-066RynhjhnJNUITOZykA7397We&index=22&t=373s)
 
 
-## Workshop 2: Advanced - August 18-21, 2020
+## Workshop 2: Advanced
+
+> Originally hosted August 18-21, 2020
 
 Continuation of the hands-on DHIS2 Application Development workshop series for academy-track participants.
 
