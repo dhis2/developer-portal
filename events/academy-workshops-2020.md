@@ -3,8 +3,6 @@ id: academy-workshops-2020
 title: Academy 2020
 ---
 
-# Web App Development Workshops
-
 ## Workshop 1: The Basics - June 24-25, 2020
 
 Learn how to build a high-quality, maintainable DHIS2 applications using the latest tools from the core team in this hands-on 2-day workshop. This workshop will be a combination of presented material and hands-on development time - each participant will build their own DHIS2 application by the end of the course.
