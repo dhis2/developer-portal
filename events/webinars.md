@@ -3,6 +3,22 @@ id: webinars
 title: Webinars
 ---
 
+### App Platform v8 & Introducing German - November 11, 2021
+
+- [Recording](https://www.youtube.com/watch?v=q-m2sk-xLrY&feature=emb_imp_woyt&ab_channel=DHIS2)
+- [Community Q&A](https://community.dhis2.org/t/webinar-app-platform-v8-and-introducing-german/44878)
+
+The DHIS2 core team introduced the latest release of the App Platform tools. This webinar was targeted at new and experienced web application developers in the DHIS2 community. The DHIS2 core team shared the latest features of @dhis2/cli-app-scripts 4, @dhis2/app-runtime, and @dhis2/ui, including:
+
+- A `--proxy` parameter for @dhis2/cli-app-scripts start to eliminate all Chrome SameSite cookie issues!
+- Automatic deduplication of platform dependencies
+- In-memory caching and query deduplication for useDataQuery
+- Beta progressive web app and offline support!
+
+You can read more about these features in the [release announcement developer portal blog post](https://developers.dhis2.org/blog/app-platform-v8)
+
+We are also very excited to welcome our new developer advocate German Viscuso to the DHIS2 team!
+
 ### Web & Android App Development - February 8, 2021
 
 Recordings:
