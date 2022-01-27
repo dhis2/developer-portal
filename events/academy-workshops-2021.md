@@ -9,9 +9,9 @@ title: Academy 2021
 
 In this hands-on 2-day workshop, participants learned how to build high-quality, maintainable DHIS2 Android and Web applications using the latest tools from the core team.
 
-#### Session Recordings:
-
 ### Android Track
+
+#### Session Recordings:
 
 -   [Android SDK Overview](https://www.youtube.com/watch?v=ObdYRiB2s3Y&list=PLo6Seh-066RwitNsmWeMDLCVVJ_kAQ1cn&index=3)
 -   [Skeleton App Overview](https://www.youtube.com/watch?v=WuQBm_D7lBU&list=PLo6Seh-066RwitNsmWeMDLCVVJ_kAQ1cn&index=3)
@@ -24,6 +24,8 @@ In this hands-on 2-day workshop, participants learned how to build high-quality,
 -   [SDK Roadmap & What's next](https://www.youtube.com/watch?v=oTawaGYv3gg&list=PLo6Seh-066RwitNsmWeMDLCVVJ_kAQ1cn&index=13)
 
 ### Web App Track
+
+#### Session Recordings:
 
 -   [Introduction and Logistics](https://www.youtube.com/watch?v=nys-zQyj-TU&list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&index=1)
 -   [Application Development Overview](https://www.youtube.com/watch?v=WP6ZWbsTz-Q&list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&index=2)
