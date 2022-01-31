@@ -68,6 +68,19 @@ Chrome Application Path
 > This disables legitimate security behaviors in your browser, so proceed with caution! We recommend that you only disable this flag when actively debugging a DHIS2 application.
 > Read this blog to learn more about [SameSite Cookie Policies and DHIS2 Applications](/blog/cross-origin-cookies).
 
+## If you're using Firefox
+
+On the latest versions of Firefox when trying to connect your application to a DHIS2 instance you might now receive this error:
+
+```
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://a_dhis2_instance/dev/dhis-web-commons-security/login.action. (Reason: CORS request did not succeed). Status code: (null)
+```
+
+This is because recently Mozilla [changed the SameSite Cookie behavior on Firefox](https://hacks.mozilla.org/2020/08/changes-to-samesite-cookie-behavior) to be a bit more strict. The previous default configuration allowed to send cookies with both cross-site and same-site requests (`SameSite=None`) while the in the new default configuration cookies will be withheld on cross-site requests (such as calls to load images or frames) but sent when a user navigates to the URL from an external site; for example, by following a link (`SameSite=Lax`).
+
+If you're willing to soften your browser security for the sake of debugging you can work around this by typing [about:config](about:config) on a browser tab, searching for the `network.cookie.sameSite.laxByDefault` property and setting it to `false`.
+However, you should exercise caution as this will leave users vulnerable to Cross-Site Request Forgery ([CSRF](https://developer.mozilla.org/en-US/docs/Glossary/CSRF)) attacks. In a CSRF attack, a malicious site attempts to use valid cookies from legitimate sites to carry out attacks.
+
 ### Disabling cache
 
 You could also try disabling the cache from the network tab in Chrome DevTools. See below:
