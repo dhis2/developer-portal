@@ -74,7 +74,7 @@ To illustrate how the App Adapter, App Shell, and App Scripts CLI work together,
 5. A web app manifest is generated.
 6. The app code written in `src/` is transpiled and copied into the `.d2/shell/src/D2App/` directory.
 7. Inside the shell at this stage, the files are set up so that the root component exported from the "entry point" in the app under development (`<App />` from `src/App.js` by default, now copied into `.d2/shell/src/D2App/App.js`) is _imported_ by a file in the shell [that wraps it with the App Adapter](https://github.com/dhis2/app-platform/blob/master/shell/src/App.js), and then the [wrapped app gets rendered](https://github.com/dhis2/app-platform/blob/master/shell/src/index.js) into an anchor node in the DOM.
-8. Using this shell-encapsulated app that's now set up in the `.d2/shell/` directory, a minified production build is compiled. The encapsulated app is now basically a “Create React App” app, and the build is performed by the `react-scripts build` script and output to the `build/app/` directory in the app root.
+8. The shell-encapsulated app that's now set up in the `.d2/shell/` directory is now basically a "Create React App" app, and `react-scripts` can be used to compile a minified production build. The `react-scripts build` script is run, and build is output to the `build/app/` directory in the app root.
 9. A zipped bundle of the app is also created and output to `build/bundle/`, which can be uploaded to a DHIS2 instance.
 
 ## Into Progressive Web Apps (PWA)
