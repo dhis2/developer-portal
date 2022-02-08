@@ -127,12 +127,12 @@ Implementing the service worker in the app platform takes several steps:
 
 We use the [Workbox](https://developers.google.com/web/tools/workbox) library and its utilities as a foundation for our service worker to provide the offline caching basics.
 
-There are a few different strategies that can be used for caching data offline which balance performance, network usage, and data ‘freshness’; these are the caching strategies we settled upon for basic offline functionality in Platform apps:
+There are a few different strategies that can be used for caching data offline which balance performance, network usage, and data ‘freshness’, and we settled on these to provide basic offline functionality in Platform apps:
 
 1. Static assets that are part of the built app (javascript, CSS, images, and more) are **precached**.
-2. Data that’s requested during runtime always uses the network with a combination of stale-while-revalidate strategy for fetched static assets and a network-first strategy for API data.
+2. Data that’s requested during runtime always uses the network with a combination of a **stale-while-revalidate** strategy for fetched static assets and a **network-first** strategy for API data.
 
-If you want to understand why we settled for this both strategies are explained in more depth in our [first PWA blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa#what-youll-get-with-offline-caching) but basically we're looking for the sweet spot of performance vs freshness.
+If you want to read more about our decisions to use these strategies, they are explained in more depth in our [first PWA blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa#what-youll-get-with-offline-caching), but basically we're looking for the sweet spot of performance vs. freshness.
 
 #### Compiling the service worker and adding it to the app
 
