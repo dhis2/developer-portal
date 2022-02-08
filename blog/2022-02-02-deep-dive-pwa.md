@@ -79,12 +79,18 @@ To illustrate how the App Adapter, App Shell, and App Scripts CLI work together,
 
 ## Into Progressive Web Apps (PWA)
 
-Now that you have some background on our apps architecture and platform let's talk about our implementation of Progressive Web Apps (“PWA”) and how it presented several design challenges because we required it to be generalizable to any app. We wanted our App Platform based web apps to support two defining features which are core to PWAs:
+Now that you have some background on our apps architecture and platform, let's talk about our implementation of Progressive Web Apps (“PWA”) and how it presented several design challenges as we required it to be generalizable to any app. We wanted our App Platform based web apps to support two defining features which are core to PWAs:
 
 - **Installability**, which means the app can be downloaded to a device and run like a native app, and
 - **Offline capability**, meaning the app can support most or all of its features while the device is offline. This works when the app is opened in a browser or as an installed app.
 
-Adding PWA features, especially offline capability, in the DHIS2 App Platform is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being [_famously_ tricky](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)), and on top of that, we have some other unique design criteria that add complexity to our project: the features should work in and be easy to add to _any_ Platform app, they should support our Dashboard app’s unique “cacheable sections” use-case (described in our [PWA intro blog](https://developers.dhis2.org/blog/2021/11/introducing-pwa), basically enabling the saving of individual dashboards in the offline cache while leaving other dashboards uncached) in a way that can be generalized to any other app, and they should not cause side effects for apps that _don’t_ use the PWA features. For now we'll cover installability and simple offline capability; cacheable sections are more complex and face numerous particular design challenges, which will be described in another deep-dive post (stay tuned to [DHIS2 developer's blog](https://developers.dhis2.org/blog)).
+Adding PWA features, especially offline capability, in the DHIS2 App Platform is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being [_famously_ tricky](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)), and on top of that, we have some other unique design criteria that add complexity to our project: 
+
+- The features should work in and be easy to add to _any_ Platform app,
+- They should support our Dashboard app’s unique “cacheable sections” use-case (described in our [PWA intro blog](https://developers.dhis2.org/blog/2021/11/introducing-pwa), basically enabling the saving of individual dashboards in the offline cache while leaving other dashboards uncached) in a way that can be generalized to any other app, and
+- They should not cause side effects for apps that _don’t_ use the PWA features. 
+ 
+For now we'll cover installability and simple offline capability; cacheable sections are more complex and face numerous particular design challenges, and they will be described in another deep-dive post (stay tuned to [DHIS2 developer's blog](https://developers.dhis2.org/blog)).
 
 ### Adding installability
 
