@@ -49,9 +49,9 @@ This way DHIS2 developers can focus on the app's distinct functionality without 
 
 The App Platform is made up of a number of build-time components and development tools that you can find in our [`app-platform` repository](https://github.com/dhis2/app-platform/):
 
-1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point, like `<App />` and performs other jobs.
-2. An **App Shell** which provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point and wraps it with the App Adapter (also reads some environment variables and passes them to it).
-3. An **App Scripts CLI** (part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server (among others like e.g. spin up DHIS2 server containers).
+1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point (like `<App />`) and performs other jobs.
+2. An **App Shell** which provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point, and wraps it with the App Adapter (and provides some environment variables to the app).
+3. An **App Scripts CLI** (part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server (among other features like spinning up DHIS2 server containers).
 
 ### The App Platform at run-time
 
