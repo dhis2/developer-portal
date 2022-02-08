@@ -26,10 +26,10 @@ We are excited about the recent release of PWA features in our App Platform (mor
         -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
         -   [Registering the service worker from the app if PWA is enabled in the app’s config](#registering-the-service-worker-from-the-app-if-pwa-is-enabled-in-the-apps-config)
         -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
-            -   [User experience](#user-experience)
+            -   [Perfecting the user experience of updating PWA apps](#perfecting-the-user-experience-of-updating-pwa-apps)
             -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
                 -   [Registration of the service worker](#registration-of-the-service-worker)
-                -   [Handling app updates](#handling-app-updates)
+                -   [Handling app updates with a "PWA update manager" component](#handling-app-updates-with-a-pwa-update-manager-component)
             -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
             -   [Adding a kill switch for a rogue service worker](#adding-a-kill-switch-for-a-rogue-service-worker)
 -   [Conclusion](#conclusion)
@@ -81,15 +81,15 @@ To illustrate how the App Adapter, App Shell, and App Scripts CLI work together,
 
 Now that you have some background on our apps architecture and platform, let's talk about our implementation of Progressive Web Apps (“PWA”) and how it presented several design challenges as we required it to be generalizable to any app. We wanted our App Platform based web apps to support two defining features which are core to PWAs:
 
-- **Installability**, which means the app can be downloaded to a device and run like a native app, and
-- **Offline capability**, meaning the app can support most or all of its features while the device is offline. This works when the app is opened in a browser or as an installed app.
+-   **Installability**, which means the app can be downloaded to a device and run like a native app, and
+-   **Offline capability**, meaning the app can support most or all of its features while the device is offline. This works when the app is opened in a browser or as an installed app.
 
-Adding PWA features, especially offline capability, in the DHIS2 App Platform is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being [_famously_ tricky](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)), and on top of that, we have some other unique design criteria that add complexity to our project: 
+Adding PWA features, especially offline capability, in the DHIS2 App Platform is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being [_famously_ tricky](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)), and on top of that, we have some other unique design criteria that add complexity to our project:
 
-- The features should work in and be easy to add to _any_ Platform app,
-- They should support our Dashboard app’s unique “cacheable sections” use-case (described in our [PWA intro blog](https://developers.dhis2.org/blog/2021/11/introducing-pwa), basically enabling the saving of individual dashboards in the offline cache while leaving other dashboards uncached) in a way that can be generalized to any other app, and
-- They should not cause side effects for apps that _don’t_ use the PWA features. 
- 
+-   The features should work in and be easy to add to _any_ Platform app,
+-   They should support our Dashboard app’s unique “cacheable sections” use-case (described in our [PWA intro blog](https://developers.dhis2.org/blog/2021/11/introducing-pwa), basically enabling the saving of individual dashboards in the offline cache while leaving other dashboards uncached) in a way that can be generalized to any other app, and
+-   They should not cause side effects for apps that _don’t_ use the PWA features.
+
 For now we'll cover installability and simple offline capability; cacheable sections are more complex and face numerous particular design challenges, and they will be described in another deep-dive post (stay tuned to [DHIS2 developer's blog](https://developers.dhis2.org/blog)).
 
 ### Adding installability
@@ -175,7 +175,7 @@ If the service worker lifecycle and updates are managed poorly, the app can get 
 
 This can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
 
-##### User experience
+##### Perfecting the user experience of updating PWA apps
 
 Managing SW updates is complex from a UX perspective: updating the service worker to activate new app updates in production requires a page reload (for reasons described below), which shouldn’t happen without a user’s consent because reloads can cause loss of unsaved data; but we also want the user to use the most up-to-date version of the app possible. Therefore, it poses a UX design challenge to notify and persuade users to reload the app to use new updates as soon as possible, and at the same time avoid any dangerous, unplanned page reloads.
 
@@ -216,7 +216,7 @@ self.addEventListener('message', (event) => {
 
 Below you can see more details about these messages.
 
-###### Handling app updates
+###### Handling app updates with a "PWA update manager" component
 
 At the top level, the update flow is controlled by a [PWA update manager component](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/PWAUpdateManager.js#L53) that's [rendered in the App Adapter](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/AppWrapper.js#L30) and is supported by the Offline Interface. The code for the component, which we'll walk through below, looks like this -- notice the `confirmReload()` function, the `useEffect` hook, and the `ConfirmReloadModal` that's rendered:
 
