@@ -60,7 +60,7 @@ At run-time, our platform offers React components and hooks that provide service
 1. The **[App Runtime](https://runtime.dhis2.nu)** that depends on a universal `<Provider>` component to provide context (provided normally by the App Adaper) and exposes the following services:
     1. A **Data Service** that publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
     2. A **Config Service** that exposes several app configuration parameters
-    3. An **Alerts Service** that provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component in the App Adapter)
+    3. An **Alerts Service** that provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component in the App Adapter to show the UI)
 2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui).
 
 ### The App Platform orchestra
