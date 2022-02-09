@@ -1,10 +1,10 @@
 ---
 slug: 2022/01/ext-tech-blog-1
-title: A deep-dive on a Progressive Web App implementation for a React-based App platform (DHIS2)
-author: German Viscuso
-author_url: https://github.com/germanviscuso
-author_image_url: https://github.com/germanviscuso.png
-tags: [dhis2, health, java, react, pwa]
+title: A deep-dive on a Progressive Web App implementation for a React-based App Platform (DHIS2)
+author: Kai Vandivier
+author_url: https://github.com/KaiVandivier
+author_image_url: https://github.com/KaiVandivier.png
+tags: [dhis2, health, java, javascript, react, pwa]
 ---
 
 At [DHIS2](https://developers.dhis2.org) we're a team of fully remote developers working on the world's largest open-source health information management system, used by 73+ countries for collecting and analyzing health data. You can check our repos [here](https://github.com/dhis2), but basically, at the risk of oversimplifying things, we maintain a fully APIfied Java back-end [core project](https://github.com/dhis2/dhis2-core) and a series of core web apps built on top of a React based front-end technology that we call the [App Platform](https://github.com/dhis2/app-platform) supported by a design system with [custom UI components](https://github.com/dhis2/ui). We have advanced Analytics and an Android SDK too, but this post will focus on our front-end tech.
@@ -182,7 +182,13 @@ Managing SW updates is complex from a UX perspective: updating the service worke
 The UX design we settled on is this:
 
 1. Once a new service worker is installed and ready, either on first installation or as an update to an existing one, a prompt is shown to the user that says “There’s an update available for this app” with two actions: “Update now” and “Not now”.
+
+!["There's an update available" alert](update-available-alert.png)
+
 2. When the user clicks “Update now”, if one tab of the app is open, the page will reload. If _more_ than one tab is open, the app will show a confirmation modal that warns the user that all the open tabs of the app will reload, which will cause loss of unsaved data, and has actions to continue or cancel.
+
+![Reload confirmation modal](reload-confirmation-modal.png)
+
 3. If the user clicks “Not now”, the prompt will close and wait for the user to reload the page. If this is the first time a SW is installing for the app, it will go ahead and activate after the reload, but if this is an update to an existing SW, the “Update” prompt will be shown again.
 4. If this is an update to an existing SW and the user _never_ clicks “Update now”, the SW will eventually activate when a new instance of the app is opened after all previous tabs of the app have been closed. This is how browsers natively handle SW updates without any intervention, but this case should be avoided because it may result in delays of important app updates.
 
