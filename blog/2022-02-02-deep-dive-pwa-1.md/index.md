@@ -1,15 +1,15 @@
 ---
 slug: 2022/01/ext-tech-blog-1
-title: A deep-dive on a Progressive Web App implementation for a React-based App platform (DHIS2)
-author: German Viscuso
-author_url: https://github.com/germanviscuso
-author_image_url: https://github.com/germanviscuso.png
-tags: [dhis2, health, java, react, pwa]
+title: A deep-dive on a Progressive Web App implementation for a React-based App Platform (DHIS2)
+author: Kai Vandivier
+author_url: https://github.com/KaiVandivier
+author_image_url: https://github.com/KaiVandivier.png
+tags: [dhis2, health, java, javascript, react, pwa]
 ---
 
-At [DHIS2](https://developers.dhis2.org) we're a team of fully remote developers working on the world's largest open-source health information management system, used by 73+ countries for collecting and analyzing health data. You can check our repos [here](https://github.com/dhis2) but basically, at the risk of oversimplifying things, we maintain a fully APIfied Java back-end [core project](https://github.com/dhis2/dhis2-core) and a series of core web apps built on top of a React based front-end technology that we call the [App Platform](https://github.com/dhis2/app-platform) supported by a design system with [custom UI components](https://github.com/dhis2/ui) (we have advanced Analytics and an Android SDK too but that is outside the scope of this post).
+At [DHIS2](https://developers.dhis2.org) we're a team of fully remote developers working on the world's largest open-source health information management system, used by 73+ countries for collecting and analyzing health data. You can check our repos [here](https://github.com/dhis2), but basically, at the risk of oversimplifying things, we maintain a fully APIfied Java back-end [core project](https://github.com/dhis2/dhis2-core) and a series of core web apps built on top of a React based front-end technology that we call the [App Platform](https://github.com/dhis2/app-platform) supported by a design system with [custom UI components](https://github.com/dhis2/ui). We have advanced Analytics and an Android SDK too, but this post will focus on our front-end tech.
 
-We are excited about the recent release of PWA features in our App Platform (more on this below), which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think the design challenges we faced in making these features generalizable to any app and the ways we used available technologies to solve those challenges are quite unique and interesting. So the purpose of this post is to share a bit of how we tackled the development process of this feature and provide a deeper understanding of how the PWA features work under the hood. We want to show you how we extended our platform to add the basic PWA features to DHIS2 apps and the decisions we made along the way, for adding installability, service worker compilation, offline caching strategies, and managing the service worker updates and lifecycle.
+We are excited about the recent release of PWA features in our App Platform (more on this below), which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think the design challenges we faced in making these features generalizable to any app and the ways we used available technologies to solve those challenges are quite unique and interesting. So the purpose of this post is to share a bit of how we tackled the development process of this feature and provide a deeper understanding of how the PWA features work under the hood. We want to show you how we extended our platform to add the basic PWA features to DHIS2 apps and the decisions we made along the way to add installability, service worker compilation, offline caching strategies, and robust management of service worker updates and lifecycle.
 
 <!--truncate-->
 
@@ -26,10 +26,10 @@ We are excited about the recent release of PWA features in our App Platform (mor
         -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
         -   [Registering the service worker from the app if PWA is enabled in the app’s config](#registering-the-service-worker-from-the-app-if-pwa-is-enabled-in-the-apps-config)
         -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
-            -   [User experience](#user-experience)
+            -   [Perfecting the user experience of updating PWA apps](#perfecting-the-user-experience-of-updating-pwa-apps)
             -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
                 -   [Registration of the service worker](#registration-of-the-service-worker)
-                -   [Handling app updates](#handling-app-updates)
+                -   [Handling app updates with a "PWA update manager" component](#handling-app-updates-with-a-pwa-update-manager-component)
             -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
             -   [Adding a kill switch for a rogue service worker](#adding-a-kill-switch-for-a-rogue-service-worker)
 -   [Conclusion](#conclusion)
@@ -38,7 +38,7 @@ Let's start then with some necessary context about how our App Platform works.
 
 ## DHIS2 App Platform
 
-A lot of DHIS2's live production instances have national scope in multiple countries and are used for many purposes, from tracking health facility resources, to tracking and visualizing Malaria cases to supporting COVID-19 inmunization campaings. Each DHIS2 instance usually have specific requirements so we wanted to make it really easy for DHIS2 developers to [contribute extensions as web apps](https://apps.dhis2.org) (we also wanted to make our lifes easier when creating [our own core web apps](https://github.com/search?q=org%3Adhis2+-app&type=repositories), you see, we eat our own dog food!). Enter the [App Platform](https://github.com/dhis2/app-platform). The App Platform is a unified application architecture and build pipeline to simplify and standardize application development within the DHIS2 ecosystem. If you take a look at the image below you should note that we provide almost everything in there for you (common/instance UI, data access and build tooling) and you just need to code your app's fundamentals (basically your App's interface, state management and data visualization):
+DHIS2's live production instances are implemented at the national level in [70+ countries](https://dhis2.org/in-action/) and are used for many purposes, for example tracking health facility resources, tracking and visualizing Malaria cases, and supporting COVID-19 inmunization campaigns. Each DHIS2 instance usually has specific requirements, so we wanted to make it really easy for DHIS2 developers to [contribute extensions as web apps](https://apps.dhis2.org) (and make our lives easier when creating and maintaining [our own 26+ core web apps](https://github.com/search?q=org%3Adhis2+-app&type=repositories)!). Enter the [App Platform](https://github.com/dhis2/app-platform). The App Platform is a unified application architecture and build pipeline to simplify and standardize application development within the DHIS2 ecosystem. If you take a look at the image below you should note that we provide almost everything in there for you (common/instance UI, data access and build tooling) and you just need to code your app's fundamentals (basically your App's interface, state management and data visualization):
 
 ![App Platform](https://user-images.githubusercontent.com/246555/150789100-ed368e7b-934b-49a2-a2b2-ae7d15bb5b51.png)
 [More info about App Platform](https://docs.google.com/presentation/d/1tzYfmuurCfRNWtJjdOeQXJ2uiPTZsxE4WpV0_0XTw9E/edit#slide=id.g5b783f7689_0_0)
@@ -49,9 +49,9 @@ This way DHIS2 developers can focus on the app's distinct functionality without 
 
 The App Platform is made up of a number of build-time components and development tools that you can find in our [`app-platform` repository](https://github.com/dhis2/app-platform/):
 
-1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point, like `<App />` and performs other jobs.
-2. An **App Shell** which provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point and wraps it with the App Adapter (also reads some environment variables and passes them to it).
-3. An **App Scripts CLI** (part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server (among others like e.g. spin up DHIS2 server containers).
+1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point (like `<App />`) and performs other jobs.
+2. An **App Shell** which provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point, and wraps it with the App Adapter (and provides some environment variables to the app).
+3. An **App Scripts CLI** (part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server (among other features like spinning up DHIS2 server containers).
 
 ### The App Platform at run-time
 
@@ -60,7 +60,7 @@ At run-time, our platform offers React components and hooks that provide service
 1. The **[App Runtime](https://runtime.dhis2.nu)** that depends on a universal `<Provider>` component to provide context (provided normally by the App Adaper) and exposes the following services:
     1. A **Data Service** that publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
     2. A **Config Service** that exposes several app configuration parameters
-    3. An **Alerts Service** that provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component in the App Adapter)
+    3. An **Alerts Service** that provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component in the App Adapter to show the UI)
 2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui).
 
 ### The App Platform orchestra
@@ -74,17 +74,23 @@ To illustrate how the App Adapter, App Shell, and App Scripts CLI work together,
 5. A web app manifest is generated.
 6. The app code written in `src/` is transpiled and copied into the `.d2/shell/src/D2App/` directory.
 7. Inside the shell at this stage, the files are set up so that the root component exported from the "entry point" in the app under development (`<App />` from `src/App.js` by default, now copied into `.d2/shell/src/D2App/App.js`) is _imported_ by a file in the shell [that wraps it with the App Adapter](https://github.com/dhis2/app-platform/blob/master/shell/src/App.js), and then the [wrapped app gets rendered](https://github.com/dhis2/app-platform/blob/master/shell/src/index.js) into an anchor node in the DOM.
-8. Using this shell-encapsulated app that's now set up in the `.d2/shell/` directory, a minified production build is compiled. The encapsulated app is now basically a “Create React App” app, and the build is performed by the `react-scripts build` script and output to the `build/app/` directory in the app root.
+8. The shell-encapsulated app that's now set up in the `.d2/shell/` directory is now basically a "Create React App" app, and `react-scripts` can be used to compile a minified production build. The `react-scripts build` script is run, and build is output to the `build/app/` directory in the app root.
 9. A zipped bundle of the app is also created and output to `build/bundle/`, which can be uploaded to a DHIS2 instance.
 
 ## Into Progressive Web Apps (PWA)
 
-Now that you have some background on our apps architecture and platform let's talk about our implementation of Progressive Web Apps (“PWA”) and how it presented several design challenges because we required it to be generalizable to any app. We wanted our App Platform based web apps to support two defining features which are core to PWAs:
+Now that you have some background on our apps architecture and platform, let's talk about our implementation of Progressive Web Apps (“PWA”) and how it presented several design challenges as we required it to be generalizable to any app. We wanted our App Platform based web apps to support two defining features which are core to PWAs:
 
-- **Installability**, which means the app can be downloaded to a device and run like a native app, and
-- **Offline capability**, meaning the app can support most or all of its features while the device is offline. This works when the app is opened in a browser or as an installed app.
+-   **Installability**, which means the app can be downloaded to a device and run like a native app, and
+-   **Offline capability**, meaning the app can support most or all of its features while the device is offline. This works when the app is opened in a browser or as an installed app.
 
-Adding PWA features, especially offline capability, in the DHIS2 App Platform is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being [_famously_ tricky](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)), and on top of that, we have some other unique design criteria that add complexity to our project: the features should work in and be easy to add to _any_ Platform app, they should support our Dashboard app’s unique “cacheable sections” use-case (described in our [PWA intro blog](https://developers.dhis2.org/blog/2021/11/introducing-pwa), basically enabling the saving of individual dashboards in the offline cache while leaving other dashboards uncached) in a way that can be generalized to any other app, and they should not cause side effects for apps that _don’t_ use the PWA features. For now we'll cover installability and simple offline capability; cacheable sections are more complex and face numerous particular design challenges, which will be described in another deep-dive post (stay tuned to [DHIS2 developer's blog](https://developers.dhis2.org/blog)).
+Adding PWA features, especially offline capability, in the DHIS2 App Platform is a large task -- implementing PWA features can be complex enough in a single app (with some aspects being [_famously_ tricky](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)), and on top of that, we have some other unique design criteria that add complexity to our project:
+
+-   The features should work in and be easy to add to _any_ Platform app,
+-   They should support our Dashboard app’s unique “cacheable sections” use-case (described in our [PWA intro blog](https://developers.dhis2.org/blog/2021/11/introducing-pwa), basically enabling the saving of individual dashboards in the offline cache while leaving other dashboards uncached) in a way that can be generalized to any other app, and
+-   They should not cause side effects for apps that _don’t_ use the PWA features.
+
+For now we'll cover installability and simple offline capability; cacheable sections are more complex and face numerous particular design challenges, and they will be described in another deep-dive post (stay tuned to [DHIS2 developer's blog](https://developers.dhis2.org/blog)).
 
 ### Adding installability
 
@@ -121,12 +127,12 @@ Implementing the service worker in the app platform takes several steps:
 
 We use the [Workbox](https://developers.google.com/web/tools/workbox) library and its utilities as a foundation for our service worker to provide the offline caching basics.
 
-There are a few different strategies that can be used for caching data offline which balance performance, network usage, and data ‘freshness’; these are the caching strategies we settled upon for basic offline functionality in Platform apps:
+There are a few different strategies that can be used for caching data offline which balance performance, network usage, and data ‘freshness’, and we settled on these to provide basic offline functionality in Platform apps:
 
 1. Static assets that are part of the built app (javascript, CSS, images, and more) are **precached**.
-2. Data that’s requested during runtime always uses the network with a combination of stale-while-revalidate strategy for fetched static assets and a network-first strategy for API data.
+2. Data that’s requested during runtime always uses the network with a combination of a **stale-while-revalidate** strategy for fetched static assets and a **network-first** strategy for API data.
 
-If you want to understand why we settled for this both strategies are explained in more depth in our [first PWA blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa#what-youll-get-with-offline-caching) but basically we're looking for the sweet spot of performance vs freshness.
+If you want to read more about our decisions to use these strategies, they are explained in more depth in our [first PWA blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa#what-youll-get-with-offline-caching), but basically we're looking for the sweet spot of performance vs. freshness.
 
 #### Compiling the service worker and adding it to the app
 
@@ -163,20 +169,26 @@ During the `d2-app-scripts` `start` or `build` processes, the config file is rea
 
 #### Managing the service worker’s updates and lifecycle
 
-Managing the service worker’s [lifecycle](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle) is both complex and vitally important. Because the core assets that run the app are precached and served directly from the cache, the service worker must be updated with a new precache manifest in order for app updates to get used.
+Managing the service worker’s [lifecycle](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle) is both complex and vitally important. Because the core assets that run the app are precached and served directly from the cache without contacting the server, in order for a client to use newly deployed app updates, the service worker must be updated with a new precache manifest.
 
 If the service worker lifecycle and updates are managed poorly, the app can get stuck on an old version in a user’s browser and never receive updates from the server, which can be hard to diagnose and harder to fix. The [“Handling precached static assets between versions” section](#handling-precached-static-assets-between-versions) below explains more about why that happens.
 
 This can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
 
-##### User experience
+##### Perfecting the user experience of updating PWA apps
 
 Managing SW updates is complex from a UX perspective: updating the service worker to activate new app updates in production requires a page reload (for reasons described below), which shouldn’t happen without a user’s consent because reloads can cause loss of unsaved data; but we also want the user to use the most up-to-date version of the app possible. Therefore, it poses a UX design challenge to notify and persuade users to reload the app to use new updates as soon as possible, and at the same time avoid any dangerous, unplanned page reloads.
 
 The UX design we settled on is this:
 
 1. Once a new service worker is installed and ready, either on first installation or as an update to an existing one, a prompt is shown to the user that says “There’s an update available for this app” with two actions: “Update now” and “Not now”.
+
+!["There's an update available" alert](update-available-alert.png)
+
 2. When the user clicks “Update now”, if one tab of the app is open, the page will reload. If _more_ than one tab is open, the app will show a confirmation modal that warns the user that all the open tabs of the app will reload, which will cause loss of unsaved data, and has actions to continue or cancel.
+
+![Reload confirmation modal](reload-confirmation-modal.png)
+
 3. If the user clicks “Not now”, the prompt will close and wait for the user to reload the page. If this is the first time a SW is installing for the app, it will go ahead and activate after the reload, but if this is an update to an existing SW, the “Update” prompt will be shown again.
 4. If this is an update to an existing SW and the user _never_ clicks “Update now”, the SW will eventually activate when a new instance of the app is opened after all previous tabs of the app have been closed. This is how browsers natively handle SW updates without any intervention, but this case should be avoided because it may result in delays of important app updates.
 
@@ -192,9 +204,9 @@ Our service worker registration functions draw much from the Create React App PW
 
 If PWA is enabled, a [`register()` function](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/lib/registration.js#L112) is [called](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L24-L30) when an Offline Interface object is [instantiated in the App Adapter](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/adapter/src/index.js#L8) while the app is loading. The `register()` function listens for the `load` event on the `window` object before calling `navigator.serviceWorker.register()`, because the browser checks for a new service worker upon registration, and if there is one, the service worker will install and download the assets it needs to precache. The installation and downloads may be resource-intensive and affect the page load performance, so the registration and thus installation is delayed until after the window `load` event.
 
-The Offline Interface also [registers a listener](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L36-L46) to the `controllerchange` event on `navigator.serviceWorker` that will reload the page when a new service worker takes control, i.e. starts handling fetch events. This is to make sure the app uses the latest assets that the new service worker just installed.
+The Offline Interface also [registers a listener](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L36-L46) to the `controllerchange` event on `navigator.serviceWorker` that will reload the page when a new service worker takes control, i.e. starts handling fetch events. This is to make sure the app loads by using the latest assets that the new service worker just installed.
 
-Unlike some implementations, our service worker is designed to wait patiently once it installs. After it installs and activates for the first time, it does not ‘claim’ the open clients, i.e. take control of those pages and start handling fetch events using the `clients.claim()` API; instead it waits for the page to reload before taking control. This design ensures that a page is only ever controlled during its lifetime by _one_ service worker or _none_; a reload is required for a service worker to take control of a page that was previously uncontrolled or to take over from a previous one. This makes sure the app only uses the core scripts and assets from _one_ version of the app due to precaching. The service worker also does not automatically ‘skip waiting’ and take control of a page when a new update has installed; it will continue waiting for a signal from the app or for the default condition described in [part 4 of the UX flow above](#user-experience). What the SW _does_ is to [listen for messages](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/service-worker/service-worker.js#L187-L196) from the client instructing it to ‘claim clients’ or ‘skip waiting’ in response to the user’s actions and depending on the circumstance, which looks like this:
+Unlike some implementations, our service worker is designed to wait patiently once it installs. After it installs and activates for the first time, it does not ‘claim’ the open clients, i.e. take control of those pages and start handling fetch events by using the `clients.claim()` API; instead it waits for the page to reload before taking control. This design ensures that a page is only ever controlled during its lifetime by _one_ service worker or _none_; a reload is required for a service worker to take control of a page that was previously uncontrolled or to take over from a previous one. This makes sure the app only uses the core scripts and assets from _one_ version of the app due to precaching. The service worker also does not automatically ‘skip waiting’ and take control of a page when a new update has installed; it will continue waiting for a signal from the app or for the default condition described in [part 4 of the UX flow above](#user-experience). What the SW _does_ is to [listen for messages](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/service-worker/service-worker.js#L187-L196) from the client instructing it to ‘claim clients’ or ‘skip waiting’ in response to the user’s actions and depending on the circumstance, which looks like this:
 
 ```js
 self.addEventListener('message', (event) => {
@@ -210,7 +222,7 @@ self.addEventListener('message', (event) => {
 
 Below you can see more details about these messages.
 
-###### Handling app updates
+###### Handling app updates with a "PWA update manager" component
 
 At the top level, the update flow is controlled by a [PWA update manager component](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/PWAUpdateManager.js#L53) that's [rendered in the App Adapter](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/adapter/src/components/AppWrapper.js#L30) and is supported by the Offline Interface. The code for the component, which we'll walk through below, looks like this -- notice the `confirmReload()` function, the `useEffect` hook, and the `ConfirmReloadModal` that's rendered:
 
@@ -270,7 +282,7 @@ export default function PWAUpdateManager({ offlineInterface }) {
 
 By using the `useEffect` hook with an empty dependency array, upon first render the update manager checks for new service workers by calling the Offline Interface's [`checkForNewSW()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L61-L65) (and by extension the [`checkForUpdates()` registration function](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/pwa/src/lib/registration.js#L1-L75)). `checkForUpdates()` checks for service workers installed and ready, listens for new ones becoming available, and checks for installing service workers between those states. Given the several steps of the SW lifecycle (installing, installed, activating, activated), multiple SWs present in the [SW registration object](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) (installing, waiting, active), and the fact that sometimes the ‘active’ SW is not in _control_ because it’s the first SW installation for this app, a good amount of condition-checking is necessary to determine if a new service worker is ready and waiting to take over the open tabs. For the full control flow, take a look at the `checkForUpdates()` source code linked above.
 
-If there _is_ a new SW ready, then the `onNewSW()` callback function provided to `checkForNewSW()` is called, which shows the "Updates are available" alert. If a user clicks the "Update and reload" action on the alert, the `confirmReload()` function is called, which handles the next part of the update flow by checking for how many tabs of this app are open in order to handle the “one-client” or “multiple-client” conditions described in the UX flow above. It uses the Offline Interface's [`getClientsInfo()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L67-L89), which ‘asks’ the ready SW how many clients are associated with this domain and returns a promise that resolves to the correct data (or rejects with a failure reason that can be handled).
+If there _is_ a new SW ready, then the `onNewSW()` callback function provided to `checkForNewSW()` is called, which shows the "Updates are available" alert. If a user clicks the "Update now" action on the alert, the `confirmReload()` function is called, which handles the next part of the update flow by checking for how many tabs of this app are open in order to handle the “one-client” or “multiple-client” conditions described in the UX flow above. It uses the Offline Interface's [`getClientsInfo()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L67-L89), which ‘asks’ the ready SW how many clients are associated with this domain and returns a promise that resolves to the correct data (or rejects with a failure reason that can be handled).
 
 Once the clients info is received, if there is one client open for this service worker scope, `confirmReload()` will use the Offline Interface’s [`useNewSW()` method](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L91-L112) to instruct new SW to activate or take control. The `useNewSW()` method detects if this new SW is the first one that has installed for this app or an update to an existing SW and handles the situations accordingly, either sending a ‘claim clients’ message to a first-install SW, or a ‘skip waiting’ message to an updated SW. Both actions inside the service worker result in a `controllerchange` event in open clients, which triggers a page reload because of the event listener the Offline Interface registered on `navigator.serviceWorker` that was described above.
 
