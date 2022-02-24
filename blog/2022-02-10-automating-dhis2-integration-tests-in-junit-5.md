@@ -11,7 +11,7 @@ DHIS2 releases are already published as Docker images to Docker Hub (see how to 
 
 ### Application Under Test
 
-We began with a brief description of the Java application under test. A bare-bones solution for sharing the aggregate data of the national DHIS2 system with a regional DHIS2 server. In concrete terms, the code synchronises, in one direction, the [data value sets](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data.html) between two DHIS2 instances hosting different [organisation units](https://docs.dhis2.org/en/implement/database-design/organisation-units.html):
+We begin with a brief description of the Java application under test. A bare-bones solution for sharing the aggregate data of the national DHIS2 system with a regional DHIS2 server. In concrete terms, the code synchronises, in one direction, the [data value sets](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data.html) between two DHIS2 instances configured with different [organisation units](https://docs.dhis2.org/en/implement/database-design/organisation-units.html):
 
 ```java
 ...
