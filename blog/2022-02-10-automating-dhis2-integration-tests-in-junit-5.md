@@ -1,8 +1,7 @@
 ---
 slug: 2022/02/automating-dhis2-integration-tests-in-junit-5
 title: Automating DHIS2 Integration Tests in JUnit 5
-author: Claude Mamo
-author_url: https://oncodesign.io/
+author: claudemamo
 tags: [docker, junit, testcontainers, integration, testing, dhis2]
 ---
 
