@@ -1,9 +1,7 @@
 ---
-slug: build-acrobatics
+slug: 2019/03/build-acrobatics
 title: Build acrobatics
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 tags: [build system, architecture]
 ---
 
@@ -13,15 +11,16 @@ more!
 
 <!--truncate-->
 
-> This is a follow-up to the [build system overview](./the-build-system), if you haven't, read
-> that first!
+> This is a follow-up to the [build system
+> overview](2019-02-24-the-build-system.md), if you haven't, read that
+> first!
 
 Below are some examples of use cases, and if you want to cross-reference the
 build system diagrams, the services interacting from this point are:
 
-- Jenkins
-- GitHub (_d2-ci_)
-- GitHub (_dhis2_)
+-   Jenkins
+-   GitHub (_d2-ci_)
+-   GitHub (_dhis2_)
 
 ![](./assets/build_arch/build-tricks.png)
 
@@ -29,14 +28,14 @@ build system diagrams, the services interacting from this point are:
 
 The primary use cases which are useful to be aware of are:
 
-- [Answer questions about a build](#answer-questions-about-a-build)
-- - [What are the bundled applications in a build?](#what-are-the-bundled-applications-in-a-build)
-- - [Exactly what versions of the apps does a build contain?](#exactly-what-versions-of-the-apps-does-a-build-contain)
-- - [What is the source commit for a given application build?](#what-is-the-source-commit-for-a-given-application-build)
-- [Create custom builds](#create-custom-builds)
-- - [Replicate a specific build](#replicate-a-specific-build)
-- - [Customize your build](#customize-your-build)
-- [Control when to fetch new apps](#control-when-to-fetch-new-apps)
+-   [Answer questions about a build](#answer-questions-about-a-build)
+-   -   [What are the bundled applications in a build?](#what-are-the-bundled-applications-in-a-build)
+-   -   [Exactly what versions of the apps does a build contain?](#exactly-what-versions-of-the-apps-does-a-build-contain)
+-   -   [What is the source commit for a given application build?](#what-is-the-source-commit-for-a-given-application-build)
+-   [Create custom builds](#create-custom-builds)
+-   -   [Replicate a specific build](#replicate-a-specific-build)
+-   -   [Customize your build](#customize-your-build)
+-   [Control when to fetch new apps](#control-when-to-fetch-new-apps)
 
 ---
 
@@ -184,8 +183,8 @@ For every app repo on the [github.com/dhis2](https://github.com/dhis2) org, we
 have a build repo on [github.com/d2-ci](https://github.com/d2-ci) to store the
 build artifacts for each build (one per commit).
 
-- [https://github.com/dhis2/maintenance-app](https://github.com/dhis2/maintenance-app)
-- [https://github.com/d2-ci/maintenance-app](https://github.com/d2-ci/maintenance-app)
+-   [https://github.com/dhis2/maintenance-app](https://github.com/dhis2/maintenance-app)
+-   [https://github.com/d2-ci/maintenance-app](https://github.com/d2-ci/maintenance-app)
 
 > N.B. `https://` is used for the apps to avoid the build environment
 > having a git+ssh set up. If you know that you can clone from a `git://`
@@ -200,9 +199,9 @@ should be used for the build. The syntax for that is:
 
 A treeish:
 
-- Can be a commit: `5840ec14e92e5f1cf6d54136da114a8844fe6318`
-- Or a branch: `v30`
-- Or a tag: `2.31.1`
+-   Can be a commit: `5840ec14e92e5f1cf6d54136da114a8844fe6318`
+-   Or a branch: `v30`
+-   Or a tag: `2.31.1`
 
 Some example use cases below:
 

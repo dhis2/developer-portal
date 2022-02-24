@@ -1,9 +1,7 @@
 ---
-slug: packages-and-conventions
+slug: 2018/12/packages-and-conventions
 title: Packages and style conventions
-author: Viktor Varland
-author_url: https://github.com/varl
-author_image_url: https://avatars.githubusercontent.com/u/185449?s=400&u=8f2d74e0261c8b752a5c18c3ea391e6993006757&v=4
+authors: varl
 tags: [js, style, packages, code-style]
 ---
 
@@ -15,7 +13,7 @@ JavaScript conventions.
 
 <!--truncate-->
 
-> **EDIT MARCH 28, 2019** - While the concepts in this post still very much hold true, the **code-style** and **packages** (with the exception of `packages exec`) are being deprecated. Please use [d2](./introducing-d2) instead of these older stand-alone tools where possible!
+> **EDIT MARCH 28, 2019** - While the concepts in this post still very much hold true, the **code-style** and **packages** (with the exception of `packages exec`) are being deprecated. Please use [d2](2019-03-28-introducing-d2.md) instead of these older stand-alone tools where possible!
 
 # 1 - [code-style](https://github.com/dhis2/code-style)
 
@@ -23,21 +21,21 @@ JavaScript conventions.
 
 `code-style.js` does a couple of things related to your codebase:
 
-- Runs **Prettier** on your staged, or all with `--all`, files with the DHIS2 Prettier
-  configuration.
-- Removes any existing [Prettier
-  configuration](https://prettier.io/docs/en/configuration.html).
-- Copies the official Prettier config file to the repo so tools can
-  find it by default.
-- Adds the official Browerslist config file to the repo so other tools
-  (Babel, etc.) can easily find it.
-- Stages all the re-formatted files.
+-   Runs **Prettier** on your staged, or all with `--all`, files with the DHIS2 Prettier
+    configuration.
+-   Removes any existing [Prettier
+    configuration](https://prettier.io/docs/en/configuration.html).
+-   Copies the official Prettier config file to the repo so tools can
+    find it by default.
+-   Adds the official Browerslist config file to the repo so other tools
+    (Babel, etc.) can easily find it.
+-   Stages all the re-formatted files.
 
 `commit-style.js` orients its existence around making sure that commit
 messages follow a structured format:
 
-- Passes the commit message through **commitlint** and validates it with
-  our chosen configuration.
+-   Passes the commit message through **commitlint** and validates it with
+    our chosen configuration.
 
 **code-style** is designed to function standalone and as a plugin to
 **packages**, so even if you are not using **packages** to manage your
@@ -58,11 +56,11 @@ When a project is setup using **packages** and e.g.
 [Husky](https://github.com/typicode/husky) to manage Git hooks, the
 benefits are:
 
-- :heart: Standardised code formatting
-- :green_heart: Structured commit messages
-- :blue_heart: Automatic CHANGELOG generation
-- :yellow_heart: Automatic semantic version bumps
-- :purple_heart: Monorepo management with flatpaks
+-   :heart: Standardised code formatting
+-   :green_heart: Structured commit messages
+-   :blue_heart: Automatic CHANGELOG generation
+-   :yellow_heart: Automatic semantic version bumps
+-   :purple_heart: Monorepo management with flatpaks
 
 Since **packages** includes **code-style**, we can focus on setting up the
 former.
@@ -155,11 +153,11 @@ In general all commit messages must conform to the format:
 type(scope?): subject # note: scope is optional
 ```
 
-- Common types to use: `docs`, `fix`, `feat`, `refactor`, `style`,
-  `test`, `chore`.
-- All [valid types](https://github.com/marionebl/commitlint/tree/master/@commitlint/config-conventional#type-enum)
-- More information can be found in the [Conventional Commits
-  specification](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#specification)
+-   Common types to use: `docs`, `fix`, `feat`, `refactor`, `style`,
+    `test`, `chore`.
+-   All [valid types](https://github.com/marionebl/commitlint/tree/master/@commitlint/config-conventional#type-enum)
+-   More information can be found in the [Conventional Commits
+    specification](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#specification)
 
 Some real world examples would be:
 
@@ -244,10 +242,10 @@ will get its own blog post shortly).
 
 At this point the project is set up to:
 
-- Re-format any staged code before it's commited
-- Validate the commit message before it's commited
-- Automatically cut a release
-- _Optional: Monorepo dependency management_
+-   Re-format any staged code before it's commited
+-   Validate the commit message before it's commited
+-   Automatically cut a release
+-   _Optional: Monorepo dependency management_
 
 That's it! :tada:
 
