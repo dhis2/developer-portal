@@ -166,7 +166,7 @@ Here's a rundown of the DHIS2 container configuration:
 
 #### Data Set Up
 
-The next step, as part of the test set up, is seeding the DHIS2 instances using the nifty web service testing library [REST Assured](https://rest-assured.io/). REST Assured sends HTTP requests to the DHIS2 web service endpoints defined as:
+The next step, as part of the test setup, is seeding the DHIS2 instances using the nifty web service testing library [REST Assured](https://rest-assured.io/). REST Assured sends HTTP requests to the DHIS2 web service endpoints defined as:
 
 ```java
 @BeforeAll
