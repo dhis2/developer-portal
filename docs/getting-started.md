@@ -32,7 +32,8 @@ Now that you have installed Docker and the CLI you are ready to start up a local
 1. From the terminal, start up DHIS2 and seed the database
 
 ```shell
-d2 cluster up 2.35.0 --db-version 2.35 --seed
+d2 cluster up 2.37.0 --db-version 2.37
+--seed
 ```
 
 2. From the browser, navigate to [http://localhost:8080](http://localhost:8080). If DHIS2 is running, you should see the following page:
