@@ -82,7 +82,7 @@ Note that, before uploading the data value sets, the application swaps out the s
 
 ### Integration Test
 
-The following sections describe the JUnit integration test covering the application's happy path. For `IntegrationApp` to behave correctly, the test case stands up the source and target DHIS2 instances before proceeding to seeding them with test data. The DHIS2 servers, along with their PostgreSQL databases, are spun up and wired with the help of [Testcontainers](https://www.testcontainers.org/). Testcontainers is a delightful polyglot library that allows you to create referenceable Docker containers from within your test case.
+The following sections describe the JUnit integration test covering the application's happy path. For `IntegrationApp` to behave correctly, the test case stands up the source and target DHIS2 instances before proceeding to seed them with test data. The DHIS2 servers, along with their PostgreSQL databases, are spun up and wired with the help of [Testcontainers](https://www.testcontainers.org/). Testcontainers is a delightful polyglot library that allows you to create referenceable Docker containers from within your test case.
 
 #### Container Set Up
 
