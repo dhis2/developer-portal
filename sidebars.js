@@ -30,6 +30,7 @@ module.exports = {
                 Translation: ['guides/translation-support'],
             },
         ],
+        'Videos': ['dev-videos'],
         Reference: ['reference'],
         Conceptual: ['conceptual'],
     },
