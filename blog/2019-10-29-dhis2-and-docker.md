@@ -234,6 +234,58 @@ _Tip: To destroy the instance, run `docker-compose down`_.
 
 ---
 
+## Tips
+### Setting context.path tomcat variable
+
+If you are using nginx reverse proxy on the host machine and want to expose dhis2 running in docker in non-default location, the easiest way would be to create a custom `server.xml` file and set `context.path` property to the same value as location.
+
+Example for setting context.path in `server.xml`: 
+
+```
+<Engine name="Catalina" defaultHost="localhost">
+    <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <Realm
+            className="org.apache.catalina.realm.UserDatabaseRealm"
+            resourceName="UserDatabase"
+        />
+    </Realm>
+
+    <Host
+        name="localhost"
+        appBase="webapps"
+        unpackWARs="true"
+        autoDeploy="false"
+        deployOnStartup="false"
+    >
+        <Context path="*${context.path}*" docBase="ROOT/" />
+
+        <Valve
+            className="org.apache.catalina.valves.AccessLogValve"
+            directory="logs"
+            prefix="localhost_access_log" suffix=".txt"
+            pattern="%h %l %u %t &quot;%r&quot; %s %b"
+        />
+    </Host>
+</Engine>
+```
+
+When you have a custom configuration file, attach it as a volume and set `context.path` in the environment variables. If you are using docker-compose, your set up could look like this: 
+```
+volumes: 
+  - ./dhis2/server.xml:/usr/local/tomcat/conf/server.xml
+  ...
+environment: 
+  - CATALINA_OPTS: "-Dcontext.path=hmis"
+  ...
+```
+### Configuring file storage
+By default, DHIS2 will use container's in-memory storage for file type data values and attributes. In production set ups, you should always configure a proper volume and set up routine back up system. Example of volume mapping container's file storage to host's file storage: 
+
+```
+volumes: 
+  - ./dhis2/files:/DHIS2_home/files
+```
+By default, DHIS2 will use container's in-memory storage for file type data values and attributes. In production set ups, you should always configure a proper volume and set up routine back up system. 
 # Q&A
 
 Q: **How can I use your Docker images in production?**  
