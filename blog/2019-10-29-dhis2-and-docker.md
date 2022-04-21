@@ -285,7 +285,7 @@ By default, DHIS2 will use container's in-memory storage for file type data valu
 volumes: 
   - ./dhis2/files:/DHIS2_home/files
 ```
-By default, DHIS2 will use container's in-memory storage for file type data values and attributes. In production set ups, you should always configure a proper volume and set up routine back up system. 
+
 # Q&A
 
 Q: **How can I use your Docker images in production?**  
