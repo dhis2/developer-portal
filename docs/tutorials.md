@@ -1,6 +1,6 @@
 ---
 id: tutorials
-title: Introduction
+title: Tutorials overview
 ---
 
 ## Learn about DHIS2 app development

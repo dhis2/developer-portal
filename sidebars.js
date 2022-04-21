@@ -1,6 +1,10 @@
 module.exports = {
     docs: {
-        'Quick Start': ['getting-started'],
+        'Quick Start': [
+            'quickstart',
+            'quickstart/quickstart-web',
+            'quickstart/quickstart-android',
+        ],
         Tutorials: [
             'tutorials',
             'tutorials/setup-env',

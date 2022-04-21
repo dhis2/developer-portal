@@ -1,10 +1,13 @@
 ---
 id: dev-videos
-title: Videos for DHIS2 developers
-sidebar_label: Videos for DHIS2 developers
+title: Development videos by topic
+sidebar_label: Development videos by topic
 ---
 
-This is a compilation of technical videos that we have recorded during academies, workshops and webinars with references to the topics covered.
+This is a compilation of technical videos that we have recorded during academies, workshops and webinars grouped by platform with references to the topics covered.
+
+- [Web Development](#web-development)
+- [Android Development](#android-development)
 
 ### Web Development
 
