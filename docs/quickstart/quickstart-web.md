@@ -14,7 +14,7 @@ It's time to create a new Web app! Below we'll show you how to quickly bootstrap
 d2 app scripts init my-app
 ```
 
-2. Change directories to `/my-app` and start the app
+2. Change directories to `./my-app` and start the app
 
 ```shell
 cd my-app && yarn start
