@@ -279,7 +279,7 @@ environment:
   ...
 ```
 ### Configuring file storage
-By default, DHIS2 will use container's in-memory storage for file type data values and attributes. In production set ups, you should always configure a proper volume and set up routine back up system. Example of volume mapping container's file storage to host's file storage: 
+By default, DHIS2 will use container's in-memory storage for file type data values and attributes. In production set ups, you should always configure a proper volume and set up routine back up of the system. Example of volume mapping container's file storage to host's file storage: 
 
 ```
 volumes: 
