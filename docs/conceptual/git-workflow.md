@@ -21,7 +21,7 @@ suffice. No need to complicate things further:
 4. **Open a PR from your branch to `master`**
 5. **Use squash-merge when merging to master**
    We follow the [Conventional
-   Commit](https://www.conventionalcommits.org)
+   Commits](https://www.conventionalcommits.org)
    specification, so you need to make sure the squash commit message is
    valid manually.
 
@@ -45,7 +45,7 @@ trouble by basing your changes on the correct commit.
    branch**
 9. **Use squash-merge when merging to master**
    We follow the [Conventional
-   Commit](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
+   Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
    specification, so you need to make sure the squash commit message is
    valid manually.
 
@@ -93,7 +93,7 @@ git checkout -b dhis2-1234/my-feature-branch-patch
 If you now start developing on this branch, it is easier to merge
 everything into the version branches.
 
-Once your changes are commited to the patch branch, this branch can be
+Once your changes are committed to the patch branch, this branch can be
 used to merge your changes into the different target branches.
 
 Sometimes it is possible to set up a PR from the patch branch straight
@@ -120,7 +120,7 @@ git checkout dhis2-1234/my-feature-branch-v1
 git merge dhis2-1234/my-feature-branch-patch
 ```
 
-You will get same the conflicts at this point, and here you can safely
+You will get the conflicts at this point, and here you can safely
 resolve them and test that it still works. This is now the branch you
 will setup a pull request for to merge into the target version branch:
 
@@ -128,8 +128,8 @@ will setup a pull request for to merge into the target version branch:
 -   `dhis2-1234/my-feature-branch-v2` to `v2`
 -   `dhis2-1234/my-feature-branch-v3` to `v3`
 
-The [conventional
-commit](https://www.conventionalcommits.org) rules
+The [Conventional
+Commits](https://www.conventionalcommits.org) rules
 apply, so when squash-merging you need to make sure you write a message
 which is compliant.
 
@@ -153,8 +153,8 @@ squash the commits before submitting it for code review for that as
 well.
 
 When merging your branch after it being approved, you'll be asked to
-provide a new merge commit message, make sure you put in a [conventional
-commit](https://www.conventionalcommits.org) message.
+provide a new merge commit message, make sure you put in a [Conventional
+Commits](https://www.conventionalcommits.org) message.
 
 ## Cleanup after your branch has been merged
 
@@ -183,7 +183,7 @@ merged your pull request if you do not need a local copy for a while.
 
 ## What is the convention for commit messages, and also, why?
 
-We use the [conventional commits](https://www.conventionalcommits.org)
+We use the [Conventional Commits](https://www.conventionalcommits.org)
 to structure our commits in a uniform way, and the _why_ is a big part
 of this.
 
@@ -194,7 +194,7 @@ exchange for a minor annoyance.
 
     Change logs are a very important part of software documentation, and
     it is extremely easy to omit during the development process. It is
-    also difficult and time consuming to create an accurate changelog
+    also difficult and time-consuming to create an accurate changelog
     for software as time passes. For example, the manually updated
     changelog in d2 lacks updates between 2017 and 2019, but looking at
     the commit history a lot has happened in that timespan.
@@ -211,11 +211,11 @@ exchange for a minor annoyance.
     version and understand if it is a breaking change, a new feature, or
     a bug fix.
 
-    This is also timeconsuming and very sensitive work as an incorrect
+    This is also time-consuming and very sensitive work as an incorrect
     bump will have consequences for the consumers of the library or
     application.
 
-    By following the conventional commits specification we can infer
+    By following the Conventional Commits specification we can infer
     what version should be the next version from the Git history itself
     which removes the human factor from the equation when determining
     the next version bump.
@@ -236,7 +236,7 @@ The structure of a commit message is this:
 [optional footer]
 ```
 
-The [conventional commits
+The [Conventional Commits
 site](https://www.conventionalcommits.org/en/v1.0.0-beta.3/#summary) has
 examples and the rules documented, but the cheat sheet is this:
 
@@ -259,7 +259,7 @@ examples and the rules documented, but the cheat sheet is this:
 # Why is `cherry-pick` a problem when used to port code between branches?
 
 [This article outlines problems with
-`cherry-pick`ing](https://blogs.msdn.microsoft.com/oldnewthing/20180312-00/?p=98215).
+`cherry-pick`ing](https://devblogs.microsoft.com/oldnewthing/20180312-00/?p=98215).
 It is recommended material to read and understand.
 
 We have seen instances where these problems happen in our code base, and

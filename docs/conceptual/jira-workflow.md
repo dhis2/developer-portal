@@ -46,7 +46,7 @@ commit history and should be treated as such.
 **A summary of a discussion related to an issue in JIRA needs to be added as a
 comment to the JIRA issue**.
 
-Not to mention that if a developer becomes out of commision for a while work on
+Not to mention that if a developer becomes out of commission for a while work on
 her features do not grind to a halt if the information is in the JIRA ticket,
 and since we work on a prioritised backlog, whatever she was working on is
 important to complete.
@@ -107,7 +107,7 @@ In general the happy case flow is:
 5. Testing
 6. Done
 
-The parts of the flow in bold are the states we are responsible for doing work in. We take "todo" issues and transition them to "in progess". Here we do work. We then transition them to "in review" where we also do work to verify that they are good enough (according to our **Definition of Done**). When we are confident we move it to "testing" and it is out of our hands (in theory).
+The parts of the flow in bold are the states we are responsible for doing work in. We take "todo" issues and transition them to "in progress". Here we do work. We then transition them to "in review" where we also do work to verify that they are good enough (according to our **Definition of Done**). When we are confident we move it to "testing" and it is out of our hands (in theory).
 
 There are some criteria for actions before transitioning an issue along the
 pipeline.
@@ -130,9 +130,9 @@ pipeline.
 ### In review
 
 -   As _assignee_:
--   -   Unassign issue when transitioning so anyone on the team can review
+    -   Unassign issue when transitioning so anyone on the team can review
 -   As _reviewer_:
--   -   [Review checklist](#review-checklist)
+    -   [Review checklist](#review-checklist)
 
 ### Testing
 
@@ -172,7 +172,7 @@ so you could just take over and do it yourself.
 ## Todo
 
 **Before starting to work on a ticket, you might want to read through the
-"[Git workflow](./git-workflow) for core devs" guide!**
+"[Git workflow](git-workflow) for core devs" guide!**
 
 Once you're done working on an issue, push your changes to the repository
 and submit a pull request.
@@ -188,15 +188,15 @@ Create an issue of type "Test" and specify the required data.
 Keep in mind not to be too specific to make the test case capture
 all possible scenarios, i. e:
 You changed a password input field from showing plain text
-to show asterixes instead. Don't write
+to show asterisks instead. Don't write
 "the password field with the name XZY needs to be of type password".
 It's better to say sth like "password fields in the form ABCD should hide
-the characters behind asterixes".
+the characters behind asterisks".
 
 Also link the actual JIRA issue to the newly created test case issue.
 
 Now you can ask again for a final review.
-If everything looks fine, you can then unassign youself and set the ticket to "In Review"
+If everything looks fine, you can then unassign yourself and set the ticket to "In Review"
 
 # Review checklist
 
