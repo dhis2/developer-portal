@@ -54,7 +54,7 @@ Now that you have installed Docker and the CLI you are ready to start up a local
 1. From the terminal, start up DHIS2 and seed the database
 
 ```shell
-d2 cluster up 2.37.0 --db-version 2.37
+d2 cluster up 2.37.6 --db-version 2.37
 --seed
 ```
 
