@@ -103,21 +103,15 @@ DHIS2 precomputes the program indicators during event analytics. By default, the
 
 After completing analytics, T2A fetches all the precomputed indicators in the program indicator group, and pushes them as data value sets to the DHIS2 server. There are various performance modes how this processing can happen, depending on the way the tool is configured. For instance, when the argument `org.unit.batch.size` is set to its default value of 1, T2A will process individually every organisation unit for each program indicator:
 
-<p align="center">
-  <img src="./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/split.png" />
-</p>
+![](./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/split.png)
 
 Bumping `org.unit.batch.size` to 2 will reduce the network chattiness between T2A and DHIS2 at the expense of adding more workload on the DHIS2 server:
 
-<p align="center">
-  <img src="./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/batch-org-units.png" />
-</p>
+![](./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/batch-org-units.png)
 
 Going even one step further, the periods can be batched alongside the organisation units by setting the argument `split.periods` to false:
 
-<p align="center">
-  <img src="./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/batch-org-units-periods.png" />
-</p>
+![](./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/batch-org-units-periods.png)
 
 In this post, we've walked you through the new T2A tool which we invite you to use to accelerate your page load time when viewing program indicators while keeping a sustainable load on the DHIS2 server.
 
