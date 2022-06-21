@@ -9,6 +9,8 @@ In this hands-on 4-day workshop, participants learned how to build high-quality,
 
 ### Common Track
 
+These videos are relevant to both web and android tracks, and come before the other videos on days 1 and 2.
+
 #### Day 1
 
 -   [Introduction](https://www.youtube.com/watch?v=PHx7hYWgMDw)
