@@ -65,7 +65,7 @@ d2 cluster up 2.37.0 --db-version 2.37
 Sign in as `admin` (username) and `district` (password). If you can load DHIS2 in the browser, you are ready to create a new app.
 
 :::note
-For more info on how to correctly set up command line tools please check our [Environment Setup tutorial](https://docs.dhis2.org/en/implement/android-implementation/server-requriements.html).
+For more info on how to correctly set up command line tools please check our [Environment Setup tutorial](./tutorials/setup-env).
 :::
 
 ### Next steps
