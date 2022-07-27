@@ -9,6 +9,6 @@ We have just released a new major version of the app-platform: version 10. Upgra
 
 ## Node support
 
-The one breaking change for this release is that we've dropped support for node 12. This means that now only the current LTS versions of nodejs will be supported by the app-platform libraries, which is node 14 and up. Node 12 is no longer under active development and we were seeing some of our dependencies dropping support for it, so we felt it was time we did the same.
+There is only one breaking change in this major release. We have dropped support for node 12, meaning that the app-platform libraries now only support node 14 and node 16, the current LTS versions of node. Node 12 is no longer under active development and some of our dependencies are dropping support for it, so we felt it was time we did the same.
 
 It should be an easy upgrade for everyone, all you'll have to do is update the version of node you're using locally or in your continuous integration (CI) pipelines. If you encounter any issues let us know! For a detailed overview of all the changes in this platform release you can view the [changelog](https://github.com/dhis2/app-platform/blob/master/CHANGELOG.md#1000-2022-07-26)
