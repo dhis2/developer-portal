@@ -1,7 +1,7 @@
 ---
 slug: 2022/07/app-platform-v10
 title: App-platform v10
-author: Ismay
+author: ismay
 tags: [dhis2, app-platform]
 ---
 
