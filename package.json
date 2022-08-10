@@ -21,6 +21,9 @@
         "react": "^16.8.4",
         "react-dom": "^16.8.4"
     },
+    "engines": {
+        "node": ">=16.14.0"
+    },
     "browserslist": {
         "production": [
             ">0.5%",
