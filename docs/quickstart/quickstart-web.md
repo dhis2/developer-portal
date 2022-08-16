@@ -4,7 +4,11 @@ title: Creating a DHIS2 Web app
 sidebar_label: Creating a DHIS2 Web app
 ---
 
-It's time to create a new Web app! Below we'll show you how to quickly bootstrap an app and how to connect it to a DHIS2 instance (check the previous section if you haven't yet installed yarn or the DHIS2 CLI which will provide the d2 command used below).
+It's time to create a new Web app! Below we'll show you how to quickly bootstrap an app and how to connect it to a DHIS2 instance.
+
+:::note
+If you haven't yet set up the DHIS2 CLI, head over to the [Prerequisites and Initial Setup](../quickstart.md#running-dhis2-locally-in-a-container-optional) page to find the `d2` installation instructions.
+:::
 
 ### Creating a new Web app
 
@@ -22,7 +26,7 @@ cd my-app && yarn start
 
 ### Connecting your Web app to DHIS2
 
-1. From the browser, navigate to your DHIS2 instance url (if you're running DHIS2 locally via container the address is [http://localhost:3000](http://localhost:3000)). You will see the following page:
+1. From the browser, navigate to your DHIS2 Web App, which by default runs under port 3000 [http://localhost:3000](http://localhost:3000). You will see the following page:
 
 ![](../assets/quickstart_guides/new-app-login-page.png)
 
