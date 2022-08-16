@@ -26,7 +26,7 @@ cd my-app && yarn start
 
 ### Connecting your Web app to DHIS2
 
-1. From the browser, navigate to your DHIS2 Web App, which by default runs under port 3000 [http://localhost:3000](http://localhost:3000)). You will see the following page:
+1. From the browser, navigate to your DHIS2 Web App, which by default runs under port 3000 [http://localhost:3000](http://localhost:3000). You will see the following page:
 
 ![](../assets/quickstart_guides/new-app-login-page.png)
 
