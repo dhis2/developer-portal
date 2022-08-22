@@ -1,6 +1,7 @@
 ---
 id: conceptual
 title: Overview
+sidebar_label: Conceptual Overview
 ---
 
 ## Conceptual guide

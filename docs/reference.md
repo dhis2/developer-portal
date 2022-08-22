@@ -1,13 +1,11 @@
 ---
 id: reference
-title: Overview
+title: Reference Overview
 ---
 
-## Reference
+The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages for each library, as well as links to relevant Github repositories. 
 
-Contains technical reference for APIs specifications and other aspects of the DHIS2 ecosystem.
-
-They describe how it works and how to use it but assume that you have a basic understanding of key concepts.
+Each of the different pages describe how they work and how to use it, but it's assumed that you have a basic understanding of key concepts.
 
 ### API Reference
 
