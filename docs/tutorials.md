@@ -1,6 +1,7 @@
 ---
 id: tutorials
 title: Tutorials overview
+sidebar_label: Overview
 ---
 
 ## Learn about DHIS2 app development
