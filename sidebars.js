@@ -1,11 +1,11 @@
 module.exports = {
-    docs: {
-        'Quick Start': [
+    docs: [
+        {'Quick Start': [
             'quickstart',
             'quickstart/quickstart-web',
             'quickstart/quickstart-android',
-        ],
-        Tutorials: [
+        ]},
+        {Tutorials: [
             'tutorials',
             'tutorials/setup-env',
             'tutorials/ui-library',
@@ -15,8 +15,8 @@ module.exports = {
                     'tutorials/app-runtime-mutation',
                 ],
             },
-        ],
-        Guides: [
+        ]},
+        {Guides: [
             'guides',
             {
                 'Local Development': [
@@ -33,9 +33,9 @@ module.exports = {
                 ],
                 Translation: ['guides/translation-support'],
             },
-        ],
-        'Videos': ['dev-videos'],
-        Reference: ['reference'],
-        Conceptual: ['conceptual'],
-    },
+        ]},
+        'dev-videos',
+        'reference',
+        {Conceptual: ['conceptual', 'conceptual/git-workflow', 'conceptual/jira-workflow']},
+    ],
 }
