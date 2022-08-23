@@ -1,6 +1,6 @@
 ---
 id: reference
-title: Reference Overview
+title: References
 ---
 
 The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages for each library, as well as links to relevant Github repositories. 

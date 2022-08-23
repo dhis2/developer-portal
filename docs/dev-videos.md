@@ -1,7 +1,7 @@
 ---
 id: dev-videos
 title: Development videos by topic
-sidebar_label: Development videos by topic
+sidebar_label: Videos
 ---
 
 This is a compilation of technical videos that we have recorded during academies, workshops and webinars grouped by platform with references to the topics covered.
