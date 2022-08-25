@@ -89,10 +89,6 @@ module.exports = {
             isCloseable: false,
             id: 'domainNav',
         },
-        googleAnalytics: {
-            trackingID: 'UA-157707339-4',
-            anonymizeIP: true,
-        },
     },
     plugins: [
         [
@@ -137,6 +133,10 @@ module.exports = {
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
+                },
+                googleAnalytics: {
+                    trackingID: 'UA-157707339-4',
+                    anonymizeIP: true,
                 },
             },
         ],

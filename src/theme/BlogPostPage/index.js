@@ -10,7 +10,7 @@ import BlogPostItem from '@theme/BlogPostItem'
 import BlogPostPaginator from '@theme/BlogPostPaginator'
 import BlogSidebar from '@theme/BlogSidebar'
 import TOC from '@theme/TOC'
-import IconEdit from '@theme/IconEdit'
+import IconEdit from '@theme/Icon/Edit'
 
 function BlogPostPage(props) {
     useEffect(() => {
