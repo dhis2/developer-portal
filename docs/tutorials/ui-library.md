@@ -16,7 +16,7 @@ Before we continue, make sure that you followed the steps provided in the first 
 
 ### DHIS2 Design System
 
-The UI library is the implementation of the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system). Using this system you can design and build applications that are usable, powerful and consistent with other DHIS2 applications.
+The UI library is the implementation of the [DHIS2 Design System](https://ui.dhis2.nu/). Using this system you can design and build applications that are usable, powerful and consistent with other DHIS2 applications.
 
 ### Live demos documentation
 
