@@ -31,6 +31,10 @@ module.exports = {
                     position: 'left',
                 },
                 {
+                    type: 'search',
+                    position: 'right'
+                },
+                {
                     href: 'https://github.com/dhis2/developer-portal',
                     label: 'GitHub',
                     position: 'right',
@@ -89,6 +93,29 @@ module.exports = {
             isCloseable: false,
             id: 'domainNav',
         },
+        algolia: {
+            // The application ID provided by Algolia
+            appId: 'KR61555RZM',
+      
+            // Public API key: it is safe to commit it
+            apiKey: 'a3aa57dd778bc1116b351eeeba2f16d9',
+      
+            indexName: 'dhis2',
+      
+            // Optional: see doc section below
+            contextualSearch: true,
+      
+            // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+            // externalUrlRegex: 'external\\.com|domain\\.com',
+      
+            // Optional: Algolia search parameters
+            searchParameters: {},
+      
+            // Optional: path for search page that enabled by default (`false` to disable it)
+            searchPagePath: 'search',
+      
+            //... other Algolia params
+          },
     },
     plugins: [
         [
