@@ -100,7 +100,8 @@ module.exports = {
             apiKey: 'a3aa57dd778bc1116b351eeeba2f16d9',
             indexName: 'dhis2',
             contextualSearch: true,
-            searchPagePath: 'search',      
+            searchPagePath: 'search',
+            clickAnalytics: true   
           },
     },
     plugins: [
