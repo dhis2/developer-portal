@@ -7,6 +7,8 @@ tags: [dhis2, t2a, tracker-to-aggregate, program indicators]
 
 [Tracker-to-Aggregate](https://docs.dhis2.org/en/implement/maintenance-and-use/tracker-and-aggregate-data-integration.html#saving-aggregates-of-tracker-data-as-aggregate-data), or T2A for short, is a pattern that has been used with great success when improving the performance of [program indicators](https://docs.dhis2.org/en/use/user-guides/dhis-core-version-236/configuring-the-system/programs.html#about_program_indicators) in DHIS2. Program indicators are expressions based on data elements and attributes of tracked entities which can be used to calculate values based on a formula. T2A can solve the problem where it’s computationally expensive to calculate program indicators in real-time. A common symptom to this recurring problem is an endless spinning circle when opening a dashboard that computes a program indicator over millions of tracked entity instances:
 
+<!--truncate-->
+
 ![Program indicator dashboard timeout](./assets/speeding-up-your-program-indicators-with-tracker-to-aggregate/dashboard-pi-timeout.png)
 
 The T2A pattern favours batch computation over real-time computation and, in a program indicator context, encourages dashboards to be created from aggregate data elements instead of program indicators, removing the need for re-evaluating the former when opening the dashboards.

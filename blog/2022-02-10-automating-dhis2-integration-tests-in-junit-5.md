@@ -6,6 +6,7 @@ tags: [docker, junit, testcontainers, integration, testing, dhis2]
 ---
 
 DHIS2 is a platform that can receive and host data from different sources, while it can also share data with other systems and reporting mechanisms. [Integrating with DHIS2](https://dhis2.org/integration), or building any integration for that matter, requires manual or automated testing of the integration itself. The growth of container technology, and in particular Docker, has reduced the pain of automating the testing of integrations. By automating, I mean self-contained integration test suites that run out-of-the-box and require no manual setup of their external runtime dependencies ([Docker Engine](https://docs.docker.com/engine/install/) is assumed to be installed on the machine running the tests). 
+<!--truncate-->
 
 DHIS2 releases are already published as Docker images to Docker Hub (see how to get a Docker container up and running in our [Getting Started Guide](https://developers.dhis2.org/docs/)). This post demonstrates how a project integrating with DHIS2, such as connecting DHIS2 with another data collection tool, can have its tests automated with Docker. The code examples shown are specific to Java 11 and JUnit 5 but can be adapted to many other programming languages and test frameworks. The complete code example is [available on GitHub](https://github.com/dhis2/integration-examples/tree/main/integration-test) for those who want to take a deep dive into the code.
 
