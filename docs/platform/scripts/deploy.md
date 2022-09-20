@@ -1,4 +1,7 @@
-# d2 app scripts deploy
+---
+title: d2 app scripts deploy
+sidebar_label: d2-app-scripts deploy
+---
 
 Deploys a built application bundle to a running DHIS2 instance.
 

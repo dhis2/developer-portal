@@ -86,7 +86,11 @@ module.exports = {
                 'platform/architecture',
                 'platform/troubleshooting',
                 'platform/proxy',
-                'platform/CHANGELOG'
+                {
+                    type: 'link',
+                    label: 'Changelog',
+                    href: 'https://github.com/dhis2/app-platform/blob/master/CHANGELOG.md'
+                }
             ],
         },
     ],
