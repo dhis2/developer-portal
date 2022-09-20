@@ -96,7 +96,7 @@ module.exports = {
         algolia: {
             // The application ID provided by Algolia
             appId: 'KR61555RZM',
-            // Public API key: it is safe to commit it
+            // Public API key: it's safe to commit it
             apiKey: 'a3aa57dd778bc1116b351eeeba2f16d9',
             indexName: 'dhis2',
             contextualSearch: true,
