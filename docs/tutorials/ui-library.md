@@ -14,9 +14,9 @@ Before we continue, make sure that you followed the steps provided in the first 
 
 ## 1. Getting started
 
-### DHIS2 Design System
+### DHIS2 UI Library Principles
 
-The UI library is the implementation of the [DHIS2 Design System](https://ui.dhis2.nu/). Using this system you can design and build applications that are usable, powerful and consistent with other DHIS2 applications.
+The UI library more than just a collection of components, there also are principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 UI documentation](https://ui.dhis2.nu/).
 
 ### Live demos documentation
 
