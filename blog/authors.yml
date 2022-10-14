@@ -28,6 +28,12 @@ ismay:
     url: https://github.com/ismay
     image_url: https://github.com/ismay.png
 
+rene:
+    name: Rene Pot
+    title: Senior Developer Advocate
+    url: https://github.com/topener
+    image_url: https://github.com/topener.png
+
 kai:
     name: Kai Vandivier
     url: https://github.com/KaiVandivier
