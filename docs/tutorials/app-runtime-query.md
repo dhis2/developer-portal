@@ -33,7 +33,9 @@ In this example, we'll use the `programs` resource from the DHIS2 Web API (the r
 
 The data query below is an object that specifies the type of resource that we want but we can also declare a list of parameters that we need (`pageSize` and the `fields` array in this case).
 
-**Note:** the names (keys) of the parameters must correspond to the parameter names in the DHIS2 API.
+:::note
+The names (keys) of the parameters must correspond to the parameter names in the DHIS2 API.
+:::
 
 ```jsx title="src/App.js"
 // ...

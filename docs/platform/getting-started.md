@@ -1,4 +1,6 @@
-# Getting Started
+---
+title: Getting Started
+---
 
 For an introduction to the Application Platform concept, there is a [short article and video](/blog/2019/07/what-is-this-app-platform)
 

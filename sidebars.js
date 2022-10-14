@@ -68,7 +68,6 @@ module.exports = {
                 },
                 {
                     Configuration: [
-                        'platform/config',
                         'platform/config/types',
                         'platform/config/d2-config-js-reference',
                         'platform/config/environment'
@@ -76,7 +75,6 @@ module.exports = {
                 },
                 {
                     Usage: [
-                        'platform/usage',
                         'platform/usage/dependencies',
                         'platform/usage/css',
                         'platform/usage/static-files',

@@ -229,7 +229,9 @@ In Tomcat there is a folder called `webapps/`. Tomcat monitors this folder for W
 
 So `dhis.war` will be deployed to the context path `/dhis`, and is therefor available at `http://localhost:8080/dhis`. You can name the WAR-file anything you want and it will be deployed with the context path of the name you gave the WAR-file, e.g. `dev.war` becomes `/dev` and `foobar.war` is mounted to `/foobar`.
 
-_Note:_ There is a special case for if you name your WAR-file `ROOT.war`, then your context path will be `/`.
+:::note
+There is a special case for if you name your WAR-file `ROOT.war`, then your context path will be `/`.
+:::
 
 Tomcat redeploys an overwritten WAR-file, so you don't need to remove the old WAR-file before dropping in the updated WAR-file.
 

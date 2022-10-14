@@ -37,7 +37,9 @@ Or spin up a new DHIS2 instance of a specific version seeded with data from the 
 d2 cluster up 2.35.0 --db-version 2.35 --seed
 ```
 
-**Note:** Once the `up` command completes, the server might take up to a couple of minutes to start. You can then run `d2 cluster logs 2.35.0` and wait until you see the line `Server startup in xxx ms`.
+:::note
+Once the `up` command completes, the server might take up to a couple of minutes to start. You can then run `d2 cluster logs 2.35.0` and wait until you see the line `Server startup in xxx ms`.
+:::
 
 > If you want to test against different DHIS2 and database versions or build your own custom DHIS2 Docker image, please refer to the [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) docs.
 
