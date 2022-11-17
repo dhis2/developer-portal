@@ -18,7 +18,7 @@ An app should have a clear, descriptive name. Try to capture the core functional
 In addition, observing the following guidelines will help create a helpful app name:
 
 -   Avoid generic, ambiguous words. Be as specific as possible.
--   Don't include redundant words like "web", "interactive" or "DHIS2". All apps are available on the web, are interactive, and run on DHIS2, so you don't need to include this in the app name.
+-   Don't include redundant words like "app", "web", "interactive" or "DHIS2". All apps are available on the web, are interactive, and run on DHIS2, so you don't need to include this in the app name.
 -   Avoid adjectives in general, especially words like "new", "modern" or "best".
 -   Avoid names that are very similar to other core DHIS2 apps or apps on the App Hub.
 
