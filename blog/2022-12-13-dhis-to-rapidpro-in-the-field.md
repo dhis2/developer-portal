@@ -1,7 +1,7 @@
 ---
 slug: 2022/12/dhis-to-rapidpro-in-the-field
 title: DHIS-to-RapidPro in the Field
-author: claudemamo
+authors: claudemamo
 tags: [dhis2, rapidpro, dhis-to-rapidpro]
 ---
 
@@ -12,6 +12,8 @@ DHIS-to-RapidPro offers:
 * Routine synchronisation of RapidPro contacts with DHIS2 users
 * Aggregate report transfer from RapidPro to DHIS2 via polling or webhook messaging
 * Automated reminders to RapidPro contacts when their aggregate reports are overdue
+
+<!--truncate-->
 
 We are excited to share the news of our first successful pilot of DHIS-to-RapidPro in Zimbabwe for the [Village Health Worker](https://chwcentral.org/zimbabwes-village-health-worker-program/) (VHW) program. [Zimbabwe’s Ministry of Health and Child Care](http://www.mohcc.gov.zw/) (MoHCC) uses DHIS2 nationally to collect health data and for disease surveillance. MoHCC's VHW program is “focused on disease prevention and providing community care at the primary level in rural and peri-urban wards, where village health workers serve as a key link from the community to the formal health system". In collaboration with [HISP Uganda](https://www.hispuganda.org/) and [HISP Zimbabwe](https://itinordic.com/), [HISP Centre](https://www.mn.uio.no/hisp/english/) assisted the MoHCC in deploying and configuring DHIS-to-RapidPro to allow mobile texts of VHWs received in RapidPro to be delivered to DHIS2 in the form of monthly aggregate reports (i.e., [data value sets](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/data.html)):
 

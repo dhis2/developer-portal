@@ -1,7 +1,7 @@
 ---
 slug: 2022/05/speeding-up-your-program-indicators-with-tracker-to-aggregate
 title: Speeding up your Program Indicators with Tracker-to-Aggregate
-author: claudemamo
+authors: claudemamo
 tags: [dhis2, t2a, tracker-to-aggregate, program indicators]
 ---
 
