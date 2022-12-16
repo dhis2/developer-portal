@@ -1,9 +1,7 @@
 ---
 slug: 2021/11/introducing-pwa
 title: Introducing PWA in the App Platform
-authors: Kai Vandivier
-author_url: https://github.com/KaiVandivier
-author_image_url: https://github.com/KaiVandivier.png
+authors: kai
 tags: [app platform, pwa, announcement]
 ---
 
