@@ -120,7 +120,7 @@ As shown above, `VHW-RETURN-FORM` is the code of the data set that the contacts 
 
 ![Data element](./assets/dhis-to-rapidpro-in-the-field/data-element.png)
 
- We then set these codes in the RapidPro result names capturing user responses:
+ We then set these codes in the RapidPro result names capturing contact responses:
 
 ![Data element flow result dialog](./assets/dhis-to-rapidpro-in-the-field/wait-response.png)
 
