@@ -95,15 +95,11 @@ Successfully completed flow runs are transformed into data value sets and pushed
 
 Before we could start transferring mobile transmitted reports to DHIS2, we manually assigned the contact sending the SMS to a DHIS2 organisation unit. After all, DHIS-to-RapidPro needs to know which village the contact is reporting for. DHIS-to-RapidPro supports the mapping of DHIS2 users to RapidPro contacts (i.e., `--sync.rapidpro.contacts=true`) which allows contacts to be automatically assigned to organisation units. However, in the context of this pilot, the contacts were not DHIS2 users so the contact under test had to be manually assigned to the organisation unit. To this end, from the RapidPro contact field management web page, we proceeded to create a contact field named `DHIS2 Organisation Unit ID`:
 
-<p align="center">
-    <img src="./assets/dhis-to-rapidpro-in-the-field/create-field.png" width="50%" height="50%" />
-</p>
+![Create field dialog](./assets/dhis-to-rapidpro-in-the-field/create-field.png)
 
 Within the configuration page of the contact under test, this field was set to the identifier of an organisation unit that has access to the relevant data set:
 
-<p align="center">
-    <img src="./assets/dhis-to-rapidpro-in-the-field/org-unit-code.png" width="50%" height="50%" />
-</p>
+![Field value dialog](./assets/dhis-to-rapidpro-in-the-field/org-unit-code.png)
 
 DHIS-to-RapidPro picks the report’s organisation unit identifier from this field when delivering the contact’s report. You might have observed that the identifier `101010102` is a DHIS2 code and not an opaque DHIS2 ID. Zimbabwe’s MoHCC has a code system for identifying villages. Giving village codes to contacts will help MoHCC in the future assign contacts to organisation units. The argument to have DHIS-to-RapidPro handle the organisation unit identifiers as codes is `org.unit.id.scheme=code`:
 
