@@ -53,7 +53,7 @@ It was time to turn our attention to configuring access to DHIS2. DHIS-to-RapidP
 
 It is worth highlighting that the user was given permission to the organisation units (i.e., the villages) DHIS-to-RapidPro will be transmitting reports for. 
 
-The PAT, like the RapidPro API token, was exported to an environment variable while the `dhis2.api.url` argument was set to point to the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/introduction.html):
+The PAT, like the RapidPro API token, was exported to an environment variable while the `dhis2.api.url` argument was set to point to the [Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/introduction.html) of the MoHCC's DHIS2 instance:
 
 ```shell
 export RAPIDPRO_API_TOKEN=98f3fe494b94742cf577f442e2cc175ae4f635a5
