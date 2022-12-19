@@ -51,9 +51,7 @@ On the second run, we obtained another fatal error:
 
 It was time to turn our attention to configuring access to DHIS2. DHIS-to-RapidPro supports two modes of authentication for DHIS2: [basic](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/introduction.html#webapi_basic_authentication) or [personal access token authentication](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/introduction.html#webapi_pat_authentication) (PAT). PAT was selected because it is considered more secure. We created a DHIS2 user dedicated to DHIS-to-RapidPro and generated a PAT from the user’s profile page that can GET and POST DHIS2 resources:
 
-<p align="center">
-    <img src="./assets/dhis-to-rapidpro-in-the-field/pat.png" width="50%" height="50%" />
-</p>
+![Personal access token dialog](./assets/dhis-to-rapidpro-in-the-field/pat.png)
 
 It is worth highlighting that the user was given permission to the organisation units (i.e., the villages) DHIS-to-RapidPro will be transmitting reports for. 
 
