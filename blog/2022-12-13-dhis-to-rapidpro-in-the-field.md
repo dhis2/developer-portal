@@ -116,9 +116,7 @@ DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit 
 
 For first tweak, the data set code to be relayed to DHIS-to-RapidPro was hard coded inside a flow result named `data_set_code`:
 
-<p align="center">
-    <img src="./assets/dhis-to-rapidpro-in-the-field/data-set-code-flow-variable.png" width="50%" height="50%" />
-</p>
+![Data set code flow result dialog](./assets/dhis-to-rapidpro-in-the-field/data-set-code-flow-variable.png)
 
 As shown above, `VHW-RETURN-FORM` is the code of the data set that the contacts will be completing. In the second configuration change, we gave each DHIS2 data element in the reported data set a code, making sure that the code did not have special characters that are considered illegal in RapidPro:
 
@@ -126,9 +124,7 @@ As shown above, `VHW-RETURN-FORM` is the code of the data set that the contacts 
 
  We then set these codes in the RapidPro result names capturing user responses:
 
-<p align="center">
-    <img src="./assets/dhis-to-rapidpro-in-the-field/wait-response.png" width="50%" height="50%" />
-</p>
+![Data element flow result dialog](./assets/dhis-to-rapidpro-in-the-field/wait-response.png)
 
 Let us take a step back and understand what happens under the covers when DHIS-to-RapidPro is started. The application will scan RapidPro for completed flow runs between intervals as defined in the cron expression `scan.reports.schedule.expression` config property which defaults to every 30 minutes. Ingested flow runs are pushed into an internal persistent queue for asynchronous processing. A worker then:
 
