@@ -108,7 +108,8 @@ DHIS-to-RapidPro picks the report’s organisation unit identifier from this fie
 ./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 \
  --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
  --server.ssl.enabled=false --server.port=8081 \
- --rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82 --org.unit.id.scheme=code
+ --rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82 \
+ --org.unit.id.scheme=code
 ```
 
 DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit but it also needed to identify the data set that the report belongs to and map the SMS data points to the DHIS2 data elements. Accomplishing this necessitated the team tweaking the RapidPro flow definition in order for the:
