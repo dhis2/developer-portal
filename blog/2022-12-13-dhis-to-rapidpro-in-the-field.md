@@ -80,9 +80,9 @@ Turning TLS off with `server.ssl.enabled` and changing the HTTP port number with
 What made this integration challenging was the spotty network connectivity between RapidPro and DHIS-to-RapidPro. DHIS-to-RapidPro can ingest reports through a HTTP(S) endpoint which RapidPro hooks into. Webhook messaging typically scales better than polling, however, this approach is susceptible to reports being lost should RapidPro experience consecutive network or peer failures when attempting to post the message. To overcome this, we configured DHIS-to-RapidPro to scan every so often for completed flow runs in RapidPro rather than having RapidPro push reports via webhook calls to DHIS-to-RapidPro:
 
 ```shell
-`./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
+./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
  --server.ssl.enabled=false --server.port=8081 \
- --rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82`
+ --rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82
 ```
 
 The argument to focus on is `rapidpro.flow.uuids`. The application will scan for flow runs that belong to the flow definition `f23c4129-872b-464f-a1a2-afa89cdd9b82` as referenced in this argument. The flow definition ID was copied from the browser address bar while on the RapidPro flow’s designer page:
