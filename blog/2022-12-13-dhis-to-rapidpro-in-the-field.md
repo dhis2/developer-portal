@@ -17,9 +17,7 @@ DHIS-to-RapidPro offers:
 
 We are excited to share the news of our first successful pilot of DHIS-to-RapidPro in Zimbabwe for the [Village Health Worker](https://chwcentral.org/zimbabwes-village-health-worker-program/) (VHW) program. [Zimbabwe’s Ministry of Health and Child Care](http://www.mohcc.gov.zw/) (MoHCC) uses DHIS2 nationally to collect health data and for disease surveillance. MoHCC's VHW program is “focused on disease prevention and providing community care at the primary level in rural and peri-urban wards, where village health workers serve as a key link from the community to the formal health system". In collaboration with [HISP Uganda](https://www.hispuganda.org/) and [HISP Zimbabwe](https://itinordic.com/), [HISP Centre](https://www.mn.uio.no/hisp/english/) assisted the MoHCC in deploying and configuring DHIS-to-RapidPro to allow mobile texts of VHWs received in RapidPro to be delivered to DHIS2 in the form of monthly aggregate reports (i.e., [data value sets](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/data.html)):
 
-<p align="center">
-  <img src="./assets/dhis-to-rapidpro-in-the-field/dhis2rapidpro.png" />
-</p>
+![Dhis2RapidPro](./assets/dhis-to-rapidpro-in-the-field/dhis2rapidpro.png)
 
 In RapidPro, a _contact_ sends a _keyword_ from a mobile device over a _channel_, such as a SMS, that initiates a user-designed process in RapidPro called a _flow_. The initiated flow controls the sequence of mobile interactions with the contact and steps within the flow go from parsing the contact’s responses to capturing the results in flow variables. Let us walk you through our journey of installing DHIS-to-RapidPro for Zimbabwe’s MoHCC. 
 
