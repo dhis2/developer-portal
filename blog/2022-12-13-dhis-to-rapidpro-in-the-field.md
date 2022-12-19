@@ -59,7 +59,8 @@ The PAT, like the RapidPro API token, was exported to an environment variable wh
 export RAPIDPRO_API_TOKEN=98f3fe494b94742cf577f442e2cc175ae4f635a5
 export DHIS2_API_PAT=d2pat_apheulkR1x7ac8vr9vcxrFkXlgeRiFc94200032556
 
-./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 --dhis2.api.url=https://play.dhis2.org/2.39.0/api
+./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 \
+ --dhis2.api.url=https://play.dhis2.org/2.39.0/api
 ```
 
 Third time's the charm and the application printed the banner saying it is operational along with the URLs to reach its various ancillary services:
@@ -69,8 +70,9 @@ Third time's the charm and the application printed the banner saying it is opera
 The ancillary services are available over HTTPS but, for the pilot, we decided to disable [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) given that this instance of DHIS-to-RapidPro sat behind a [reverse proxy server](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/) that [terminated the client’s TLS connection](https://en.wikipedia.org/wiki/TLS_termination_proxy):
 
 ```shell
-./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
---server.ssl.enabled=false --server.port=8081
+./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 \
+ --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
+ --server.ssl.enabled=false --server.port=8081
 ```
 
 Turning TLS off with `server.ssl.enabled` and changing the HTTP port number with `server.port` produces a different banner, that is, services listening over HTTP on port 8081 instead of services listening over HTTPS on port 8443:
@@ -80,7 +82,8 @@ Turning TLS off with `server.ssl.enabled` and changing the HTTP port number with
 What made this integration challenging was the spotty network connectivity between RapidPro and DHIS-to-RapidPro. DHIS-to-RapidPro can ingest reports through a HTTP(S) endpoint which RapidPro hooks into. Webhook messaging typically scales better than polling, however, this approach is susceptible to reports being lost should RapidPro experience consecutive network or peer failures when attempting to post the message. To overcome this, we configured DHIS-to-RapidPro to scan every so often for completed flow runs in RapidPro rather than having RapidPro push reports via webhook calls to DHIS-to-RapidPro:
 
 ```shell
-./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
+./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 \
+ --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
  --server.ssl.enabled=false --server.port=8081 \
  --rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82
 ```
@@ -102,9 +105,10 @@ Within the configuration page of the contact under test, this field was set to t
 DHIS-to-RapidPro picks the report’s organisation unit identifier from this field when delivering the contact’s report. You might have observed that the identifier `101010102` is a DHIS2 code and not an opaque DHIS2 ID. Zimbabwe’s MoHCC has a code system for identifying villages. Giving village codes to contacts will help MoHCC in the future assign contacts to organisation units. The argument to have DHIS-to-RapidPro handle the organisation unit identifiers as codes is `org.unit.id.scheme=code`:
 
 ```shell
-./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
---server.ssl.enabled=false --server.port=8081 \
---rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82 --org.unit.id.scheme=code
+./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 \
+ --dhis2.api.url=https://play.dhis2.org/2.39.0/api \
+ --server.ssl.enabled=false --server.port=8081 \
+ --rapidpro.flow.uuids=f23c4129-872b-464f-a1a2-afa89cdd9b82 --org.unit.id.scheme=code
 ```
 
 DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit but it also needed to identify the data set that the report belongs to and map the SMS data points to the DHIS2 data elements. Accomplishing this necessitated the team tweaking the RapidPro flow definition in order for the:
