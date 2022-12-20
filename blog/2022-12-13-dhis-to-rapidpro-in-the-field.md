@@ -5,7 +5,7 @@ authors: claudemamo
 tags: [dhis2, rapidpro, dhis-to-rapidpro]
 ---
 
-The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro is a reliable, extensible, operations-friendly Java solution. It is powered by [Apache Camel](https://camel.apache.org/), providing connectivity between DHIS2 and [RapidPro](https://community.rapidpro.io/about-rapidpro-new/). RapidPro which is an open-source workflow engine geared towards mobile-based services. 
+The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro is a reliable, extensible, operations-friendly Java solution. It is powered by [Apache Camel](https://camel.apache.org/), providing connectivity between DHIS2 and [RapidPro](https://community.rapidpro.io/about-rapidpro-new/). RapidPro is an open-source workflow engine geared towards mobile-based services. 
 
 DHIS-to-RapidPro offers:
 
