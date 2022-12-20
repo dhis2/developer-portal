@@ -76,6 +76,10 @@ The ancillary services are available over HTTPS but, for the pilot, we decided t
  --server.ssl.enabled=false --server.port=8081
 ```
 
+:::caution
+TLS should only be turned off under the right circumstances since turning it off can pose a security risk.
+:::
+
 Turning TLS off with `server.ssl.enabled` and changing the HTTP port number with `server.port` produces a different banner, that is, services listening over HTTP on port 8081 instead of services listening over HTTPS on port 8443:
 
 ![Second banner](./assets/dhis-to-rapidpro-in-the-field/banner-2.png)
