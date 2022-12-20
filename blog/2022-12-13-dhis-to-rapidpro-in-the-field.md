@@ -115,7 +115,7 @@ DHIS-to-RapidPro picks the report’s organisation unit identifier from this fie
 DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit but it also needed to identify the data set that the report belongs to and map the SMS data points to the DHIS2 data elements. Accomplishing this necessitated the team tweaking the RapidPro flow definition in order for the:
 
 1. Data set code to be included in the set of flow results that DHIS-to-RapidPro pulls down from RapidPro, and
-2. The flow results to be mapped to DHIS2 data elements
+2. Flow results to be mapped to DHIS2 data elements
 
 For the first tweak, the data set code to be relayed to DHIS-to-RapidPro was hard coded inside a flow result named `data_set_code`:
 
