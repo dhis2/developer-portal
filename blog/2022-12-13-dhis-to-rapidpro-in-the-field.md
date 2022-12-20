@@ -5,9 +5,9 @@ authors: claudemamo
 tags: [dhis2, rapidpro, dhis-to-rapidpro]
 ---
 
-The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro is a reliable, extensible, operations-friendly Java solution. It is powered by [Apache Camel](https://camel.apache.org/), providing connectivity between DHIS2 and [RapidPro](https://community.rapidpro.io/about-rapidpro-new/). RapidPro is an open-source workflow engine geared towards mobile-based services. 
+The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro provides connectivity between DHIS2 and an open-source workflow engine geared towards mobile-based services called [RapidPro](https://community.rapidpro.io/about-rapidpro-new/).
 
-DHIS-to-RapidPro offers:
+ DHIS-to-RapidPro is a reliable, extensible, operations-friendly Java solution, powered by [Apache Camel](https://camel.apache.org/), that offers:
 
 * Routine synchronisation of RapidPro contacts with DHIS2 users.
 * Aggregate report transfer from RapidPro to DHIS2 via polling or webhook messaging.
@@ -103,7 +103,7 @@ Within the configuration page of the contact under test, this field was set to t
 
 ![Field value dialog](./assets/dhis-to-rapidpro-in-the-field/org-unit-code.png)
 
-DHIS-to-RapidPro picks the report’s organisation unit identifier from this field when delivering the contact’s report. You might have observed that the identifier `101010102` is a DHIS2 code and not an opaque DHIS2 ID. Zimbabwe’s MoHCC has a code system for identifying villages. Giving village codes to contacts will help MoHCC in the future assign contacts to organisation units. The argument to have DHIS-to-RapidPro handle the organisation unit identifiers as codes is `org.unit.id.scheme=code`:
+DHIS-to-RapidPro picks the report’s organisation unit identifier from this field when delivering the contact’s report. You might have observed that the identifier `01010102` is a DHIS2 code and not an opaque DHIS2 ID. Zimbabwe’s MoHCC has a code system for identifying villages. Giving village codes to contacts will help MoHCC in the future assign contacts to organisation units. The argument to have DHIS-to-RapidPro handle the organisation unit identifiers as codes is `org.unit.id.scheme=code`:
 
 ```shell
 ./dhis2rapidpro.jar --rapidpro.api.url=https://rapidpro.dhis2.org/api/v2 \
