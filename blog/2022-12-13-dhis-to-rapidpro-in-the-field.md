@@ -5,20 +5,20 @@ authors: claudemamo
 tags: [dhis2, rapidpro, dhis-to-rapidpro]
 ---
 
-The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro is a reliable, extensible, operations-friendly Java solution, powered by [Apache Camel](https://camel.apache.org/), providing connectivity between DHIS2 and [RapidPro](https://community.rapidpro.io/about-rapidpro-new/). RapidPro is an open-source workflow engine geared towards mobile-based services. 
+The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro is a reliable, extensible, operations-friendly Java solution. It is powered by [Apache Camel](https://camel.apache.org/), providing connectivity between DHIS2 and [RapidPro](https://community.rapidpro.io/about-rapidpro-new/). RapidPro which is an open-source workflow engine geared towards mobile-based services. 
 
 DHIS-to-RapidPro offers:
 
-* Routine synchronisation of RapidPro contacts with DHIS2 users
-* Aggregate report transfer from RapidPro to DHIS2 via polling or webhook messaging
-* Automated reminders to RapidPro contacts when their aggregate reports are overdue
+* Routine synchronisation of RapidPro contacts with DHIS2 users.
+* Aggregate report transfer from RapidPro to DHIS2 via polling or webhook messaging.
+* Automated reminders to RapidPro contacts when their aggregate reports are overdue.
 
 <!--truncate-->
-We are excited to share the news of our first successful DHIS-to-RapidPro pilot in Zimbabwe for the [Village Health Worker](https://chwcentral.org/zimbabwes-village-health-worker-program/) (VHW) program. [Zimbabwe’s Ministry of Health and Child Care](http://www.mohcc.gov.zw/) (MoHCC) uses DHIS2 nationally to collect health data and for disease surveillance. MoHCC's VHW program is “focused on disease prevention and providing community care at the primary level in rural and peri-urban wards, where village health workers serve as a key link from the community to the formal health system". In collaboration with [HISP Uganda](https://www.hispuganda.org/) and [HISP Zimbabwe](https://itinordic.com/), [HISP Centre](https://www.mn.uio.no/hisp/english/) assisted the MoHCC in deploying and configuring DHIS-to-RapidPro to allow mobile texts of VHWs received in RapidPro to be delivered to DHIS2 in the form of monthly aggregate reports (i.e., [data value sets](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/data.html)):
+We are excited to share the news of our first successful DHIS-to-RapidPro pilot in Zimbabwe for the [Village Health Worker](https://chwcentral.org/zimbabwes-village-health-worker-program/) (VHW) program. [Zimbabwe’s Ministry of Health and Child Care](http://www.mohcc.gov.zw/) (MoHCC) uses DHIS2 nationally to collect health data, and for disease surveillance. MoHCC's VHW program is "focused on disease prevention and providing community care at the primary level in rural and peri-urban wards, where village health workers serve as a key link from the community to the formal health system". In collaboration with [HISP Uganda](https://www.hispuganda.org/) and [HISP Zimbabwe](https://itinordic.com/), [HISP Centre](https://www.mn.uio.no/hisp/english/) assisted the MoHCC in deploying and configuring DHIS-to-RapidPro to allow mobile texts of VHWs received in RapidPro to be delivered to DHIS2 in the form of monthly aggregate reports (i.e., [data value sets](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/data.html)):
 
 ![Dhis2RapidPro](./assets/dhis-to-rapidpro-in-the-field/dhis2rapidpro.png)
 
-In RapidPro, a _contact_ sends a _keyword_ from a mobile device over a _channel_, such as a SMS, that initiates a user-designed process in RapidPro called a _flow_. The initiated flow controls the sequence of mobile interactions with the contact and steps within the flow go from parsing the contact’s responses to capturing the results in flow variables. Let us walk you through our journey of installing DHIS-to-RapidPro for Zimbabwe’s MoHCC. 
+In RapidPro, a _contact_ sends a _keyword_ from a mobile device over a _channel_, such as an SMS, that initiates a user-designed process in RapidPro called a _flow_. The initiated flow controls the sequence of mobile interactions with the contact and steps within the flow go from parsing the contact’s responses to capturing the results in flow variables. Let us walk you through our journey of installing DHIS-to-RapidPro for Zimbabwe’s MoHCC. 
 
 We began the roll out by downloading the latest DHIS-to-RapidPro [executable JAR](https://github.com/dhis2/integration-dhis-rapidpro/releases/download/v2.0.0/dhis2rapidpro.jar) from the [releases page](https://github.com/dhis2/integration-dhis-rapidpro/releases) of the GitHub repository and moving it to a directory within a dedicated linux [system container](https://linuxcontainers.org/lxd/introduction/#application-containers-vs-system-containers) from where we wanted to run it. The executable requires no local dependencies other than Java 11 being installed on the operating system. DHIS-to-RapidPro is also shipped as a [WAR](https://github.com/dhis2/integration-dhis-rapidpro/releases/download/v2.0.0/dhis2rapidpro-2.0.0.war) so the user has the possibility to deploy the application in a web container like [Tomcat](https://tomcat.apache.org/).
 
@@ -50,7 +50,9 @@ It was time to turn our attention to configuring access to DHIS2. DHIS-to-RapidP
 
 ![Personal access token dialog](./assets/dhis-to-rapidpro-in-the-field/pat.png)
 
+:::info
 It is worth highlighting that the user was given permission to the organisation units (i.e., the villages) DHIS-to-RapidPro will be transmitting reports for. 
+:::
 
 The PAT, like the RapidPro API token, was exported to an environment variable while the `dhis2.api.url` argument was set to the [Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/introduction.html) address of the MoHCC's DHIS2 instance:
 
@@ -111,7 +113,7 @@ DHIS-to-RapidPro picks the report’s organisation unit identifier from this fie
  --org.unit.id.scheme=code
 ```
 
-DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit but it also needed to identify the data set that the report belongs to and map the SMS data points to the DHIS2 data elements. Accomplishing this necessitated the team tweaking the RapidPro flow definition in order for the:
+DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit, but it also needed to identify the data set that the report belongs to and map the SMS data points to the DHIS2 data elements. Accomplishing this necessitated the team tweaking the RapidPro flow definition in order for the:
 
 1. Data set code to be included in the set of flow results that DHIS-to-RapidPro pulls down from RapidPro, and
 2. Flow results to be mapped to DHIS2 data elements
@@ -148,9 +150,13 @@ Speaking of web consoles, another web console the operator will find handy is th
 
 ![Hawtio](./assets/dhis-to-rapidpro-in-the-field/hawtio.png)
 
-Check out the [documentation](https://github.com/dhis2/integration-dhis-rapidpro/blob/v2.0.0/README.md) to learn more about the management web consoles. Returning to our pilot, we installed DHIS-to-RapidPro as a [systemd service](https://en.wikipedia.org/wiki/Systemd) to allow the application to be automatically launched again whenever the operating system reboots or the application dies. The DHIS-to-RapidPro arguments were expressed inside a properties file named `application.properties` which had restricted access and sat inside the same directory as the application executable:
+:::info
+Check out the [documentation](https://github.com/dhis2/integration-dhis-rapidpro/blob/v2.0.0/README.md) to learn more about the management web consoles. 
+:::
 
-```properties
+Returning to our pilot, we installed DHIS-to-RapidPro as a [systemd service](https://en.wikipedia.org/wiki/Systemd) to allow the application to be automatically launched again whenever the operating system reboots or the application dies. The DHIS-to-RapidPro arguments were expressed inside a properties file named `application.properties` which had restricted access and sat inside the same directory as the application executable:
+
+```shell
 rapidpro.api.url=https://rapidpro.dhis2.org/api/v2
 dhis2.api.url=https://play.dhis2.org/2.39.0/api
 server.ssl.enabled=false
@@ -169,9 +175,12 @@ A pilot run was conducted by sending a fake SMS report from a cell phone number,
 curl -u http://127.0.0.1:8081/dhis2rapidpro/services/tasks/scan
 ```
 
-If you recall, the above URL was shown in the application’s banner during startup. An empty HTTP request sent to this URL manually kicks off a flow scan from DHIS-to-RapidPro. As a side note, we could have alternatively waited for the flow scan job to kick in. After a few seconds waiting impatiently, we headed over to the DHIS2 data entry app where we navigated to the data set under test for the previous month. To the team’s delight, there waiting for us, was the completed data set as sent from the fake SMS report:
+If you recall, the above URL was shown in the application’s banner during startup. An empty HTTP request sent to this URL manually kicks off a flow scan from DHIS-to-RapidPro. As a side note, we could have waited for the scheduled flow scan job to kick in. 
+
+After a few seconds waiting impatiently, we headed over to the DHIS2 data entry app where we navigated to the data set under test for the previous month. To the team’s delight, there waiting for us, was the completed data set as sent from the fake SMS report:
 
 ![Data entry](./assets/dhis-to-rapidpro-in-the-field/data-entry.png)
 
+:::info
 We have only covered a fraction of DHIS-to-RapidPro’s capabilities. Visit the code repository’s [README](https://github.com/dhis2/integration-dhis-rapidpro/blob/v2.0.0/README.md) to learn more about what DHIS-to-RapidPro can do for you. At the [DHIS2 Community of Practice](https://community.dhis2.org/tag/rapidpro), we are eager to learn about your experiences integrating DHIS2 with RapidPro and how their interoperability can be made better.
-
+:::
