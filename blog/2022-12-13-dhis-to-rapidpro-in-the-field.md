@@ -117,7 +117,7 @@ DHIS-to-RapidPro was now able to obtain the contact’s DHIS2 organisation unit 
 1. Data set code to be included in the set of flow results that DHIS-to-RapidPro pulls down from RapidPro, and
 2. The flow results to be mapped to DHIS2 data elements
 
-For first tweak, the data set code to be relayed to DHIS-to-RapidPro was hard coded inside a flow result named `data_set_code`:
+For the first tweak, the data set code to be relayed to DHIS-to-RapidPro was hard coded inside a flow result named `data_set_code`:
 
 ![Data set code flow result dialog](./assets/dhis-to-rapidpro-in-the-field/data-set-code-flow-variable.png)
 
