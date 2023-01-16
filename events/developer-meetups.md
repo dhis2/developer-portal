@@ -17,6 +17,6 @@ Topics range from meet and greet to technical web development discussions. These
 -   DHIS2 application testing with Cypress
 -   Meet and Greet, general Q&A
 
-Keep an eye on the CoP [announcement](https://community.dhis2.org/c/announcements/22) category for our next live community event or join the **DHIS2 Developer Community Slack Workspace** to know more.
+Keep an eye on the CoP [Development](https://community.dhis2.org/c/development/10) category for our next live community event or join the **DHIS2 Developer Community Slack Workspace** to know more.
 
 Looking forward to seeing you there! 🎊
