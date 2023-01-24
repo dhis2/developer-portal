@@ -71,5 +71,5 @@ For more info on how to correctly set up command line tools please check our [En
 
 Now that you havea DHIS2 instance you can put it to the test by developing DHIS2 apps.
 
--   Create a DHIS2 [Web app](./quickstart/quickstart-web)
--   Create a DHIS2 [Android App](./quickstart/quickstart-android)
+-   Create a DHIS2 [Web app](/docs/quickstart/quickstart-web)
+-   Create a DHIS2 [Android App](/docs/quickstart/quickstart-android)
