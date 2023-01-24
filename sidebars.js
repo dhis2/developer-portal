@@ -8,6 +8,7 @@ module.exports = {
         {Tutorials: [
             'tutorials',
             'tutorials/setup-env',
+            'tutorials/dhis2-docker',
             'tutorials/ui-library',
             {
                 'DHIS2 App Runtime': [

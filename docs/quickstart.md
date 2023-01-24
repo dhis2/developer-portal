@@ -33,29 +33,11 @@ For specific DHIS2 server requirements for an Android app please take a look at 
 
 It's useful to run a local container with a DHIS2 instance for ease of development (you can then create and connect apps to your local instance for easy debugging and as playground).
 
-If you are using Debian Linux,
-
-1. Follow the [DHIS2 Docker guide](./tutorials/dhis2-docker) to install the prerequisites
-
-If you are using OSX or Windows,
-
-1. Install [Docker](https://docs.docker.com/get-docker/)
-2. Install [yarn](https://classic.yarnpkg.com/en/docs/install)
-3. From the command line or terminal, install the DHIS2 [CLI](https://cli.dhis2.nu/#/getting-started) globally
-
-```shell
-yarn global add @dhis2/cli
-```
-
-Now that you have installed Docker and the CLI you are ready to start up a local DHIS2 instance.
+Follow the [DHIS2 in Docker guide](/docs/tutorials/dhis2-docker) to install the prerequisites and see how to run DHIS2 in Docker.
 
 #### Starting a local DHIS2 container instance
 
-1. From the terminal, start up DHIS2 and seed the database
-
-```shell
-d2 cluster up 2.39.0.1 --db-version 2.39 --seed
-```
+1. From the terminal, start up DHIS2 as shown in the docs above.
 
 2. From the browser, navigate to [http://localhost:8080](http://localhost:8080). If DHIS2 is running, you should see the following page:
 
@@ -64,12 +46,12 @@ d2 cluster up 2.39.0.1 --db-version 2.39 --seed
 Sign in as `admin` (username) and `district` (password). If you can load DHIS2 in the browser, you are ready to create a new app.
 
 :::note
-For more info on how to correctly set up command line tools please check our [Environment Setup tutorial](./tutorials/setup-env).
+For more info on how to correctly set up command line tools please check our [Environment Setup tutorial](/docs/tutorials/setup-env).
 :::
 
 ### Next steps
 
-Now that you havea DHIS2 instance you can put it to the test by developing DHIS2 apps.
+Now that you have a DHIS2 instance you can put it to the test by developing DHIS2 apps.
 
--   Create a DHIS2 [Web app](./quickstart/quickstart-web)
--   Create a DHIS2 [Android App](./quickstart/quickstart-android)
+-   Create a DHIS2 [Web app](/docs/quickstart/quickstart-web)
+-   Create a DHIS2 [Android App](/docs/quickstart/quickstart-android)

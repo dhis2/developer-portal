@@ -1,84 +1,36 @@
 ---
 id: dhis2-docker
-title: DHIS2 Docker
+title: DHIS2 in Docker
 ---
+
+## Prerequisites
+
+Make sure you have the following tools installed
+* [Docker](https://docs.docker.com/get-docker/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
+* [d2 cluster CLI](https://cli.dhis2.nu/#/commands/d2-cluster) (_only needed if you want to use `d2 cluster` for running DHIS2 in Docker_)
 
 ## Overview
 
--   Install D2 CLI
--   Launch development cluster
--   System cleanup (_Optional_)
+- [Run DHIS2 in Docker with Docker Compose](#run-dhis2-in-docker-with-docker-compose)
+- [Run DHIS2 in Docker with d2 cluster CLI](#run-dhis2-in-docker-with-d2-cluster-cli)
 
 
-## Install D2 CLI
+## Run DHIS2 in Docker with Docker Compose
 
-Can be installed using Yarn (recommended):
-
-```
-yarn global add @dhis2/cli
+Running DHIS2 with Docker Compose is very straightforward, [see the dhis2-core README](https://github.com/dhis2/dhis2-core#run-dhis2-in-docker) for more details. 
+```shell
+DHIS2_IMAGE=dhis2/core:2.39.0.1 DHIS2_DB_DUMP=https://databases.dhis2.org/sierra-leone/2.39.0/dhis2-db-sierra-leone.sql.gz docker compose up
 ```
 
-> :information_source: NPM can be used, but is [not
-> recommended](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
-> for many reasons. If Yarn is unacceptable, use `npx @dhis2/cli` instead.
+This is the preferred way if you want a simple setup that consist of DHIS2 and a database. You can either clone the [`dhis2-core`](https://github.com/dhis2/dhis2-core) repository or download only the [`docker-compose.yml`](https://github.com/dhis2/dhis2-core/blob/master/docker-compose.yml) file.
 
-Add the global Yarn packages `.bin` directory to your `PATH` so that you can
-easily execute the commands:
+## Run DHIS2 in Docker with d2 cluster CLI
 
-```
-tee -a ~/.bash_profile <<EOF
-if [ -d "\$HOME/.config/yarn/global/node_modules/.bin" ] ; then
-    PATH="\$HOME/.config/yarn/global/node_modules/.bin:\$PATH"
-fi
-EOF
+Running DHIS2 with the `d2 cluster` CLI is also very simple, [see the DHIS2 CLI docs](https://cli.dhis2.nu/#/commands/d2-cluster) for more details.
+
+```shell
+d2 cluster up 2.39.0.1 --db-version 2.39 --seed
 ```
 
-For shells other than Bash, a different `.profile` file is needed, e.g.
-`.zsh_profile` for ZSH. If no shell specific profile file is found or used,
-then `.profile` would work in most cases.
-
-### D2 configuration file (_Optional_)
-
-```
-mkdir -p ~/.config/d2
-tee ~/.config/d2/config.js <<EOF
-module.exports = {
-    cluster: {
-        channel: 'stable',
-        clusters: {
-            dev: {
-                channel: 'dev',
-                dbVersion: 'dev',
-                dhis2Version: 'master',
-                customContext: false, // true if using nginx as a reverse proxy
-                port: 8080
-            },
-        },
-    },
-}
-EOF
-```
-
-## Launch the development cluster
-
-If you have the `~/.config/d2/config.js` file, starting is as easy as:
-
-```
-d2 cluster up dev
-```
-
-Without the configuration file, the equivalent is:
-
-```
-d2 cluster up dev \
-    --channel dev \
-    --dhis2-version master \
-    --db-version dev \
-    --port 8080
-```
-
-## System cleanup (_Optional_)
-
-```
-sudo apt-get autoremove
-```
+This way of running DHIS2 provides extra features like running multiple DHIS2 "clusters" at once, saving different configuration combinations and more.
