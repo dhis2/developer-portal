@@ -144,7 +144,7 @@ for ( DataValue__1 dataValue : dataValueSet.getDataValues().get() ) {
 
 * On each retrieved data value, the target organisation unit is set with `dataValue.setOrgUnit( "lc3eMKXaEfw" )`.
 
-Time to turn our attention to saving the data values to the target server. The next line of code should look familiar:
+Time to turn our attention to saving the data values to the target server. The following should look familiar:
 
 ```java
 Dhis2Client targetDhis2Client = Dhis2ClientBuilder.newClient( "https://target.dhis2.org/api", "d2pat_6xVA12xyUbWNedQxy4ohH77WlxRGVvZZ1151814092" ).build();
