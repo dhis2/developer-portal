@@ -115,7 +115,7 @@ Map<String, Object> dataValueSet = sourceDhis2Client.get( "dataValueSets" )
     .returnAs( Map.class );
 ```
 
-For the memory conscious folks, so that large payloads don’t take up all the machine’s memory, the response can also be streamed with the `read()` method replacing `returnAs(...)`:
+For the memory conscious folks, so that large payloads don’t take up all the machine’s memory, the response can also be streamed with the `read()` method instead of `returnAs(...)`:
 
 ```java
 InputStream dataValueSet = sourceDhis2Client.get( "dataValueSets" )
