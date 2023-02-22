@@ -9,7 +9,7 @@ At HISP Centre, we've been engineering numerous run-of–the-mill integration pr
 
 [DHIS2 Java SDK](https://github.com/dhis2/dhis2-java-sdk) is a small open-source non-opinionated library that aims to provide the nuts and bolts for consuming the DHIS2 Web API. Specifically, it provides a fluent-like interface for creating, fetching, modifying, and deleting DHIS2 resources. The application developer can focus on the domain logic and not get bogged down with low-level details concerning DHIS2 API communication like authentication, retries, and pagination. Furthermore, with its type-safe resource model, the SDK aids application developers in writing client code that is compatible with the version of DHIS2 they’re integrating with. 
 
-The DHIS2 Java SDK binary and its dependencies are available for download from the Maven central repository. From your Maven project, add the SDK to the [dependencies section](https://maven.apache.org/pom.html#Dependencies) inside the _POM_ like this:
+The DHIS2 Java SDK binary and its dependencies are available for download from the Maven Central repository. From your Maven project, add the SDK to the [dependencies section](https://maven.apache.org/pom.html#Dependencies) inside the _POM_ like this:
 
 ```xml
 <dependencies>
