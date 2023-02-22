@@ -39,7 +39,7 @@ public class IntegrationApp {
 }
 ```
 
-The above is arguably trivial. `Dhis2ClientBuilder` builds a `Dhis2Client` to send requests to `https://source.dhis2.org/api` using the PAT `d2pat_5xVA12xyUbWNedQxy4ohH77WlxRGVvZZ1151814092` for authentication. 
+The above is arguably trivial. `Dhis2ClientBuilder` builds a `Dhis2Client` to send requests to `https://source.dhis2.org/api` using the [PAT](https://docs.dhis2.org/en/use/user-guides/dhis-core-version-239/working-with-your-account/personal-access-tokens.html) `d2pat_5xVA12xyUbWNedQxy4ohH77WlxRGVvZZ1151814092` for authentication. 
 
 :::info
 `Dhis2ClientBuilder` can also build a `Dhis2Client` to authenticate with basic credentials as shown below:
@@ -126,13 +126,13 @@ InputStream dataValueSet = sourceDhis2Client.get( "dataValueSets" )
     .read();
 ```
 
-Returning to our data value set transfer application, the organisation unit in the target DHIS2 server is not the same as the source. Therefore, before posting `dataValueSet` to the target instance, we swap out its source organisation unit ID with the target organisation unit ID: 
+Returning to our data value set transfer application, the organisation unit in the target DHIS2 server is not the same as the source. Therefore, before posting `dataValueSet` to the target instance, the app swaps out its source organisation unit ID with the target organisation unit ID: 
 
 ```java
 dataValueSet.setOrgUnit( "lc3eMKXaEfw" );
 ```
 
-This line highlights the SDK’s type-safety characteristics. The retrieved `dataValueSet` has its `orgUnit` ID replaced with the target organisation unit ID `lc3eMKXaEfw`.  We proceed to do the same substitution for all organisation units found within `dataValue`:
+This line highlights the SDK’s type-safety characteristics. The retrieved `dataValueSet` has its `orgUnit` ID replaced with the target organisation unit ID `lc3eMKXaEfw`.  The app proceeds to do the same substitution for all organisation units found within `dataValue`:
 
 ```java
 for ( DataValue__1 dataValue : dataValueSet.getDataValues().get() ) {
@@ -144,7 +144,7 @@ for ( DataValue__1 dataValue : dataValueSet.getDataValues().get() ) {
 
 * On each retrieved data value, the target organisation unit is set with `dataValue.setOrgUnit( "lc3eMKXaEfw" )`.
 
-Time to turn our attention to saving the data values to the target server. The following should look familiar:
+Time to turn our attention to the code saving the data values to the target server. The following should look familiar:
 
 ```java
 Dhis2Client targetDhis2Client = Dhis2ClientBuilder.newClient( "https://target.dhis2.org/api", "d2pat_6xVA12xyUbWNedQxy4ohH77WlxRGVvZZ1151814092" ).build();
