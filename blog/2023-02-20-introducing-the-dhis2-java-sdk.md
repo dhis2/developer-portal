@@ -168,7 +168,7 @@ In addition to accepting POJOs, `withResource(...)` accepts plain JSON strings. 
 The `close` method terminating the method chain merits special consideration. Omitting `close()` will lead to the HTTP connection remaining open. Normally, you would need to explicitly close the connection unless you’re consuming the response with `returnAs(...)` or `read()`. Needlessly leaving connections open will likely degrade the runtime performance and cause the application to misbehave.
 
 :::info
-Our example application is more or less complete from a functional perspective. Yet, no application is really complete without automating testing! [Read our earlier blog post about automating integrations tests for DHIS2 integration apps](https://developers.dhis2.org/blog/2022/02/automating-dhis2-integration-tests-in-junit-5) to learn more.
+Our example application is more or less complete from a functional perspective. Yet, no application is really complete without automating testing! [Read our past blog post about automating integrations tests for DHIS2 integration apps](https://developers.dhis2.org/blog/2022/02/automating-dhis2-integration-tests-in-junit-5) to learn more.
 :::
 
 It's still early days for the DHIS2 Java SDK but we invite you to give it a whirl and give us feedback on the DHIS2 [community of practice](https://community.dhis2.org/). Code contributions are more than welcome on the project's GitHub repo.
