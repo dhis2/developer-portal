@@ -85,7 +85,7 @@ Iterable<OrganisationUnit> orgUnits = sourceDhis2Client.get( "organisationUnits"
 `returnAs` requires an additional parameter when `withPaging()` or `withoutPaging()` is applied to the method chain. This parameter is the property name of the JSON array holding the resource items within the response. The JSON array name in this example is `organisationUnits` given that organisation units are going to be fetched. Notably, fetching a collection changes the method chain’s return signature to an iterable of the type specified in `returnAs(...)`, in this case, `Iterable<OrganisationUnit>`. When pagination is applied, the iterator is lazy: the iterator transparently fetches and feeds the subsequent page to its `next()` method after reaching the last item of the current page.
 :::
 
-The `sourceDhis2Client` method chain retrieving the data value set returns an object belonging to a `DataValueSet` _resource class_. Rather than attempting to parse raw JSON strings or reference unsafe generic Maps, a resource class such as `DataValueSet` provides a type-safe fluent view of the request/response's content to the application developer. Additionally, with the help of an IDE’s autocompletion, the programmer can explore which fields are available instead of digging into the Web API documentation. 
+The `sourceDhis2Client` method chain retrieving the data value set returns an object belonging to a `DataValueSet` _resource class_. Rather than attempting to parse raw JSON strings or reference unsafe generic _Maps_, a resource class such as `DataValueSet` provides a type-safe fluent view of the request/response's content to the application developer. Additionally, with the help of an IDE’s autocompletion, the programmer can explore which fields are available instead of digging into the Web API documentation. 
 
 Resource classes are located within the package `org.hisp.dhis.api.model.vX_X_X` where `X_X_X` is a variable informing us of the DHIS2 version that the classes are compatible with. Taking `DataValueSet` from our example, this class is located inside the package `org.hisp.dhis.api.model.v2_39_1`. The version no. `v2_39_1` means that this `DataValueSet` class is compatible with DHIS 2.39.1. If we decide to update the application to support a newer version of DHIS2, then we should bump the package version no. `v2_39_1` to match the new DHIS2 version. Any Web API breaking changes like the renaming of a JSON property would be reflected in the corresponding resource class. This in turn would cause the application to fail compilation should it be calling an accessor that is impacted by the breaking change. 
 
@@ -150,7 +150,7 @@ Time to turn our attention to the code saving the data values to the target serv
 Dhis2Client targetDhis2Client = Dhis2ClientBuilder.newClient( "https://target.dhis2.org/api", "d2pat_6xVA12xyUbWNedQxy4ohH77WlxRGVvZZ1151814092" ).build();
 ```
 
-Like the source server, a `Dhis2Client` is built for the target server. The only thing left now is posting the modified data values with `targetDhis2Client`:
+Like the source server, a `Dhis2Client` is built for the target server. The only thing left now is for the app to _POST_ the modified data values with `targetDhis2Client`:
 
 ```java
 targetDhis2Client.post( "dataValueSets" )
