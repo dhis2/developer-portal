@@ -1,5 +1,5 @@
 ---
-slug: 2021/12/effective-focus-indicators
+slug: 2023/01/effective-focus-indicators
 title: Effective and flexible focus indicators
 authors: joe
 tags: [design, libraries, ui]
