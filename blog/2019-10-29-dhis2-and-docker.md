@@ -7,6 +7,12 @@ author_image_url: https://avatars.githubusercontent.com/u/12664326?s=400&v=4
 tags: [docker]
 ---
 
+:::caution
+
+_UPDATE (January 25, 2023) - some parts of this blog post are outdated, see the [DHIS2 in Docker tutorial](/docs/tutorials/dhis2-docker) for the latest information._
+
+:::
+
 The DHIS2 Core Team uses Docker to make development and testing efforts easier every day! It allows us to spin up various environments with any DHIS2 version, numerous tomcat versions and different components, such as Redis, NGINX, in no time. Because we wanted to share Docker with the community, we made publishing Docker images a part of our delivery pipeline. This guide aims to provide some guidelines on how to use Docker to quickly set up DHIS2.
 
 <!--truncate-->
@@ -233,6 +239,58 @@ or, if the file is on your current directory:
 _Tip: To destroy the instance, run `docker-compose down`_.
 
 ---
+
+## Tips
+### Setting context.path tomcat variable
+
+If you are using nginx reverse proxy on the host machine and want to expose dhis2 running in docker in non-default location, the easiest way would be to create a custom `server.xml` file and set `context.path` property to the same value as location.
+
+Example for setting context.path in `server.xml`: 
+
+```
+<Engine name="Catalina" defaultHost="localhost">
+    <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <Realm
+            className="org.apache.catalina.realm.UserDatabaseRealm"
+            resourceName="UserDatabase"
+        />
+    </Realm>
+
+    <Host
+        name="localhost"
+        appBase="webapps"
+        unpackWARs="true"
+        autoDeploy="false"
+        deployOnStartup="false"
+    >
+        <Context path="*${context.path}*" docBase="ROOT/" />
+
+        <Valve
+            className="org.apache.catalina.valves.AccessLogValve"
+            directory="logs"
+            prefix="localhost_access_log" suffix=".txt"
+            pattern="%h %l %u %t &quot;%r&quot; %s %b"
+        />
+    </Host>
+</Engine>
+```
+
+When you have a custom configuration file, attach it as a volume and set `context.path` in the environment variables. If you are using docker-compose, your set up could look like this: 
+```
+volumes: 
+  - ./dhis2/server.xml:/usr/local/tomcat/conf/server.xml
+  ...
+environment: 
+  - CATALINA_OPTS: "-Dcontext.path=hmis"
+  ...
+```
+### Configuring file storage
+By default, DHIS2 will use container's in-memory storage for file type data values and attributes. In production set ups, you should always configure a proper volume and set up routine back up of the system. Example of volume mapping container's file storage to host's file storage: 
+
+```
+volumes: 
+  - ./dhis2/files:/DHIS2_home/files
+```
 
 # Q&A
 

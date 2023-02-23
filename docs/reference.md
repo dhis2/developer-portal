@@ -1,13 +1,11 @@
 ---
 id: reference
-title: Overview
+title: References
 ---
 
-## Reference
+The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages for each library, as well as links to relevant Github repositories. 
 
-Contains technical reference for APIs specifications and other aspects of the DHIS2 ecosystem.
-
-They describe how it works and how to use it but assume that you have a basic understanding of key concepts.
+Each of the different pages describe how they work and how to use it, but it's assumed that you have a basic understanding of key concepts.
 
 ### API Reference
 
@@ -23,8 +21,8 @@ They describe how it works and how to use it but assume that you have a basic un
 
 -   [DHIS2 UI](https://ui.dhis2.nu/#/) - components and related resources for the [DHIS2 design system](https://github.com/dhis2/design-system)
 -   [Analytics](https://github.com/dhis2/analytics) - helper functions and common components for analytics applications
--   [SMS Compression](https://github.com/dhis2/dhis2-android-capture-app/blob/master/docs/src/commonmark/en/content/tech-guides/SMS-compression.md) how the SMS library works and how it is used in server and Android side
--   [SMS Syncing](https://github.com/dhis2/dhis2-android-capture-app/blob/master/docs/src/commonmark/en/content/tech-guides/SMS-Sync.md) - how the SMS syncing works at every level (server, gateway, Android SDK, Android App) and how to test it
+-   [SMS Compression](https://github.com/dhis2/dhis2-android-docs/blob/main/content/tech-guides/SMS-compression.md) how the SMS library works and how it is used in server and Android side
+-   [SMS Syncing](https://github.com/dhis2/dhis2-android-docs/blob/main/content/tech-guides/SMS-Sync.md) - how the SMS syncing works at every level (server, gateway, Android SDK, Android App) and how to test it
 
 ### Command-line tools
 

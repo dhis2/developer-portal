@@ -1,9 +1,14 @@
 module.exports = {
-    docs: {
-        'Quick Start': ['getting-started'],
-        Tutorials: [
+    docs: [
+        {'Quick Start': [
+            'quickstart',
+            'quickstart/quickstart-web',
+            'quickstart/quickstart-android',
+        ]},
+        {Tutorials: [
             'tutorials',
             'tutorials/setup-env',
+            'tutorials/dhis2-docker',
             'tutorials/ui-library',
             {
                 'DHIS2 App Runtime': [
@@ -11,8 +16,8 @@ module.exports = {
                     'tutorials/app-runtime-mutation',
                 ],
             },
-        ],
-        Guides: [
+        ]},
+        {Guides: [
             'guides',
             {
                 'Local Development': [
@@ -29,8 +34,9 @@ module.exports = {
                 ],
                 Translation: ['guides/translation-support'],
             },
-        ],
-        Reference: ['reference'],
-        Conceptual: ['conceptual'],
-    },
+        ]},
+        'dev-videos',
+        'reference',
+        {Conceptual: ['conceptual', 'conceptual/git-workflow', 'conceptual/jira-workflow']},
+    ],
 }

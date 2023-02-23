@@ -3,6 +3,15 @@ id: annual-conference
 title: Annual Conference
 ---
 
+## The Digital DHIS2 Annual Conference - June 20-23, 2022
+
+-   [Registration](https://www.dhis2academy.org/annual-conference-2022)
+-   [About the conference and topics](https://www.dhis2academy.org/annual-conference-2022)
+
+Would you like to discover how DHIS2 is driving global impact, fueled by our growing community and digital innovation? Join us this June!
+
+The DHIS2 Annual Conference is our biggest yearly event, and provides an opportunity for the global DHIS2 community — a diverse group including implementers, developers, ministry representatives, technical partners, donors, and other DHIS2 experts from around the world — to meet and share experiences with DHIS2, learn about the latest developments and innovations, and make connections that can lead to new partnerships and collaborations.
+
 ## The Digital DHIS2 Annual Conference - June 21-25, 2021
 
 -   [Registration](https://www.dhis2academy.org/digital-annual-conference-2021/#intro)

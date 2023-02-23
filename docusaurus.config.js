@@ -31,6 +31,10 @@ module.exports = {
                     position: 'left',
                 },
                 {
+                    type: 'search',
+                    position: 'right'
+                },
+                {
                     href: 'https://github.com/dhis2/developer-portal',
                     label: 'GitHub',
                     position: 'right',
@@ -51,7 +55,7 @@ module.exports = {
                     title: 'Docs',
                     items: [
                         {
-                            label: 'Getting Started',
+                            label: 'Quick Start',
                             to: 'docs',
                         },
                     ],
@@ -89,10 +93,15 @@ module.exports = {
             isCloseable: false,
             id: 'domainNav',
         },
-        googleAnalytics: {
-            trackingID: 'UA-157707339-4',
-            anonymizeIP: true,
-        },
+        algolia: {
+            // The application ID provided by Algolia
+            appId: 'KR61555RZM',
+            // Public API key: it's safe to commit it
+            apiKey: 'a3aa57dd778bc1116b351eeeba2f16d9',
+            indexName: 'dhis2',
+            contextualSearch: true,
+            searchPagePath: 'search',      
+          },
     },
     plugins: [
         [
@@ -134,9 +143,14 @@ module.exports = {
                     editUrl:
                         'https://github.com/dhis2/developer-portal/edit/main/',
                     authorsMapPath: 'authors.yml',
+                    blogSidebarCount: 15
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
+                },
+                googleAnalytics: {
+                    trackingID: 'UA-157707339-4',
+                    anonymizeIP: true,
                 },
             },
         ],
