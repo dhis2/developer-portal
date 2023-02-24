@@ -46,7 +46,7 @@ public class IntegrationApp {
 The above is arguably trivial. `Dhis2ClientBuilder` builds a `Dhis2Client` to send requests to `https://source.dhis2.org/api` using the [PAT](https://docs.dhis2.org/en/use/user-guides/dhis-core-version-239/working-with-your-account/personal-access-tokens.html) `d2pat_5xVA12xyUbWNedQxy4ohH77WlxRGVvZZ1151814092` for authentication. 
 
 :::tip
-It's recommended to stick with PAC where possible, nonetheless, `Dhis2ClientBuilder` can also build a `Dhis2Client` to authenticate with basic credentials as shown below:
+It's recommended to stick with PAT where possible, nonetheless, `Dhis2ClientBuilder` can also build a `Dhis2Client` to authenticate with basic credentials as shown below:
 
 ```java
 Dhis2ClientBuilder.newClient( "https://source.dhis2.org/api", "admin", "district" ).build();
