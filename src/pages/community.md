@@ -31,6 +31,64 @@ Some members of the community use Stack Overflow to ask questions. Read through 
 
 ## Staying up to date
 
+### Newsletter
+
+Sign up for the DHIS2 newsletter to get monthly updates and special announcements in your inbox, covering the most important news, events, courses and software updates.
+
+<form action="https://pub.dialogapi.no/s/MjE5NDg6ZTQ3NDU4NjItOTY1OS00MDY1LTlkN2EtMWVlM2Y3YTE5OWRl" accept-charset="utf-8" method="post" class="mnm-embed-form">
+<input type="email" name="email" placeholder="Email address" required />
+<div>
+<span>Topic preference:</span>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA2][]" value="General DHIS2 Updates" />
+General DHIS2 Updates
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA2][]" value="Technical & Developer" checked/>
+Technical & Developer
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA2][]" value="DHIS2 for Education" />
+DHIS2 for Education
+</label>
+</div>
+</div>
+<div>
+<span>Language preference:</span>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="English" />
+English
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="Français" />
+Français
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="Español" />
+Español
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="Português" />
+Português
+</label>
+</div>
+</div>
+<input type="submit" value="Subscribe" />
+</form>
+
+
 ### Official channels
 
 Follow the [DHIS2 Twitter account](https://twitter.com/dhis_2) to find out what's happening in the world of DHIS2.
