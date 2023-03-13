@@ -1,0 +1,72 @@
+---
+id: newsletter
+title: Newsletter
+---
+
+import styles from './styles.module.css';
+
+## Sign up for our mailing list
+
+Join the DHIS2 mailing list to receive our monthly newsletter – DHIS2 Highlights – plus periodic announcements of software releases, DHIS2 Academy courses, and significant DHIS2 news and events.
+
+You can also use the checkboxes below to indicate your preferred languages and topics: select “General DHIS2 Updates” to receive most information from DHIS2, “Technical & Developer” to receive information relevant for developers and technical implementers, and “DHIS2 for Education” for information related to using DHIS2 in the education sector.
+
+
+<form action="https://pub.dialogapi.no/s/MjE5NDg6ZTQ3NDU4NjItOTY1OS00MDY1LTlkN2EtMWVlM2Y3YTE5OWRl" accept-charset="utf-8" method="post" className="mnm-embed-form card">
+<div className="card__header"><h3>Signup form:</h3></div>
+<br/>
+<input className={styles.emailField} type="email" name="email" placeholder="Email address" required />
+<div className="card__body">
+<span >Topic preference:</span>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA2][]" value="General DHIS2 Updates" />
+General DHIS2 Updates
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA2][]" value="Technical & Developer" checked/>
+Technical & Developer
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA2][]" value="DHIS2 for Education" />
+DHIS2 for Education
+</label>
+</div>
+</div>
+<div>
+<div className="card__body">
+<span>Language preference:</span>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="English" />
+English
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="Français" />
+Français
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="Español" />
+Español
+</label>
+</div>
+<div>
+<label>
+<input type="checkbox" name="custom_fields[EXTRA1][]" value="Português" />
+Português
+</label>
+</div>
+</div>
+</div>
+<div className="card__footer">
+<input type="submit" className="button button--secondary button--lg" value="Subscribe" />
+</div>
+</form>

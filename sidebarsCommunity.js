@@ -2,6 +2,7 @@ module.exports = {
     events: [
         'support',
         'stay-connected',
+        'newsletter',
         {
             type: 'category',
             label: 'Contributing',

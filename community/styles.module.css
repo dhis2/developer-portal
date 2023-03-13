@@ -1,0 +1,14 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+ 
+.emailField {
+  width: 45%;
+  height:2rem;
+  margin-left:1rem;
+  padding:1rem;
+} 
