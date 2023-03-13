@@ -29,6 +29,8 @@ Some members of the community use Stack Overflow to ask questions. Read through 
 
 ---
 
+## Staying up to date
+
 ### Official channels
 
 Follow the [DHIS2 Twitter account](https://twitter.com/dhis_2) to find out what's happening in the world of DHIS2.
