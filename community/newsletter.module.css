@@ -11,4 +11,7 @@
   height:2rem;
   margin-left:1rem;
   padding:1rem;
+  border-radius: var(--ifm-button-border-radius);
+  box-shadow: none !important;
+  border-color: #dddddd;
 } 
