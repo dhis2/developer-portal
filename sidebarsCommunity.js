@@ -8,5 +8,6 @@ module.exports = {
             label: 'Contributing',
             items: ['contribute-dev-portal', 'contribute'],
         },
+        'awesome',
     ],
 }
