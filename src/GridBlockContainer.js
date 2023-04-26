@@ -7,7 +7,7 @@ const GridBlockContainer = ({ children }) => {
             style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: 'center',
+                justifyContent: 'left',
             }}
         >
             {children}
