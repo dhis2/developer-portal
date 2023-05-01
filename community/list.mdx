@@ -2,7 +2,7 @@
 id: "awesome"
 title: "Awesome DHIS2"
 ---
-import GridBlock from '@site/src/GridBlock';
+import GridBlock, {FullWidthComponent} from '@site/src/GridBlock';
 import GridBlockContainer from '@site/src/GridBlockContainer';
 
 ## Awesome Apps
@@ -28,20 +28,49 @@ These apps are built by the community and are open source. Some of them are alre
 ### Android Applications
 These are Android Applications for DHIS2. Most are Java or Kotlin, but some are written in React Native or other technologies.
 
-### Standalone Applications
-These are standalone applications that are not intended to be embedded in a DHIS2 instance, but work remotely. 
-## Awesome Libraries
-These Libraries are developed by the community and are open source. They can greatly help you in your development and improve your apps.
-
 <GridBlockContainer>
     <GridBlock
-        image={"https://placekitten.com/305/201"}
+        image={"https://placekitten.com/301/201"}
         title="Example Title"
         description="Example Description"
         url="example_url"
     />
     <GridBlock
-        image={"https://placekitten.com/303/200"}
+        image={"https://placekitten.com/302/200"}
+        title="Example Title"
+        description="Example Description"
+        url="example_url"
+    />
+</GridBlockContainer>
+
+### Standalone Applications
+These are standalone applications that are not intended to be embedded in a DHIS2 instance, but work remotely. 
+
+<GridBlockContainer>
+    <GridBlock
+        image={"https://placekitten.com/301/201"}
+        title="Example Title"
+        description="Example Description"
+        url="example_url"
+    />
+    <GridBlock
+        image={"https://placekitten.com/302/200"}
+        title="Example Title"
+        description="Example Description"
+        url="example_url"
+    />
+</GridBlockContainer>
+
+## Awesome Libraries
+These Libraries are developed by the community and are open source. They can greatly help you in your development and improve your apps.
+
+<GridBlockContainer>
+    <FullWidthComponent
+        title="Example Title"
+        description="Example Description"
+        url="https://github.com/dhis2/d2"
+    />
+    <FullWidthComponent
         title="Example Title"
         description="Example Description"
         url="example_url"
@@ -52,14 +81,12 @@ These Libraries are developed by the community and are open source. They can gre
 These plugins can enhance your DHIS2 application.
 
 <GridBlockContainer>
-    <GridBlock
-        image={"https://placekitten.com/311/231"}
+    <FullWidthComponent
         title="Example Title"
         description="Example Description"
-        url="example_url"
+        url="https://github.com/dhis2/d2"
     />
-    <GridBlock
-        image={"https://placekitten.com/322/220"}
+    <FullWidthComponent
         title="Example Title"
         description="Example Description"
         url="example_url"

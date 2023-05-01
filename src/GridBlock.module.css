@@ -32,3 +32,55 @@
 .container p {
     margin: 0;
 }
+
+
+.fullWidthContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background-color: #f9f9f9;
+}
+
+.fullWidthContainer a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: inherit;
+}
+
+.fullWidthContainer img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.fullWidthContainer h3 {
+    margin: 0;
+}
+
+.fullWidthContainer p {
+    margin: 0;
+}
+
+.fullWidthContainer .title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.fullWidthContainer .description {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.fullWidthContainer .url {
+    font-size: 12px;
+    color: #2a9df4;
+}
