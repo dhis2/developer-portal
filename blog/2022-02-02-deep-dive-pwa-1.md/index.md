@@ -38,12 +38,13 @@ Let's start then with some necessary context about how our App Platform works.
 
 ## DHIS2 App Platform
 
-DHIS2's live production instances are implemented at the national level in [70+ countries](https://dhis2.org/in-action/) and are used for many purposes, for example tracking health facility resources, tracking and visualizing Malaria cases, and supporting COVID-19 inmunization campaigns. Each DHIS2 instance usually has specific requirements, so we wanted to make it really easy for DHIS2 developers to [contribute extensions as web apps](https://apps.dhis2.org) (and make our lives easier when creating and maintaining [our own 26+ core web apps](https://github.com/search?q=org%3Adhis2+-app&type=repositories)!). Enter the [App Platform](https://github.com/dhis2/app-platform). The App Platform is a unified application architecture and build pipeline to simplify and standardize application development within the DHIS2 ecosystem. If you take a look at the image below you should note that we provide almost everything in there for you (common/instance UI, data access and build tooling) and you just need to code your app's fundamentals (basically your App's interface, state management and data visualization):
+DHIS2 is used in many different countries and in many different contexts. Each DHIS2 instance has specific requirements, use-cases, and user experience workflows.  We wanted to make it as easy as possible for developers in other organizations to extend the core functionality of DHIS2 by creating their own web applications (among other types of extensions) and also to [share those apps with other implementers on our App Hub](https://apps.dhis2.org).  We also wanted to make our own lives easier when creating and maintaining the more than 30 web applications developed by our core developer team. 
+
+Enter the [App Platform](https://developers.dhis2.org/blog/2019/07/what-is-this-app-platform). The App Platform is a unified application architecture and build pipeline to simplify and standardize application development within the DHIS2 ecosystem. The platform provides many common services and functionalities - including authentication and authorization, translation infrastructure, common UI components, and a data access layer - that are required by all DHIS2 web applications, making it easier and faster to develop custom applications without reinventing the wheel.
 
 ![App Platform](https://user-images.githubusercontent.com/246555/150789100-ed368e7b-934b-49a2-a2b2-ae7d15bb5b51.png)
-[More info about App Platform](https://docs.google.com/presentation/d/1tzYfmuurCfRNWtJjdOeQXJ2uiPTZsxE4WpV0_0XTw9E/edit#slide=id.g5b783f7689_0_0)
 
-This way DHIS2 developers can focus on the app's distinct functionality without having to worry about the nitty gritty details such as authentication, data access, i18n support, etc.
+*Some features in this image are works in progress.*
 
 ### The App Platform at build-time
 
@@ -51,7 +52,7 @@ The App Platform is made up of a number of build-time components and development
 
 1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point (like `<App />`) and performs other jobs.
 2. An **App Shell** which provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point, and wraps it with the App Adapter (and provides some environment variables to the app).
-3. An **App Scripts CLI** (part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server (among other features like spinning up DHIS2 server containers).
+3. An **App Scripts CLI** (also part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server.
 
 ### The App Platform at run-time
 
@@ -63,7 +64,7 @@ At run-time, our platform offers React components and hooks that provide service
     3. An **Alerts Service** that provides a declarative API for showing and hiding in-app alerts (which works with the Alerts manager component in the App Adapter to show the UI)
 2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui).
 
-### The App Platform orchestra
+### The App Platform "orchestra"
 
 To illustrate how the App Adapter, App Shell, and App Scripts CLI work together, consider this series of events that takes place when you initialize and build an app:
 
@@ -76,6 +77,10 @@ To illustrate how the App Adapter, App Shell, and App Scripts CLI work together,
 7. Inside the shell at this stage, the files are set up so that the root component exported from the "entry point" in the app under development (`<App />` from `src/App.js` by default, now copied into `.d2/shell/src/D2App/App.js`) is _imported_ by a file in the shell [that wraps it with the App Adapter](https://github.com/dhis2/app-platform/blob/master/shell/src/App.js), and then the [wrapped app gets rendered](https://github.com/dhis2/app-platform/blob/master/shell/src/index.js) into an anchor node in the DOM.
 8. The shell-encapsulated app that's now set up in the `.d2/shell/` directory is now basically a "Create React App" app, and `react-scripts` can be used to compile a minified production build. The `react-scripts build` script is run, and build is output to the `build/app/` directory in the app root.
 9. A zipped bundle of the app is also created and output to `build/bundle/`, which can be uploaded to a DHIS2 instance.
+
+This example will be useful to refer back to when reading about the build process later in this article.
+
+Some details of this process may change as we improve our build tooling, but this is the current design as of writing.
 
 ## Into Progressive Web Apps (PWA)
 
