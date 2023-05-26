@@ -1,10 +1,10 @@
 import React from 'react';
-import {UserBadge as UsersBadges} from './UserBadge';
+import UserBadge from './UserBadge';
 
 export const BadgeList = ({attendees,info}) => {
     return(
         <>
-        <section className="BadgeInfo">
+<section className="BadgeInfo">
         <div className="avatar avatar--vertical">
   <img
     className="avatar__photo avatar__photo--xl"
@@ -27,7 +27,7 @@ export const BadgeList = ({attendees,info}) => {
         {
             attendees.map((user,i) => {
 if (attendees[i].username != "System-Academy"){ return(
-<UsersBadges 
+<UserBadge 
         key={attendees[i].id}
         username={attendees[i].name ? attendees[i].name : attendees[i].username}
         img={"https://dhis2.b-cdn.net/" + attendees[i].avatar_template.replace('{size}','120')}
