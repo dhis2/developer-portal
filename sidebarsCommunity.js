@@ -8,5 +8,10 @@ module.exports = {
             label: 'Contributing',
             items: ['contribute-dev-portal', 'contribute'],
         },
+        {
+            type: 'link',
+            label: 'Developer Meetups',
+            href: `../community/meetups`,
+          },
     ],
 }
