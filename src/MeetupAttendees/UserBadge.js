@@ -21,13 +21,13 @@ class UserBadge extends Component {
           <div
             className="avatar"
             style={{
-              display: "grid",
-              justifyContent: "center",
-              justifyItems: "center",
+                display: "flex",
+                flexWrap: "wrap",
+                flexBasis: "min-content",
+                justifyContent: "center",
+                width: "fit-content",
               padding: "1vw",
               margin: "1vw",
-              gridTemplateColumns: "repeat(2,auto)",
-              width: "fit-content",
               background: isHovered ? "rgb(238 249 253 / 46%)" : "none",
               borderRadius: "10px",
               borderStyle: isHovered ? "inset" : "unset",
@@ -67,7 +67,8 @@ class UserBadge extends Component {
               target="_blank"
               style={{
                 textAlign: "center",
-                marginTop: "1vw"
+                marginTop: "1vw",
+                width: "6rem"
               }}
 
             >

@@ -20,10 +20,9 @@ export const BadgeList = ({attendees,info}) => {
 </section>
       <div
           style={{
-            display: "grid",
-            justifyContent: "center",
-            justifyItems: "center",
-            gridTemplateColumns: "repeat(auto-fill,minmax(30vw,1fr))"
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between"
           }}>
             {
             attendees.map((user,i) => {
