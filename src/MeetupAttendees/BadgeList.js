@@ -2,7 +2,7 @@ import React from 'react';
 import UserBadge from './UserBadge';
 
 export const BadgeList = ({attendees,info}) => {
-    return(
+  return(
         <>
 <section className="BadgeInfo">
         <div className="avatar avatar--vertical">
@@ -24,14 +24,14 @@ export const BadgeList = ({attendees,info}) => {
             flexWrap: "wrap",
             justifyContent: "center",
           }}>
-        {
+            {
             attendees.map((user,i) => {
-if (attendees[i].username != "System-Academy"){ return(
+if (user.username != "System-Academy"){ return(
 <UserBadge 
-        key={attendees[i].id}
-        username={attendees[i].name ? attendees[i].name : attendees[i].username}
-        img={"https://dhis2.b-cdn.net/" + attendees[i].avatar_template.replace('{size}','120')}
-        link={"https://community.dhis2.org" + attendees[i].assign_path.replace('/activity/assigned','')}
+        key={user.id}
+        username={user.name ? user.name : user.username}
+        img={"https://dhis2.b-cdn.net/" + user.avatar_template.replace('{size}','120')}
+        link={"https://community.dhis2.org" + user.assign_path.replace('/activity/assigned','')}
         />)
     } else {return ''}
 })}
