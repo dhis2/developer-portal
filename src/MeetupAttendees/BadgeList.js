@@ -23,7 +23,7 @@ export const BadgeList = ({attendees,info}) => {
             display: "grid",
             justifyContent: "center",
             justifyItems: "center",
-            gridTemplateColumns: "repeat(3,auto)",
+            gridTemplateColumns: "repeat(auto-fill,minmax(30vw,1fr))"
           }}>
             {
             attendees.map((user,i) => {
