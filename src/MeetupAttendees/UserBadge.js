@@ -26,11 +26,16 @@ class UserBadge extends Component {
               justifyItems: "center",
               padding: "1vw",
               margin: "1vw",
-              gridTemplateColumns: "repeat(3,auto)",
+              gridTemplateColumns: "repeat(2,auto)",
+              width: "fit-content",
               background: isHovered ? "rgb(238 249 253 / 46%)" : "none",
               borderRadius: "10px",
-              borderStyle: isHovered ? "inset" : "unset"
+              borderStyle: isHovered ? "inset" : "unset",
+              borderColor: isHovered ? "rgb(45, 68, 170)" : ""
             }}
+
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
           >
             <a
               className="avatar__photo-link avatar__photo"
@@ -38,7 +43,7 @@ class UserBadge extends Component {
               href={link}
               style={{
                 display: "block",
-                marginRight: isHovered ? "20px" : "1px",
+                marginRight: "1px",
                 border: "1px solid #ccc",
                 boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
                 transition: "all 0.3s ease-in-out",
@@ -64,8 +69,7 @@ class UserBadge extends Component {
                 textAlign: "center",
                 marginTop: "1vw"
               }}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
+
             >
               {username}
             </a>
