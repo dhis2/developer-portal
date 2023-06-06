@@ -307,7 +307,7 @@ You can read more about precaching with Workbox at the [Workbox documentation](h
 
 ##### Adding a kill switch for a rogue service worker
 
-If, for some reason, the service worker lifecycle gets out of control and an app gets stuck with a service worker serving old app assets from the cache and blocking any updates that have been deployed to the server, that can be a difficult problem to fix. It’s a problem we’ve faced with some of the DHIS2 core apps: an old version of the app once registered a service worker and served the app assets via a precaching strategy, but when a new version of the app was deployed _without a service worker_, there was no way for the newly deployed app to take over from the previous version. It would seem like the app was stuck on an old version and missing new fixes, even though a new version had been deployed to the server.
+In some cases, a service worker lifecycle can get out of control and an app can be stuck with a service worker serving old app assets. If the app doesn’t detect a new service worker and doesn’t offer the user the option to reload, the app in the user’s browser will not be updated. This can be a difficult problem to debug, and requires manual steps by the user to resolve. As described in this article, we have worked hard to build our application platform in such a way that apps don’t need to do anything special to deal with service worker updates -- it is all handled in the platform layer and the Offline Interface. We sometimes encounter this problem when an old version of an app once registered a service worker and served the app assets via a precaching strategy. Then, when a new version of the app is deployed without a service worker, there is no way for the newly deployed app to take over from the previous version. It would seem like the app was stuck on an old version and missing new fixes, even though a new version had been deployed to the server.
 
 To handle this “rogue service worker” case, we added a **kill-switch mode** to the service worker in the platform which will help unstick apps with a service worker that’s serving an old version of the app. This takes advantage of browsers’ service worker update design: in response to a registration event or a navigation in scope of an active service worker, the browser will check the server for a new version of the service worker with the same filename, even if that service worker is cached. If there is a service worker on the server and it is byte-different from the active one, the browser will initiate the installation process of the new service worker downloaded from the server (this was relevant to the update process described above as well).
 
@@ -340,9 +340,9 @@ export function setUpKillSwitchServiceWorker() {
 
 It will skip waiting as soon as it’s done installing to claim all open clients, and upon taking control, will unregister itself, delete all `CacheStorage` caches and a "sections" IndexedDB that will be introduced in a follow-up post about "cacheable sections", then reload the page. After this reload, the service worker will be inactive, and the new app assets will be fetched from the server instead of served by the offline cache, allowing the app to run normally.
 
-Be aware, however, that this might cause some loss of data if your app is also using the `CacheStorage` or "cacheable section" tools. It's highly unusual for a kill-switch worker to activate however, so running into such a problem is highly unlikely, but we want to point it out for the few developers who may be using those tools.
-
 Ultimately, by including this kill-switch mode, we prevent apps from getting stuck in the future _and_ we unstick apps that have been stuck in the past.
+
+Be aware, however, that this might cause some loss of data if your app is also using the `CacheStorage` or "cacheable section" tools. It's highly unusual for a kill-switch worker to activate however, so running into such a problem is highly unlikely, but we want to point it out for the few developers who may be using those tools.
 
 ## Conclusion
 
