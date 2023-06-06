@@ -110,7 +110,7 @@ This is the simplest PWA feature to add; all that’s needed is a [PWA web manif
 />
 ```
 
-In the App Platform, this is implemented by extending the “manifest generation” step of the App Scripts CLI `build` script ([step 5](#the-app-platform-orchestra) in the example build sequence above). The script accesses the app’s config from `d2.config.js` and generates a `manifest.json` file with the appropriate app metadata (including name, description, icons, and theme colors), then writes that `manifest.json` to the resulting app’s `public/` directory, which would be `.d2/shell/public/`. You can take a peek at the manifest generation source code in the App Scripts CLI [here](https://github.com/dhis2/app-platform/blob/master/cli/src/lib/generateManifests.js).
+In the App Platform, this is implemented by extending the “manifest generation” step of the App Scripts CLI `build` script ([step 5](#the-app-platform-orchestra) in the example build sequence above). The script accesses the app’s config from `d2.config.js` and generates a `manifest.json` file with the appropriate app metadata, including name, description, icons, and theme colors; then writes that `manifest.json` to the resulting app’s `public/` directory, which would be `.d2/shell/public/`. You can take a peek at the manifest generation source code in the App Scripts CLI [here](https://github.com/dhis2/app-platform/blob/master/cli/src/lib/generateManifests.js).
 
 Then, the App Shell package contains the `index.html` file that the app will use, so that’s where the link to the `manifest.json` file [will be added](https://github.com/dhis2/app-platform/blob/1d0423e135b71d2005198287075e47d939040049/shell/public/index.html#L14-L18).
 
@@ -118,9 +118,9 @@ All Platform apps generate a PWA web manifest, even if PWA is not enabled, but t
 
 ### Adding simple offline capability
 
-Basic offline capability is added to the platform by adding a **service worker** to the app. A service worker is a script that installs and runs alongside the app and has access to the app’s network traffic by listening to `fetch` events from the app and handling what to do with the requests and responses it receives.
+Basic offline capability is added to the platform by adding a **service worker** to the app. A service worker is a script that installs and runs alongside the app and has access to the app’s network traffic by listening to `fetch` events from the app, then handles what to do with the requests and responses it receives.
 
-The service worker can maintain offline caches with data that the app uses. Then, when the user’s device is offline and the app makes a `fetch` event to request data, the service worker can use the offline cache to respond to the request instead needing to fetch over the network. This allows the app to work offline. You can read more about the basics of service workers [here](https://developers.google.com/web/fundamentals/primers/service-workers); the following sections assume some knowledge about the basics of how they work.
+The service worker can maintain offline caches with data that the app uses. Then, when the user’s device is offline and the app makes a `fetch` event to request data, the service worker can use the offline cache to respond to the request instead needing to fetch that data over the network. This allows the app to work offline. You can read more about the basics of service workers [here](https://developers.google.com/web/fundamentals/primers/service-workers); the following sections assume some knowledge about the basics of how they work.
 
 Implementing the service worker in the app platform takes several steps:
 
