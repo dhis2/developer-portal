@@ -18,13 +18,13 @@ We are excited about the recent release of Progressive Web App (PWA) features in
 -   [DHIS2 App Platform](#dhis2-app-platform)
     -   [The App Platform at build-time](#the-app-platform-at-build-time)
     -   [The App Platform at run-time](#the-app-platform-at-run-time)
-    -   [The App Platform orchestra](#the-app-platform-orchestra)
+    -   [The App Platform "orchestra"](#the-app-platform-orchestra)
 -   [Into Progressive Web Apps (PWA)](#into-progressive-web-apps-pwa)
     -   [Adding installability](#adding-installability)
     -   [Adding simple offline capability](#adding-simple-offline-capability)
         -   [Creating a service worker script to perform offline caching](#creating-a-service-worker-script-to-perform-offline-caching)
         -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
-        -   [Registering the service worker from the app if PWA is enabled in the app’s config](#registering-the-service-worker-from-the-app-if-pwa-is-enabled-in-the-apps-config)
+        -   [Using a config option to enable PWA features](#using-a-config-option-to-enable-pwa-features)
         -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
             -   [Perfecting the user experience of updating PWA apps](#perfecting-the-user-experience-of-updating-pwa-apps)
             -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
@@ -146,13 +146,13 @@ An implementation constraint for service workers is that they must be a single, 
 
 Workbox provides a [Webpack plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) that can compile a service worker and then output the production build to the built app. Our [build process](#the-app-platform-orchestra) takes advantage of Create React App (CRA)’s `build` script for the main compilation step once the app under development has been injected into our App Shell, and CRA happens to be configured out-of-the-box to use the Workbox-Webpack plugin to compile a service worker. It compiles a `service-worker.js` file in the CRA app’s `src/` directory and outputs it into the built app’s `public/` directory, so most of our compilation needs are met by using CRA.
 
-The Workbox-Webpack plugin _also_ injects a **precache manifest** into the compiled service worker, which is a list of the URLs that the service worker will fetch and cache upon installation. The plugin uses the list of minified static files that Webpack outputs from the build process to make this manifest, which covers the app’s javascript and CSS chunks as well as the `index.html` file. 
+The Workbox-Webpack plugin _also_ injects a **precache manifest** into the compiled service worker, which is a list of the URLs that the service worker will fetch and cache upon installation. The plugin uses the list of minified static files that Webpack outputs from the build process to make this manifest, which covers the app’s javascript and CSS chunks as well as the `index.html` file.
 
-These do not cover _all_ of the static assets in the app’s `build` directory however; other files like icons, web manifests, and javascript files from vendors like `jQuery` need to be handled separately. To add those remaining files to the precache manifest, we added another step to _our_ CLI’s build process. After executing the CRA build step, we use the [`injectManifest`](https://developers.google.com/web/tools/workbox/modules/workbox-build#injectmanifest_mode) function from the [`workbox-build`](https://developers.google.com/web/tools/workbox/modules/workbox-build) package to read all of the *other* static files in the app’s `build` directory, generate a manifest of those URLs, and inject _that_ list into the compiled service worker at a prepared placeholder. You can see the resulting `injectManifest` code [here](https://github.com/dhis2/app-platform/blob/master/cli/src/lib/pwa/injectPrecacheManifest.js).
+These do not cover _all_ of the static assets in the app’s `build` directory however; other files like icons, web manifests, and javascript files from vendors like `jQuery` need to be handled separately. To add those remaining files to the precache manifest, we added another step to _our_ CLI’s build process. After executing the CRA build step, we use the [`injectManifest`](https://developers.google.com/web/tools/workbox/modules/workbox-build#injectmanifest_mode) function from the [`workbox-build`](https://developers.google.com/web/tools/workbox/modules/workbox-build) package to read all of the _other_ static files in the app’s `build` directory, generate a manifest of those URLs, and inject _that_ list into the compiled service worker at a prepared placeholder. You can see the resulting `injectManifest` code [here](https://github.com/dhis2/app-platform/blob/master/cli/src/lib/pwa/injectPrecacheManifest.js).
 
 Handling these precache manifests correctly is also important for keeping the app up-to-date, which will be described in the [“Managing the service worker’s updates and lifecycle” section](#managing-the-service-workers-updates-and-lifecycle) below.
 
-#### Registering the service worker from the app if PWA is enabled in the app’s config
+#### Using a config option to enable PWA features
 
 To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app’s [configuration](https://platform.dhis2.nu/#/config). We added an option to the [`d2.config.js` app config file](https://platform.dhis2.nu/#/config/d2-config-js-reference) that can enable PWA, which looks like this:
 
@@ -170,6 +170,8 @@ module.exports = {
 ```
 
 During the `d2-app-scripts` `start` or `build` processes, the config file is read, and a `PWA_ENABLED` value is added to the app’s environment variables. Then, in the App Adapter’s initialization logic, it registers or unregisters the service worker based on the the `PWA_ENABLED` environment variable.
+
+The registration logic will be described in more detail in the ["Registration of the service worker"](#registration-of-the-service-worker) section below.
 
 #### Managing the service worker’s updates and lifecycle
 
