@@ -15,15 +15,19 @@ class Badgepage extends Component {
             .then(response => { return response.json(); })
             .then(result => {
                 this.setState(
-                { attendees: result.users,
+                { attendees: result.users
+                    /*very random! Kai's suggestion "randomOrder function"*/
+                    .map((e) => ({ e, key: Math.random() }))
+                    .sort((a, b) => a.key - b.key)
+                    .map(({ e }) => e),
                     badge: result.badges[0] })
             })
             .catch(error => console.log("error", error));
     }
 
+
     render() {
-        {/*Using sort and Math.Random to randomize the list each time it isdisplayed*/ }
-        const listAttendees = this.state.attendees.sort(() => Math.random() - 0.5);
+        const listAttendees = this.state.attendees;
         const badgeInfo = this.state.badge;
         return (
             <>
