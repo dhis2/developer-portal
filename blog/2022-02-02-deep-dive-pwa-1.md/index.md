@@ -179,11 +179,13 @@ Managing the service worker’s [lifecycle](https://developers.google.com/web/fu
 
 If the service worker lifecycle and updates are managed poorly, the app can get stuck on an old version in a user’s browser and never receive updates from the server, which can be hard to diagnose and harder to fix. The [“Handling precached static assets between versions” section](#handling-precached-static-assets-between-versions) below explains more about why that happens.
 
-This can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
+Managing PWA updates can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
 
 ##### Perfecting the user experience of updating PWA apps
 
-Managing service worker updates is complex from a UX perspective: updating the service worker to activate new app updates in production requires a page reload (for reasons described below), which shouldn’t happen without a user’s consent because reloads can cause loss of unsaved data; but we also want the user to use the most up-to-date version of the app possible. Therefore, it poses a UX design challenge to notify and persuade users to reload the app to use new updates as soon as possible, and at the same time avoid any dangerous, unplanned page reloads.
+Managing service worker updates is complex from a UX perspective: we want the user to use the most up-to-date version of the app possible, but updating the service worker to activate new app updates in production requires a page reload, for reasons described below. Reloading can cause loss of unsaved data on the page, so we don't want to do that without the user's consent. Therefore, it poses a UX design challenge to notify and persuade users to reload the app to use new updates as soon as possible, and at the same time avoid any dangerous, unplanned page reloads.
+
+What's more, we want to do so in the least invasive way possible, ideally without the user needing to think about anything technical. [to be continued]
 
 The UX design we settled on is this:
 
