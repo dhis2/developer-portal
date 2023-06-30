@@ -33,7 +33,9 @@ The DHIS2 community is more than just a few pockets of local organizations. We a
     
 You can read more about these applications in the finalists page on the Community of Practice here: https://community.dhis2.org/t/2023-dhis2-app-competition-finalists/53264
     
-We’ve had a diverse field of finalists, two of the applications are built for Android and three for the web. All of the web applications were developed to be installed via the App Hub, while the Android apps have no such luxury of an integrated app hub, they also both are able to be deployed by other organisations as they are, or will be, open sourced.
+We’ve had a diverse field of finalists this year. Two of the applications are built for Android and three for the web. All of the web applications were developed to be installed via the App Hub, while the Android apps are developed to be reused as open source applications. 
+
+Not all of the applications are open sourced yet, as they're still under active development, but keep an eye out on the Community of Practice for when they are released.
     
 ### The Presentations
     
@@ -62,4 +64,4 @@ But just because we’ve got a winner, we should not disqualify the other amazin
     
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7dlTw4loy7k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     
-One of the goals we want you to keep in mind, all of the applications you’ve seen in this article or on the CoP, are intended to be shared! So if you feel one of the applications can be suitable for your organisation as well, get in touch with the respective organisations and see how you can work together to improve your DHIS2 systems.
+One of the goals we want you to keep in mind, all of the applications you’ve seen in this article or shared on the CoP during the conference, are intended to be shared! So if you feel one of the applications can be suitable for your organisation as well, get in touch with the respective organisations and see how you can work together to improve your DHIS2 systems.
