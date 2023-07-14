@@ -26,7 +26,7 @@ We are excited about the recent release of Progressive Web App (PWA) features in
         -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
         -   [Using a config option to enable PWA features](#using-a-config-option-to-enable-pwa-features)
         -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
-            -   [Perfecting the user experience of updating PWA apps](#perfecting-the-user-experience-of-updating-pwa-apps)
+            -   [Designing a good user experience for updating PWA apps](#designing-a-good-user-experience-for-updating-pwa-apps)
             -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
                 -   [Registration of the service worker](#registration-of-the-service-worker)
                 -   [Handling app updates with a "PWA update manager" component](#handling-app-updates-with-a-pwa-update-manager-component)
@@ -181,24 +181,29 @@ If the service worker lifecycle and updates are managed poorly, the app can get 
 
 Managing PWA updates can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
 
-##### Perfecting the user experience of updating PWA apps
+##### Designing a good user experience for updating PWA apps
 
 Managing service worker updates is complex from a UX perspective: we want the user to use the most up-to-date version of the app possible, but updating the service worker to activate new app updates in production requires a page reload, for reasons described below. Reloading can cause loss of unsaved data on the page, so we don't want to do that without the user's consent. Therefore, it poses a UX design challenge to notify and persuade users to reload the app to use new updates as soon as possible, and at the same time avoid any dangerous, unplanned page reloads.
 
-What's more, we want to do so in the least invasive way possible, ideally without the user needing to think about anything technical. [to be continued]
+What's more, we want to do so in the least invasive way possible, ideally without the user needing to think about anything technical. A notification like "an update is available" would be too invasive, and would even look suspicious to some users.
 
-The UX design we settled on is this:
+To address these needs, the UX design we settled on is this:
 
-1. Once a new service worker is installed and ready, either on first installation or as an update to an existing one, a prompt is shown to the user that says “There’s an update available for this app” with two actions: “Update now” and “Not now”.
+1. First, if a service worker has installed and is ready, we won’t activate it right away. We’ll wait and try to sneak in an update without the user needing to do anything, if possible. What happens next depends on a few conditions.
+2. If this is the first time a service worker is installing for this app, then any page reload will take advantage of the installed service worker, and PWA features will be ready in that reloaded page. If multiple tabs are open, they will each need to be reloaded to use the service worker and PWA features.
+3. If the newly installed service worker is an update to an existing one, however, reloading will not automatically activate the waiting service worker.
+    1. If there is only one tab of this app open, then it’s possible to safely sneak in the update the next time the user loads the page. Before loading the main interactive part of the app, the app shell checks for a waiting service worker, activates it if there is one, and then reloads, so the service worker can be safely updated without interfering with the user’s activity.
+    2. If the user has multiple tabs of the app open, however, we can’t sneak in a quick update and reload. This is because the active service worker controls all the active tabs at the same time, so to activate the new service worker, all the tabs need to be reloaded simultaneously. Reloading all of the tabs without the user’s permission may lose unsaved data in the other open tabs, so we don’t want to do that. In this case, we rely on the next to options to happen.
+4. If a new service worker is installed and waiting to take over, a notification will be visible at the bottom of the user’s profile menu. If they click it, the waiting service worker will be directed to take over, and the page will reload.
+   ![Update available notification](update-available-notification.png)
+   If there are multiple tabs open, a warning will be shown that all the tabs will reload, so the data in those tabs should be saved before proceeding.
+   ![Reload confirmation modal](reload-confirmation-modal.png)
+5. If none of the above cases happen, then the app will rely on the native browser behavior: after all open tabs of the app in this browser are closed, the new service worker will be active the next time the app is opened.
 
-!["There's an update available" alert](update-available-alert.png)
+There are also two improvements that we’re working on implementing to improve this UX:
 
-2. When the user clicks “Update now”, if one tab of the app is open, the page will reload. If _more_ than one tab is open, the app will show a confirmation modal that warns the user that all the open tabs of the app will reload, which will cause loss of unsaved data, and has actions to continue or cancel.
-
-![Reload confirmation modal](reload-confirmation-modal.png)
-
-3. If the user clicks “Not now”, the prompt will close and wait for the user to reload the page. If this is the first time a service worker is installing for the app, it will go ahead and activate after the reload, but if this is an update to an existing service worker, the “Update” prompt will be shown again.
-4. If this is an update to an existing service worker and the user _never_ clicks “Update now”, the service worker will eventually activate when a new instance of the app is opened after all previous tabs of the app have been closed. This is how browsers natively handle service worker updates without any intervention, but this case should be avoided because it may result in delays of important app updates.
+1. When a new service worker is waiting, a badge will be shown on the user profile icon in the header bar to indicate that there’s new information to check
+2. Before any service worker is controlling the app, some UI element in the header bar will indicate that PWA features aren’t available yet
 
 ##### Implementation of the app update flow
 
@@ -304,9 +309,9 @@ There is another improvement we could make to the update flow to help ensure the
 
 As mentioned in the [“Compiling the service worker” section](#compiling-the-service-worker-and-adding-it-to-the-app) above, when using precaching for app assets, there are several considerations that should be handled correctly with respect to app and service worker updates. Conveniently, these best practices are handled by the Workbox tools (the Webpack plugin and the `workbox-build` package) introduced earlier.
 
-When using a precaching strategy, it's possible for an app to get stuck on old version in a user's client, even though there's a new version of the app on the server. Since precached assets will be served directly from the cache without accessing the network, new app updates will never be accessed until the _service worker itself_ updates, downloads the new assets to use, and serves them. 
+When using a precaching strategy, it's possible for an app to get stuck on old version in a user's client, even though there's a new version of the app on the server. Since precached assets will be served directly from the cache without accessing the network, new app updates will never be accessed until the _service worker itself_ updates, downloads the new assets to use, and serves them.
 
-To get the *service worker* to update, the script file on the server needs to be byte-different from the the file of the same name that's running on the client (`service-worker.js`, in our case). The browser checks for service worker updates upon navigation events in the service worker's scope or when the `navigator.serviceWorker.register` function is called. To make sure updates in app files on the server end up in clients' browsers, *revision info* is added to filenames in the service worker's precache manifest, if the filename doesn't already have it. When an app file is changed, the content hash will change in the precache manifest, and thus the contents of the `service-worker.js` file will be different.
+To get the _service worker_ to update, the script file on the server needs to be byte-different from the the file of the same name that's running on the client (`service-worker.js`, in our case). The browser checks for service worker updates upon navigation events in the service worker's scope or when the `navigator.serviceWorker.register` function is called. To make sure updates in app files on the server end up in clients' browsers, _revision info_ is added to filenames in the service worker's precache manifest, if the filename doesn't already have it. When an app file is changed, the content hash will change in the precache manifest, and thus the contents of the `service-worker.js` file will be different.
 
 Now, when a user's browser checks the `service-worker.js` file on the server, it will be byte-different, and the client will download and install new app assets to use.
 
