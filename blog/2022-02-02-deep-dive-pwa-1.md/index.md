@@ -238,7 +238,7 @@ self.addEventListener('message', (event) => {
 
 ###### Automatically applying app updates when possible
 
-The [`PWALoadingBoundary`](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/PWALoadingBoundary.js) component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s implemented in the App Adapter [TODO: LINK] and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app to allow it to reload safely and without interfering with the user’s work.
+The [`PWALoadingBoundary`](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/PWALoadingBoundary.js) component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s [implemented in the App Adapter](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/adapter/src/index.js#L21-L31) and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app to allow it to reload safely and without interfering with the user’s work.
 
 ```jsx
 export const PWALoadingBoundary = ({ children }) => {
@@ -305,35 +305,112 @@ If there isn’t a new service worker or if there are multiple tabs open, then t
 
 ###### Providing the UI for manually applying updates
 
-The `usePWAUpdateState` hook [TODO LINK] provides the logic to support the UI for applying updates manually, and the `ConnectedHeaderBar` [TODO LINK] component connects the hook to the relevant UI components. Like the `PWALoadingBoundary` component, the hook and the `ConnectedHeaderBar` component are implemented in the App Adapter and are supported by the Offline Interface. The code for both is shown below — look closely at the `usePWAUpdateState` hook’s `onConfirmUpdate()` function, the `confirmReload()` function, and the `useEffect()` hook.
-
-usePWAUpdateState.js:
+The [`usePWAUpdateState` hook](https://github.com/dhis2/app-platform/blob/master/adapter/src/utils/usePWAUpdateState.js) provides the logic to support the UI for applying updates manually, and the [`ConnectedHeaderBar` component](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/ConnectedHeaderBar.js) connects the hook to the relevant UI components. Like the `PWALoadingBoundary` component, the hook and the `ConnectedHeaderBar` component are implemented in the App Adapter and are supported by the Offline Interface. The code for both is shown below — look closely at the `usePWAUpdateState` hook’s `onConfirmUpdate()` function, the `confirmReload()` function, and the `useEffect()` hook.
 
 ```jsx
-// TODO: INSERT CODE
-```
+export const usePWAUpdateState = () => {
+    const offlineInterface = useOfflineInterface()
+    const [updateAvailable, setUpdateAvailable] = useState(false)
+    const [clientsCount, setClientsCount] = useState(null)
 
-ConnectedHeaderBar.js
+    const onConfirmUpdate = () => {
+        offlineInterface.useNewSW()
+    }
+    const onCancelUpdate = () => {
+        setClientsCount(null)
+    }
+
+    const confirmReload = () => {
+        offlineInterface
+            .getClientsInfo()
+            .then(({ clientsCount }) => {
+                if (clientsCount === 1) {
+                    // Just one client; go ahead and reload
+                    onConfirmUpdate()
+                } else {
+                    // Multiple clients; warn about data loss before reloading
+                    setClientsCount(clientsCount)
+                }
+            })
+            .catch((reason) => {
+                // Didn't get clients info
+                console.warn(reason)
+
+                // Go ahead with confirmation modal with `0` as clientsCount
+                setClientsCount(0)
+            })
+    }
+
+    useEffect(() => {
+        offlineInterface.checkForNewSW({
+            onNewSW: () => {
+                setUpdateAvailable(true)
+            },
+        })
+    }, [offlineInterface])
+
+    const confirmationRequired = clientsCount !== null
+    return {
+        updateAvailable,
+        confirmReload,
+        confirmationRequired,
+        clientsCount,
+        onConfirmUpdate,
+        onCancelUpdate,
+    }
+}
+```
 
 ```jsx
-// TODO: INSERT CODE
+export function ConnectedHeaderBar() {
+    const { appName } = useConfig()
+    const {
+        updateAvailable,
+        confirmReload,
+        confirmationRequired,
+        clientsCount,
+        onConfirmUpdate,
+        onCancelUpdate,
+    } = usePWAUpdateState()
+
+    return (
+        <>
+            <HeaderBar
+                appName={appName}
+                updateAvailable={updateAvailable}
+                onApplyAvailableUpdate={confirmReload}
+            />
+            {confirmationRequired ? (
+                <ConfirmUpdateModal
+                    clientsCount={clientsCount}
+                    onConfirm={onConfirmUpdate}
+                    onCancel={onCancelUpdate}
+                />
+            ) : null}
+        </>
+    )
+}
 ```
 
-By using the `useEffect` hook with an empty dependency array, upon first render, the hook checks for new service workers by calling the Offline Interface's [`checkForNewSW()` method](/pwa/src/offline-interface/offline-interface.js#L61-L65) [TODO: NEW PERMALINK], which in turn calls the [`checkForUpdates()` registration function](pwa/src/lib/registration.js#L1-L75) [TODO: NEW PERMALINK]. Compared to the the `getRegistrationState()` function that the `PWALoadingBoundary` uses, `checkForUpdates()` is more complex, since it checks for service workers installed and ready, listens for new ones becoming available, and checks for installing service workers between those states. We need to check a number of variables to handle all the possible installation conditions:
+By using the `useEffect` hook with an empty dependency array, upon first render, the `usePWAUpdateState` hook checks for new service workers by calling the Offline Interface's [`checkForNewSW()` method], which basically just exposes the [`checkForUpdates()` registration function](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/lib/registration.js#L31-L105). Compared to the the `getRegistrationState()` function that the `PWALoadingBoundary` uses, `checkForUpdates()` is more complex, since it checks for service workers installed and ready, listens for new ones becoming available, and checks for installing service workers between those states. We need to check a number of variables to handle all the possible installation conditions:
 
 -   Service workers can be in one of the four steps of their lifecycle: installing, installed, activating, or activated
 -   Multiple service workers can be simultaneously present in the [service worker registration object](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) as either `installing`, `waiting`, or `active`
 -   Sometimes the ‘active’ service worker is not in _control_ because it’s the first service worker installation for this app
 
-For the full control flow, take a look at the `checkForUpdates()` [source code](/pwa/src/lib/registration.js#L1-L75). [TODO: NEW PERMALINK]
+For the full control flow, take a look at the `checkForUpdates()` [source code](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/lib/registration.js#L31-L105).
 
 If there _is_ a new service ready, then the `onNewSW()` callback function provided to `checkForNewSW()` is called, which sets the `updateAvailable` boolean returned by the hook to `true`. The `ConnectedHeaderBar` component passes this value as a prop to the HeaderBar, which shows the “New app version available — Click to reload” notification in the user profile menu.
 
-[TODO: IMAGE AGAIN]
+![Update available notification](update-available-notification.png)
 
 If the user opens the profile menu and clicks the “New version available” notification, the `confirmReload()` function is called. It handles the next part of the update flow by checking how many tabs of this app are open, so that if multiple tabs are open, a warning can be shown that they will all be reloaded. Like the `PWALoadingBoundary`, it uses the Offline Interface’s `getClientsInfo()` method to get the number of clients associated with this service worker.
 
-Once the clients info is received, if there is one client open for this service worker scope, `confirmReload()` will use the Offline Interface’s [`useNewSW()` method](/pwa/src/offline-interface/offline-interface.js#L91-L112) [TODO: NEW LINK] to instruct the new service worker to take control, as the `PWALoadingBoundary` does. If there are multiple clients open, or if the `getClientsInfo()` request fails, then the `confirmationRequired` boolean returned by the `usePWAUpdateState` hook will resolve to `true`. In the `ConnectedHeaderBar` component, this will result in rendering the `ConfirmReloadModal` that warns about data loss when all open tabs will be reloaded. [TODO: IMAGE AGAIN?] If possible, the number of tabs is shown in the modal to help the user account for forgotten tabs, as could happen if the user has many browser windows open or is on a mobile device. If the user clicks “Reload” in the modal, the `onConfirmUpdate()` function is called, which calls the `offlineInterface.useNewSW()` function and the update is triggered. If the user clicks “Cancel”, the `onCancelUpdate()` function is called, which resets the `confirmationRequired` boolean to false by setting `clientsCount` to null, which will close the modal.
+Once the clients info is received, if there is one client open for this service worker scope, `confirmReload()` will use the Offline Interface’s [`useNewSW()` method](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/offline-interface/offline-interface.js#L192-L219) to instruct the new service worker to take control, as the `PWALoadingBoundary` does. If there are multiple clients open, or if the `getClientsInfo()` request fails, then the `confirmationRequired` boolean returned by the `usePWAUpdateState` hook will resolve to `true`. In the `ConnectedHeaderBar` component, this will result in rendering the `ConfirmReloadModal` that warns about data loss when all open tabs will be reloaded.
+
+![Reload confirmation modal](reload-confirmation-modal.png)
+
+If possible, the number of tabs is shown in the modal to help the user account for forgotten tabs, as could happen if the user has many browser windows open or is on a mobile device. If the user clicks “Reload” in the modal, the `onConfirmUpdate()` function is called, which calls the `offlineInterface.useNewSW()` function and the update is triggered. If the user clicks “Cancel”, the `onCancelUpdate()` function is called, which resets the `confirmationRequired` boolean to false by setting `clientsCount` to null, which will close the modal.
 
 All these steps under the hood are coordinated to create the robust [user experience](#designing-a-good-user-experience-for-updating-pwa-apps) described above and make sure service workers and apps update correctly.
 
