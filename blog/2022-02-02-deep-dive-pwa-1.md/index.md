@@ -238,13 +238,68 @@ self.addEventListener('message', (event) => {
 
 ###### Automatically applying app updates when possible
 
-The `PWALoadingBoundary` [TODO LINK] component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s implemented in the App Adapter [TODO: LINK] and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app to allow it to reload safely and without interfering with the user’s work. [TO CONSIDER: CODE SNIPPET?]
+The [`PWALoadingBoundary`](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/PWALoadingBoundary.js) component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s implemented in the App Adapter [TODO: LINK] and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app to allow it to reload safely and without interfering with the user’s work.
 
-Upon render, the Loading Boundary first checks for any new service workers by using the Offline Interface’s `getRegistrationState()` method, a convenience method for accessing the `getRegistrationState()` registration function [TODO LINK]. `getRegistrationState()` is a simplified check for service workers’ installation status, intended to determine if there’s a new service worker ready right now. It returns one of several values: `“UNREGISTERED”`, `“WAITING”` if there is an updated service worker ready, `“FIRST_ACTIVATION”` if this is the first time a service worker has installed, or `”ACTIVE”` if there’s already a service worker in control and none currently waiting.
+```jsx
+export const PWALoadingBoundary = ({ children }) => {
+    const [pwaReady, setPWAReady] = useState(false)
+    const offlineInterface = useOfflineInterface()
 
-Then, to check how many tabs of the app are open, the `PWALoadingBoundary` uses the Offline Interface’s `getClientsInfo()` method [TODO LINK], which ‘asks’ the ready service worker how many clients are associated with this service worker scope. To get this info accurately in every situation, the service worker uses the `self.clients.matchAll()` API [TODO LINK] with the `includeUncontrolled` option [TODO LINK], since some tabs may be uncontrolled the first time the service worker installs. Then, since that function returns every open client on this domain, even ones outside of the scope of the service worker's control, the resulting clients need to be filtered down to just the clients in scope. [TODO: LINK CODE, OR SHOW CODE HERE?] Then, the service worker posts a message back to the client to report that count, and the `getClientsInfo()` method returns a promise that either resolves to the clients info or rejects with a failure reason.
+    useEffect(() => {
+        const checkRegistration = async () => {
+            const registrationState =
+                await offlineInterface.getRegistrationState()
+            const clientsInfo = await offlineInterface.getClientsInfo()
+            if (
+                (registrationState === REGISTRATION_STATE_WAITING ||
+                    registrationState ===
+                        REGISTRATION_STATE_FIRST_ACTIVATION) &&
+                clientsInfo.clientsCount === 1
+            ) {
+                console.log(
+                    'Reloading on startup to activate waiting service worker'
+                )
+                offlineInterface.useNewSW()
+            } else {
+                setPWAReady(true)
+            }
+        }
+        checkRegistration().catch((err) => {
+            console.error(err)
+            setPWAReady(true)
+        })
+    }, [offlineInterface])
 
-If there is a service worker waiting to take over (either the `”WAITING”` or `”FIRST_ACTIVATION”` conditions above), and there is only tab of the app open, the `PWALoadingBoundary` will apply the ready update by calling the `useNewSW()` method [TODO LINK] on the Offline Interface. The method instructs the new service worker to take over: it detects if this new service worker is the first one that has installed for this app or an update to an existing service worker, then sends either a ‘claim clients’ message to a first-install service worker or a ‘skip waiting’ message to an updated service worker. Skipping waiting or claiming clients by the service worker both result in a `controllerchange` event in open clients, which triggers the event listener that the Offline Interface set up on `navigator.serviceWorker` to listen for that event (recall from the “Registration of the service worker” [TODO LINK] section). The listener will then call `window.location.reload()` to reload the page so that the page can load under the control of the new service worker.
+    return pwaReady ? children : null
+}
+```
+
+Upon render, the Loading Boundary first checks for any new service workers by using the Offline Interface’s `getRegistrationState()` method, a convenience method for accessing the [`getRegistrationState()` registration function](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/lib/registration.js#L6-L29). `getRegistrationState()` is a simplified check for service workers’ installation status, intended to determine if there’s a new service worker ready right now. It returns one of several values: `“UNREGISTERED”`, `“WAITING”` if there is an updated service worker ready, `“FIRST_ACTIVATION”` if this is the first time a service worker has installed, or `”ACTIVE”` if there’s already a service worker in control and none currently waiting.
+
+Then, to check how many tabs of the app are open, the `PWALoadingBoundary` uses the Offline Interface’s [`getClientsInfo()` method](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/offline-interface/offline-interface.js#L162-L190), which ‘asks’ the ready service worker how many clients are associated with this service worker scope. To get this info accurately in every situation, the service worker needs to [perform some special checks](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/service-worker/utils.js#L123-L138), as shown in the code below.
+
+```js
+/** Get all clients including uncontrolled, but only those within SW scope */
+export function getAllClientsInScope() {
+    // Include uncontrolled clients: necessary to know if there are multiple
+    // tabs open upon first SW installation
+    return self.clients
+        .matchAll({
+            includeUncontrolled: true,
+        })
+        .then((clientsList) =>
+            // Filter to just clients within this SW scope, because other clients
+            // on this domain but outside of SW scope are returned otherwise
+            clientsList.filter((client) =>
+                client.url.startsWith(self.registration.scope)
+            )
+        )
+}
+```
+
+The service worker uses the [`self.clients.matchAll()` API](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll) with the `includeUncontrolled` option, since some tabs may be uncontrolled the first time the service worker installs. Then, since that function returns every open client on this domain, even ones outside of the scope of the service worker's control, the resulting clients need to be filtered down to just the clients in scope. After the service worker gets the right clients list, it posts a message back to the client to report the clients info. Then, the `getClientsInfo()` method returns a promise that either resolves to the clients info or rejects with a failure reason.
+
+If there is a service worker waiting to take over (either the `”WAITING”` or `”FIRST_ACTIVATION”` conditions above), and there is only tab of the app open, the `PWALoadingBoundary` will apply the ready update by calling the [`useNewSW()` method](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/offline-interface/offline-interface.js#L192-L219) on the Offline Interface. The method instructs the new service worker to take over: it detects if this new service worker is the first one that has installed for this app or an update to an existing service worker, then sends either a ‘claim clients’ message to a first-install service worker or a ‘skip waiting’ message to an updated service worker. Skipping waiting or claiming clients by the service worker both result in a `controllerchange` event in open clients, which triggers the event listener that the Offline Interface set up on `navigator.serviceWorker` to listen for that event (recall from the ["Registration of the service worker"](#registration-of-the-service-worker) section). The listener will then call `window.location.reload()` to reload the page so that the page can load under the control of the new service worker.
 
 If there isn’t a new service worker or if there are multiple tabs open, then the rest of the app will load as normal. By doing this check before loading the app, the app can apply PWA updates without the user needing to do anything in most cases, which is a nice win for the user experience.
 
