@@ -22,16 +22,16 @@ We are excited about the recent release of Progressive Web App (PWA) features in
 -   [Into Progressive Web Apps (PWA)](#into-progressive-web-apps-pwa)
     -   [Adding installability](#adding-installability)
     -   [Adding simple offline capability](#adding-simple-offline-capability)
-        -   [Creating a service worker script to perform offline caching](#creating-a-service-worker-script-to-perform-offline-caching)
-        -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
-        -   [Using a config option to enable PWA features](#using-a-config-option-to-enable-pwa-features)
-        -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
-            -   [Designing a good user experience for updating PWA apps](#designing-a-good-user-experience-for-updating-pwa-apps)
-            -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
-                -   [Registration of the service worker](#registration-of-the-service-worker)
-                -   [Automatically applying app updates when possible](#automatically-applying-app-updates-when-possible)
-                -   [Providing the UI for manually applying updates](#providing-the-ui-for-manually-applying-updates)
-            -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
+    -   [Creating a service worker script to perform offline caching](#creating-a-service-worker-script-to-perform-offline-caching)
+    -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
+    -   [Using a config option to enable PWA features](#using-a-config-option-to-enable-pwa-features)
+    -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
+        -   [Designing a good user experience for updating PWA apps](#designing-a-good-user-experience-for-updating-pwa-apps)
+        -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
+            -   [Registration of the service worker](#registration-of-the-service-worker)
+            -   [Automatically applying app updates when possible](#automatically-applying-app-updates-when-possible)
+            -   [Providing the UI for manually applying updates](#providing-the-ui-for-manually-applying-updates)
+        -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
             -   [Adding a kill switch for a rogue service worker](#adding-a-kill-switch-for-a-rogue-service-worker)
 -   [Conclusion](#conclusion)
 
@@ -130,7 +130,7 @@ Implementing the service worker in the app platform takes several steps:
 3. Registering the service worker from the app if PWA is enabled in the app’s config
 4. Managing the service worker’s updates and lifecycle
 
-#### Creating a service worker script to perform offline caching
+### Creating a service worker script to perform offline caching
 
 We use the [Workbox](https://developers.google.com/web/tools/workbox) library and its utilities as a foundation for our service worker.
 
@@ -141,7 +141,7 @@ There are several different strategies available for caching data offline that b
 
 If you want to read more about our decisions to use these strategies, they are explained in more depth in our [first PWA blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa#what-youll-get-with-offline-caching).
 
-#### Compiling the service worker and adding it to the app
+### Compiling the service worker and adding it to the app
 
 An implementation constraint for service workers is that they must be a single, self-contained file when they are registered by the app to get installed in a user’s browser, which means all of the service worker code and its dependencies must be compiled into a single file at build time. Our service worker depends on several external packages _and_ is [split up among several files](https://github.com/dhis2/app-platform/tree/master/pwa/src/service-worker) to keep it in digestible chunks before being [imported in the App Shell](https://github.com/dhis2/app-platform/blob/master/shell/src/service-worker.js), so we need some compilation tools in the Platform.
 
@@ -153,7 +153,7 @@ These do not cover _all_ of the static assets in the app’s `build` directory h
 
 Handling these precache manifests correctly is also important for keeping the app up-to-date, which will be described in the [“Managing the service worker’s updates and lifecycle” section](#managing-the-service-workers-updates-and-lifecycle) below.
 
-#### Using a config option to enable PWA features
+### Using a config option to enable PWA features
 
 To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app’s [configuration](https://platform.dhis2.nu/#/config). We added an option to the [`d2.config.js` app config file](https://platform.dhis2.nu/#/config/d2-config-js-reference) that can enable PWA, which looks like this:
 
@@ -174,7 +174,7 @@ During the `d2-app-scripts` `start` or `build` processes, the config file is rea
 
 The registration logic will be described in more detail in the ["Registration of the service worker"](#registration-of-the-service-worker) section below.
 
-#### Managing the service worker’s updates and lifecycle
+### Managing the service worker’s updates and lifecycle
 
 Managing the service worker’s [lifecycle](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle) is both complex and vitally important. Because the core assets that run the app are precached and served directly from the cache without contacting the server, in order for a client to use newly deployed app updates, the service worker must be updated with a new precache manifest.
 
@@ -182,7 +182,7 @@ If the service worker lifecycle and updates are managed poorly, the app can get 
 
 Managing PWA updates can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
 
-##### Designing a good user experience for updating PWA apps
+#### Designing a good user experience for updating PWA apps
 
 Managing service worker updates is complex from a UX perspective: we want the user to use the most up-to-date version of the app possible, but updating the service worker to activate new app updates in production requires a page reload, for reasons described below. Reloading can cause loss of unsaved data on the page, so we don't want to do that without the user's consent. Therefore, it poses a UX design challenge to notify and persuade users to reload the app to use new updates as soon as possible, and at the same time avoid any dangerous, unplanned page reloads.
 
@@ -206,7 +206,7 @@ There are also two improvements that we’re working on implementing to improve 
 1. When a new service worker is waiting, a badge will be shown on the user profile icon in the header bar to indicate that there’s new information to check
 2. Before any service worker is controlling the app, some UI element in the header bar will indicate that PWA features aren’t available yet
 
-##### Implementation of the app update flow
+#### Implementation of the app update flow
 
 Implementing this update flow in the App Platform requires several cooperating features and lots of logic behind the scenes in the service worker code, the client-side service worker registration functions, and the React user interface.
 
@@ -214,7 +214,7 @@ To simplify communicating with the service worker from the React environment and
 
 Our service worker registration functions draw much from the Create React App PWA Template [registration boilerplate](https://github.com/cra-template/pwa/blob/master/packages/cra-template-pwa/template/src/serviceWorkerRegistration.js), which includes some useful logic like checking for a valid service worker, handling development situations on localhost, and some basic update-checking procedures. These features were a useful starting place, but our use-case required more complexity, which lead to the elaborations described below.
 
-###### Registration of the service worker
+##### Registration of the service worker
 
 If PWA is enabled, a [`register()` function](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/lib/registration.js#L112) is [called](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/pwa/src/offline-interface/offline-interface.js#L24-L30) when an Offline Interface object is [instantiated in the App Adapter](https://github.com/dhis2/app-platform/blob/10a9d15efc4187865f313823d5d1218824561fcd/adapter/src/index.js#L8) while the app is loading. The `register()` function listens for the `load` event on the `window` object before calling `navigator.serviceWorker.register()` to improve page load performance: the browser checks for a new service worker upon registration, and if there is one, the service worker will download and install any app assets it needs to precache. These downloads can be resource intensive, so they are delayed to avoid interfering with page responsiveness on first load.
 
@@ -236,7 +236,7 @@ self.addEventListener('message', (event) => {
 
 'Claim clients' is used the first time a service worker has installed for this app, and 'skip waiting' is used when an updated service worker is installed and ready to take over. Below you can see more details about these messages.
 
-###### Automatically applying app updates when possible
+##### Automatically applying app updates when possible
 
 The [`PWALoadingBoundary`](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/PWALoadingBoundary.js) component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s [implemented in the App Adapter](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/adapter/src/index.js#L21-L31) and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app. This allows the app to update and reload safely and without interfering with the user’s work.
 
@@ -303,7 +303,7 @@ If there is a service worker waiting to take over (either the `”WAITING”` or
 
 If there isn’t a new service worker or if there are multiple tabs open, then the rest of the app will load as normal. By doing this check before loading the app, the app can apply PWA updates without the user needing to do anything in most cases, which is a nice win for the user experience.
 
-###### Providing the UI for manually applying updates
+##### Providing the UI for manually applying updates
 
 The [`usePWAUpdateState` hook](https://github.com/dhis2/app-platform/blob/master/adapter/src/utils/usePWAUpdateState.js) provides the logic to support the UI for applying updates manually, and the [`ConnectedHeaderBar` component](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/ConnectedHeaderBar.js) connects the hook to the relevant UI components. Like the `PWALoadingBoundary` component, the hook and the `ConnectedHeaderBar` component are implemented in the App Adapter and are supported by the Offline Interface. The code for both is shown below — look closely at the `usePWAUpdateState` hook’s `onConfirmUpdate()` function, the `confirmReload()` function, and the `useEffect()` hook.
 
@@ -414,7 +414,7 @@ If the user clicks “Reload” in the modal, the `onConfirmUpdate()` function i
 
 All these steps under the hood are coordinated to create the robust [user experienc described above](#designing-a-good-user-experience-for-updating-pwa-apps) and make sure service workers and apps update correctly.
 
-##### Handling precached static assets between versions
+#### Handling precached static assets between versions
 
 As mentioned in the [“Compiling the service worker” section](#compiling-the-service-worker-and-adding-it-to-the-app) above, when using precaching for app assets, there are several considerations that should be handled correctly with respect to app and service worker updates. Conveniently, these best practices are handled by the Workbox tools (the Webpack plugin and the `workbox-build` package) introduced earlier.
 
@@ -426,7 +426,7 @@ Now, when a user's browser checks the `service-worker.js` file on the server, it
 
 You can read more about precaching with Workbox at the [Workbox documentation](https://developers.google.com/web/tools/workbox/modules/workbox-precaching).
 
-##### Adding a kill switch for a rogue service worker
+#### Adding a kill switch for a rogue service worker
 
 In some cases, a service worker lifecycle can get out of control and an app can be stuck with a service worker serving old app assets. If the app doesn’t detect a new service worker and doesn’t offer the user the option to reload, the app in the user’s browser will not be updated. This can be a difficult problem to debug, and requires manual steps by the user to resolve. As described in this article, we have worked hard to build our application platform in such a way that apps don’t need to do anything special to deal with service worker updates -- it is all handled in the platform layer and the Offline Interface. We sometimes encounter this problem when an old version of an app once registered a service worker and served the app assets via a precaching strategy. Then, when a new version of the app is deployed without a service worker, there is no way for the newly deployed app to take over from the previous version. It would seem like the app was stuck on an old version and missing new fixes, even though a new version had been deployed to the server.
 
