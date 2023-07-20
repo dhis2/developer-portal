@@ -197,7 +197,7 @@ To address these needs, the UX design we settled on is this:
     2. If the user has multiple tabs of the app open, however, we can’t sneak in a quick update and reload. This is because the active service worker controls all the active tabs at the same time, so to activate the new service worker, all the tabs need to be reloaded simultaneously. Reloading all of the tabs without the user’s permission may lose unsaved data in the other open tabs, so we don’t want to do that. In this case, we rely on the next to options to happen.
 4. If a new service worker is installed and waiting to take over, a notification will be visible at the bottom of the user’s profile menu. If they click it, the waiting service worker will be directed to take over, and the page will reload.
    ![Update available notification](update-available-notification.png)
-   If there are multiple tabs open, a warning will be shown that all the tabs will reload, so the data in those tabs should be saved before proceeding.
+   If there are multiple tabs open, a warning will be shown that all the tabs will reload, so the data in those tabs should be saved before proceeding. If possible, the number of tabs is shown in the modal to help the user account for forgotten tabs, as could happen if the user has many browser windows open or is on a mobile device.
    ![Reload confirmation modal](reload-confirmation-modal.png)
 5. If none of the above cases happen, then the app will rely on the native browser behavior: after all open tabs of the app in this browser are closed, the new service worker will be active the next time the app is opened.
 
@@ -238,7 +238,7 @@ self.addEventListener('message', (event) => {
 
 ###### Automatically applying app updates when possible
 
-The [`PWALoadingBoundary`](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/PWALoadingBoundary.js) component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s [implemented in the App Adapter](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/adapter/src/index.js#L21-L31) and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app to allow it to reload safely and without interfering with the user’s work.
+The [`PWALoadingBoundary`](https://github.com/dhis2/app-platform/blob/master/adapter/src/components/PWALoadingBoundary.js) component enables the app to sneak in app updates upon page load in most cases without the user needing to know or do anything. It’s [implemented in the App Adapter](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/adapter/src/index.js#L21-L31) and is supported by the Offline Interface. It wraps the rest of the app, and before rendering the component tree below it, it checks if there is a new service worker waiting to take over. If there is one, and only one tab of the app is open, it can instruct the new service worker to take over before loading the rest of the app. This allows the app to update and reload safely and without interfering with the user’s work.
 
 ```jsx
 export const PWALoadingBoundary = ({ children }) => {
@@ -392,7 +392,7 @@ export function ConnectedHeaderBar() {
 }
 ```
 
-By using the `useEffect` hook with an empty dependency array, upon first render, the `usePWAUpdateState` hook checks for new service workers by calling the Offline Interface's [`checkForNewSW()` method], which basically just exposes the [`checkForUpdates()` registration function](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/lib/registration.js#L31-L105). Compared to the the `getRegistrationState()` function that the `PWALoadingBoundary` uses, `checkForUpdates()` is more complex, since it checks for service workers installed and ready, listens for new ones becoming available, and checks for installing service workers between those states. We need to check a number of variables to handle all the possible installation conditions:
+By using the `useEffect` hook with an empty dependency array, upon first render, the `usePWAUpdateState` hook checks for new service workers by calling the Offline Interface's `checkForNewSW()` method, which basically just exposes the [`checkForUpdates()` registration function](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/lib/registration.js#L31-L105). Compared to the the `getRegistrationState()` function that the `PWALoadingBoundary` uses, `checkForUpdates()` is more complex, since it checks for service workers installed and ready, listens for new ones becoming available, and checks for installing service workers between those states. We need to check a number of variables to handle all the possible installation conditions:
 
 -   Service workers can be in one of the four steps of their lifecycle: installing, installed, activating, or activated
 -   Multiple service workers can be simultaneously present in the [service worker registration object](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) as either `installing`, `waiting`, or `active`
@@ -400,19 +400,19 @@ By using the `useEffect` hook with an empty dependency array, upon first render,
 
 For the full control flow, take a look at the `checkForUpdates()` [source code](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/lib/registration.js#L31-L105).
 
-If there _is_ a new service ready, then the `onNewSW()` callback function provided to `checkForNewSW()` is called, which sets the `updateAvailable` boolean returned by the hook to `true`. The `ConnectedHeaderBar` component passes this value as a prop to the HeaderBar, which shows the “New app version available — Click to reload” notification in the user profile menu.
+If there _is_ a new service ready, then the `onNewSW()` callback function provided as an argument to `checkForNewSW()` is called, which sets the `updateAvailable` boolean returned by the hook to `true`. The `ConnectedHeaderBar` component passes this value as a prop to the HeaderBar, which shows the “New app version available — Click to reload” notification in the user profile menu.
 
 ![Update available notification](update-available-notification.png)
 
-If the user opens the profile menu and clicks the “New version available” notification, the `confirmReload()` function is called. It handles the next part of the update flow by checking how many tabs of this app are open, so that if multiple tabs are open, a warning can be shown that they will all be reloaded. Like the `PWALoadingBoundary`, it uses the Offline Interface’s `getClientsInfo()` method to get the number of clients associated with this service worker.
+If the user opens the profile menu and clicks the “New version available” notification, the `confirmReload()` function in `usePWAUpdateState` is called. It handles the next part of the update flow by checking how many tabs of this app are open, so that if multiple tabs are open, a warning can be shown that they will all be reloaded. Like the `PWALoadingBoundary`, it uses the Offline Interface’s `getClientsInfo()` method to get the number of clients associated with this service worker.
 
 Once the clients info is received, if there is one client open for this service worker scope, `confirmReload()` will use the Offline Interface’s [`useNewSW()` method](https://github.com/dhis2/app-platform/blob/a3490e03a2c2c4e706b5fad644d8f3beffc4a81a/pwa/src/offline-interface/offline-interface.js#L192-L219) to instruct the new service worker to take control, as the `PWALoadingBoundary` does. If there are multiple clients open, or if the `getClientsInfo()` request fails, then the `confirmationRequired` boolean returned by the `usePWAUpdateState` hook will resolve to `true`. In the `ConnectedHeaderBar` component, this will result in rendering the `ConfirmReloadModal` that warns about data loss when all open tabs will be reloaded.
 
 ![Reload confirmation modal](reload-confirmation-modal.png)
 
-If possible, the number of tabs is shown in the modal to help the user account for forgotten tabs, as could happen if the user has many browser windows open or is on a mobile device. If the user clicks “Reload” in the modal, the `onConfirmUpdate()` function is called, which calls the `offlineInterface.useNewSW()` function and the update is triggered. If the user clicks “Cancel”, the `onCancelUpdate()` function is called, which resets the `confirmationRequired` boolean to false by setting `clientsCount` to null, which will close the modal.
+If the user clicks “Reload” in the modal, the `onConfirmUpdate()` function is called, which calls the `offlineInterface.useNewSW()` function and the update is triggered. If the user clicks “Cancel”, the `onCancelUpdate()` function is called, which resets the `confirmationRequired` boolean to `false` by setting `clientsCount` to `null`, which will close the modal.
 
-All these steps under the hood are coordinated to create the robust [user experience](#designing-a-good-user-experience-for-updating-pwa-apps) described above and make sure service workers and apps update correctly.
+All these steps under the hood are coordinated to create the robust [user experienc described above](#designing-a-good-user-experience-for-updating-pwa-apps) and make sure service workers and apps update correctly.
 
 ##### Handling precached static assets between versions
 
