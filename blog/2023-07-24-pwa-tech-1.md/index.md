@@ -1,5 +1,5 @@
 ---
-slug: 2022/01/ext-tech-blog-1
+slug: 2023/07/pwa-tech-1
 title: A deep-dive on a Progressive Web App implementation for a React-based App Platform (DHIS2)
 author: Kai Vandivier
 author_url: https://github.com/KaiVandivier
