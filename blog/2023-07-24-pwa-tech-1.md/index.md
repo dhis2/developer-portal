@@ -1,13 +1,13 @@
 ---
 slug: 2023/07/pwa-tech-1
 title: A deep-dive on a Progressive Web App implementation for a React-based App Platform (DHIS2)
-author: Kai Vandivier
-author_url: https://github.com/KaiVandivier
-author_image_url: https://github.com/KaiVandivier.png
+authors: kai
 tags: [dhis2, health, java, javascript, react, pwa]
 ---
 
 At [DHIS2](https://dhis2.org), we're a remote-first team of developers building the world's largest health information management system. DHIS2 is a free and open-source global public good developed at the University of Oslo. It is [used in more than 90 countries around the world](https://dhis2.org/in-action/), serving as the national health information system for more than 70 countries. It is a general-purpose data collection and analytics platform used to manage routine health service delivery as well as interventions targeting COVID-19, Malaria, HIV/AIDS, Tuberculosis, maternal and child health, and more. Our tech stack includes a postgres database, a Java server usually deployed on-premise, a native Android app, and more than 30 React-based web applications. To support the many web applications maintained by our team as well as those developed by [a growing community of developers](https://developers.dhis2.org/community) around the world, we provide a suite of build tools and common application infrastructure we call the [App Platform](https://developers.dhis2.org/blog/2019/07/what-is-this-app-platform).
+
+<!--truncate-->
 
 We are excited about the recent release of Progressive Web App (PWA) features in our App Platform, which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think we have some interesting stories to share about their development. We faced interesting design challenges as we aimed to make these features easily generalizable to any app, and the ways we used available technologies to solve those challenges are quite unique. The purpose of this post is to share our novel approach to managing service worker lifecycles and other PWA functionality in a generic way.
 
@@ -15,25 +15,25 @@ We are excited about the recent release of Progressive Web App (PWA) features in
 
 ## Contents <!-- omit in toc -->
 
--   [DHIS2 App Platform](#dhis2-app-platform)
-    -   [The App Platform at build-time](#the-app-platform-at-build-time)
-    -   [The App Platform at run-time](#the-app-platform-at-run-time)
-    -   [The App Platform "orchestra"](#the-app-platform-orchestra)
--   [Into Progressive Web Apps (PWA)](#into-progressive-web-apps-pwa)
-    -   [Adding installability](#adding-installability)
-    -   [Adding simple offline capability](#adding-simple-offline-capability)
-    -   [Creating a service worker script to perform offline caching](#creating-a-service-worker-script-to-perform-offline-caching)
-    -   [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
-    -   [Using a config option to enable PWA features](#using-a-config-option-to-enable-pwa-features)
-    -   [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
-        -   [Designing a good user experience for updating PWA apps](#designing-a-good-user-experience-for-updating-pwa-apps)
-        -   [Implementation of the app update flow](#implementation-of-the-app-update-flow)
-            -   [Registration of the service worker](#registration-of-the-service-worker)
-            -   [Automatically applying app updates when possible](#automatically-applying-app-updates-when-possible)
-            -   [Providing the UI for manually applying updates](#providing-the-ui-for-manually-applying-updates)
-        -   [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
-            -   [Adding a kill switch for a rogue service worker](#adding-a-kill-switch-for-a-rogue-service-worker)
--   [Conclusion](#conclusion)
+- [DHIS2 App Platform](#dhis2-app-platform)
+  - [The App Platform at build-time](#the-app-platform-at-build-time)
+  - [The App Platform at run-time](#the-app-platform-at-run-time)
+  - [The App Platform "orchestra"](#the-app-platform-orchestra)
+- [Into Progressive Web Apps (PWA)](#into-progressive-web-apps-pwa)
+  - [Adding installability](#adding-installability)
+  - [Adding simple offline capability](#adding-simple-offline-capability)
+  - [Creating a service worker script to perform offline caching](#creating-a-service-worker-script-to-perform-offline-caching)
+  - [Compiling the service worker and adding it to the app](#compiling-the-service-worker-and-adding-it-to-the-app)
+  - [Using a config option to enable PWA features](#using-a-config-option-to-enable-pwa-features)
+  - [Managing the service worker’s updates and lifecycle](#managing-the-service-workers-updates-and-lifecycle)
+    - [Designing a good user experience for updating PWA apps](#designing-a-good-user-experience-for-updating-pwa-apps)
+    - [Implementation of the app update flow](#implementation-of-the-app-update-flow)
+      - [Registration of the service worker](#registration-of-the-service-worker)
+      - [Automatically applying app updates when possible](#automatically-applying-app-updates-when-possible)
+      - [Providing the UI for manually applying updates](#providing-the-ui-for-manually-applying-updates)
+    - [Handling precached static assets between versions](#handling-precached-static-assets-between-versions)
+    - [Adding a kill switch for a rogue service worker](#adding-a-kill-switch-for-a-rogue-service-worker)
+- [Conclusion](#conclusion)
 
 Let's start then with some necessary context about how our App Platform works.
 
