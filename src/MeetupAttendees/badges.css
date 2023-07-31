@@ -1,0 +1,56 @@
+.BadgeInfo div > * {
+    margin-top: 12px;
+}
+.BadgeInfo > div > img {
+    margin: 10px 0 29px 0;
+    width: 125px;
+    height: auto;
+}
+
+.badgeArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:50px;
+}
+
+
+.badge {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: min-content;
+    justify-content: center;
+    width: fit-content;
+    margin: 0.3vw;
+    border-radius: 10px;
+}
+
+.badge:hover {
+    background: rgb(238, 249, 253, 0.46);
+    outline-style: inset;
+    outline-color: rgb(45, 68, 170);
+}
+
+.badge-link {
+    display: block;
+    margin-right: 1px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.badge-link:hover {
+    transform: scale(2.1);
+}
+
+.badge-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.badge a:nth-child(2) {
+    text-align: center;
+    margin-top: 1vw;
+    width: 6rem;
+}
