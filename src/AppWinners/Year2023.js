@@ -29,12 +29,12 @@ class One extends Component {
                                 </div>
                                 <div className="card__footer">
                                     <div className="button-group button-group--block">
-                                        <a href="https://community.dhis2.org/u/ericchingalo/summary" className="button button--secondary">
-                                            <span class="badge badge--secondary padding--md">Profile</span></a>
-                                            <a href="https://community.dhis2.org/t/dhis2-analytics-messenger/53477" className="button button--secondary">
-                                            <span class="badge badge--secondary padding--md">App Description</span></a>
+                                        <a href="https://community.dhis2.org/u/ericchingalo/summary">
+                                            <button className="button button--secondary">Profile</button></a>
+                                            <a href="https://community.dhis2.org/t/dhis2-analytics-messenger/53477">
+                                            <button className="button button--secondary">App Description</button></a>
                                             <a href="" className="button button--secondary">
-                                            <span class="padding--vert">Download</span></a>
+                                            <button className="button button--secondary">Download</button></a>
                                     </div>
                                 </div>
                             </div>
