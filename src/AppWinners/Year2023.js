@@ -33,7 +33,7 @@ class One extends Component {
                                             <button className="button button--secondary">Profile</button></a>
                                             <a href="https://community.dhis2.org/t/dhis2-analytics-messenger/53477">
                                             <button className="button button--secondary">App Description</button></a>
-                                            <a href="" className="button button--secondary">
+                                            <a href="">
                                             <button className="button button--secondary">Download</button></a>
                                     </div>
                                 </div>
