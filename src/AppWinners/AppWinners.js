@@ -14,7 +14,7 @@ class AppWinners extends Component {
                 <Year2023/>
                 <Year2022/>
                 <Year2021/>
-                <Year2020/>
+                {/* <Year2020/> */}
                 </div>
             </div>
         );
