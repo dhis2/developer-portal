@@ -11,7 +11,7 @@ class One extends Component {
                                 <div className="hero hero--primary" style={{height: '25rem'}}>
                                     <div className="container">
                                         <h1 className="hero__title">DHIS2 Analytics Messenger</h1>
-                                        <p className="hero__subtitle">DHIS2 Annaul Conference 2023 App Competition Winner</p>
+                                        <p className="hero__subtitle">DHIS2 Annual Conference 2023 App Competition Winner</p>
                                     </div>
                                 </div>
                                 <div className="card__header">
@@ -29,9 +29,12 @@ class One extends Component {
                                 </div>
                                 <div className="card__footer">
                                     <div className="button-group button-group--block">
-                                        <button className="button button--secondary">Profile</button>
-                                        <button className="button button--secondary">App Description</button>
-                                        <button className="button button--secondary">Download</button>
+                                        <a href="https://community.dhis2.org/u/ericchingalo/summary" className="button button--secondary">
+                                            <span class="badge badge--secondary padding--md">Profile</span></a>
+                                            <a href="https://community.dhis2.org/t/dhis2-analytics-messenger/53477" className="button button--secondary">
+                                            <span class="badge badge--secondary padding--md">App Description</span></a>
+                                            <a href="" className="button button--secondary">
+                                            <span class="">Download</span></a>
                                     </div>
                                 </div>
                             </div>
