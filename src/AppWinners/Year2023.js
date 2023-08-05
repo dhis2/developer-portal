@@ -34,7 +34,7 @@ class One extends Component {
                                             <a href="https://community.dhis2.org/t/dhis2-analytics-messenger/53477" className="button button--secondary">
                                             <span class="badge badge--secondary padding--md">App Description</span></a>
                                             <a href="" className="button button--secondary">
-                                            <span class="">Download</span></a>
+                                            <span class="padding--vert">Download</span></a>
                                     </div>
                                 </div>
                             </div>
