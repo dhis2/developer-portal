@@ -5,13 +5,11 @@ authors: kai
 tags: [dhis2, health, java, javascript, react, pwa]
 ---
 
-At [DHIS2](https://dhis2.org), we're a remote-first team of developers building the world's largest health information management system. DHIS2 is a free and open-source global public good developed at the University of Oslo. It is [used in more than 90 countries around the world](https://dhis2.org/in-action/), serving as the national health information system for more than 70 countries. It is a general-purpose data collection and analytics platform used to manage routine health service delivery as well as interventions targeting COVID-19, Malaria, HIV/AIDS, Tuberculosis, maternal and child health, and more. Our tech stack includes a postgres database, a Java server usually deployed on-premise, a native Android app, and more than 30 React-based web applications. To support the many web applications maintained by our team as well as those developed by [a growing community of developers](https://developers.dhis2.org/community) around the world, we provide a suite of build tools and common application infrastructure we call the [App Platform](https://developers.dhis2.org/blog/2019/07/what-is-this-app-platform).
-
-<!--truncate-->
-
 We are excited about the recent release of Progressive Web App (PWA) features in our App Platform, which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think we have some interesting stories to share about their development. We faced interesting design challenges as we aimed to make these features easily generalizable to any app, and the ways we used available technologies to solve those challenges are quite unique. The purpose of this post is to share our novel approach to managing service worker lifecycles and other PWA functionality in a generic way.
 
 <!--truncate-->
+
+At [DHIS2](https://dhis2.org), we're a remote-first team of developers building the world's largest health information management system. DHIS2 is a free and open-source global public good developed at the University of Oslo. It is [used in more than 90 countries around the world](https://dhis2.org/in-action/), serving as the national health information system for more than 70 countries. It is a general-purpose data collection and analytics platform used to manage routine health service delivery as well as interventions targeting COVID-19, Malaria, HIV/AIDS, Tuberculosis, maternal and child health, and more. Our tech stack includes a postgres database, a Java server usually deployed on-premise, a native Android app, and more than 30 React-based web applications. To support the many web applications maintained by our team as well as those developed by [a growing community of developers](https://developers.dhis2.org/community) around the world, we provide a suite of build tools and common application infrastructure we call the [App Platform](https://developers.dhis2.org/blog/2019/07/what-is-this-app-platform).
 
 ## Contents <!-- omit in toc -->
 
