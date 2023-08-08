@@ -49,20 +49,20 @@ _Some features in this image are works in progress._
 
 ### The App Platform at build-time
 
-The App Platform is made up of a number of build-time components and development tools that you can find in our [`app-platform` repository](https://github.com/dhis2/app-platform/):
+The App Platform consists of a number of build-time components and development tools that you can find in our [`app-platform` repository](https://github.com/dhis2/app-platform/):
 
-1. An **App Adapter** which is a wrapper for the app under development – it wraps the root component exported from the app’s entry point (like `<App />`) and performs other jobs.
-2. An **App Shell** which provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point, and wraps it with the App Adapter. It also provides some environment variables to the app.
-3. An **App Scripts CLI** (also part of [d2 global CLI](https://cli.dhis2.nu/#/)) which provides development tools and performs build-time jobs such as building the app itself and running a development server.
+1. **App Adapter**: A wrapper for the app under development – it wraps the root component exported from the app’s entry point (like `<App />`) and performs other jobs.
+2. **App Shell**: Provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development’s entry point, and wraps it with the App Adapter. It also provides some environment variables to the app.
+3. **App Scripts CLI**: Provides development tools and performs build-time jobs such as building the app itself and running a development server. (also part of [d2 global CLI](https://cli.dhis2.nu/#/))
 
 ### The App Platform at run-time
 
 At run-time, our platform offers React components and hooks that provide services to the app under development. These are mainly two libraries:
 
 1. The **[App Runtime library](https://runtime.dhis2.nu)** that uses a universal `<Provider>` component to provide context and support several useful services. The App Adapter adds the provider to apps using the platform by default. The services include:
-    1. A **Data Service** that publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
-    2. A **Config Service** that exposes several app configuration parameters
-    3. An **Alerts Service** that provides a declarative API for showing and hiding in-app alerts. This also coordinates with an "Alerts manager" component in the App Adapter to show the UI
+    1. **Data Service**: Publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
+    2. **Config Service**: Exposes several app configuration parameters
+    3. **Alerts Service**: Provides a declarative API for showing and hiding in-app alerts. This also coordinates with an "Alerts manager" component in the App Adapter to show the UI
 2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](https://ui.dhis2.nu) and the [`ui` repository](https://github.com/dhis2/ui).
 
 ### The App Platform "orchestra"
@@ -172,13 +172,13 @@ module.exports = {
 
 During the `d2-app-scripts` `start` or `build` processes, the config file is read, and a `PWA_ENABLED` value is added to the app’s environment variables. Then, in the App Adapter’s initialization logic, it registers or unregisters the service worker based on the the `PWA_ENABLED` environment variable.
 
-The registration logic will be described in more detail in the ["Registration of the service worker"](#registration-of-the-service-worker) section below.
+The registration logic is described in more detail in the ["Registration of the service worker"](#registration-of-the-service-worker) section below.
 
 ### Managing the service worker’s updates and lifecycle
 
 Managing the service worker’s [lifecycle](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle) is both complex and vitally important. Because the core assets that run the app are precached and served directly from the cache without contacting the server, in order for a client to use newly deployed app updates, the service worker must be updated with a new precache manifest.
 
-If the service worker lifecycle and updates are managed poorly, the app can get stuck on an old version in a user’s browser and never receive updates from the server, which can be hard to diagnose and harder to fix. The [“Handling precached static assets between versions” section](#handling-precached-static-assets-between-versions) below explains more about why that happens.
+If the service worker lifecycle and updates are managed poorly, the app can get stuck on an old version in a user’s browser and never receive updates from the server. This can be hard to diagnose and harder to fix. The [“Handling precached static assets between versions” section](#handling-precached-static-assets-between-versions) below explains more about why that happens.
 
 Managing PWA updates can be a famously tricky problem, and we think we’ve come across a robust system to handle it which we’ll describe below.
 
