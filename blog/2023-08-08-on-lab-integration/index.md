@@ -26,7 +26,7 @@ _A Node device (source: https://edgedx.net/product/5fab511a00f47d13e8c8dd3e)_
 ![Node device](./node-device.png)
 
 Another barrier we’ve identified with LIS adoption is that not all labs operate the same way. Lab X may filter out positive test cases for retesting while lab Y doesn’t. Lab X could also be validating the results in batches whereas lab Y is validating them individually. The challenge is how to have an LIS that can cater for all these possible workflows, data flows, and types of data but at the same time be simple enough so that implementers don't struggle while customising it.
-HISP Centre's software team is walking this very same tight rope for DHIS2! Some may argue that lab personnel should adapt their processes to the LIS’s “best practices” and not the other way around. The counterargument is that an opinionated LIS will meet resistance in its implementation and will likely be dropped at the first opportunity.
+The software team at HISP Centre is walking this very same tight rope for DHIS2! Some may argue that lab personnel should adapt their processes to the LIS’s “best practices” and not the other way around. The counterargument is that an opinionated LIS will meet resistance in its implementation and will likely be dropped at the first opportunity.
 
 _Customisation on Senaite (source: https://www.senaite.com/docs/quickstart)_
 
