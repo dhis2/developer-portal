@@ -7,7 +7,7 @@ tags: [lab-integration, lis, lab-machines]
 
 COVID-19 has highlighted the importance of having public laboratories efficiently integrated with the rest of the healthcare architecture. It’s been shown through numerous case studies that connecting labs with the country’s health information exchanges (HIEs) significantly facilitates critical activities such as disease surveillance, notification of test results, reporting to stakeholders, and inventory control. It follows that DHIS2 can play a pivotal role in these use cases. Imagine the national Health Management Information System (HMIS) displaying the daily tally of new positive tuberculosis cases on its dashboard as soon as the test results are available at the lab, or a surveillance system notifying patients of their results. Another innovative use case gaining traction is for DHIS2 to collect the state of lab diagnostics (i.e., error rates, usage frequency, online status, etc…) in order to simplify their management.
 <!-- truncate -->
-![A Lab](./lab-flow1.png)
+![A Lab](./lab-flow1.jpg)
 _A typical public lab (source: https://drdollah.com/laboratory-information-system-lis/)_
 
 HISP Centre, for the past year or so, has been exploring the lab integration space to understand what’s been done so far, the challenges, and how it can be improved. A major hurdle we identified to seamlessly integrate labs with health systems is that labs around the globe have technicians, receptionists, and other personnel manually punching in data, copying and filtering spreadsheet rows, mapping test requests and results, and double-checking data for quality control. This is especially true for low and middle-income countries (LMICs). 
