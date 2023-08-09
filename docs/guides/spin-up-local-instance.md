@@ -33,11 +33,9 @@ d2 cluster up <name>
 
 Or spin up a new DHIS2 instance of a specific version seeded with data from the Sierra Leone [demo database](https://dhis2.org/demo).
 
-```shell
-d2 cluster up 2.35.0 --db-version 2.35 --seed
-```
+See the [DHIS2 in docker](/docs/tutorials/dhis2-docker.md) for a guide on how to set up a DHIS2 instance using Docker.
 
-**Note:** Once the `up` command completes, the server might take up to a couple of minutes to start. You can then run `d2 cluster logs 2.35.0` and wait until you see the line `Server startup in xxx ms`.
+**Note:** Once the `up` command completes, the server might take up to a couple of minutes to start. You can then run `d2 cluster logs 2.40.0` and wait until you see the line `Server startup in xxx ms`.
 
 > If you want to test against different DHIS2 and database versions or build your own custom DHIS2 Docker image, please refer to the [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) docs.
 
@@ -59,11 +57,11 @@ password: district
 The `down` command followed by the name of the cluster shuts down all Docker processes connected to that cluster (it basically destroys a running container):
 
 ```shell
-d2 cluster down 2.35.0
+d2 cluster down 2.40.0
 ```
 
 The command `down --clean` destroys that cluster _and also_ clears out all saved configuration, data volumes, and ephemeral containers:
 
 ```shell
-d2 cluster down 2.35.0 --clean
+d2 cluster down 2.40.0 --clean
 ```
