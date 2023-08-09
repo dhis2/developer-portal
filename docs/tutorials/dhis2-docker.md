@@ -21,7 +21,7 @@ Make sure you have the following tools installed
 Running DHIS2 with the `d2 cluster` CLI is very simple:
 
 ```shell
-d2 cluster up 2.39.1.1 --db-version 2.39 --seed
+d2 cluster up 2.40.0.1 --db-version 2.40 --seed
 ```
 
 This way of running DHIS2 provides extra features like running multiple DHIS2 "clusters" at once, saving different configuration combinations and more.
@@ -37,7 +37,7 @@ This way of running DHIS2 provides extra features like running multiple DHIS2 "c
 Running DHIS2 with Docker Compose is also straightforward:
 
 ```shell
-DHIS2_IMAGE=dhis2/core:2.39.1.1 DHIS2_DB_DUMP_URL=https://databases.dhis2.org/sierra-leone/2.39.1/dhis2-db-sierra-leone.sql.gz docker compose up
+DHIS2_IMAGE=dhis2/core:2.40.0.1 DHIS2_DB_DUMP_URL=https://databases.dhis2.org/sierra-leone/2.39.1/dhis2-db-sierra-leone.sql.gz docker compose up
 ```
 
 This is the preferred way if you want a simple setup that consist of DHIS2 and a database.
