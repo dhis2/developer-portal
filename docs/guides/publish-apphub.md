@@ -56,8 +56,7 @@ Here's an example of a minimal workflow that you can use. This will build the ap
 Copy this file to `.github/workflows/apphub-release.yml` in your repository. Remember to push the file. You may also use the GitHub interface for this (Actions -> New Workflow).
 
 ```yml title="apphub-release.yml"
-# This is a basic workflow to help you get started with Actions
-name: App Hub publish
+name: App Hub Publish
 
 env:
     D2_APP_HUB_API_KEY: ${{secrets.D2_APP_HUB_API_KEY}}
@@ -71,23 +70,41 @@ on:
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
 
-    build:
-        # The type of runner that the job will run on
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+    test:
         runs-on: ubuntu-latest
 
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v3
+            # Sets up a Node.js environment, with yarn as the package manager
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: lts/*
+                  cache: yarn
+            - name: Install JS dependencies
+              run: yarn install --frozen-lockfile
+            - name: Test
+              run: yarn test
+
+    publish:
+        # Wait for test to succeed before publishing
+        needs: [test]
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v2
               with:
-                  node-version: 12.x
-            - uses: c-hive/gha-yarn-cache@v1
+                  node-version: lts/*
+                  cache: "yarn"
 
             - name: Install JS dependencies
-              run: yarn install
+              run: yarn install --frozen-lockfile
 
             - name: Build
               run: yarn build
-
+            # Publish to the App Hub
             - name: Release to DHIS2 App Hub
               run: yarn run d2-app-scripts publish
 ```
