@@ -70,16 +70,20 @@ To illustrate how the App Adapter, App Shell, and App Scripts CLI work together,
 1. Using the [d2 global CLI](https://cli.dhis2.nu/#/), a new Platform app is [bootstrapped](https://platform.dhis2.nu/#/bootstrapping) using `d2 app scripts init new-app` in the terminal.
 2. Inside the `new-app/` directory that the above script just created, the `yarn build` command is run which in turn runs [`d2-app-scripts build`](https://platform.dhis2.nu/#/scripts/build), which initiates the following steps. Any directory or file paths described below are relative to `new-app/`.
 3. i18n jobs are executed (out of scope for this post).
-4. The `build` script creates a new app shell in the `.d2/shell/` directory.
+4. The `build` script bootstraps a new App Shell in the `.d2/shell/` directory.
 5. A web app manifest is generated.
 6. The app code written in `src/` is transpiled and copied into the `.d2/shell/src/D2App/` directory.
-7. Inside the shell at this stage, the files are set up so that the root component exported from the **entry point** in the app under development (`<App />` from `src/App.js` by default, now copied into `.d2/shell/src/D2App/App.js`) is _imported_ by a file in the shell [that wraps it with the App Adapter](https://github.com/dhis2/app-platform/blob/master/shell/src/App.js), and then the [wrapped app gets rendered](https://github.com/dhis2/app-platform/blob/master/shell/src/index.js) into an anchor node in the DOM.
+7. Inside the Shell at this stage, the files are set up so that the root component exported from the *entry point* in the app under development (`<App />` from `src/App.js` by default, now copied into `.d2/shell/src/D2App/App.js`) is _imported_ by a file in the App Shell [that wraps it with the App Adapter](https://github.com/dhis2/app-platform/blob/master/shell/src/App.js), and then the [wrapped app gets rendered](https://github.com/dhis2/app-platform/blob/master/shell/src/index.js) into an anchor node in the DOM.
 8. The shell-encapsulated app that's now set up in the `.d2/shell/` directory is now basically a Create React App app, and `react-scripts` can be used to compile a minified production build. The `react-scripts build` script is run, and the build is output to the `build/app/` directory in the app root.
 9. A zipped bundle of the app is also created and output to `build/bundle/`, which can be uploaded to a DHIS2 instance.
 
-This example will be useful to refer back to when reading about the build process later in this article.
+This example will be useful to refer back to when reading about the build process later in this article. Some details of this process may change as we improve our build tooling, but this is the current design as of writing.
 
-Some details of this process may change as we improve our build tooling, but this is the current design as of writing.
+To contextualize and preview the sections to come, here are the extensions we make to this process to add PWA features into the App Platform:
+* We add a service worker script to the App Shell that's bootstrapped in **step 4**
+* We generate a PWA manifest alongside the web app manifest in **step 5**
+* We extend the App Adapter in **step 7** to support several client-side PWA features
+* The service worker script in the App Shell gets compiled and added to the build app during **step 8**
 
 ## Into Progressive Web Apps (PWA)
 
