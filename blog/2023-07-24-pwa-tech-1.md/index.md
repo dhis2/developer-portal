@@ -1,5 +1,5 @@
 ---
-slug: 2023/07/pwa-tech-1
+slug: 2023/08/pwa-tech-1
 title: A deep-dive on a Progressive Web App implementation for a React-based App Platform (DHIS2)
 authors: kai
 tags: [dhis2, health, java, javascript, react, pwa]
