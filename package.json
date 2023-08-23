@@ -5,12 +5,12 @@
     "scripts": {
         "fetch-external-docs": "node docs-migrate.js",
         "docusaurus": "docusaurus",
-        "start": "npm run fetch-external-docs && docusaurus start",
+        "start": "docusaurus start",
         "start-no-fetch": "docusaurus start",
         "build": "npm run fetch-external-docs && docusaurus build",
         "swizzle": "docusaurus swizzle",
         "deploy": "docusaurus deploy",
-        "serve": "npm run fetch-external-docs && docusaurus serve",
+        "serve": "docusaurus serve",
         "clear": "docusaurus clear"
     },
     "dependencies": {
