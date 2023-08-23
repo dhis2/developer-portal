@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 try {
     // Clone the repository and switch to the "docs-improve" branch
     execSync(
-        'git clone --depth 1 git@github.com:dhis2/cli.git --branch docs-improve .cli-repo-temp'
+        'git clone --depth 1 https://github.com/dhis2/cli.git --branch docs-improve .cli-repo-temp'
     )
 
     // Remove any previous copy
