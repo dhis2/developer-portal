@@ -27,9 +27,9 @@ Once you have installed the CLI, you should be able to run the `d2` command in y
 
 There's several sections within the CLI, and each has it's own set of commands and options. The sections are:
 
-- [`d2 app`](/docs/cli/app): Front-end application and library commands
+- `d2 app`: Front-end application and library commands
 - [`d2 cluster`](/docs/cli/cluster): Manage DHIS2 Docker clusters
-- [`d2 create`](/docs/cli/create): Create various DHIS2 components from templates
-- [`d2 style`](/docs/cli/style): DHIS2 programmatic style for commit messages/code
-- [`d2 utils`](/docs/cli/utils): Utils for miscellaneous operations
-- [`d2 debug`](/docs/cli/debug): Debug local d2 installation
+- `d2 create`: Create various DHIS2 components from templates
+- `d2 style`: DHIS2 programmatic style for commit messages/code
+- `d2 utils`: Utils for miscellaneous operations
+- `d2 debug`: Debug local d2 installation
