@@ -23,18 +23,18 @@ module.exports = {
         },
         {
             CLI: [
-                'cli/getting-started',
+                'cli/readme',
                 {
                     Commands: [
-                        'cli/commands/d2',
-                        'cli/commands/d2-cluster',
-                        'cli/commands/d2-utils-release',
+                        'cli/cli/commands/d2',
+                        'cli/cli/commands/d2-cluster',
+                        'cli/cli/commands/d2-utils-release',
                     ],
                     'D2 Cluster': [
-                        'cli/recipes/custom-dhis-config',
-                        'cli/recipes/custom-image',
-                        'cli/recipes/development',
-                        'cli/recipes/stable',
+                        'cli/cli/recipes/custom-dhis-config',
+                        'cli/cli/recipes/custom-docker-image',
+                        'cli/cli/recipes/development-version',
+                        'cli/cli/recipes/stable-version',
                     ],
                 },
             ],

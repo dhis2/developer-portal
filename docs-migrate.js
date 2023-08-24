@@ -20,10 +20,10 @@ try {
 
     process.chdir('..')
     // Remove any previous copy
-    fs.removeSync('./docs/cli')
+    fs.removeSync('./docs/cli/cli')
 
     // Copy the directory to another place and create missing directories
-    fs.copySync('.cli-repo-temp/docs', './docs/cli', { recursive: true })
+    fs.copySync('.cli-repo-temp/docs', './docs/cli/cli', { recursive: true })
 
     // Remove the checked out code
     fs.removeSync('.cli-repo-temp')
