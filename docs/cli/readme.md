@@ -25,7 +25,7 @@ This should return the version of the CLI that you have installed, such as `4.2.
 ## Functionalities
 Once you have installed the CLI, you should be able to run the `d2` command in your terminal. This will show you the available commands and options.
 
-There's several sections within the CLI, and each has it's own set of commands and options. The sections are:
+There are several sections within the CLI, and each has its own set of commands and options. The sections are:
 
 - `d2 app`: Front-end application and library commands
 - [`d2 cluster`](/docs/cli/cluster): Manage DHIS2 Docker clusters

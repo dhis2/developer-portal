@@ -24,13 +24,11 @@ module.exports = {
         {
             CLI: [
                 'cli/readme',
+                'cli/cli/commands/d2-overview',
                 {
-                    Commands: [
-                        'cli/cli/commands/d2',
+                    'd2 Cluster': [
                         'cli/cli/commands/d2-cluster',
                         'cli/cli/commands/d2-utils-release',
-                    ],
-                    'D2 Cluster': [
                         'cli/cli/recipes/custom-dhis-config',
                         'cli/cli/recipes/custom-docker-image',
                         'cli/cli/recipes/development-version',
