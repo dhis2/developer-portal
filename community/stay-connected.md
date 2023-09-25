@@ -21,7 +21,7 @@ Check out our past and upcoming DHIS2 Developer Community Events including Webin
 
 ### DHIS2 Developer Meetups
 
-We are also hosting monthly meetups with the DHIS2 Developer Community and the DHIS2 Core Team.
+We are also hosting monthly meetups, every **second Thursday of the Month** with the DHIS2 Developer Community and the DHIS2 Core Team.
 
 #### What are these meetups?
 
