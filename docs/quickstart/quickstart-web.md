@@ -38,7 +38,7 @@ username: admin
 password: district
 ```
 :::note
-If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../guides/debug-instance).
+If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../../guides/debug-instance).
 :::
 
 3. You will see the default admin user name and a welcome message
@@ -52,6 +52,6 @@ Congratulations! You are ready to start developing a DHIS2 app 🎊
 Now that you have created a DHIS2 app and connected it to a DHIS2 instance you can learn more about developing apps on DHIS2.
 
 -   Learn more about DHIS2 apps from the [developer documentation](https://docs.dhis2.org/dhis2_developer_manual/apps.html)
--   Watch training videos from the [videos section](../dev-videos)
+-   Watch training videos from the [videos section](../../dev-videos)
 -   Join our Developer Events published in the [Events Calendar](https://dhis2.org/news-and-events)
 -   Join our next [Developer Academies](https://dhis2.org/academy/level-2)
