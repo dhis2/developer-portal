@@ -21,12 +21,15 @@ Check out our past and upcoming DHIS2 Developer Community Events including Webin
 
 ### DHIS2 Developer Meetups
 
-We are also hosting bi-weekly meetups with the DHIS2 Developer Community and the DHIS2 Core Team.
+We are also hosting monthly meetups, every **second Thursday of the Month** with the DHIS2 Developer Community and the DHIS2 Core Team.
 
 #### What are these meetups?
 
 A series of online and informal meetings with the DHIS2 Developer Community. These meetups are a great way for developers working on DHIS2-related projects to connect, ask questions and stay updated.
 
-Keep an eye on the CoP [announcement](https://community.dhis2.org/c/announcements/22) category for our next live community event or join the **DHIS2 Developer Community Slack Workspace** to know more by filling out [this form](https://docs.google.com/forms/d/e/1FAIpQLScuPQsMfEcLkCTiR87RhCG8v4eZZTf4CNPCFuAtRndEI211xA/viewform?usp=sf_link).
+Keep an eye on the CoP [Development](https://community.dhis2.org/c/development/10) category for our next Developer Meetup.
 
 Looking forward to seeing you there! 🎊
+
+#### I want to present at a meetup!
+That's great! We are always looking for new speakers. If you have a topic you would like to present, please post your topic on the CoP [Development](https://community.dhis2.org/c/development/10) category, or reach out to [Rene Pot](https://community.dhis2.org/u/rene/summary) directly through a message.
