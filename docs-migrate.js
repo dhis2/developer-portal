@@ -1,7 +1,13 @@
 const { execSync } = require('child_process')
 const fs = require('fs-extra')
 
-const migrateDocs = ({ repo, branch = 'master', tempDir, targetDir }) => {
+const migrateDocs = ({
+    repo,
+    branch = 'master',
+    tempDir,
+    targetDir,
+    extraFiles = [],
+}) => {
     try {
         // Remove any previous copy
         fs.removeSync(tempDir)
@@ -26,6 +32,13 @@ const migrateDocs = ({ repo, branch = 'master', tempDir, targetDir }) => {
         // Copy the directory to another place and create missing directories
         fs.copySync(`${tempDir}/docs`, targetDir, { recursive: true })
 
+        // Copy extra files
+        extraFiles.forEach((file) => {
+            fs.copySync(`${tempDir}/${file}`, `${targetDir}/${file}`, {
+                recursive: true,
+            })
+        })
+
         // Remove the checked out code
         fs.removeSync(tempDir)
     } catch (error) {
@@ -45,4 +58,5 @@ migrateDocs({
     branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
     targetDir: './docs/cli/app-platform',
+    extraFiles: ['CHANGELOG.md'],
 })

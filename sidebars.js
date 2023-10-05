@@ -36,6 +36,43 @@ module.exports = {
                     'd2 utils': ['cli/cli/commands/d2-utils-release'],
                 },
             ],
+            'Application Platform': [
+                'cli/app-platform/getting-started',
+                'cli/app-platform/installation',
+                'cli/app-platform/bootstrapping',
+                {
+                    'CLI Scripts': [
+                        'cli/app-platform/scripts',
+                        'cli/app-platform/scripts/build',
+                        'cli/app-platform/scripts/deploy',
+                        'cli/app-platform/scripts/init',
+                        'cli/app-platform/scripts/pack',
+                        'cli/app-platform/scripts/publish',
+                        'cli/app-platform/scripts/start',
+                        'cli/app-platform/scripts/test',
+                    ],
+                },
+                {
+                    Configuration: [
+                        'cli/app-platform/config/types',
+                        'cli/app-platform/config/d2-config-js-reference',
+                        'cli/app-platform/config/environment',
+                    ],
+                },
+                {
+                    Usage: [
+                        'cli/app-platform/usage/dependencies',
+                        'cli/app-platform/usage/css',
+                        'cli/app-platform/usage/static-files',
+                        'cli/app-platform/usage/app-icon',
+                    ],
+                },
+                'cli/app-platform/pwa/pwa',
+                'cli/app-platform/architecture',
+                'cli/app-platform/troubleshooting',
+                'cli/app-platform/proxy',
+                'cli/app-platform/CHANGELOG',
+            ],
         },
         {
             Guides: [
