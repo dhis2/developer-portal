@@ -27,12 +27,17 @@ const migrateDocs = ({
         process.chdir('..')
 
         // Remove any previous copy
+        console.log(`removing previous copy at ${targetDir}`)
         fs.removeSync(targetDir)
 
         // Copy the directory to another place and create missing directories
+        console.log(`copy files to ${targetDir}`)
         fs.copySync(`${tempDir}/docs`, targetDir, { recursive: true })
 
         // Copy extra files
+        if (extraFiles.length > 0) {
+            console.log(`Copying extra files: ${extraFiles.join(', ')}`)
+        }
         extraFiles.forEach((file) => {
             fs.copySync(`${tempDir}/${file}`, `${targetDir}/${file}`, {
                 recursive: true,
@@ -40,6 +45,7 @@ const migrateDocs = ({
         })
 
         // Remove the checked out code
+        console.log(`removing temp directory ${tempDir}`)
         fs.removeSync(tempDir)
     } catch (error) {
         console.error(error)
@@ -58,5 +64,13 @@ migrateDocs({
     branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
     targetDir: './docs/cli/app-platform',
+    extraFiles: ['CHANGELOG.md'],
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/cli-utils-cypress.git',
+    branch: 'docs-improve',
+    tempDir: '.cypress-repo-temp',
+    targetDir: './docs/cli/cypress',
     extraFiles: ['CHANGELOG.md'],
 })
