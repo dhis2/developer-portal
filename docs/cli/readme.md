@@ -32,4 +32,4 @@ There are several sections within the CLI, and each has its own set of commands 
 - `d2 create`: Create various DHIS2 components from templates
 - `d2 style`: DHIS2 programmatic style for commit messages/code
 - `d2 utils`: Utils for miscellaneous operations
-- `d2 debug`: Debug local d2 installation
+- `d2 debug`: Debug local d2 installation.
