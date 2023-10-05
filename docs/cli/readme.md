@@ -28,7 +28,7 @@ Once you have installed the CLI, you should be able to run the `d2` command in y
 There are several sections within the CLI, and each has its own set of commands and options. The sections are:
 
 - [`d2 app`](/docs/cli/app-platform/getting-started): Front-end application and library commands
-- [`d2 cluster`](/docs/cli/cluster): Manage DHIS2 Docker clusters
+- [`d2 cluster`](/docs/cli/cluster): Manage DHIS2 Docker clusters.
 - `d2 create`: Create various DHIS2 components from templates
 - `d2 style`: DHIS2 programmatic style for commit messages/code
 - [`d2 utils cypress`](/docs/cli/cypress/getting-started): DHIS2 Cypress configuration and utility helper.
