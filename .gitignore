@@ -22,3 +22,4 @@ yarn-error.log*
 
 # Copied docs
 docs/cli/cli
+docs/cli/app-platform
