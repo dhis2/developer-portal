@@ -1,32 +1,48 @@
 const { execSync } = require('child_process')
 const fs = require('fs-extra')
 
-try {
-    // just in case, remove any previous copy
-    fs.removeSync('.cli-repo-temp')
+const migrateDocs = ({ repo, branch = 'master', tempDir, targetDir }) => {
+    try {
+        // Remove any previous copy
+        fs.removeSync(tempDir)
 
-    // Clone the repository and switch to the "docs-improve" branch
-    execSync(
-        'git clone --depth 1 --sparse https://github.com/dhis2/cli.git --branch docs-improve .cli-repo-temp'
-    )
+        // Clone the repository and switch to the specified branch
+        execSync(
+            `git clone --depth 1 --sparse ${repo} --branch ${branch} ${tempDir}`
+        )
 
-    // Navigate to the cloned repository
-    process.chdir('.cli-repo-temp')
+        // Navigate to the cloned repository
+        process.chdir(tempDir)
 
-    // fs.mkdirSync('docs')
-    // Set up sparse checkout to retrieve only the 'docs' directory
-    execSync('git sparse-checkout init')
-    execSync('git sparse-checkout set docs')
+        // Set up sparse checkout to retrieve only the 'docs' directory
+        execSync('git sparse-checkout init')
+        execSync('git sparse-checkout set docs')
 
-    process.chdir('..')
-    // Remove any previous copy
-    fs.removeSync('./docs/cli/cli')
+        process.chdir('..')
 
-    // Copy the directory to another place and create missing directories
-    fs.copySync('.cli-repo-temp/docs', './docs/cli/cli', { recursive: true })
+        // Remove any previous copy
+        fs.removeSync(targetDir)
 
-    // Remove the checked out code
-    fs.removeSync('.cli-repo-temp')
-} catch (error) {
-    console.error(error)
+        // Copy the directory to another place and create missing directories
+        fs.copySync(`${tempDir}/docs`, targetDir, { recursive: true })
+
+        // Remove the checked out code
+        fs.removeSync(tempDir)
+    } catch (error) {
+        console.error(error)
+    }
 }
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/cli.git',
+    branch: 'docs-improve',
+    tempDir: '.cli-repo-temp',
+    targetDir: './docs/cli/cli',
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/app-platform.git',
+    branch: 'docs-improve',
+    tempDir: '.ap-repo-temp',
+    targetDir: './docs/cli/app-platform',
+})
