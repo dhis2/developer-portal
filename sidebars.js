@@ -42,14 +42,46 @@ module.exports = {
                 'cli/app-platform/bootstrapping',
                 {
                     'CLI Scripts': [
-                        'cli/app-platform/scripts',
-                        'cli/app-platform/scripts/build',
-                        'cli/app-platform/scripts/deploy',
-                        'cli/app-platform/scripts/init',
-                        'cli/app-platform/scripts/pack',
-                        'cli/app-platform/scripts/publish',
-                        'cli/app-platform/scripts/start',
-                        'cli/app-platform/scripts/test',
+                        {
+                            id: 'cli/app-platform/scripts',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/build',
+                            label: 'build',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/deploy',
+                            label: 'deploy',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/init',
+                            label: 'init',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/pack',
+                            label: 'pack',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/publish',
+                            label: 'publish',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/start',
+                            label: 'start',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'cli/app-platform/scripts/test',
+                            label: 'test',
+                            type: 'doc',
+                        },
                     ],
                 },
                 {
@@ -71,7 +103,11 @@ module.exports = {
                 'cli/app-platform/architecture',
                 'cli/app-platform/troubleshooting',
                 'cli/app-platform/proxy',
-                'cli/app-platform/CHANGELOG',
+                {
+                    id: 'cli/app-platform/CHANGELOG',
+                    label: 'Changelog',
+                    type: 'doc',
+                },
             ],
         },
         {
