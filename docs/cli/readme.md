@@ -31,5 +31,5 @@ There are several sections within the CLI, and each has its own set of commands 
 - [`d2 cluster`](/docs/cli/cluster): Manage DHIS2 Docker clusters
 - `d2 create`: Create various DHIS2 components from templates
 - `d2 style`: DHIS2 programmatic style for commit messages/code
-- `d2 utils`: Utils for miscellaneous operations
+- [`d2 utils cypress`](/docs/cli/cypress/getting-started): DHIS2 Cypress configuration and utility helper.
 - `d2 debug`: Debug local d2 installation.
