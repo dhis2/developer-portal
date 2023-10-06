@@ -22,5 +22,6 @@ yarn-error.log*
 
 # Copied docs
 docs/cli/cli
-docs/cli/app-platform
+docs/app-platform
 docs/cli/cypress
+docs/app-runtime

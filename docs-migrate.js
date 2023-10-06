@@ -63,7 +63,7 @@ migrateDocs({
     repo: 'https://github.com/dhis2/app-platform.git',
     branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
-    targetDir: './docs/cli/app-platform',
+    targetDir: './docs/app-platform',
     extraFiles: ['CHANGELOG.md'],
 })
 
@@ -72,5 +72,13 @@ migrateDocs({
     branch: 'docs-improve',
     tempDir: '.cypress-repo-temp',
     targetDir: './docs/cli/cypress',
+    extraFiles: ['CHANGELOG.md'],
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/app-runtime.git',
+    branch: 'docs-improve',
+    tempDir: '.ar-repo-temp',
+    targetDir: './docs/app-runtime',
     extraFiles: ['CHANGELOG.md'],
 })
