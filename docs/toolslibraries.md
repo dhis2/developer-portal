@@ -1,36 +1,22 @@
 ---
-id: reference
-title: References
+id: toolslibraries
+title: Tools & Libraries
 ---
 
-The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages for each library, as well as links to relevant Github repositories. 
+The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages that are not yet covered in the Developer Portal.
 
 Each of the different pages describe how they work and how to use it, but it's assumed that you have a basic understanding of key concepts.
 
-### API Reference
-
--   [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html)
--   [DHIS2 Android SDK](https://docs.dhis2.org/2.34/en/dhis2_android_sdk_developer_guide/about-this-guide.html)
-
-### App Platform
-
--   [DHIS2 App Platform](https://platform.dhis2.nu/#/) - build, test, and development tooling for app development
--   [App Runtime](https://runtime.dhis2.nu/#/) - application configuration and declarative access to DHIS2 data
-
 ### Component & Helper Libraries
 
--   [DHIS2 UI](https://ui.dhis2.nu/#/) - components and related resources for the [DHIS2 design system](https://github.com/dhis2/design-system)
 -   [Analytics](https://github.com/dhis2/analytics) - helper functions and common components for analytics applications
 -   [SMS Compression](https://github.com/dhis2/dhis2-android-docs/blob/main/content/tech-guides/SMS-compression.md) how the SMS library works and how it is used in server and Android side
 -   [SMS Syncing](https://github.com/dhis2/dhis2-android-docs/blob/main/content/tech-guides/SMS-Sync.md) - how the SMS syncing works at every level (server, gateway, Android SDK, Android App) and how to test it
 
 ### Command-line tools
 
--   [DHIS2 CLI](https://cli.dhis2.nu/#/) - Command-line interface for DHIS2 development
 -   [d2 style](https://cli-style.dhis2.nu/#/) - Standardized code and commit style enforcement
 -   [d2 utils docsite](https://cli-utils-docsite.dhis2.nu/#/) - Generate a documentation website with consistent structure and design
--   [d2 utils cypress](https://cli-utils-cypress.dhis2.nu/#/) - The cypress utilities is a collection of npm modules that help with running cypress, cucumber/gherkin feature files and provide some commands for a more convenient test development process.
-
 ### Legacy libraries
 
 -   [d2-i18n](https://github.com/dhis2/d2-i18n) - will be superceded by the App Runtime
