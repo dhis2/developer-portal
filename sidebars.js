@@ -177,6 +177,11 @@ module.exports = {
                             ],
                         },
                         {
+                            href: 'https://play.dhis2.org/demo/api/apps/query-playground/index.html',
+                            label: 'Query Playground',
+                            type: 'link',
+                        },
+                        {
                             id: 'app-runtime/CHANGELOG',
                             label: 'Changelog',
                             type: 'doc',
@@ -245,7 +250,22 @@ module.exports = {
                         },
                     ],
                 },
+                {
+                    href: 'https://ui.dhis2.nu',
+                    label: 'UI Library',
+                    type: 'link',
+                },
             ],
+        },
+        {
+            type: 'link',
+            label: 'Android SDK',
+            href: 'https://docs.dhis2.org/en/develop/developing-with-the-android-sdk/about-this-guide.html',
+        },
+        {
+            type: 'link',
+            label: 'Using the Web API',
+            href: 'https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-240/introduction.html',
         },
         'dev-videos',
         'reference',
