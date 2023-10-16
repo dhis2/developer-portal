@@ -96,4 +96,8 @@ module.exports = [
         to: '/community/contribute',
         from: '/docs/conceptual/contribute',
     },
+    {
+        from: '/docs/reference',
+        to: '/docs/toolslibraries',
+    },
 ]
