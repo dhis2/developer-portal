@@ -213,17 +213,41 @@ module.exports = {
                         'cli/cli/commands/d2-utils-release',
                     ],
                     'd2 style': [
-                        'cli/style/getting-started',
-                        'cli/style/migrate-guide',
+                        {
+                            id: 'cli/style/getting-started',
+                            type: 'doc',
+                            label: 'Getting Started',
+                        },
+                        {
+                            id: 'cli/style/migrate-guide',
+                            type: 'doc',
+                            label: 'Migration Guide',
+                        },
                         {
                             Configuration: [
-                                'cli/style/ignore-files',
-                                'cli/style/overrides',
+                                {
+                                    id: 'cli/style/ignore-files',
+                                    type: 'doc',
+                                    label: 'Ignore Files',
+                                },
+                                {
+                                    id: 'cli/style/overrides',
+                                    type: 'doc',
+                                    label: 'Configuration Overrides',
+                                },
                             ],
                         },
-                        'cli/style/faq',
-                        'cli/style/api',
-                        'cli/style/changelog',
+                        { id: 'cli/style/faq', type: 'doc', label: 'FAQ' },
+                        {
+                            id: 'cli/style/api',
+                            type: 'doc',
+                            label: 'API Reference',
+                        },
+                        {
+                            id: 'cli/style/changelog',
+                            type: 'doc',
+                            label: 'Changelog',
+                        },
                     ],
                 },
             ],
