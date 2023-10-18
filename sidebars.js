@@ -212,6 +212,18 @@ module.exports = {
                         'cli/cli/recipes/custom-docker-image',
                         'cli/cli/commands/d2-utils-release',
                     ],
+                    'd2 style': [
+                        'cli/style/getting-started',
+                        'cli/style/migrate-guide',
+                        {
+                            Configuration: [
+                                'cli/style/ignore-files',
+                                'cli/style/overrides',
+                            ],
+                        },
+                        'cli/style/faq',
+                        'cli/style/CHANGELOG',
+                    ],
                 },
             ],
         },

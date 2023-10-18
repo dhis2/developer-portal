@@ -60,6 +60,14 @@ migrateDocs({
 })
 
 migrateDocs({
+    repo: 'https://github.com/dhis2/cli-style.git',
+    branch: 'master',
+    tempDir: '.clistyle-repo-temp',
+    targetDir: './docs/cli/style',
+    extraFiles: ['CHANGELOG.md'],
+})
+
+migrateDocs({
     repo: 'https://github.com/dhis2/app-platform.git',
     branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
