@@ -7,6 +7,7 @@ const migrateDocs = ({
     tempDir,
     targetDir,
     extraFiles = [],
+    postDownloadActions = [],
 }) => {
     try {
         // Remove any previous copy
@@ -24,6 +25,11 @@ const migrateDocs = ({
         execSync('git sparse-checkout init')
         execSync('git sparse-checkout set docs')
 
+        postDownloadActions.forEach((action) => {
+            console.log(`executing post download action: ${action}`)
+            execSync(action)
+        })
+
         process.chdir('..')
 
         // Remove any previous copy
@@ -35,11 +41,9 @@ const migrateDocs = ({
         fs.copySync(`${tempDir}/docs`, targetDir, { recursive: true })
 
         // Copy extra files
-        if (extraFiles.length > 0) {
-            console.log(`Copying extra files: ${extraFiles.join(', ')}`)
-        }
         extraFiles.forEach((file) => {
-            fs.copySync(`${tempDir}/${file}`, `${targetDir}/${file}`, {
+            console.log(`copying ${file.from} to ${file.to}`)
+            fs.copySync(`${tempDir}/${file.from}`, `${targetDir}/${file.to}`, {
                 recursive: true,
             })
         })
@@ -64,7 +68,18 @@ migrateDocs({
     branch: 'master',
     tempDir: '.clistyle-repo-temp',
     targetDir: './docs/cli/style',
-    extraFiles: ['CHANGELOG.md'],
+    extraFiles: [
+        {
+            from: 'CHANGELOG.md',
+            to: 'changelog.md',
+        },
+        { from: 'dist/markdown/api.md', to: 'api.md' },
+    ],
+    postDownloadActions: [
+        'git sparse-checkout set src docs',
+        'yarn',
+        'yarn build:docs',
+    ],
 })
 
 migrateDocs({
@@ -72,7 +87,12 @@ migrateDocs({
     branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
     targetDir: './docs/app-platform',
-    extraFiles: ['CHANGELOG.md'],
+    extraFiles: [
+        {
+            from: 'CHANGELOG.md',
+            to: 'changelog.md',
+        },
+    ],
 })
 
 migrateDocs({
@@ -80,7 +100,12 @@ migrateDocs({
     branch: 'docs-improve',
     tempDir: '.cypress-repo-temp',
     targetDir: './docs/cli/cypress',
-    extraFiles: ['CHANGELOG.md'],
+    extraFiles: [
+        {
+            from: 'CHANGELOG.md',
+            to: 'changelog.md',
+        },
+    ],
 })
 
 migrateDocs({
@@ -88,5 +113,10 @@ migrateDocs({
     branch: 'docs-improve',
     tempDir: '.ar-repo-temp',
     targetDir: './docs/app-runtime',
-    extraFiles: ['CHANGELOG.md'],
+    extraFiles: [
+        {
+            from: 'CHANGELOG.md',
+            to: 'changelog.md',
+        },
+    ],
 })

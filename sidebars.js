@@ -123,7 +123,7 @@ module.exports = {
                 'app-platform/troubleshooting',
                 'app-platform/proxy',
                 {
-                    id: 'app-platform/CHANGELOG',
+                    id: 'app-platform/changelog',
                     label: 'Changelog',
                     type: 'doc',
                 },
@@ -193,7 +193,7 @@ module.exports = {
                     type: 'link',
                 },
                 {
-                    id: 'app-runtime/CHANGELOG',
+                    id: 'app-runtime/changelog',
                     label: 'Changelog',
                     type: 'doc',
                 },
@@ -222,7 +222,8 @@ module.exports = {
                             ],
                         },
                         'cli/style/faq',
-                        'cli/style/CHANGELOG',
+                        'cli/style/api',
+                        'cli/style/changelog',
                     ],
                 },
             ],
@@ -265,7 +266,7 @@ module.exports = {
                     ],
                 },
                 {
-                    id: 'cli/cypress/CHANGELOG',
+                    id: 'cli/cypress/changelog',
                     label: 'Changelog',
                     type: 'doc',
                 },
