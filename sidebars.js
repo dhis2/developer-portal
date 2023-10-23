@@ -315,7 +315,7 @@ module.exports = {
             ],
         },
 
-        'toolslibraries',
+        'aditionalreferences',
         {
             type: 'link',
             label: 'Android SDK',

@@ -98,6 +98,14 @@ module.exports = [
     },
     {
         from: '/docs/reference',
-        to: '/docs/toolslibraries',
+        to: '/docs/aditionalreferences',
+    },
+    {
+        from: '/docs/app-platform',
+        to: '/docs/app-platform/getting-started',
+    },
+    {
+        from: '/docs/app-runtime',
+        to: '/docs/app-runtime/getting-started',
     },
 ]
