@@ -1,5 +1,6 @@
 module.exports = {
     docs: [
+        { id: 'overview', label: 'Overview', type: 'doc' },
         {
             'Quick Start': [
                 'quickstart',
