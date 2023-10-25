@@ -305,8 +305,8 @@ module.exports = {
                 {
                     'd2 cluster': [
                         'cli/cli/commands/d2-cluster',
-                        'cli/cli/recipes/stable-version',
-                        'cli/cli/recipes/development-version',
+                        'cli/cli/recipes/stable',
+                        'cli/cli/recipes/development',
                         'cli/cli/recipes/custom-dhis-config',
                         'cli/cli/recipes/custom-docker-image',
                         'cli/cli/commands/d2-utils-release',
