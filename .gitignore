@@ -19,3 +19,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode
+
+# Copied docs
+docs/cli/cli
+docs/app-platform
+docs/cli/cypress
+docs/app-runtime
+docs/cli/style
+
+# temp directories for copied docs
+.cli-repo-temp
+.ap-repo-temp
+.cypress-repo-temp
+.ar-repo-temp
+.clistyle-repo-temp

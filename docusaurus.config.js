@@ -32,7 +32,7 @@ module.exports = {
                 },
                 {
                     type: 'search',
-                    position: 'right'
+                    position: 'right',
                 },
                 {
                     href: 'https://github.com/dhis2/developer-portal',
@@ -100,8 +100,8 @@ module.exports = {
             apiKey: 'a3aa57dd778bc1116b351eeeba2f16d9',
             indexName: 'dhis2',
             contextualSearch: true,
-            searchPagePath: 'search',      
-          },
+            searchPagePath: 'search',
+        },
     },
     plugins: [
         [
@@ -135,15 +135,58 @@ module.exports = {
             {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    editUrl:
-                        'https://github.com//dhis2/developer-portal/edit/main/',
+                    editUrl: (params) => {
+                        if (params.docPath.indexOf('changelog.md') > -1) {
+                            return ''
+                        }
+
+                        if (params.docPath.indexOf('cli/cypress') > -1) {
+                            return `https://github.com/dhis2/cli-utils-cypress/tree/master/docs${params.docPath.replace(
+                                'cli/cypress',
+                                ''
+                            )}`
+                        }
+
+                        if (params.docPath.indexOf('cli/style') > -1) {
+                            return `https://github.com/dhis2/cli-style/tree/master/docs${params.docPath.replace(
+                                'cli/style',
+                                ''
+                            )}`
+                        }
+
+                        if (params.docPath.indexOf('app-runtime') > -1) {
+                            return `https://github.com/dhis2/app-runtime/tree/master/docs${params.docPath.replace(
+                                'app-runtime',
+                                ''
+                            )}`
+                        }
+
+                        if (params.docPath.indexOf('app-platform') > -1) {
+                            return `https://github.com/dhis2/app-platform/tree/master/docs${params.docPath.replace(
+                                'app-platform',
+                                ''
+                            )}`
+                        }
+
+                        if (
+                            params.docPath.indexOf('cli/') === 0 &&
+                            params.docPath.indexOf('cli/readme.md') === -1
+                        ) {
+                            return `https://github.com/dhis2/cli/tree/master/docs${params.docPath.replace(
+                                'cli/cli',
+                                ''
+                            )}`
+                        }
+
+                        return 'https://github.com/dhis2/developer-portal/edit/main/'
+                    },
                 },
                 blog: {
                     showReadingTime: true,
                     editUrl:
                         'https://github.com/dhis2/developer-portal/edit/main/',
                     authorsMapPath: 'authors.yml',
-                    blogSidebarCount: 15
+                    blogSidebarCount: 15,
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),

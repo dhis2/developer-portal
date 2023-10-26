@@ -3,9 +3,11 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
+        "fetch-external-docs": "node docs-migrate.js",
         "docusaurus": "docusaurus",
         "start": "docusaurus start",
-        "build": "docusaurus build",
+        "start-no-fetch": "docusaurus start",
+        "build": "npm run fetch-external-docs && docusaurus build",
         "swizzle": "docusaurus swizzle",
         "deploy": "docusaurus deploy",
         "serve": "docusaurus serve",

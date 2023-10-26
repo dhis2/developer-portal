@@ -96,4 +96,16 @@ module.exports = [
         to: '/community/contribute',
         from: '/docs/conceptual/contribute',
     },
+    {
+        from: '/docs/reference',
+        to: '/docs/aditionalreferences',
+    },
+    {
+        from: '/docs/app-platform',
+        to: '/docs/app-platform/getting-started',
+    },
+    {
+        from: '/docs/app-runtime',
+        to: '/docs/app-runtime/getting-started',
+    },
 ]
