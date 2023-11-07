@@ -84,7 +84,6 @@ migrateDocs({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/app-platform.git',
-    branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
     targetDir: './docs/app-platform',
     extraFiles: [
