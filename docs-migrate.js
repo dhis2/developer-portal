@@ -58,7 +58,6 @@ const migrateDocs = ({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/cli.git',
-    branch: 'docs-improve',
     tempDir: '.cli-repo-temp',
     targetDir: './docs/cli/cli',
 })
