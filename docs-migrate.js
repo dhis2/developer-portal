@@ -77,7 +77,7 @@ migrateDocs({
     postDownloadActions: [
         'git sparse-checkout set src docs',
         'yarn',
-        'yarn build:docs',
+        'yarn build:jsdoc',
     ],
 })
 
