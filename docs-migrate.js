@@ -64,7 +64,6 @@ migrateDocs({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/cli-style.git',
-    branch: 'docs-improve',
     tempDir: '.clistyle-repo-temp',
     targetDir: './docs/cli/style',
     extraFiles: [
@@ -108,7 +107,6 @@ migrateDocs({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/app-runtime.git',
-    branch: 'docs-improve',
     tempDir: '.ar-repo-temp',
     targetDir: './docs/app-runtime',
     extraFiles: [
