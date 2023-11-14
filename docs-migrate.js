@@ -58,14 +58,12 @@ const migrateDocs = ({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/cli.git',
-    branch: 'docs-improve',
     tempDir: '.cli-repo-temp',
     targetDir: './docs/cli/cli',
 })
 
 migrateDocs({
     repo: 'https://github.com/dhis2/cli-style.git',
-    branch: 'docs-improve',
     tempDir: '.clistyle-repo-temp',
     targetDir: './docs/cli/style',
     extraFiles: [
@@ -78,13 +76,12 @@ migrateDocs({
     postDownloadActions: [
         'git sparse-checkout set src docs',
         'yarn',
-        'yarn build:docs',
+        'yarn build:jsdoc',
     ],
 })
 
 migrateDocs({
     repo: 'https://github.com/dhis2/app-platform.git',
-    branch: 'docs-improve',
     tempDir: '.ap-repo-temp',
     targetDir: './docs/app-platform',
     extraFiles: [
@@ -110,7 +107,6 @@ migrateDocs({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/app-runtime.git',
-    branch: 'docs-improve',
     tempDir: '.ar-repo-temp',
     targetDir: './docs/app-runtime',
     extraFiles: [

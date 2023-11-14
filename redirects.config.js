@@ -108,4 +108,8 @@ module.exports = [
         from: '/docs/app-runtime',
         to: '/docs/app-runtime/getting-started',
     },
+    {
+        from: '/docs/cli/style',
+        to: '/docs/cli/style/getting-started',
+    },
 ]
