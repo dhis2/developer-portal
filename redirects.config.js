@@ -118,6 +118,6 @@ module.exports = [
     },
     {
         from: '/docs/cli/commands/d2-cluster',
-        to: 'docs/cli/cluster/',
+        to: '/docs/cli/cluster/',
     },
 ]
