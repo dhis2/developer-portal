@@ -112,4 +112,8 @@ module.exports = [
         from: '/docs/cli/style',
         to: '/docs/cli/style/getting-started',
     },
+    {
+        from: '/docs/cli/cypress',
+        to: '/docs/cli/cypress/getting-started',
+    },
 ]

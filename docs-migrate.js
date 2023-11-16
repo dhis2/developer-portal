@@ -94,7 +94,6 @@ migrateDocs({
 
 migrateDocs({
     repo: 'https://github.com/dhis2/cli-utils-cypress.git',
-    branch: 'docs-improve',
     tempDir: '.cypress-repo-temp',
     targetDir: './docs/cli/cypress',
     extraFiles: [
