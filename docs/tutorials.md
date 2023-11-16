@@ -14,9 +14,9 @@ Along the way, you'll learn more about the DHIS2 ecosystem as well as the fundam
 
 ### Set Up Your Development Environment
 
-Follow this [tutorial](/docs/tutorials/setup-env) to set up your local development environment and start building your first DHIS2 app using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/).
+Follow this [tutorial](/docs/tutorials/setup-env) to set up your local development environment and start building your first DHIS2 app using the [DHIS2 Application Platform](/docs/app-platform/getting-started).
 
-In this section you will learn about the [DHIS2 CLI](https://cli.dhis2.nu/#/) and create a new DHIS2 application!
+In this section you will learn about the [DHIS2 CLI](/docs/cli) and create a new DHIS2 application!
 
 ### Learn about DHIS2 UI Library
 
@@ -26,7 +26,7 @@ You will also see how to import and use UI components into your application.
 
 ### DHIS2 App Runtime
 
-In this short tutorial you will learn how to interact with the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) to access and mutate data using the [DHIS2 App Runtime](https://runtime.dhis2.nu/#/).
+In this short tutorial you will learn how to interact with the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) to access and mutate data using the [DHIS2 App Runtime](/docs/app-runtime/getting-started).
 
 ### Learn about DHIS2 Components and Libraries
 

@@ -93,7 +93,7 @@ You could also try disabling the cache from the network tab in Chrome DevTools. 
 
 If you try to connect your application on localhost to the DHIS2 Play server and encounter some errors, please note that DHIS2 Play instances use [nginx](https://nginx.org/) as a reverse proxy which has been configured for hardened security, preventing cross-site cookies completely.
 
-To work around this issue during application development, run your own development instance of DHIS2 or spin up a local instance using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster). Check [this guide](./spin-up-local-instance) on how to spin up a local instance.
+To work around this issue during application development, run your own development instance of DHIS2 or spin up a local instance using Docker and the `d2 cluster` command of the [DHIS2 CLI](/docs/cli/cluster). Check [this guide](./spin-up-local-instance) on how to spin up a local instance.
 
 ## Node version
 

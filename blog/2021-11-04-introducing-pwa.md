@@ -29,7 +29,7 @@ What’s more, we’ve developed an API in the App Runtime library that can be u
 
 ## How to use PWA in your app
 
-To use the basic PWA features (offline caching and installability) in an app, simply opt-in to PWA using an option in [`d2.config.js`](https://platform.dhis2.nu/#/config/d2-config-js-reference):
+To use the basic PWA features (offline caching and installability) in an app, simply opt-in to PWA using an option in [`d2.config.js`](/docs/app-platform/config/d2-config-js-reference/):
 
 ```js
 // d2.config.js
@@ -78,7 +78,7 @@ The dashboard here is the **cacheable section** – it’s only made available o
 
 #### Setting up the sections
 
-Normally, the default caching strategies cache _all_ data that gets requested when a user is using an app. To _not_ cache the data in cacheable sections until specifically requested to do so, use **URL filter patterns** to omit those requests from the app shell cache by setting PWA caching options in `d2.config.js` – here is a [reference](https://platform.dhis2.nu/#/pwa/pwa?id=opting-in) of the options available. Here is what the configuration looks like for the Dashboard app, to avoid caching content in the dashboards until the cacheable section is saved offline:
+Normally, the default caching strategies cache _all_ data that gets requested when a user is using an app. To _not_ cache the data in cacheable sections until specifically requested to do so, use **URL filter patterns** to omit those requests from the app shell cache by setting PWA caching options in `d2.config.js` – here is a [reference](/docs/app-platform/pwa/#opting-in) of the options available. Here is what the configuration looks like for the Dashboard app, to avoid caching content in the dashboards until the cacheable section is saved offline:
 
 ```js
 // d2.config.js
@@ -131,7 +131,7 @@ export function CacheableDashboard({ id }) {
 
 When the “Make available offline” button is clicked and `startRecording` is called, the children of the `<CacheableSection>` component with the same `id` as the `useCacheableSection` hook will reload, and the provided loading mask will be rendered while the cacheable section records the requests that the section makes. Once the recording is done, that section can be accessed while offline!
 
-To learn more about the usage of cacheable sections, including an example of a Loading Mask, check out the [“Usage” section](https://runtime.dhis2.nu/#/advanced/offline?id=usage) in the App Runtime docs.
+To learn more about the usage of cacheable sections, including an example of a Loading Mask, check out the [“Usage” section](/docs/app-runtime/advanced/offline/CacheableSections#usage) in the App Runtime docs.
 
 ### Online status
 
@@ -159,7 +159,7 @@ Encryption of offline data will be the next feature for these PWA tools however,
 
 ## Want to know more?
 
-If you would like to learn more about adding offline caching, cacheable sections, or using other PWA features to your app, take a look at the documentation at the [App Platform](https://platform.dhis2.nu/#/pwa/pwa) and [App Runtime](https://runtime.dhis2.nu/#/advanced/offline) sites which go into greater detail about the API and provide more examples. If you would like to take a closer look at the implementation in the Dashboard app, you can browse the source code at its [GitHub repository](https://github.com/dhis2/dashboard-app).
+If you would like to learn more about adding offline caching, cacheable sections, or using other PWA features to your app, take a look at the documentation at the [App Platform](/docs/app-platform/pwa/) and [App Runtime](/docs/app-runtime/advanced/offline/) sites which go into greater detail about the API and provide more examples. If you would like to take a closer look at the implementation in the Dashboard app, you can browse the source code at its [GitHub repository](https://github.com/dhis2/dashboard-app).
 
 In the near future we will also post a detailed article about the technical development of these PWA features because we’re using these tools in a pretty unique and cool way that we want to share, so keep an eye out for that post!
 

@@ -5,7 +5,7 @@ title: How to set up code style for DHIS2
 
 It can be very helpful to follow the DHIS2 style to ensure that you write clean, readable, and functional code for your DHIS2 applications.
 
-To do this, the [DHIS2 CLI style](https://cli-style.dhis2.nu/#/) provides a tool that checks and fixes the style of JavaScript and text files in your repository.
+To do this, the [DHIS2 CLI style](/docs/cli/style/getting-started) provides a tool that checks and fixes the style of JavaScript and text files in your repository.
 
 The `d2-style` runs [prettier](https://prettier.io/) and [eslint](https://eslint.org) under the hood with [a standardized configuration](https://github.com/dhis2/cli-style/tree/master/config/js).
 

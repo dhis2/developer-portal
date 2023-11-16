@@ -7,7 +7,7 @@ Once you have [submitted](/docs/guides/submit-apphub) your app and it's been rev
 
 :::note
 
-This guide assumes that your app is built using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
+This guide assumes that your app is built using the [DHIS2 Application Platform](/docs/app-platform/getting-started). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
 
 :::
 
@@ -140,4 +140,4 @@ Publishing to the App Hub should be easy, and the heavy lifting is done by the `
 
 We encourage you to migrate to the Application Platform to get a lot of the setup and platform features included, however in some cases this might not be a viable option.
 
-It is possible to use the `publish` command to publish any `.zip`-file to the App Hub, but some more configuration is necessary. Please refer to the [documentation for the publish command](https://platform.dhis2.nu/#/scripts/publish?id=upload-a-non-platform-app) to learn how to upload any app to the App Hub.
+It is possible to use the `publish` command to publish any `.zip`-file to the App Hub, but some more configuration is necessary. Please refer to the [documentation for the publish command](/docs/app-platform/scripts/publish#upload-a-non-platform-app) to learn how to upload any app to the App Hub.

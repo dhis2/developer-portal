@@ -7,7 +7,7 @@ Follow this quick guide to add a `Table` component to your application using the
 
 ## Prerequisites
 
-This guide assumes that you're developing an application using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
+This guide assumes that you're developing an application using the [DHIS2 Application Platform](/docs/app-platform/getting-started) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
 
 ## 1. Import `Table`
 
@@ -27,7 +27,7 @@ import {
 
 ## 2. Use components
 
-In this example, we are using the [DHIS2 App Runtime](https://runtime.dhis2.nu/#/hooks/useDataQuery) to fetch and display the `programs` resource from the DHIS2 Web API (as you can see in the `query` object defined in the `src/App.js` file below).
+In this example, we are using the [DHIS2 App Runtime](/docs/app-runtime/hooks/useDataQuery) to fetch and display the `programs` resource from the DHIS2 Web API (as you can see in the `query` object defined in the `src/App.js` file below).
 
 See the highlighted lines of code - this is how we can represent the programs data in a `Table` component:
 

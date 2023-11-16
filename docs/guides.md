@@ -19,7 +19,7 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 ### DHIS2 App Runtime
 
 -   [How to use the Data Query Playground](/docs/guides/query-playground)
--   How to fetch data from a DHIS2 instance - Watch this [short video](https://youtu.be/zw0UwsZ2Pww?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=349) using the Query Playground of the [DHIS2 Application Runtime](https://runtime.dhis2.nu/#/)
+-   How to fetch data from a DHIS2 instance - Watch this [short video](https://youtu.be/zw0UwsZ2Pww?list=PLo6Seh-066RynhjhnJNUITOZykA7397We&t=349) using the Query Playground of the [DHIS2 Application Runtime](/docs/app-runtime/getting-started)
 -   How to mutate data - Watch this [short video](https://youtu.be/dLoOWGJU0Cg) to learn more about mutation types and how to perform simple mutations
 
 ### App Hub

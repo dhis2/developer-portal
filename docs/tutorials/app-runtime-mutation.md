@@ -3,7 +3,7 @@ id: app-runtime-mutation
 title: Data Mutation
 ---
 
-This tutorial is a continuation of the [DHIS2 application runtime](https://runtime.dhis2.nu/#/getting-started) tutorial on [Data Query](/docs/tutorials/app-runtime-query).
+This tutorial is a continuation of the [DHIS2 application runtime](/docs/app-runtime/getting-started) tutorial on [Data Query](/docs/tutorials/app-runtime-query).
 
 In this section we will:
 
@@ -71,7 +71,7 @@ const myMutation = {
 
 We have already declared our data mutation above so now we're ready to use it!
 
-Let's start by importing the [`useDataMutation` hook](https://runtime.dhis2.nu/#/hooks/useDataMutation) from the `@dhis2/app-runtime`
+Let's start by importing the [`useDataMutation` hook](/docs/app-runtime/hooks/useDataMutation) from the `@dhis2/app-runtime`
 
 ### Import `useDataMutation`
 
@@ -234,14 +234,14 @@ import { DeleteProgram } from './DeleteProgram'
 
 ### More examples?
 
--   Please check the [app runtime documentation](https://runtime.dhis2.nu/#/hooks/useDataMutation?id=example) on the `useDataMutation` hook for more examples on update, create and delete
+-   Please check the [app runtime documentation](/docs/app-runtime/hooks/useDataMutation#example) on the `useDataMutation` hook for more examples on update, create and delete
 -   You can also try to follow these exercises on data mutations from the [Developer Academy 2021](/events/academy-workshops-2021):
     -   [Basic exercise](https://github.com/dhis2/academy-web-app-dev-2021/tree/main/workshop-1/04-app-runtime/mutations)
     -   [Advanced exercise](https://github.com/dhis2/academy-web-app-dev-2021/tree/main/workshop-2/01-advanced-app-runtime/exercises)
 
 ### Want to learn more?
 
--   Check the [DHIS2 application runtime](https://runtime.dhis2.nu/#/) documentation or watch this [short video presentation](https://youtu.be/dnagTunwHls?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) about data mutations (about 20 min)
+-   Check the [DHIS2 application runtime](/docs/app-runtime/getting-started) documentation or watch this [short video presentation](https://youtu.be/dnagTunwHls?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) about data mutations (about 20 min)
 
 ## What's next?
 

@@ -7,7 +7,7 @@ Follow this quick guide to add translation support to your application using the
 
 ## Prerequisites
 
-This guide assumes that you're developing an application using the [DHIS2 Application Platform](https://platform.dhis2.nu/#/) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
+This guide assumes that you're developing an application using the [DHIS2 Application Platform](/docs/app-platform/getting-started) and its tools. To know more or get started, please follow this tutorial: [Environment Setup](/docs/tutorials/setup-env).
 
 ## Install required packages
 

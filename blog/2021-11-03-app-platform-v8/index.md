@@ -48,7 +48,7 @@ requests to. For example:
 yarn d2-app-scripts start --proxy "https://test.dhis2.server"
 ```
 
-Refer to the [documentation](https://platform.dhis2.nu/#/proxy) for
+Refer to the [documentation](/docs/app-platform/proxy) for
 more information.
 
 ### New feature: Lock-file validation and deduplication
@@ -162,7 +162,7 @@ fresh data.
 
 The `useAlert` hook has historically only returned a `show` function,
 and now we have introduced a symmetrical [`hide` function that does the
-opposite](https://runtime.dhis2.nu/#/hooks/useAlert?id=usage-of-the-returned-hide-function).
+opposite](/docs/app-runtime/hooks/useAlert#usage-of-the-returned-hide-function).
 
 This is helpful when an application needs full control of when an alert
 should be hidden.

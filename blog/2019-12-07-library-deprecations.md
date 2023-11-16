@@ -6,7 +6,7 @@ tags: [deprecation, libraries, webapp]
 ---
 
 In 2019 we established a new application development paradigm with
-the [App Platform](https://platform.dhis2.nu). The Platform provides
+the [App Platform](/docs/app-platform/getting-started). The Platform provides
 a unified framework for DHIS2 Web App development, so it is time to
 deprecate a few of our legacy libraries!
 
