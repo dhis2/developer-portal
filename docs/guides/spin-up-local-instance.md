@@ -15,7 +15,7 @@ First, make sure to install the following 👇
 
 -   Install [yarn](https://classic.yarnpkg.com/en/docs/install/) and [Node.js](https://nodejs.org/en/)
 -   Download [Docker](https://www.docker.com/)
--   Install the DHIS2 [CLI](https://cli.dhis2.nu/#/getting-started) globally:
+-   Install the DHIS2 [CLI](/docs/cli) globally:
 
 ```shell
 yarn global add @dhis2/cli
@@ -25,7 +25,7 @@ Check the `d2` command-line tool with `d2 --help` for more information on availa
 
 ## 2. Run d2 cluster
 
-The [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) command will allow you to launch a new cluster and create a DHIS2 instance using Docker containers. From your terminal, run the following:
+The [d2 cluster](/docs/cli/cluster) command will allow you to launch a new cluster and create a DHIS2 instance using Docker containers. From your terminal, run the following:
 
 ```shell
 d2 cluster up <name>
@@ -37,7 +37,7 @@ See the [DHIS2 in docker](/docs/tutorials/dhis2-docker.md) for a guide on how to
 
 **Note:** Once the `up` command completes, the server might take up to a couple of minutes to start. You can then run `d2 cluster logs 2.40.0` and wait until you see the line `Server startup in xxx ms`.
 
-> If you want to test against different DHIS2 and database versions or build your own custom DHIS2 Docker image, please refer to the [d2 cluster](https://cli.dhis2.nu/#/commands/d2-cluster) docs.
+> If you want to test against different DHIS2 and database versions or build your own custom DHIS2 Docker image, please refer to the [d2 cluster](/docs/cli/cluster) docs.
 
 ### Check your new DHIS2 instance
 

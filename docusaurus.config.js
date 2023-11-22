@@ -178,7 +178,7 @@ module.exports = {
                             )}`
                         }
 
-                        return 'https://github.com/dhis2/developer-portal/edit/main/'
+                        return `https://github.com/dhis2/developer-portal/edit/main/docs/${params.docPath}`
                     },
                 },
                 blog: {

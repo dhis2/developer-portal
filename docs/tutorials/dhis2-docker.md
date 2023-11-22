@@ -8,7 +8,7 @@ title: DHIS2 in Docker
 Make sure you have the following tools installed
 * [Docker](https://docs.docker.com/get-docker/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
-* [d2 cluster CLI](https://cli.dhis2.nu/#/commands/d2-cluster) (_only needed if you want to use `d2 cluster` for running DHIS2 in Docker_)
+* [d2 cluster CLI](/docs/cli/cluster) (_only needed if you want to use `d2 cluster` for running DHIS2 in Docker_)
 
 ## Overview
 
@@ -28,7 +28,7 @@ This way of running DHIS2 provides extra features like running multiple DHIS2 "c
 
 :::info
 
-[See the DHIS2 CLI docs](https://cli.dhis2.nu/#/commands/d2-cluster) for more examples and details.
+[See the DHIS2 CLI docs](/docs/cli/cluster/) for more examples and details.
 
 :::
 

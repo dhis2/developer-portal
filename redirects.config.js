@@ -116,4 +116,8 @@ module.exports = [
         from: '/docs/cli/cypress',
         to: '/docs/cli/cypress/getting-started',
     },
+    {
+        from: '/docs/cli/commands/d2-cluster',
+        to: '/docs/cli/cluster/',
+    },
 ]

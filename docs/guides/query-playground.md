@@ -3,17 +3,17 @@ id: query-playground
 title: How to use the Data Query Playground
 ---
 
-This short guide will show you how to use the [Data Query Playground](https://runtime.dhis2.nu/playground/) application for exploring the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-236/metadata.html#webapi_browsing_the_web_api) and for testing data queries and mutations.
+This short guide will show you how to use the [Data Query Playground](https://play.dhis2.org/demo/api/apps/query-playground/index.html) application for exploring the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-236/metadata.html#webapi_browsing_the_web_api) and for testing data queries and mutations.
 
 ## What is the Query Playground?
 
-The Data Query Playground is a DHIS2 application that was built to facilitate the development of your application especially when talking to the DHIS2 Web API through the [DHIS2 App Runtime](https://runtime.dhis2.nu/#/).
+The Data Query Playground is a DHIS2 application that was built to facilitate the development of your application especially when talking to the DHIS2 Web API through the [DHIS2 App Runtime](/docs/app-runtime/getting-started).
 
 The Query Playground makes it easy to test different REST API requests and to help you define or experiment writing queries, whether it's for fetching data or mutating data (making POST, PUT or DELETE requests - in the App Runtime these equals to `create`, `update`, and `delete`).
 
 ## How to access it?
 
-**Through the App Runtime Documentation.** When you go to the [App Runtime](https://runtime.dhis2.nu/#/) documentation, you will see a big blue button on the sidebar on the left:
+**Through the App Runtime Documentation.** When you go to the [App Runtime](/docs/app-runtime/getting-started) documentation, you will see a big blue button on the sidebar on the left:
 
 ![](./assets/query-playground-access.png)
 
@@ -118,5 +118,5 @@ For `update` and `delete` types, the `id` property is required. See the query de
 
 ## Want to learn more?
 
--   You can find more examples of data mutations on the App Runtime documentation [here](https://runtime.dhis2.nu/#/hooks/useDataMutation?id=example).
+-   You can find more examples of data mutations on the App Runtime documentation [here](/docs/app-runtime/hooks/useDataMutation#example).
 -   Check this [short video](https://youtu.be/dnagTunwHls?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) from the [Developer Academy 2021](/events/academy-workshops-2021) to learn more about using the Data Query Playground.

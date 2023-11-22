@@ -29,7 +29,7 @@ In very rare cases, a production DHIS2 application might be running on a differe
 
 ### Using a local DHIS2 instance
 
-By far the most secure way to work around this issue during application development is to run a local instance of DHIS2 against which you can test your application. You can easily spin up one or more DHIS2 instances locally using Docker and the `d2 cluster` command of the [DHIS2 CLI](https://cli.dhis2.nu/#/commands/d2-cluster)
+By far the most secure way to work around this issue during application development is to run a local instance of DHIS2 against which you can test your application. You can easily spin up one or more DHIS2 instances locally using Docker and the `d2 cluster` command of the [DHIS2 CLI](/docs/cli/cluster)
 
 ### In Google Chrome or Chromium-based browsers
 

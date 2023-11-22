@@ -51,13 +51,13 @@ The App Platform consists of a number of build-time components and development t
 
 1. **App Adapter**: A wrapper for the app under development – it wraps the root component exported from the app's entry point (like `<App />`) and performs other jobs.
 2. **App Shell**: Provides the HTML skeleton for the app and other assets, imports the root `<App>` component from the app under development's entry point, and wraps it with the App Adapter. It also provides some environment variables to the app.
-3. **App Scripts CLI**: Provides development tools and performs build-time jobs such as building the app itself and running a development server. (also part of [d2 global CLI](https://cli.dhis2.nu/#/))
+3. **App Scripts CLI**: Provides development tools and performs build-time jobs such as building the app itself and running a development server. (also part of [d2 global CLI](/docs/cli/))
 
 ### The App Platform at run-time
 
 At run-time, our platform offers React components and hooks that provide services to the app under development. These are mainly two libraries:
 
-1. The **[App Runtime library](https://runtime.dhis2.nu)** that uses a universal `<Provider>` component to provide context and support several useful services. The App Adapter adds the provider to apps using the platform by default. The services include:
+1. The **[App Runtime library](/docs/app-runtime/getting-started)** that uses a universal `<Provider>` component to provide context and support several useful services. The App Adapter adds the provider to apps using the platform by default. The services include:
     1. **Data Service**: Publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
     2. **Config Service**: Exposes several app configuration parameters
     3. **Alerts Service**: Provides a declarative API for showing and hiding in-app alerts. This also coordinates with an Alerts Manager component in the App Adapter to show the UI
@@ -67,8 +67,8 @@ At run-time, our platform offers React components and hooks that provide service
 
 To illustrate how the App Adapter, App Shell, and App Scripts CLI work together, consider this series of events that takes place when you initialize and build an app:
 
-1. Using the [d2 global CLI](https://cli.dhis2.nu/#/), a new Platform app is [bootstrapped](https://platform.dhis2.nu/#/bootstrapping) using `d2 app scripts init new-app` in the terminal.
-2. Inside the `new-app/` directory that the above script just created, the `yarn build` command is run which in turn runs [`d2-app-scripts build`](https://platform.dhis2.nu/#/scripts/build), which initiates the following steps. Any directory or file paths described below are relative to `new-app/`.
+1. Using the [d2 global CLI](/docs/cli/), a new Platform app is [bootstrapped](/docs/app-platform/bootstrapping) using `d2 app scripts init new-app` in the terminal.
+2. Inside the `new-app/` directory that the above script just created, the `yarn build` command is run which in turn runs [`d2-app-scripts build`](/docs/app-platform/scripts/build), which initiates the following steps. Any directory or file paths described below are relative to `new-app/`.
 3. i18n jobs are executed (out of scope for this post).
 4. The `build` script bootstraps a new App Shell in the `.d2/shell/` directory.
 5. A web app manifest is generated.
@@ -157,7 +157,7 @@ Handling these precache manifests correctly is also important for keeping the ap
 
 ### Using a config option to enable PWA features
 
-To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app's [configuration](https://platform.dhis2.nu/#/config). We added an option to the [`d2.config.js` app config file](https://platform.dhis2.nu/#/config/d2-config-js-reference) that can enable PWA, which looks like this:
+To implement the opt-in nature of the PWA features, the service worker should only be registered if PWA is enabled in the app's [configuration](/docs/app-platform/config). We added an option to the [`d2.config.js` app config file](/docs/app-platform/config/d2-config-js-reference) that can enable PWA, which looks like this:
 
 ```diff title="d2.config.js"
 module.exports = {

@@ -111,7 +111,10 @@ module.exports = {
                             ],
                         },
                         {
-                            Configuration: [
+                            type: 'category',
+                            label: 'Configuration',
+                            link: { id: 'app-platform/config', type: 'doc' },
+                            items: [
                                 'app-platform/config/types',
                                 'app-platform/config/d2-config-js-reference',
                                 'app-platform/config/environment',

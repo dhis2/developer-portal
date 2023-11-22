@@ -13,7 +13,7 @@ In this tutorial, you will do the following:
 
 ### What is the DHIS2 Application Runtime?
 
-The [DHIS2 application runtime](https://runtime.dhis2.nu/#/getting-started) allows us to communicate with the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_browsing_the_web_api) in a declarative way - which means that we can define queries and mutations or make these requests without explicitly providing all the steps that must be performed to achieve our desired result.
+The [DHIS2 application runtime](/docs/app-runtime/getting-started) allows us to communicate with the [DHIS2 Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_browsing_the_web_api) in a declarative way - which means that we can define queries and mutations or make these requests without explicitly providing all the steps that must be performed to achieve our desired result.
 
 The **app runtime** is responsible for performing those steps for us, facilitating the application development experience when interacting with the DHIS2 API.
 
@@ -131,7 +131,7 @@ That's it for fetching and displaying data from a DHIS2 instance API! 👏🏽
 
 ### Want to learn more?
 
--   Check the [DHIS2 application runtime](https://runtime.dhis2.nu/#/) documentation or watch this [short video presentation](https://youtu.be/pvIppH5plMU?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=54) introducing the app runtime (about 30 min)
+-   Check the [DHIS2 application runtime](/docs/app-runtime/getting-started) documentation or watch this [short video presentation](https://youtu.be/pvIppH5plMU?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=54) introducing the app runtime (about 30 min)
 
 -   Get an overview of the DHIS2 Web API in this [video presentation](https://youtu.be/F95LTzAzESQ?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) (about 30 min) or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation
 

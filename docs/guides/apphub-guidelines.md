@@ -26,7 +26,7 @@ In addition, observing the following guidelines will help create a helpful app n
 
 All apps submitted to the App Hub should have a unique app icon. App icons are shown in the apps menu and help users to quickly navigate around DHIS2.
 
-> See [how App Icons can be included](https://platform.dhis2.nu/#/usage/app-icon) in your application using the [App Platform](https://platform.dhis2.nu/#/)
+> See [how App Icons can be included](/docs/app-platform/usage/app-icon) in your application using the [App Platform](/docs/app-platform/getting-started)
 
 Keep the following guidelines in mind when creating an app icon:
 
@@ -94,7 +94,7 @@ Make sure all components, libraries and resources that are running on the DHIS2 
 The [DHIS2 Design System](https://github.com/dhis2/design-system) provides principles, guidelines and components for designing and building user-friendly apps. Follow the [principles](https://github.com/dhis2/design-system#design-principles) and use the [available components](https://github.com/dhis2/design-system#components) where possible. Apps should be user-friendly and respect a users' time and resources.
 The Design System components are available as a set of pre-built React components via [@dhis2/ui](https://github.com/dhis2/ui#readme).
 
-Apps built using the [DHIS2 App Platform](https://platform.dhis2.nu/#/) will automatically include the necessary `Header Bar` component and functionality. Apps not using the App Platform need to manually include and set up the standalone [Header Bar component](https://ui.dhis2.nu/demo/?path=/story/utils-header-bar--default) from `@dhis2/ui`. All DHIS2 apps must include the `Header Bar` component.
+Apps built using the [DHIS2 App Platform](/docs/app-platform/getting-started) will automatically include the necessary `Header Bar` component and functionality. Apps not using the App Platform need to manually include and set up the standalone [Header Bar component](https://ui.dhis2.nu/demo/?path=/story/utils-header-bar--default) from `@dhis2/ui`. All DHIS2 apps must include the `Header Bar` component.
 
 ### Documented
 
