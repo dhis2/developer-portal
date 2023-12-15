@@ -11,15 +11,15 @@ We're pleased to announce the release of UI 9, which includes support for TypeSc
 First things first, UI 9 is an easy upgrade from UI 8, however it does have a breaking change. Which is why the major version was bumped. 
 
 ## Breaking Change
-The breaking change is, as specified in the releases page on GitHub:
+The breaking change is, as specified in the [releasenotes at the UI documentation page](https://ui.dhis2.nu/package/changelog#breaking-changes) and in the [Releases Section on GitHub](https://github.com/dhis2/ui/releases/tag/v9.0.0)
 
 **constants**: `buttonVariantPropType` has been removed from constants. This is mostly intended for internal use, but was part of the public API prior to this release.
 
 ## TypeScript Support
 Now comes the fun part of this release. There's TypeScript support for all UI components. This won't just benefit you when you're using TypeScript either. If you're using JavaScript, you'll get better auto-completion and type checking in your IDE.
 
-## Upgrading to version 9
-At the moment of writing, the latest version of the UI Library is v9.0.1. To upgrade to this version, you can run the following command on your existing React application.
+## Installing or Upgrading (to) version 9
+At the moment of writing, the latest version of the UI Library is `v9.0.1`. To upgrade to this version, or install it freshly, you can run the following command on your existing React application.
 
 ```bash
 yarn install @dhis2/ui
