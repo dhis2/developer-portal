@@ -57,14 +57,14 @@ But it gets better. If you select one of the properties from the autocomplete, y
 This can be especially useful for callbacks, where the callback-signature can vary between components, and can be hard to remember.
 
 ![Auto-completion showing signature of onChange callback](callback-signature.png)
-_We can at a glance see that the `onChange`-callback has one parameter that is an object with a property `selected` that is an array of strings (which would be the IDs of the selected options)._
+_We can at a glance see that the `onChange`-callback has one parameter that is an object with a property `selected` that is an array of strings (which would be the IDs of the selected options).
 
 This will hopefully result in less time spent looking up the documentation, and less use of `console.log` to try to figure out the shape of the data you're working with.
 
 ## A note for TypeScript users
 
 Previously you would have to declare the modules in a `global.d.ts` file to be able to work with the UI library, due to missing type definitions.
-The easiest way to do this would be to simply put something like this in your global type definition file:
+The easiest way to do this would be to put something like this in your global type definition file:
 
 ```ts
 // global.d.ts
@@ -79,4 +79,4 @@ This would allow you to import components, however every component would be type
 
 We are working on improving the TypeScript support across the platform. This is a big step towards that goal, and we've also made some other small changes that should help make the platform as a whole be more TypeScript friendly.
 
-These types are "just" type definitions, and the underlying source is still plain javascript. This means that there can be errors in the types, and we would appreciate if you report any issues or errors you run in to.
+These types are "just" type definitions, and the underlying source is still plain JavaScript. This means that there can be errors in the types, and we would appreciate if you report any issues or errors you run in to.
