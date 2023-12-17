@@ -50,3 +50,30 @@ But it gets better. If you select one of the properties from the autocomplete, y
 
 ![Auto-Completion showing details for selected component](./autocomplete-details.png)
 
+This can be especially useful for callbacks, where the callback-signature can vary between components, and can be hard to remember. 
+
+![Auto-completion showing signature of onChange callback](callback-signature.png)
+*We can at a glance see that the `onChange`-callback has one parameter that is an object with a property `selected` that is an array of strings (which would be the IDs of the selected options).*
+
+
+
+This will hopefully result in less time spent looking up the documentation, and less use of `console.log` to try to figure out the shape of the data you're working with.
+
+
+### A note for TypeScript users
+
+We are working on improving the TypeScript support across the platform. This is a big step towards that goal, and we've also made some other small changes that should help make the platform as a whole be more TypeScript friendly.
+
+Previously you would have to declare the module in a `global.d.ts` file to be able to work with the UI library, due to missing type definitions.
+The easiest way to do this would be to simply put something like this in your global type definition file. Eg: 
+```ts
+// global.d.ts
+declare module '@dhis2/ui'
+declare module '@dhis2/d2-i18n'
+```
+This would allow you to import components, however you would not have any types. **If you have this in your project, you should now be able to remove it**. We've also made types available for `@dhis2/d2-i18n` in a recent release. 
+
+
+### A small disclaimer
+
+We are working on improving the TypeScript support across the platform. This is a big step towards that goal, however since these are just type definitions (and the underlying source is still plain JavaScrip), there can be errors in the types, and we would appreciate if you report any issues or errors you run in to.
