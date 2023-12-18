@@ -81,3 +81,9 @@ This would allow you to import components, however every component would be type
 We are working on improving the TypeScript support across the platform. This is a big step towards that goal, and we've also made some other small changes that should help make the platform as a whole be more TypeScript friendly.
 
 These types are "just" type definitions, and the underlying source is still plain JavaScript. This means that there can be errors in the types, and we would appreciate if you report any issues or errors you run in to.
+
+To submit an issue, head over to our [JIRA](https://dhis2.atlassian.net/jira/) to report any errors, or if you prefer, you can contact us on the [Community of Practice](https://community.dhis2.org/).
+
+Even better would be if you are able to fix the issue yourself, and submit a pull request. We're always happy to receive contributions from the community. Our repository is located at [GitHub](https://github.com/dhis2/ui). 
+
+If you're not sure how to contribute on GitHub or submit a JIRA issue, you can read more about it in our [Contributing Guidelines](/community/contribute/)
