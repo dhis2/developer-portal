@@ -57,7 +57,8 @@ But it gets better. If you select one of the properties from the autocomplete, y
 This can be especially useful for callbacks, where the callback-signature can vary between components, and can be hard to remember.
 
 ![Auto-completion showing signature of onChange callback](callback-signature.png)
-_We can at a glance see that the `onChange`-callback has one parameter that is an object with a property `selected` that is an array of strings (which would be the IDs of the selected options).
+
+_We can at a glance see that the `onChange`-callback has one parameter that is an object with a property `selected` that is an array of strings (which would be the IDs of the selected options)._
 
 This will hopefully result in less time spent looking up the documentation, and less use of `console.log` to try to figure out the shape of the data you're working with.
 
