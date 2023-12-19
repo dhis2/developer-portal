@@ -1,6 +1,6 @@
 ---
 title: UI 9 release, Announcing TypeScript Support
-authors: rene
+authors: [rene, birk]
 tags: [UI, TypeScript]
 ---
 
