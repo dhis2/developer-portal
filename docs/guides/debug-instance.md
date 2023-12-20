@@ -5,25 +5,25 @@ title: How to debug common development errors
 
 If you encounter some errors when trying to connect to your application or during development, please try the following troubleshooting steps:
 
-## CORs whitelist
+## CORs allowlist
 
-If you run into Cross-Origin Resource Sharing (CORs) policy issues when connecting to your server, you could start with the **CORs whitelist**.
+If you run into Cross-Origin Resource Sharing (CORs) policy issues when connecting to your server, you could start with the **CORs allowlist**.
 
-### What is the CORs whitelist?
+### What is the CORs allowlist?
 
 In a DHIS2 instance, by default only web applications that are running on the same URL can access that DHIS2 instance.
 
-There's a **CORs whitelist** option that can be configured to add other URLs besides the current one and allow that DHIS2 application instance.
+There's a **CORs allowlist** option that can be configured to add other URLs besides the current one and allow that DHIS2 application instance.
 
 ### Where do I change it?
 
-When you login to your instance, click on the apps icon and search for **System Setting** application. Then go to **Access** from the menu on the left and scroll down to see the **CORs whitelist** option.
+When you login to your instance, click on the apps icon and search for **System Setting** application. Then go to **Access** from the menu on the left and scroll down to see the **CORs allowlist** option.
 
 There you can add the URLs that you want to grant access. The settings will be automatically updated by tabbing out of that.
 
 See below:
 
-![](./assets/cors-whitelist.gif)
+![](./assets/cors-allowlist.gif)
 
 ## If you're using Chrome
 
