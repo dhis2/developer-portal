@@ -317,6 +317,11 @@ module.exports = {
                 },
             ],
         },
+        {
+            Integration: [
+                'integration/overview',
+            ],
+        },
 
         'aditionalreferences',
         {
