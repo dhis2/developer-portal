@@ -43,7 +43,7 @@ const features = [
    {
         title: 'Integration',
         imageUrl: 'img/app-platform2.svg',
-        url: '/docs/integration/',
+        url: '/docs/integration/overview',
         description: (
             <>
                 Learn more about integrating DHIS2.

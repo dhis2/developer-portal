@@ -44,7 +44,7 @@ At a high-level, a Camel application is composed of routes. A Camel route is a u
 
 A route definition starts with an endpoint that listens for messages on a particular address (NB: exceptions apply). These messages could be external or internal, depending on the type of endpoint. An external message originates from an external process like a web browser while an internal message originates in-process, typically from another Camel route. 
 
-The listener endpoint feeds the messages it receives to its adjacent element which could be a processor or even another endpoint. This _step_ within the route processes the message to produce a new message (e.g., transformation, enrichment, etc...) or a side-effect (e.g., dispatching a request, logging, etc...). The output of the processor or endpoint is then fed, in turn, to the next element in the route. This style of processing keeps going on until the end of the route. From these simple primitives, the application developer can go on to orchestrate complex integrations and build advanced solutions like an Enterprise Integration Bus (ESB).
+The listener endpoint feeds the messages it receives to its adjacent element which could be a processor or even another endpoint. This _step_ within the route processes the message to produce a new message (transformation, enrichment, etc...) or a side-effect (dispatching a request, logging, etc...). The output of the processor or endpoint is then fed, in turn, to the next element in the route. This style of processing keeps going on until it reaches the end of the route. Depending on whether the listener endpoint is synchronous, the output of the last route element is the reply that the listener endpoint returns to the client (browser, application, another route, etc...). From these simple primitives, the application developer can go on to orchestrate complex integrations and build advanced solutions like an Enterprise Integration Bus (ESB).
 
 Route definitions are written in a [domain-specific languages (DSL)](https://camel.apache.org/manual/dsl.html). While the [Java-based DSL](https://camel.apache.org/manual/java-dsl.html) is the most common and flexible of these DSLs, XML and [YAML](https://camel.apache.org/components/4.0.x/others/yaml-dsl.html) are also popular DSLs for describing routes. Here is one written in the Java-based DSL:
 
@@ -83,7 +83,7 @@ The above route is moving messages between Kafka topics. The URIs within `from(.
 
 ### Message
 
-The unit of data in a Camel route is the message. A message is a bundle of data and metadata, flowing from one endpoint/processor to the next in a route. Within a route execution, a message can be altered, copied, and replaced. The following depicts the structure of a Camel message:
+The unit of data in a Camel route is the message. A message is a bundle of data and metadata, flowing from one endpoint/processor to the next in a route and across routes. Within a route execution, a message can be altered, copied, and replaced. The following depicts the structure of a Camel message:
 
 ![Camel Message](../assets/integration/camel-message.png)
 

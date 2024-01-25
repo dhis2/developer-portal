@@ -46,9 +46,9 @@ The DHIS2 Java SDK can be built from source, however, binaries of the SDK releas
 </project>
 ```
 
-The `dhis2-java-sdk` artifact contains the DHIS2 client and helper classes while the `jackson-resource-model` artifact contains the Jackson-annotated classes representing the DHIS2 API resources. The `android-jackson-resource-model` artifact is similar to `jackson-resource-model` with the exception that it is compatible with Android. `jackson-resource-model` should be omitted from your POM if you are building for Android.
+The `dhis2-java-sdk` artifact contains the DHIS2 client and helper classes while the `jackson-resource-model` artifact contains the Jackson-annotated classes representing the DHIS2 API resources. The `android-jackson-resource-model` artifact is similar to `jackson-resource-model` with the exception that its resource classes are compatible with Android. `jackson-resource-model` should be omitted from your POM if you are building for Android.
 
-The `x.y.z` version in the above template should to be replaced with the [latest version of the SDK](https://mvnrepository.com/artifact/org.hisp.dhis.integration.sdk/dhis2-java-sdk). The `jackson-resource-model` or `android-jackson-resource-model` artifact classifier should bet set to one of the shown DHIS2 versions (i.e., `v40.0` or `v2.39.1` or `v2.38.1` or `v2.37.7` or `v2.36.11` or `v2.35.13`). The classifier should closely match the DHIS2 version you are integrating with. You can have multiple `jackson-resource-model` dependencies with different classifiers: one for each DHIS2 version you are integrating with. For instance:
+The `x.y.z` version in the above template is to be replaced with the [latest version of the SDK](https://mvnrepository.com/artifact/org.hisp.dhis.integration.sdk/dhis2-java-sdk). The `jackson-resource-model` or `android-jackson-resource-model` artifact classifier should bet set to one of the shown DHIS2 versions (i.e., `v40.0` or `v2.39.1` or `v2.38.1` or `v2.37.7` or `v2.36.11` or `v2.35.13`). The classifier ought to closely match the DHIS2 version you are integrating with. You can have multiple `jackson-resource-model` or `android-jackson-resource-model` dependencies with different classifiers: one for each DHIS2 version you are integrating with. For instance:
 
 ```xml
 <project>
@@ -75,7 +75,7 @@ The `x.y.z` version in the above template should to be replaced with the [latest
 </project>
 ```
 
-Having multiple `jackson-resource-model` dependencies will not create a conflict as long as each dependency has a distinct classifier. The classes within `jackson-resource-model` v40.0 are located inside package `org.hisp.dhis.api.model.v40_0`,  the ones within `jackson-resource-model` v2.39.1 are located inside package `org.hisp.dhis.api.model.v2_39_1`, and so on.
+Having multiple `jackson-resource-model` dependencies will not create a conflict as long as each dependency has a distinct classifier. The classes within `jackson-resource-model` v40.0 are located in the Java package `org.hisp.dhis.api.model.v40_0`,  the ones within `jackson-resource-model` v2.39.1 are located in the package `org.hisp.dhis.api.model.v2_39_1`, and so on.
 
 ### Creating a DHIS2 client
 
@@ -106,10 +106,9 @@ Apart from the mandatory parameters, `Dhis2Client` can have its connection param
 |     Write timeout    |    `withWriteTimeout`    | The write timeout is applied for individual write IO operations.                                                                                                                                                                      |       10 seconds       | long          |
 |    Connect timeout   |   `withConnectTimeout`   | The connect timeout is applied when connecting a TCP socket to the target host.                                                                                                                                                       |       10 seconds       |      long     |
 
-
 ### Dhis2Client
 
-A `Dhis2Client` method chain assembles a request for retrieving or sending a DHIS2 resource. The first method of a `Dhis2Client` method chain identifies the HTTP method of the request. This can be one of the following:
+A `Dhis2Client` method chain assembles a request for retrieving or sending a DHIS2 resource. The first method of a `Dhis2Client` method chain identifies the HTTP verb of the request. This can be one of the following:
 
 * get
 * post
@@ -130,7 +129,7 @@ Alternatively, instead of having a hard-coded URL path, you can name the variabl
 dhis2Client.get( "organisationUnits/{id}", "fdc6uOvgoji" );
 ```
 
-`Dhis2Client` replaces `{id}` with `fdc6uOvgoji` in the above snippet. Query parameters can be added to the request using various methods depending on the HTTP method but `withParameter` is a method that is available across all HTTP methods:
+`Dhis2Client` replaces `{id}` with `fdc6uOvgoji` in the above snippet. Query parameters can be added to the request using various methods depending on the HTTP verb but `withParameter` is a method that is applicable across all HTTP verbs:
 
 ```java
 dhis2Client.get( "organisationUnits/{id}", "fdc6uOvgoji" ).withParameter("fields", "name").withParameter("filter", "level:eq:3");
@@ -164,7 +163,7 @@ org.hisp.dhis.api.model.v2_37_7.OrganisationUnit organisationUnit = dhis2Client.
 `returnAs(...)` implicitly closes the response.
 :::
 
-`OrganisationUnit` is one of the many POJO classes bundled with the `jackson-resource-model` JAR. Most of the DHIS2 resources are available as classes from this JAR. Having said this, you are free to desrialise the body into a `java.util.Map`:
+`OrganisationUnit` is one of the many POJO classes provided by the `jackson-resource-model` JAR (the `jackson-resource-model` [artifact classifier](#getting-started) used for this example is `v2.37.7`). Most of the DHIS2 resources are available as classes from this JAR. Having said this, you are free to desrialise the body into a `java.util.Map`:
 
 ```java
 Map<String, Object> organisationUnitAsMap = dhis2Client.get( "organisationUnits/{id}", "fdc6uOvgoji" ).transfer().returnAs( Map.class );
@@ -176,7 +175,7 @@ You could also obtain the raw JSON content like so:
 String organisationUnitAsJson = dhis2Client.get( "organisationUnits/{id}", "fdc6uOvgoji" ).transfer().returnAs( String.class );
 ```
 
-For large payloads, you might want to stream the result rather than reading it all into memory. In this case, it is better to use the `read()` method at the end of the chain in order to obtain an input stream:
+For large payloads, you might want to stream the result rather than reading it all into memory. In such cases, it is better to use the `read()` method at the end of the chain in order to incrementally read the JSON from an input stream:
 
 ```java
 InputStream organisationUnitAsStream = dhis2Client.get( "organisationUnits/{id}", "fdc6uOvgoji" ).transfer().read();
@@ -218,17 +217,27 @@ Fetching a non-paginated resource collection is accomplished by including `witho
 
 ```java
 Iterable<OrganisationUnit> orgUnits = dhis2Client.get( "organisationUnits" ).withoutPaging().transfer().returnAs( OrganisationUnit.class, "organisationUnits" );
+
+for ( OrganisationUnit orgUnit : orgUnits )
+{
+   // do stuff
+}
 ```
 
-Observe that `returnAs(...)` has an extra parameter specifying the array field name holding the collection in the reply.
+Observe that `returnAs(...)` has an extra parameter specifying the array field name holding the collection in the reply. In this example, the array name is `organisationUnits`.
 
 Fetching a resource collection with pagination is accomplished by including `withPaging()` instead of `withoutPaging()` in the method chain:
 
 ```java
 Iterable<OrganisationUnit> orgUnits = dhis2Client.get( "organisationUnits" ).withPaging().transfer().returnAs( OrganisationUnit.class, "organisationUnits" );
+
+for ( OrganisationUnit orgUnit : orgUnits )
+{
+   // do stuff without having to worry about fetching the next page
+}
 ```
 
-The `Iterable` object returned from `returnAs` is lazy when `withPaging()` is used. The client will transparently fetch the next page, if there is one, when the iterator reaches the last item in the current page.
+`withPaging()` leads to a lazy `Iterable` object being from `returnAs`. When the iterator reaches the last item in the current page, the client transparently fetches the next page, if there is one: the developer does not need to worry about fetching the next page of results.
 
 ##### withFilter
 
@@ -268,17 +277,17 @@ A DHIS2 resource is saved with `Dhis2Client#post(...)` as shown in the next exam
 WebMessage webMessage = dhis2Client.post( "organisationUnits" ).withResource( new OrganisationUnit().withName( "Acme" ).withCode( "ACME" ).withShortName( "Acme" ).withOpeningDate( new Date( 964866178L ) ) ).transfer().returnAs( WebMessage.class );
 ```
 
-A `post(...)` is usually followed by a `withResource(...)` method to set the body of the request. The request body in the above snippet is set to an organisation unit POJO. Apart from POJOs, `withResource(...)` accepts JSON strings.
+A `post(...)` is usually followed by a `withResource(...)` method to set the body of the request. The request body in the above snippet is set to an organisation unit POJO. Apart from POJOs, `withResource(...)` accepts JSON strings and objects of type `java.util.Map`.
 
 ### Updating
 
 A DHIS2 resource is updated with `Dhis2Client#put(...)` as shown in the next example:
 
 ```java
-WebMessage webMessage = dhis2Client.post( "organisationUnits" ).withResource( new OrganisationUnit().withName( "Acme" ).withCode( "ACME" ).withShortName( "Acme" ).withOpeningDate( new Date( 964866178L ) ) ).transfer().returnAs( WebMessage.class );
+WebMessage webMessage = dhis2Client.put( "organisationUnits" ).withResource( new OrganisationUnit().withName( "Acme" ).withCode( "ACME" ).withShortName( "Acme" ).withOpeningDate( new Date( 964866178L ) ) ).transfer().returnAs( WebMessage.class );
 ```
 
-A `put(...)` is usually followed by a `withResource(...)` method to set the body of the request. The request body in the above snippet is set to an organisation unit POJO. Apart from POJOs, `withResource(...)` accepts JSON strings.
+A `put(...)` is usually followed by a `withResource(...)` method to set the body of the request. The request body in the above snippet is set to an organisation unit POJO. Apart from POJOs, `withResource(...)` accepts JSON strings and objects of type `java.util.Map`.
 
 
 ### Deleting
@@ -289,7 +298,7 @@ A DHIS2 resource is deleted with `Dhis2Client#delete(...)` as shown in the next 
 dhis2Client.delete( "organisationUnits/{id}", "fdc6uOvgoji" ).transfer().close();
 ```
 
-A `delete(...)` can be followed by a `withResource(...)` method to set the body of the request. The request body in the above snippet is set to an organisation unit POJO. Apart from POJOs, `withResource(...)` accepts JSON strings.
+A `delete(...)` can be followed by a `withResource(...)` method to set the body of the request. The request body in the above snippet is set to an organisation unit POJO. Apart from POJOs, `withResource(...)` accepts JSON strings and objects of type `java.util.Map`.
 
 ## Runtime errors
 

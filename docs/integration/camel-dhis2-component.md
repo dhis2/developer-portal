@@ -27,27 +27,59 @@ A DHIS2 endpoint is declared in a route using the following URI format:
 dhis2:apiName/methodName?[parameters]
 ```
 
+### Endpoint parameters
+
 Parameters common across all APIs are listed below:
 
-### baseApiUrl
+#### baseApiUrl
 
 DHIS2 server base API URL to sends requests to.
 
-### username
+#### username
 
 Username of the DHIS2 user to operate as.
 
-### password
+#### password
 
 Password of the DHIS2 username.
 
-### pat
+#### pat
 
 Personal access token to authenticate with DHIS2. This option is mutually exclusive to `username` and `password`
 
-### client
+#### client
 
-Reference to the underlying client communicating with the DHIS2 server. Referencing a client avoids the need to duplicate the base API URL and credentials when declaring multiple DHIS2 endpoints. Duplicating the base API URL and credentials is bad for run-time performance because an identical DHIS2 Java SDK client is created for each endpoint. This option is mutually exclusive to `baseApiUrl`, `username`, `password`, and `pat`.
+Reference to the underlying client communicating with the DHIS2 server. Referencing a client avoids the need to duplicate the base API URL and credentials when declaring multiple DHIS2 endpoints. Duplicating the base API URL and credentials is negatively impacts run-time performance because an identical DHIS2 Java SDK client is created for each endpoint. This option is mutually exclusive to `baseApiUrl`, `username`, `password`, and `pat`. The subsequent example demonstrates how to (1) create the client, (2) register it with Camel, and then (3) reference the client from a DHIS2 endpoint:
+
+```java
+...
+...
+
+public class MyRouteBuilder extends RouteBuilder {
+
+    public void configure() {
+        org.hisp.dhis.integration.sdk.api.Dhis2Client dhis2Client = org.hisp.dhis.integration.sdk.Dhis2ClientBuilder.newClient("https://play.dhis2.org/40.2.2/api", "admin", "district").build();
+        getCamelContext().getRegistry().bind("dhis2Client", dhis2Client);
+
+        from("direct:resourceTablesAnalytics")
+            .to("dhis2://resourceTables/analytics?skipAggregate=true&skipEvents=true&lastYears=1&client=#dhis2Client");
+    }
+}
+```
+
+:::note
+Visit the [DHIS2 Java SDK page on the DHIS2 Developer Portal](/docs/integration/dhis2-java-sdk) to learn more about the DHIS2 Java SDK.
+:::
+
+The `client` parameter in the above route snippet is set to `#dhis2Client`. `#dhis2Client` is an entry in Camel registry which is bound to an instance of `Dhis2Client` thanks to the following line of code:
+
+`getCamelContext().getRegistry().bind("dhis2Client", dhis2Client);`
+
+The `Dhis2Client` instance is created with:
+
+`org.hisp.dhis.integration.sdk.api.Dhis2Client dhis2Client = org.hisp.dhis.integration.sdk.Dhis2ClientBuilder.newClient("https://play.dhis2.org/40.2.2/api", "admin", "district").build();`
+
+### HTTP query parameters
 
 Besides the endpoint parameters, custom HTTP query parameters can be set from the message header using the `CamelDhis2.queryParams` key. Here is a Camel route snippet that adds the HTTP query parameters `ou` and `program` to the message before sending a request to DHIS2:
 
@@ -69,9 +101,11 @@ HTTP query parameter lists are also supported as shown in the next snippet:
 
 In URL terms, the request sent to DHIS2 in this example will have these query parameters: `...?ou=DiszpKrYNg8&ou=fdc6uOvgoji&program=IpHINAT79UW`.
 
+## Endpoint APIs & Methods
+
 The endpoint API name and supported method names are described below:
 
-## get
+### get
 
 Specify `get` for the API name to fetch a DHIS2 resource or a collection of DHIS2 resources. A resource is fetched with the `resource` method name as shown next:
 
@@ -129,7 +163,7 @@ from("direct:getCollection")
     .log("${body}");
 ```
 
-### filter
+#### filter
 
 Both the `resource` and `collection` methods accept one or more `filter` parameters to select results with [DHIS2's object filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_object_filter). The `filter` endpoint parameter in the following example is set to `phoneNumber:!null:` in order to fetch DHIS2 users which have a phone number:
 
@@ -141,7 +175,7 @@ from("direct:getCollection")
     .log("${body}");
 ```
 
-### fields
+#### fields
 
 Both the `resource` and `collection` methods accept the `fields` parameter to select the resource fields that are fetched. The `fields` endpoint parameter in the following example is set to `*` in order to select all the organisation unit resource fields:
 
@@ -152,7 +186,7 @@ from("direct:getResource")
     .json(org.hisp.dhis.api.model.v40_0.OrganisationUnit.class);
 ```
 
-### rootJunction
+#### rootJunction
 
 Both the `resource` and `collection` methods accept the `rootJunction` parameter to [set the logic junction used between filters](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_rootJunction). The `rootJunction` endpoint parameter in the following example is set to `AND` in order to fetch users that have both a phone and WhatsApp number:
 
@@ -164,7 +198,7 @@ from("direct:getCollection")
     .log("${body}");
 ```
 
-## post
+### post
 
 Specify `post` for the API name and `resource` for the method name to save a DHIS2 resource as demonstrated in this route:
 
@@ -200,7 +234,7 @@ This data value set is saved in DHIS2 thanks to a `dhis2://post/resource` endpoi
 
 `unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)`
 
-## put
+### put
 
 Specify `put` for the API name and `resource` for the method name to update a DHIS2 resource as demonstrated in this route:
 
@@ -227,7 +261,7 @@ The organisation unit `jUb8gELQApl` in DHIS2 is updated with the organisation un
 
 `unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)`
 
-## delete
+### delete
 
 Specify `delete` for the API name and `resource` for the method name to delete a DHIS2 resource as demonstrated in this route:
 
@@ -249,7 +283,7 @@ The above route deletes the organisation unit `jUb8gELQApl` in DHIS2 thanks to t
 
 `unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)`
 
-## resourceTables
+### resourceTables
 
 Specify `resourceTables` for the API name and `analytics` for the method name to run analytics on DHIS2 as demonstrated in this route:
 

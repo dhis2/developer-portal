@@ -28,7 +28,7 @@ The above diagram conceptualises this set of technologies as a stack. We suggest
   
     * [DHIS2 Java SDK](https://github.com/dhis2/dhis2-java-sdk) is a lightweight library that hides the nuts and bolts of DHIS2 Web API interactions behind a fluent Java API and type-safe resource models. Visit the [DHIS2 Java SDK page on the DHIS2 Developer Portal](/docs/integration/dhis2-java-sdk) to learn more.
     
-  * [DataSonnet Component](https://camel.apache.org/components/4.0.x/languages/datasonnet-language.html) uses JSON templates to transform, in a declarative manner, data from one format into another. DataSonnet lends itself very well to DHIS2 and FHIR JSON formats.
+  * [DataSonnet Component](https://camel.apache.org/components/4.0.x/languages/datasonnet-language.html) applies JSON-extended templates to data in order to map it to a different structure (e.g., JSON to JSON) or transform it to a different format (e.g., JSON to XML). [DataSonnet](https://datasonnet.com/) is an extension of [Jsonnet](https://jsonnet.org/) and lends very well to the DHIS2 and FHIR JSON formats.
   
   * [FHIR Component](https://camel.apache.org/components/4.0.x/fhir-component.html) gives Camel the capability to exchange data with FHIR servers like HAPI FHIR. Combining the DHIS2 and FHIR components in your Camel solution effectively allows you to build a FHIR facade for DHIS2.
 
