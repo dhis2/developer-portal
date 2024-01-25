@@ -320,6 +320,9 @@ module.exports = {
         {
             Integration: [
                 'integration/overview',
+                'integration/dhis2-java-sdk',
+                'integration/apache-camel',
+                'integration/camel-dhis2-component',
             ],
         },
 
