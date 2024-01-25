@@ -4,28 +4,7 @@ sidebar_label: DHIS2 Java SDK
 slug: "/integration/dhis2-java-sdk"
 ---
 
-DHIS2 Java SDK is a lightweight library that hides the nuts and bolts of DHIS2 Web API interactions behind a fluent Java API and type-safe resource models. The SDK code is open-source and [hosted on GitHub](https://github.com/dhis2/dhis2-java-sdk). Contributions from the DHIS2 community are more than welcome. 
-
-## Contents
-
-1. [Basics](#basics)
-   1. [Getting started](#getting-started)
-   2. [Creating a DHIS2 client](#creating-a-dhis2-client)
-   3. [Dhis2Client](#dhis2client)
-2. [Remote operations](#remote-operations)
-   1. [Fetching](#fetching)
-      1. [withField](#withfield)
-      2. [withFields](#withfields)
-      3. [Collections](#collections)
-         1. [withFilter](#withfilter)
-         2. [withAndRootJunction](#withandrootjunction)
-         3. [withOrRootJunction](#withorrootjunction)
-   2. [Saving](#saving)
-   3. [Updating](#updating)
-   4. [Deleting](#deleting)
-3. [Runtime errors](#remote-operations)
-   1. [Dhis2ClientException](#dhis2clientexception)
-   2. [RemoteDhis2ClientException](#remotedhis2clientexception)
+DHIS2 Java SDK is a lightweight library that hides the nuts and bolts of DHIS2 Web API interactions behind a fluent Java API and type-safe resource models. The SDK code is open-source and [hosted on GitHub](https://github.com/dhis2/dhis2-java-sdk). Contributions from the DHIS2 community are more than welcome.
 
 ## Basics
 

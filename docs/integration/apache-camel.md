@@ -7,23 +7,6 @@ slug: "/integration/apache-camel"
 Point-to-point is arguably the most frequent type of integration with DHIS2. The [DHIS2 Android Capture App](https://dhis2.org/android/) and DHIS2 web apps are prime examples of point-to-point integration. That being said, there many other types of integrations requiring middleware to broker the communication between the applications and DHIS2. This is where Camel fits in.
 
 [Apache Camel](https://camel.apache.org/) is an open-source Java framework for building sustainable message-oriented middleware. It codifies [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/) (EIPs) and comes packed with modules that add support for various data formats, protocols, libraries, and services. Among these are modules for supporting [DHIS2](https://camel.apache.org/components/4.0.x/dhis2-component.html), [CSV](https://camel.apache.org/components/4.0.x/dataformats/csv-dataformat.html), JSON, XML, [JMS](https://camel.apache.org/components/4.0.x/jms-component.html), [Apache Kafka](https://camel.apache.org/components/4.0.x/kafka-component.html), [FHIR](https://camel.apache.org/components/4.0.x/fhir-component.html), [JDBC](https://camel.apache.org/components/4.0.x/jdbc-component.html), and [HL7v2](https://camel.apache.org/components/4.0.x/dataformats/hl7-dataformat.html). Apache Camel is a battle-tested, mature project with a vibrant community behind it and substantial tooling to aid development and server operations.
-
-### Contents
-
-1. [Getting started](#getting-started)
-2. [Camel fundamentals](#camel-fundamentals)
-   1. [Route](#route)
-   2. [Endpoint](#endpoint)
-   3. [Message](#message)
-   4. [Processor](#processor)
-      - [Log](#log)
-      - [Filter](#filter)
-      - [Marshal and Unmarshal](#marshal-and-unmarshal)
-      - [Choice](#choice)
-      - [Split](#split)
-      - [Set Header](#set-header)
-      - [Set Body](#set-body)
-      - [Wire Tap](#wire-tap)
   
 ## Getting started
 

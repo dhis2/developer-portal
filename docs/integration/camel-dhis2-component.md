@@ -15,23 +15,6 @@ The Camel DHIS2 Component leverages the DHIS2 Java SDK to integrate Apache Camel
 </dependency>
 ```
 
-## Contents
-
-1. [Getting started](#getting-started)
-   1. [baseApiUrl](#baseapiurl)
-   2. [username](#username)
-   3. [password](#password)
-   4. [pat](#pat)
-   5. [client](#client)
-2. [get](#get)
-   1. [filter](#filter)
-   2. [fields](#fields)
-   3. [rootJunction](#rootjunction)
-3. [post](#post)
-4. [put](#put)
-5. [delete](#delete)
-6. [resourceTables](#resourcetables)
-
 ## Getting started
 
 :::note
