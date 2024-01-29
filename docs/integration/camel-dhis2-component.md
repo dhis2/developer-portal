@@ -73,11 +73,15 @@ Visit the [DHIS2 Java SDK page](/docs/integration/dhis2-java-sdk) to learn more 
 
 The `client` parameter in the above route snippet is set to `#dhis2Client`. `#dhis2Client` is an entry in Camel registry which is bound to an instance of `Dhis2Client` thanks to the following line of code:
 
-`getCamelContext().getRegistry().bind("dhis2Client", dhis2Client);`
+```java
+getCamelContext().getRegistry().bind("dhis2Client", dhis2Client);
+```
 
 The `Dhis2Client` instance is created with:
 
-`org.hisp.dhis.integration.sdk.api.Dhis2Client dhis2Client = org.hisp.dhis.integration.sdk.Dhis2ClientBuilder.newClient("https://play.dhis2.org/40.2.2/api", "admin", "district").build();`
+```java
+org.hisp.dhis.integration.sdk.api.Dhis2Client dhis2Client = org.hisp.dhis.integration.sdk.Dhis2ClientBuilder.newClient("https://play.dhis2.org/40.2.2/api", "admin", "district").build();
+```
 
 ### HTTP query parameters
 
@@ -219,20 +223,26 @@ from("direct:postResource")
 
 In the above route, the message body is set to a data value set with:
 
-`setBody(exchange -> new org.hisp.dhis.api.model.v40_0.DataValueSet()
+```java
+setBody(exchange -> new org.hisp.dhis.api.model.v40_0.DataValueSet()
     .withCompleteDate(ZonedDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_INSTANT))
     .withOrgUnit("O6uvpzGd5pu")
     .withDataSet("lyLU2wR22tC")
     .withPeriod(org.hisp.dhis.integration.sdk.support.period.PeriodBuilder.monthOf(new Date(), -1))
     .withDataValues(List.of(new org.hisp.dhis.api.model.v40_0.DataValue().withDataElement("aIJZ2d2QgVV").withValue("20"))))`
+```
 
 This data value set is saved in DHIS2 thanks to a `dhis2://post/resource` endpoint:
 
-`to("dhis2://post/resource?path=dataValueSets&username=admin&password=district&baseApiUrl=https://play.dhis2.org/40.2.1/api")`
+```java
+to("dhis2://post/resource?path=dataValueSets&username=admin&password=district&baseApiUrl=https://play.dhis2.org/40.2.1/api")
+```
 
 `dataValueSets` is the `path` parameter which identifies the path where the resource will be saved. `dhis2://post/resource` expects the message body to contain the resource to be sent to DHIS2. The body produced from the endpoint is of type `java.io.InputStream`. In this example, the route deserialises the reply into a `WebMessage` object with:
 
-`unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)`
+```java
+unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)
+```
 
 ### put
 
@@ -251,15 +261,21 @@ from("direct:putResource")
 
 In the above route, the message body is set to an organisation unit with:
 
-`setBody(exchange -> new org.hisp.dhis.api.model.v40_0.OrganisationUnit().withName("Acme").withShortName("Acme").withOpeningDate(new Date()))`
+```java
+setBody(exchange -> new org.hisp.dhis.api.model.v40_0.OrganisationUnit().withName("Acme").withShortName("Acme").withOpeningDate(new Date()))
+```
 
 The organisation unit `jUb8gELQApl` in DHIS2 is updated with the organisation unit in the message body thanks to a `dhis2://put/resource` endpoint:
 
-`to("dhis2://put/resource?path=organisationUnits/jUb8gELQApl&username=admin&password=district&baseApiUrl=https://play.dhis2.org/40.2.1/api")`
+```java
+to("dhis2://put/resource?path=organisationUnits/jUb8gELQApl&username=admin&password=district&baseApiUrl=https://play.dhis2.org/40.2.1/api")
+```
 
 `organisationUnits/jUb8gELQApl` is the `path` parameter which identifies the path where the resource to be updated is located in DHIS2. `dhis2://put/resource` expects the message body to contain the resource to be sent to DHIS2. The body produced from the endpoint is of type `java.io.InputStream`. In this example, the route deserialises the reply into a `WebMessage` object with:
 
-`unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)`
+```java
+unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)
+```
 
 ### delete
 
@@ -277,11 +293,15 @@ from("direct:deleteResource")
 
 The above route deletes the organisation unit `jUb8gELQApl` in DHIS2 thanks to the `dhis2://delete/resource` endpoint:
 
-`to("dhis2://delete/resource?path=organisationUnits/jUb8gELQApl&username=admin&password=district&baseApiUrl=https://play.dhis2.org/40.2.1/api")`
+```java
+to("dhis2://delete/resource?path=organisationUnits/jUb8gELQApl&username=admin&password=district&baseApiUrl=https://play.dhis2.org/40.2.1/api")
+```
 
 `organisationUnits/jUb8gELQApl` is the `path` parameter which identifies the path where the resource to be deleted is located in DHIS2. A resource can be added to the HTTP request sent by setting the message body to the resource. The body produced from `dhis2://put/resource` is of type `java.io.InputStream`. In this example, the route deserialises the reply into a `WebMessage` object with:
 
-`unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)`
+```java
+unmarshal().json(org.hisp.dhis.api.model.v40_0.WebMessage.class)
+```
 
 ### resourceTables
 
@@ -301,8 +321,6 @@ from("direct:resourceTablesAnalytics")
 |      lastYears     | Number of last years of data to include.                                 |
 |      interval      | Duration in milliseconds between completeness checks. Default is `30000` |
 |        async       | Whether to block until analytics is complete. Default is `false`.        |
-
-
 
 
 
