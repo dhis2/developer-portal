@@ -18,7 +18,7 @@ The Camel DHIS2 Component leverages the DHIS2 Java SDK to integrate Apache Camel
 ## Getting started
 
 :::note
-A basic understanding of Apache Camel and endpoints is assumed. Visit the [Apache Camel page on the DHIS2 Developer Portal](/docs/integration/apache-camel) to learn the fundamental Camel concepts. All Camel route examples given in this page are expressed in the Java-based DSL.
+A basic understanding of Apache Camel and endpoints is assumed. Visit the [Apache Camel pagel](/docs/integration/apache-camel) to learn the fundamental Camel concepts. All Camel route examples given in this page are expressed in the Java-based DSL.
 :::
 
 A DHIS2 endpoint is declared in a route using the following URI format:
@@ -68,7 +68,7 @@ public class MyRouteBuilder extends RouteBuilder {
 ```
 
 :::note
-Visit the [DHIS2 Java SDK page on the DHIS2 Developer Portal](/docs/integration/dhis2-java-sdk) to learn more about the DHIS2 Java SDK.
+Visit the [DHIS2 Java SDK page](/docs/integration/dhis2-java-sdk) to learn more about the DHIS2 Java SDK.
 :::
 
 The `client` parameter in the above route snippet is set to `#dhis2Client`. `#dhis2Client` is an entry in Camel registry which is bound to an instance of `Dhis2Client` thanks to the following line of code:
