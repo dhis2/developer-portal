@@ -30,7 +30,7 @@ The DHIS2 Java SDK can be built from source, however, binaries of the SDK releas
         <dependency>
             <groupId>org.hisp.dhis.integration.sdk</groupId>
             <artifactId>jackson-resource-model</artifactId>
-            <classifier>[v40.0|v2.39.1|v2.38.1|v2.37.7|v2.36.11|v2.35.13]</classifier>        
+            <classifier>[v40.2.2|v40.0|v2.39.1|v2.38.1|v2.37.7|v2.36.11|v2.35.13]</classifier>        
             <version>x.y.z</version>
         </dependency>
 
@@ -38,7 +38,7 @@ The DHIS2 Java SDK can be built from source, however, binaries of the SDK releas
         <dependency>
             <groupId>org.hisp.dhis.integration.sdk</groupId>
             <artifactId>android-jackson-resource-model</artifactId>
-            <classifier>[v40.0|v2.39.1|v2.38.1|v2.37.7|v2.36.11|v2.35.13]</classifier>
+            <classifier>[v40.2.2|v40.0|v2.39.1|v2.38.1|v2.37.7|v2.36.11|v2.35.13]</classifier>
             <version>x.y.z</version>
         </dependency>
         ...
@@ -57,25 +57,25 @@ The `x.y.z` version in the above template is to be replaced with the [latest ver
         <dependency>
             <groupId>org.hisp.dhis.integration.sdk</groupId>
             <artifactId>dhis2-java-sdk</artifactId>
-            <version>2.1.0</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.hisp.dhis.integration.sdk</groupId>
             <artifactId>jackson-resource-model</artifactId>
-            <classifier>v40.0</classifier>
-            <version>2.1.0</version>
+            <classifier>v40.2.2</classifier>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.hisp.dhis.integration.sdk</groupId>
             <artifactId>jackson-resource-model</artifactId>
             <classifier>v2.35.13</classifier>
-            <version>2.1.0</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 </project>
 ```
 
-Having multiple `jackson-resource-model` dependencies will not create a conflict as long as each dependency has a distinct classifier. The classes within `jackson-resource-model` v40.0 are located in the Java package `org.hisp.dhis.api.model.v40_0`,  the ones within `jackson-resource-model` v2.39.1 are located in the package `org.hisp.dhis.api.model.v2_39_1`, and so on.
+Having multiple `jackson-resource-model` dependencies will not create a conflict as long as each dependency has a distinct classifier. The classes within `jackson-resource-model` v40.2.2 are located in the Java package `org.hisp.dhis.api.model.v40_2_2`, the ones within `jackson-resource-model` v40.0 are located in the package `org.hisp.dhis.api.model.v40_0`, and so on.
 
 ### Creating a DHIS2 client
 
