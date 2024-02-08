@@ -59,7 +59,7 @@ public class HelloWorldRouteBuilder extends RouteBuilder {
 }
 ```
 
-The route is defined within the `configure()` method. `from(...)` and `to(...)` are endpoints while `marshal()` and `json()` are processors. The `HelloWorldRouteBuilder` class consists only of a few lines of code, yet, it is punching well above its weight. The route has a [`servlet` endpoint](https://camel.apache.org/components/4.0.x/servlet-component.html) listening for HTTP requests to trigger the rest of the route's execution. On receiving a HTTP request, the route fetches organisation units from a DHIS2 server using the DHIS2 endpoint. The route then serialises the received organisation units to CSV before including them in the response to the HTTP client which kicked off the route. 
+The route is defined within the `configure()` method. `from(...)` and `to(...)` are endpoints while `marshal()` and `csv()` are processors. The `HelloWorldRouteBuilder` class consists only of a few lines of code, yet, it is punching well above its weight. The route has a [`servlet` endpoint](https://camel.apache.org/components/4.0.x/servlet-component.html) listening for HTTP requests to trigger the rest of the route's execution. On receiving a HTTP request, the route fetches organisation units from a DHIS2 server using the DHIS2 endpoint. The route then serialises the received organisation units to CSV before including them in the response to the HTTP client which kicked off the route. 
 
 :::note
 Visit the [Camel DHIS2 Component page](/docs/integration/camel-dhis2-component) to learn more about DHIS2 endpoints.
