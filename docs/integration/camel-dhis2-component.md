@@ -43,13 +43,13 @@ Username of the DHIS2 user to operate as.
 
 Password of the DHIS2 username.
 
-#### pat
+#### personalAccessToken
 
 Personal access token to authenticate with DHIS2. This option is mutually exclusive to `username` and `password`
 
 #### client
 
-Reference to the underlying client communicating with the DHIS2 server. Referencing a client avoids the need to duplicate the base API URL and credentials when declaring multiple DHIS2 endpoints. Duplicating the base API URL and credentials is negatively impacts run-time performance because an identical DHIS2 Java SDK client is created for each endpoint. This option is mutually exclusive to `baseApiUrl`, `username`, `password`, and `pat`. The subsequent example demonstrates how to (1) create the client, (2) register it with Camel, and then (3) reference the client from a DHIS2 endpoint:
+Reference to the underlying client communicating with the DHIS2 server. Referencing a client avoids the need to duplicate the base API URL and credentials when declaring multiple DHIS2 endpoints. Duplicating the base API URL and credentials negatively impacts run-time performance because an identical DHIS2 Java SDK client is created for each endpoint. This option is mutually exclusive to `baseApiUrl`, `username`, `password`, and `personalAccessToken`. The subsequent example demonstrates how to (1) create the client, (2) register it with Camel, and then (3) reference the client from a DHIS2 endpoint:
 
 ```java
 ...
