@@ -11,6 +11,9 @@ module.exports = {
     organizationName: 'dhis2',
     projectName: 'developer-portal',
     themeConfig: {
+        prism: {
+            additionalLanguages: ['java'],
+        },
         navbar: {
             logo: {
                 alt: 'DHIS2 Developer Portal',
