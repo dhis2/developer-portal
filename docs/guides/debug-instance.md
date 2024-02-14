@@ -7,6 +7,10 @@ If you encounter some errors when trying to connect to your application or durin
 
 ## CORs allowlist
 
+:::note Name Change
+Since DHIS2 version 41 it's called **CORs allowlist**. Before that, it was called **CORS Whitelist**.
+:::
+
 If you run into Cross-Origin Resource Sharing (CORs) policy issues when connecting to your server, you could start with the **CORs allowlist**.
 
 ### What is the CORs allowlist?
