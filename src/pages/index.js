@@ -42,7 +42,7 @@ const features = [
     },
     {
         title: 'Integration',
-        imageUrl: 'img/app-platform2.svg',
+        imageUrl: 'img/pictogram-integration.svg',
         url: '/docs/integration/overview',
         description: (
             <>
