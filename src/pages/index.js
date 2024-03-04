@@ -40,6 +40,13 @@ const features = [
             </>
         ),
     },
+    {},
+    {
+        title: 'Integration',
+        imageUrl: 'img/pictogram-integration.svg',
+        url: '/docs/integration/overview',
+        description: <>Learn more about integrating DHIS2.</>,
+    },
 ]
 
 function Feature({ imageUrl, url, title, description }) {
