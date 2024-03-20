@@ -18,6 +18,7 @@ module.exports = {
                     'DHIS2 App Runtime': [
                         'tutorials/app-runtime-query',
                         'tutorials/app-runtime-mutation',
+                        'app-runtime/components/Plugin',
                     ],
                 },
             ],
@@ -168,6 +169,7 @@ module.exports = {
                                 },
                                 'app-runtime/components/DataQuery',
                                 'app-runtime/components/DataMutation',
+                                'app-runtime/components/Plugin',
                             ],
                         },
                         {
