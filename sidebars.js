@@ -18,7 +18,6 @@ module.exports = {
                     'DHIS2 App Runtime': [
                         'tutorials/app-runtime-query',
                         'tutorials/app-runtime-mutation',
-                        'app-runtime/components/Plugin',
                     ],
                 },
             ],
