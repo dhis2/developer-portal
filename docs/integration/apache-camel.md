@@ -10,7 +10,7 @@ Point-to-point is arguably the most frequent type of integration with DHIS2. The
   
 ## Getting started
 
-The easiest way to create an Apache Camel project is to run the [Maven Camel DHIS2 Archetype](https://github.com/dhis2/camel-archetype-dhis2). The archetype creates a template Apache Camel 3 application powered by [Spring Boot](https://spring.io/projects/spring-boot/) that uses the DHIS2 component. You need to have [Maven](https://maven.apache.org/) installed locally to run the archetype. The archetype can be run as follows:
+The easiest way to create an Apache Camel project is to run the [Maven Camel DHIS2 Archetype](https://github.com/dhis2/camel-archetype-dhis2). The archetype creates a template Apache Camel 4 application powered by [Spring Boot](https://spring.io/projects/spring-boot/) that uses the DHIS2 component. You need to have [Maven](https://maven.apache.org/) installed locally to run the archetype. The archetype can be run as follows:
 
 :::note
 Consult the [Maven Camel DHIS2 Archetype README](https://github.com/dhis2/camel-archetype-dhis2/blob/main/README.md) for an explanation of the command.
@@ -20,7 +20,7 @@ Consult the [Maven Camel DHIS2 Archetype README](https://github.com/dhis2/camel-
 mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate \
 -DarchetypeGroupId=org.hisp.dhis.integration.camel \
 -DarchetypeArtifactId=camel-archetype-dhis2 \
--DarchetypeVersion=1.0.3 \
+-DarchetypeVersion=1.0.4 \
 -DgroupId=org.hisp.dhis.integration.camel \
 -Dhawtio=Y \
 -Ddatasonnet=Y \
