@@ -201,4 +201,17 @@ module.exports = {
             },
         ],
     ],
+    scripts: [
+        {
+            src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+            'data-website-id': '0b9680c1-8ad2-4c4d-bb9d-d21ebeb70216',
+            'data-project-name': 'DHIS2',
+            'data-project-color': '#393D4D',
+            'data-project-logo': '/img/logo.png',
+            'data-modal-title': 'DHIS2 Developers AI',
+            'data-modal-disclaimer':
+                'Answers are AI generated based on the DHIS2 Documentation. Be aware it might not be 100% accurate or up-to-date, check the sources to know for sure.',
+            async: true,
+        },
+    ],
 }
