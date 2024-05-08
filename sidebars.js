@@ -303,6 +303,21 @@ module.exports = {
             ],
         },
         {
+            label: 'Plugin Development',
+            type: 'category',
+            collapsed: false,
+            collapsible: true,
+            items: [
+                {
+                    'Capture Plugins': [
+                        'capture-plugins/developer/getting-started',
+                        'capture-plugins/developer/form-field-plugins',
+                        'capture-plugins/developer/enrollment-plugins',
+                    ],
+                }
+            ]
+        },
+        {
             CLI: [
                 'cli/readme',
                 'cli/cli/commands/d2-overview',
