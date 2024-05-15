@@ -23,7 +23,7 @@ It might be tempting to think that it’s a no-brainer for every lab to have an 
 
 An off-premise LIS reduces the need for IT capacity at the lab facility. IT resources are pooled into a single site to operate a central LIS that labs would connect to. What about labs with limited or no connectivity? These labs would be left behind unless some offline approach is devised such as shipping the lab data to the centralised LIS for import or manual entry. 
 
-Offline functionality is the rationale behind [edgeDx Node](https://edgedx.net/). Node is an LIS supporting lab sites that do not have stable Internet connectivity. Diagnostic data from multiple sources is captured on an Android device that Node is managing. The device’s mobility allows employees, while performing their duties, to easily carry it around the lab and interact with it. When the device (re)joins the network, the diagnostic data is reconciled with the Node server. Apart from offline functionality, Node brings with it a plethora of features including device management as well as interoperability with DHIS2 and a variety of lab machines. The latter is a topic which will be touched on later in this post.
+Offline functionality is the rationale behind [edgeDx Node](https://edgedx.net/). Node is an LIS supporting lab sites that do not have stable Internet connectivity. Diagnostic data from multiple sources is captured on an Android device that Node is managing. The device’s mobility allows employees, while performing their duties, to easily carry it around the lab and interact with it. When the device (re)joins the network, the diagnostic data is reconciled with the Node server. Apart from offline functionality, Node brings with it a plethora of features including device management as well as interoperability with DHIS2 and a variety of lab machines. The latter is a topic which will be touched upon later in this post.
 
 ![Node device](./node-device.png)
 _A Node device (source: https://edgedx.net/product/5fab511a00f47d13e8c8dd3e)_
@@ -50,7 +50,7 @@ Time will tell whether these initiatives will succeed but past experience sugges
 
 Continuing on the subject of health system interoperability, it’s uncertain how the interoperability between an LIS and an HMIS, a common DHIS2 use case, should look like. Is it the role of the LIS to aggregate the lab data and deliver it in its aggregate form to the HMIS? If so, there are standards like [Aggregate Data Exchange](https://wiki.ihe.net/index.php/Aggregate_Data_Exchange) (ADX) and FHIR’s [Mobile Aggregate Data Exchange](https://wiki.ihe.net/index.php/Mobile_Aggregate_Data_Exchange_(mADX)) (mADX) that may act as the bridge between the LIS and the HMIS. Alternatively, is it the role of the HMIS to aggregate the lab data? Then it’s less clear for LIS engineers on what standards to follow. It’s possible that FHIR may help but more work is needed on this front to develop the necessary guidelines.
 
-What’s your experience with lab integration? What did we miss? How can it be improved? Do you have an LIS DHIS2 implementation or are you planning to roll out one? We’d love to hear your thoughts at [DHIS2’s community of practice](https://community.dhis2.org/).
+What’s your experience with lab integration? What did we miss? How can it be improved? Do you have an LIS DHIS2 implementation or are you planning to roll out one? We’d love to hear your thoughts at the [DHIS2 community of practice](https://community.dhis2.org/).
 
 
 [^1]: Not to be confused with an LMIS which is a Logistics Management Information System
