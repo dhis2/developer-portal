@@ -5,7 +5,7 @@ authors: claudemamo
 tags: [fhir, camel, ig, java]
 ---
 
-A modern vision of health interoperability is one where systems exchange data using the [FHIR (Fast Health Interoperability Resources)](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard to describe the types of resources and data to be exchanged. FHIR outlines these resources and data using what is called an [Implementation Guide (IG)](https://www.hl7.org/fhir/implementationguide.html). An IG specifies the rules for interoperability in a formal, machine-readable, and testable way. In this post, we will show you how to stand up a FHIR gateway for DHIS2 from an IG so that DHIS2 can interoperate with FHIR clients.
+A modern vision of health interoperability is one where systems exchange health care data using the [FHIR (Fast Health Interoperability Resources)](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard to describe the types of resources and data to be exchanged. FHIR outlines these resources and data using what is called an [Implementation Guide (IG)](https://www.hl7.org/fhir/implementationguide.html). An IG specifies the rules for interoperability in a formal, machine-readable, and testable way. In this post, we will show you how to stand up a FHIR gateway for DHIS2 from an IG so that DHIS2 can interoperate with FHIR clients.
 
 <!--truncate-->
 
