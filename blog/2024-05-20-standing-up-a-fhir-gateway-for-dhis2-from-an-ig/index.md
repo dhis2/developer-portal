@@ -5,7 +5,7 @@ authors: claudemamo
 tags: [fhir, camel, ig, java]
 ---
 
-A modern vision of health interoperability is one where systems exchange health care data using the [FHIR (Fast Health Interoperability Resources)](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard to describe the types of resources and data to be exchanged. FHIR outlines these resources and data using what is called an [Implementation Guide (IG)](https://www.hl7.org/fhir/implementationguide.html). An IG specifies the rules for interoperability in a formal, machine-readable, and testable way. In this post, we will show you how to stand up a FHIR gateway for DHIS2 from an IG so that DHIS2 can interoperate with FHIR clients.
+A modern vision of health interoperability is one where systems exchange health care data using the [FHIR (Fast Health Interoperability Resources)](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard to describe the types of resources and data to be exchanged. FHIR outlines these resources and data using what is called an [Implementation Guide (IG)](https://www.hl7.org/fhir/implementationguide.html). An IG specifies the rules for interoperability in a formal, machine-readable, and testable way. In this post, we will show you how to set up a FHIR gateway for DHIS2 from an IG so that DHIS2 can interoperate with FHIR clients.
 
 <!--truncate-->
 
@@ -19,7 +19,7 @@ The facade in this how-to will (1) use the transmitted QuestionnaireResponse ID,
 
 Before drilling in, it is worth highlighting that there is no special reason why QuestionnaireResponse was selected to be the FHIR representation of a tracked entity other than it is conceptually easier to map from a tracked entity to a QuestionnaireResponse. Your data exchange requirements will dictate which FHIR resources to use for representing DHIS2 resources.
 
-:::important
+:::info
 The subsequent code targeting the DHIS2 API is based on v40. Consult the [Web API documentation](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-240/introduction.html) and [other sources](https://developers.dhis2.org/) to rewrite the code for your version of DHIS2. Furthermore, this guide assumes that the Sierra Leone demo database is used for the DHIS2 server. You will likely need to change the code or your DHIS2 configuration to successfully test the gateway in your environment.
 :::
 
@@ -31,7 +31,7 @@ Since the IG _drives_ the FHIR gateway, let us author a minimal gateway IG in [F
 
 2. A partial DHIS2 tracked entity [logical model](https://build.fhir.org/logical.html). The logical model provides us with the means to describe non-FHIR resources, such as DHIS2 resources, in an IG. The logical model is referenced from the statically-typed mapping file explained next.
 
-:::important
+:::info
 The logical model does not necessarily need to be an abstraction of a DHIS2 resource: the model could be system-independent. The tracked entity is the logical model here because we want to avoid coding an additional step in the gateway that transforms the tracked entity to the system-independent model.
 :::
 
@@ -251,7 +251,7 @@ The project created from above command will be located in the directory `dhis2-f
 ![App from VS Code](./app-vscode.png)
 
 :::tip
-Head over the [DHIS2 developer docs](https://developers.dhis2.org/docs/integration/apache-camel/) for a primer into Camel.
+Head over the [DHIS2 developer docs](/docs/integration/apache-camel/) for a primer into Camel.
 :::
 
 Currently, the generated template project has a single HTTP endpoint described in `dhis2-fhir-gateway/src/main/resources/camel/api.yaml`. This endpoint accepts an HTTP request and delegates its processing to the route described in `HelloWorldRouteBuilder.java`.
@@ -463,7 +463,7 @@ public class FhirGatewayRouteBuilder extends RouteBuilder {
 The route fetches the tracked entity from DHIS2, with the help of the DHIS2 component. `setHeader` is setting the query parameters to be included in the request sent out from the DHIS2 endpoint, that is, it sets the program ID query parameter to `IpHINAT79UW` and the organisation unit mode query parameter to `ACCESSIBLE`. The outbound DHIS2 endpoint configured in `toD("dhis2://get/resource?path=tracker/trackedEntities/${header.rid}&fields=*&client=#dhis2Client")` is fetching a tracked entity by ID. The ID is a variable referencing a Camel message header as denoted in `${header.rid}`. The header `rid` is a path parameter bound to the QuestionnaireResponse ID.
 
 :::tip
-Head over the [DHIS2 developer docs](https://developers.dhis2.org/docs/integration/camel-dhis2-component) for a primer into the Camel DHIS2 Component.
+Head over the [DHIS2 developer docs](/docs/integration/camel-dhis2-component) for a primer into the Camel DHIS2 Component.
 :::
 
 The output of the DHIS2 endpoint, the JSON tracked entity in other words, is fed to an instance of `FhirMapper` which we defined previously. `FhirMapper` gives backs a QuestionnaireResponse and this becomes the gateway response to the FHIR client.
