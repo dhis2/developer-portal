@@ -27,7 +27,11 @@ module.exports = {
                     position: 'left',
                 },
                 { to: 'blog', label: 'Blog', position: 'left' },
-                { to: 'events/webinars', label: 'Events', position: 'left' },
+                {
+                    to: 'events/developer-meetups',
+                    label: 'Events',
+                    position: 'left',
+                },
                 {
                     to: 'community/support',
                     label: 'Community',
