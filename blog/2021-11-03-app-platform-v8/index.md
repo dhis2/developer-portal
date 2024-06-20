@@ -23,26 +23,15 @@ First, let's take a look at what's new in `8.x`.
 
 ### New feature: Proxy server for DHIS2 API
 
-Some browsers have deprecated and now block the use of cross-site
-cookies, and this trend is one that we support as it is considerably
-more secure by default.
+Some browsers have deprecated and now block the use of cross-site cookies, and this trend is one that we support as it is  considerably more secure by default.
 
-It does affect our developer workflow however, as it is common for us to
-serve the application we are working at `http://localhost:3000` and need
-to connect to an API that is located elsewhere, e.g.
-`https://test.dhis2.server`.
+It does affect our developer workflow however, as it is common for us to serve the application we are working at `http:/ localhost:3000` and need to connect to an API that is located elsewhere, e.g. `https://test.dhis2.server`.
 
-We have [written about this problem
-before](/blog/cross-origin-cookies), and how
-to [work around
-it](/docs/guides/debug-instance#if-youre-using-chrome).
+We have [written about this problem before](/blog/2020/08/cross-origin-cookies), and how to [work around it](/docs/guides/debug-instance#if-youre-using-chrome).
 
-The built-in proxy feature replaces the workaround, and, works with all
-browsers the same way.
+The built-in proxy feature replaces the workaround, and, works with all browsers the same way.
 
-To use it, add the `--proxy` option to the `d2-app-scripts start`
-command, and pass in the URL of the instance you would like to route
-requests to. For example:
+To use it, add the `--proxy` option to the `d2-app-scripts start` command, and pass in the URL of the instance you would like to route requests to. For example:
 
 ```
 yarn d2-app-scripts start --proxy "https://test.dhis2.server"
