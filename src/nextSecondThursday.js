@@ -1,5 +1,3 @@
-import React from 'react'
-
 function getNextSecondThursday() {
     let d = new Date(),
         y = d.getFullYear(),

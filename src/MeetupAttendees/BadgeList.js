@@ -1,4 +1,3 @@
-import React from 'react'
 import UserBadge from './UserBadge'
 import './badges.css'
 
