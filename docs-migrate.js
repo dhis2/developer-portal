@@ -150,5 +150,5 @@ migrateDocs({
     repo: 'https://github.com/dhis2/dhis2-mobile-ui.git',
     tempDir: '.mui-repo-temp',
     targetDir: './mobile/mobile-ui',
-    branch: 'ANDROAPP-6256-Init-mobile-UI-documentation'
+    branch: 'develop'
 })
