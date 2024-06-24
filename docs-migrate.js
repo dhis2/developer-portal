@@ -54,6 +54,9 @@ const migrateDocs = ({
         // Copy extra files
         extraFiles.forEach((file) => {
             console.log(`copying ${file.from} to ${file.to}`)
+            if (file.from.indexOf('CHANGELOG') !== -1) {
+                replaceEmailsWithBackticks(`${tempDir}/${file.from}`)
+            }
             fs.copySync(`${tempDir}/${file.from}`, `${targetDir}/${file.to}`, {
                 recursive: true,
             })
@@ -65,6 +68,15 @@ const migrateDocs = ({
     } catch (error) {
         console.error(error)
     }
+}
+
+function replaceEmailsWithBackticks(filePath) {
+    const content = fs.readFileSync(filePath, 'utf8')
+    const updatedContent = content.replace(
+        /<([^<>@]+@[^<>@]+\.[^<>@]+)>/g,
+        '`$1`'
+    )
+    fs.writeFileSync(filePath, updatedContent, 'utf8')
 }
 
 migrateDocs({
