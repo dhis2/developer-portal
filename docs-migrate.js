@@ -143,6 +143,6 @@ migrateDocs({
     repo: 'https://github.com/dhis2/capture-app.git',
     tempDir: '.capture-repo-temp',
     targetDir: './docs/capture-plugins',
-    branch: 'eh/docs/plugin-documentation',
+    branch: 'master',
     ignoreDirs: ['user']
 })
