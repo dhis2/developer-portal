@@ -1,4 +1,5 @@
 const { execSync } = require('child_process')
+const path = require('path')
 const fs = require('fs-extra')
 
 const migrateDocs = ({
@@ -8,8 +9,11 @@ const migrateDocs = ({
     targetDir,
     extraFiles = [],
     postDownloadActions = [],
+    ignoreDirs = [],
 }) => {
     try {
+        // reset the working directory between each migration
+        process.chdir(__dirname)
         // Remove any previous copy
         fs.removeSync(tempDir)
 
@@ -38,7 +42,14 @@ const migrateDocs = ({
 
         // Copy the directory to another place and create missing directories
         console.log(`copy files to ${targetDir}`)
-        fs.copySync(`${tempDir}/docs`, targetDir, { recursive: true })
+        fs.copySync(`${tempDir}/docs`, targetDir, {
+            recursive: true,
+            filter: (src) => !ignoreDirs.some(dir => src
+                .includes(path
+                    .join(tempDir, 'docs', dir)
+                ),
+            ),
+        })
 
         // Copy extra files
         extraFiles.forEach((file) => {
@@ -126,4 +137,11 @@ migrateDocs({
             to: 'changelog.md',
         },
     ],
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/capture-app.git',
+    tempDir: '.capture-repo-temp',
+    targetDir: './docs/capture-plugins',
+    ignoreDirs: ['user']
 })

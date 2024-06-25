@@ -58,7 +58,7 @@ module.exports = {
         {
             label: 'Web App Development',
             type: 'category',
-            collapsed: false,
+            collapsed: true,
             collapsible: true,
             items: [
                 {
@@ -301,6 +301,29 @@ module.exports = {
                     type: 'link',
                 },
             ],
+        },
+        {
+            label: 'Capture Plugins',
+            type: 'category',
+            collapsed: true,
+            collapsible: true,
+            items: [
+                'capture-plugins/developer/getting-started',
+                'capture-plugins/developer/develop-a-capture-plugin',
+                'capture-plugins/developer/configure-a-capture-plugin',
+                {
+                    'Form Field Plugin': [
+                        'capture-plugins/developer/form-field-plugins/introduction',
+                        'capture-plugins/developer/form-field-plugins/developer-details',
+                        'capture-plugins/developer/form-field-plugins/manual-setup',
+                    ],
+                    'Enrollment Plugin': [
+                        'capture-plugins/developer/enrollment-plugins/introduction',
+                        'capture-plugins/developer/enrollment-plugins/developer-details',
+                        'capture-plugins/developer/enrollment-plugins/manual-setup',
+                    ]
+                }
+            ]
         },
         {
             CLI: [
