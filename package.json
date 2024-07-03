@@ -8,6 +8,7 @@
         "start": "docusaurus start",
         "start-no-fetch": "docusaurus start",
         "build": "npm run fetch-external-docs && docusaurus build",
+        "build-no-fetch": "docusaurus build",
         "swizzle": "docusaurus swizzle",
         "deploy": "docusaurus deploy",
         "serve": "docusaurus serve",
@@ -22,7 +23,8 @@
         "@mdx-js/react": "^3",
         "clsx": "^1.1.1",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "redocusaurus": "^2.1.0"
     },
     "browserslist": {
         "production": [

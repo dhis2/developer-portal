@@ -1,4 +1,5 @@
 const redirects = require('./redirects.config.js')
+const webpack = require('webpack')
 
 module.exports = {
     title: 'DHIS2 Developer Portal',
@@ -12,7 +13,7 @@ module.exports = {
     projectName: 'developer-portal',
     themeConfig: {
         prism: {
-            additionalLanguages: ['java'],
+            additionalLanguages: ['java', 'scala'],
         },
         navbar: {
             logo: {
@@ -135,6 +136,25 @@ module.exports = {
                 redirects,
             },
         ],
+        async function customPlugin(context, opts) {
+            return {
+                name: 'custom-plugin',
+                configureWebpack(config, isServer, utils, content) {
+                    // Modify internal webpack config. If returned value is an Object, it
+                    // will be merged into the final config using webpack-merge;
+                    // If the returned value is a function, it will receive the config as the 1st argument and an isServer flag as the 2nd argument.
+                    return {
+                        plugins: [
+                            new webpack.DefinePlugin({
+                                // IMPORTANT: To fix debug library‘s bug
+                                // {}.DEBUG = namespaces; // SyntaxError: Unexpected token '.'
+                                'process.env.DEBUG': 'process.env.DEBUG',
+                            }),
+                        ],
+                    }
+                },
+            }
+        },
     ],
     presets: [
         [
@@ -202,6 +222,20 @@ module.exports = {
                     trackingID: 'UA-157707339-4',
                     anonymizeIP: true,
                 },
+            },
+        ],
+        [
+            'redocusaurus',
+            {
+                // Plugin Options for loading OpenAPI files
+                specs: [
+                    // Pass it a path to a local OpenAPI YAML file
+                    {
+                        // Redocusaurus will automatically bundle your spec into a single file during the build
+                        spec: 'openapi(1).yaml',
+                        route: '/api/',
+                    },
+                ],
             },
         ],
     ],

@@ -1,0 +1,4162 @@
+
+  openapi: "3.0.0"
+  info: 
+    title: DHIS2 API
+    version: "2.41"
+    license: 
+      name: BSD 3-Clause "New" or "Revised" License
+      url: https://raw.githubusercontent.com/dhis2/dhis2-core/master/LICENSE
+    contact: {}
+  tags: 
+  - name: management
+    description: |-
+      Groups endpoints used to manage system objects.
+  - name: synthetic
+    description: |-
+      Marks Endpoints that have been merged from more than one method.  
+      This means there is no 1:1 relation between the REST endpoint described by OpenAPI  
+      and the Java controller methods that implement them.
+  - name: user
+    description: |-
+      Groups endpoints about users.
+  servers: 
+  - url: http://play.im.dhis2.org/stable-2-41-0-1/api
+  security: 
+  - basicAuth: []
+  paths: 
+    /users/: 
+      get: 
+        description: |-
+          List all Users
+        operationId: User.getObjectList
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: fields
+          in: query
+          description: |-
+            `<field-name>[,<field-name>...]`
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - name: filter
+          in: query
+          description: |-
+            Apply filter operations to the returned list of metadata.   
+            See [Metadata-object-filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_object_filter).
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - $ref: "#/components/parameters/OrderParams.orders"
+        - $ref: "#/components/parameters/WebOptions.page"
+        - $ref: "#/components/parameters/WebOptions.pageSize"
+        - $ref: "#/components/parameters/WebOptions.paging"
+        - $ref: "#/components/parameters/WebOptions.rootJunction"
+        responses: 
+          "200": 
+            description: |-
+              The _list_ of Users
+            content: 
+              application/json: 
+                schema: 
+                  type: object
+                  properties: 
+                    pager: 
+                      $ref: "#/components/schemas/Pager"
+                    users: 
+                      type: array
+                      items: 
+                        $ref: "#/components/schemas/User"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.postJsonObject+postXmlObject+postJsonObject+postXmlObject
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - $ref: "#/components/parameters/MetadataImportParams.async"
+        - $ref: "#/components/parameters/MetadataImportParams.atomicMode"
+        - $ref: "#/components/parameters/MetadataImportParams.flushMode"
+        - $ref: "#/components/parameters/MetadataImportParams.identifier"
+        - $ref: "#/components/parameters/MetadataImportParams.importMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importReportMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importStrategy"
+        - $ref: "#/components/parameters/MetadataImportParams.metadataSyncImport"
+        - $ref: "#/components/parameters/MetadataImportParams.overrideUser"
+        - $ref: "#/components/parameters/MetadataImportParams.preheatMode"
+        - $ref: "#/components/parameters/MetadataImportParams.skipSharing"
+        - $ref: "#/components/parameters/MetadataImportParams.skipTranslation"
+        - $ref: "#/components/parameters/MetadataImportParams.skipValidation"
+        - $ref: "#/components/parameters/MetadataImportParams.user"
+        - $ref: "#/components/parameters/MetadataImportParams.userOverrideMode"
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/User"
+            application/xml: 
+              schema: 
+                $ref: "#/components/schemas/User"
+            text/xml: 
+              schema: 
+                $ref: "#/components/schemas/User"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    "/users/#getObjectListCsv": 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectListCsv
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: arraySeparator
+          in: query
+          description: |-
+            [no description yet]
+          required: false
+          schema: 
+            type: string
+            default: ;
+        - name: fields
+          in: query
+          description: |-
+            Limit the response to specific field(s).   
+            See [Metadata-field-filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_field_filter).
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - name: filter
+          in: query
+          description: |-
+            Apply filter operations to the returned list of metadata.   
+            See [Metadata-object-filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_object_filter).
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - $ref: "#/components/parameters/OrderParams.orders"
+        - $ref: "#/components/parameters/WebOptions.page"
+        - $ref: "#/components/parameters/WebOptions.pageSize"
+        - $ref: "#/components/parameters/WebOptions.paging"
+        - $ref: "#/components/parameters/WebOptions.rootJunction"
+        - name: separator
+          in: query
+          description: |-
+            [no description yet]
+          required: false
+          schema: 
+            type: string
+            minLength: 1
+            maxLength: 1
+        - name: skipHeader
+          in: query
+          description: |-
+            [no description yet]
+          required: false
+          schema: 
+            type: boolean
+            default: false
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/text: 
+                schema: 
+                  type: string
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/text: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/text: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/text: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/text: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/gist: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectListGist+getObjectListGistAsCsv
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - $ref: "#/components/parameters/GistParams.absoluteUrls"
+        - $ref: "#/components/parameters/GistParams.auto"
+        - $ref: "#/components/parameters/GistParams.describe"
+        - $ref: "#/components/parameters/GistParams.fields"
+        - $ref: "#/components/parameters/GistParams.filter"
+        - $ref: "#/components/parameters/GistParams.headless"
+        - $ref: "#/components/parameters/GistParams.inverse"
+        - $ref: "#/components/parameters/GistParams.locale"
+        - $ref: "#/components/parameters/GistParams.order"
+        - $ref: "#/components/parameters/GistParams.page"
+        - $ref: "#/components/parameters/GistParams.pageListName"
+        - $ref: "#/components/parameters/GistParams.pageSize"
+        - $ref: "#/components/parameters/GistParams.references"
+        - $ref: "#/components/parameters/GistParams.rootJunction"
+        - $ref: "#/components/parameters/GistParams.total"
+        - $ref: "#/components/parameters/GistParams.totalPages"
+        - $ref: "#/components/parameters/GistParams.translate"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  oneOf: 
+                  - type: object
+                    properties: 
+                      pager: 
+                        $ref: "#/components/schemas/GistPager"
+                      users: 
+                        type: array
+                        items: 
+                          type: object
+                  - type: array
+                    items: 
+                      type: object
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/gist.csv: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectListGistAsCsv
+        tags: 
+        - management
+        - user
+        parameters: 
+        - $ref: "#/components/parameters/GistParams.absoluteUrls"
+        - $ref: "#/components/parameters/GistParams.auto"
+        - $ref: "#/components/parameters/GistParams.describe"
+        - $ref: "#/components/parameters/GistParams.fields"
+        - $ref: "#/components/parameters/GistParams.filter"
+        - $ref: "#/components/parameters/GistParams.headless"
+        - $ref: "#/components/parameters/GistParams.inverse"
+        - $ref: "#/components/parameters/GistParams.locale"
+        - $ref: "#/components/parameters/GistParams.order"
+        - $ref: "#/components/parameters/GistParams.page"
+        - $ref: "#/components/parameters/GistParams.pageListName"
+        - $ref: "#/components/parameters/GistParams.pageSize"
+        - $ref: "#/components/parameters/GistParams.references"
+        - $ref: "#/components/parameters/GistParams.rootJunction"
+        - $ref: "#/components/parameters/GistParams.total"
+        - $ref: "#/components/parameters/GistParams.totalPages"
+        - $ref: "#/components/parameters/GistParams.translate"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/invite: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.postJsonInvite+postXmlInvite
+        tags: 
+        - management
+        - user
+        - synthetic
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/invites: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.postJsonInvites+postXmlInvites
+        tags: 
+        - management
+        - user
+        - synthetic
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+    /users/sharing: 
+      patch: 
+        description: |-
+          [no description yet]
+        operationId: User.bulkSharing
+        tags: 
+        - management
+        - user
+        parameters: 
+        - $ref: "#/components/parameters/MetadataImportParams.async"
+        - name: atomic
+          in: query
+          description: |-
+            [no description yet]
+          required: false
+          schema: 
+            type: boolean
+            default: false
+        - $ref: "#/components/parameters/MetadataImportParams.atomicMode"
+        - $ref: "#/components/parameters/MetadataImportParams.flushMode"
+        - $ref: "#/components/parameters/MetadataImportParams.identifier"
+        - $ref: "#/components/parameters/MetadataImportParams.importMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importReportMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importStrategy"
+        - $ref: "#/components/parameters/MetadataImportParams.metadataSyncImport"
+        - $ref: "#/components/parameters/MetadataImportParams.overrideUser"
+        - $ref: "#/components/parameters/WebOptions.page"
+        - $ref: "#/components/parameters/WebOptions.pageSize"
+        - $ref: "#/components/parameters/WebOptions.paging"
+        - $ref: "#/components/parameters/MetadataImportParams.preheatMode"
+        - $ref: "#/components/parameters/WebOptions.rootJunction"
+        - $ref: "#/components/parameters/MetadataImportParams.skipSharing"
+        - $ref: "#/components/parameters/MetadataImportParams.skipTranslation"
+        - $ref: "#/components/parameters/MetadataImportParams.skipValidation"
+        - $ref: "#/components/parameters/MetadataImportParams.user"
+        - $ref: "#/components/parameters/MetadataImportParams.userOverrideMode"
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json-patch+json: 
+              schema: 
+                $ref: "#/components/schemas/BulkJsonPatch"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{id}/invite: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.resendInvite
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: id
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{id}/reset: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.resetToInvite
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: id
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}: 
+      get: 
+        description: |-
+          View a User
+        operationId: User.getObject
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: fields
+          in: query
+          description: |-
+            Limit the response to specific field(s).   
+            See [Metadata-field-filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_field_filter).
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - name: filter
+          in: query
+          description: |-
+            Apply filter operations to the returned list of metadata.   
+            See [Metadata-object-filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_object_filter).
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - $ref: "#/components/parameters/WebOptions.page"
+        - $ref: "#/components/parameters/WebOptions.pageSize"
+        - $ref: "#/components/parameters/WebOptions.paging"
+        - $ref: "#/components/parameters/WebOptions.rootJunction"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/User"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      put: 
+        description: |-
+          [no description yet]
+        operationId: User.putJsonObject+putXmlObject+putJsonObject+putXmlObject
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - $ref: "#/components/parameters/MetadataImportParams.async"
+        - $ref: "#/components/parameters/MetadataImportParams.atomicMode"
+        - $ref: "#/components/parameters/MetadataImportParams.flushMode"
+        - $ref: "#/components/parameters/MetadataImportParams.identifier"
+        - $ref: "#/components/parameters/MetadataImportParams.importMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importReportMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importStrategy"
+        - $ref: "#/components/parameters/MetadataImportParams.metadataSyncImport"
+        - $ref: "#/components/parameters/MetadataImportParams.overrideUser"
+        - $ref: "#/components/parameters/MetadataImportParams.preheatMode"
+        - $ref: "#/components/parameters/MetadataImportParams.skipSharing"
+        - $ref: "#/components/parameters/MetadataImportParams.skipTranslation"
+        - $ref: "#/components/parameters/MetadataImportParams.skipValidation"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        - $ref: "#/components/parameters/MetadataImportParams.user"
+        - $ref: "#/components/parameters/MetadataImportParams.userOverrideMode"
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/User"
+            application/xml: 
+              schema: 
+                $ref: "#/components/schemas/User"
+            text/xml: 
+              schema: 
+                $ref: "#/components/schemas/User"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      patch: 
+        description: |-
+          [no description yet]
+        operationId: User.patchObject
+        tags: 
+        - management
+        - user
+        parameters: 
+        - $ref: "#/components/parameters/MetadataImportParams.async"
+        - $ref: "#/components/parameters/MetadataImportParams.atomicMode"
+        - $ref: "#/components/parameters/MetadataImportParams.flushMode"
+        - $ref: "#/components/parameters/MetadataImportParams.identifier"
+        - $ref: "#/components/parameters/MetadataImportParams.importMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importReportMode"
+        - $ref: "#/components/parameters/MetadataImportParams.importStrategy"
+        - $ref: "#/components/parameters/MetadataImportParams.metadataSyncImport"
+        - $ref: "#/components/parameters/MetadataImportParams.overrideUser"
+        - $ref: "#/components/parameters/WebOptions.page"
+        - $ref: "#/components/parameters/WebOptions.pageSize"
+        - $ref: "#/components/parameters/WebOptions.paging"
+        - $ref: "#/components/parameters/MetadataImportParams.preheatMode"
+        - $ref: "#/components/parameters/WebOptions.rootJunction"
+        - $ref: "#/components/parameters/MetadataImportParams.skipSharing"
+        - $ref: "#/components/parameters/MetadataImportParams.skipTranslation"
+        - $ref: "#/components/parameters/MetadataImportParams.skipValidation"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        - $ref: "#/components/parameters/MetadataImportParams.user"
+        - $ref: "#/components/parameters/MetadataImportParams.userOverrideMode"
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json-patch+json: 
+              schema: 
+                $ref: "#/components/schemas/JsonPatch"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      delete: 
+        description: |-
+          Deletes the User provided by ID.
+        operationId: User.deleteObject
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              A message envelop containing the report detailing the deletion outcome.
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/disabled: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.disableUser
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+    /users/{uid}/enabled: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.enableUser
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+    /users/{uid}/expired: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.expireUser
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: date
+          in: query
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: date-time
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+    /users/{uid}/favorite: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.setAsFavorite
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      delete: 
+        description: |-
+          [no description yet]
+        operationId: User.removeAsFavorite
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/gist: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectGist+getObjectGistAsCsv
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - $ref: "#/components/parameters/GistParams.absoluteUrls"
+        - $ref: "#/components/parameters/GistParams.auto"
+        - $ref: "#/components/parameters/GistParams.describe"
+        - $ref: "#/components/parameters/GistParams.fields"
+        - $ref: "#/components/parameters/GistParams.filter"
+        - $ref: "#/components/parameters/GistParams.headless"
+        - $ref: "#/components/parameters/GistParams.inverse"
+        - $ref: "#/components/parameters/GistParams.locale"
+        - $ref: "#/components/parameters/GistParams.order"
+        - $ref: "#/components/parameters/GistParams.page"
+        - $ref: "#/components/parameters/GistParams.pageListName"
+        - $ref: "#/components/parameters/GistParams.pageSize"
+        - $ref: "#/components/parameters/GistParams.references"
+        - $ref: "#/components/parameters/GistParams.rootJunction"
+        - $ref: "#/components/parameters/GistParams.total"
+        - $ref: "#/components/parameters/GistParams.totalPages"
+        - $ref: "#/components/parameters/GistParams.translate"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  type: object
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/gist.csv: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectGistAsCsv
+        tags: 
+        - management
+        - user
+        parameters: 
+        - $ref: "#/components/parameters/GistParams.absoluteUrls"
+        - $ref: "#/components/parameters/GistParams.auto"
+        - $ref: "#/components/parameters/GistParams.describe"
+        - $ref: "#/components/parameters/GistParams.fields"
+        - $ref: "#/components/parameters/GistParams.filter"
+        - $ref: "#/components/parameters/GistParams.headless"
+        - $ref: "#/components/parameters/GistParams.inverse"
+        - $ref: "#/components/parameters/GistParams.locale"
+        - $ref: "#/components/parameters/GistParams.order"
+        - $ref: "#/components/parameters/GistParams.page"
+        - $ref: "#/components/parameters/GistParams.pageListName"
+        - $ref: "#/components/parameters/GistParams.pageSize"
+        - $ref: "#/components/parameters/GistParams.references"
+        - $ref: "#/components/parameters/GistParams.rootJunction"
+        - $ref: "#/components/parameters/GistParams.total"
+        - $ref: "#/components/parameters/GistParams.totalPages"
+        - $ref: "#/components/parameters/GistParams.translate"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/replica: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.replicateUser
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/sharing: 
+      put: 
+        description: |-
+          [no description yet]
+        operationId: User.setSharing
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Sharing"
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/subscriber: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.subscribe
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      delete: 
+        description: |-
+          [no description yet]
+        operationId: User.unsubscribe
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/translations: 
+      put: 
+        description: |-
+          [no description yet]
+        operationId: User.replaceTranslations
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                required: 
+                - translations
+                properties: 
+                  translations: 
+                    type: array
+                    items: 
+                      $ref: "#/components/schemas/Translation"
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/twoFA/disabled: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.disableTwoFa
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/unexpired: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.unexpireUser
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "204": 
+            description: |-
+              [no description yet]
+    /users/{uid}/{property}: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectProperty
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: fields
+          in: query
+          description: |-
+            Limit the response to specific field(s).   
+            See [Metadata-field-filter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_metadata_field_filter).
+          required: false
+          schema: 
+            type: array
+            items: 
+              type: string
+        - $ref: "#/components/parameters/TranslateParams.locale"
+        - $ref: "#/components/parameters/WebOptions.page"
+        - $ref: "#/components/parameters/WebOptions.pageSize"
+        - $ref: "#/components/parameters/WebOptions.paging"
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        - $ref: "#/components/parameters/WebOptions.rootJunction"
+        - $ref: "#/components/parameters/TranslateParams.translate"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  type: object
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.addCollectionItemsJson+addCollectionItemsXml
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/IdentifiableObjects"
+            application/xml: 
+              schema: 
+                $ref: "#/components/schemas/IdentifiableObjects"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      put: 
+        description: |-
+          [no description yet]
+        operationId: User.replaceCollectionItemsJson+replaceCollectionItemsXml
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/IdentifiableObjects"
+            application/xml: 
+              schema: 
+                $ref: "#/components/schemas/IdentifiableObjects"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      delete: 
+        description: |-
+          [no description yet]
+        operationId: User.deleteCollectionItemsJson+deleteCollectionItemsXml
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        requestBody: 
+          description: |-
+            [no description yet]
+          required: false
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/IdentifiableObjects"
+            application/xml: 
+              schema: 
+                $ref: "#/components/schemas/IdentifiableObjects"
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/{property}/gist: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectPropertyGist+getObjectPropertyGistAsCsv
+        tags: 
+        - management
+        - user
+        - synthetic
+        parameters: 
+        - $ref: "#/components/parameters/GistParams.absoluteUrls"
+        - $ref: "#/components/parameters/GistParams.auto"
+        - $ref: "#/components/parameters/GistParams.describe"
+        - $ref: "#/components/parameters/GistParams.fields"
+        - $ref: "#/components/parameters/GistParams.filter"
+        - $ref: "#/components/parameters/GistParams.headless"
+        - $ref: "#/components/parameters/GistParams.inverse"
+        - $ref: "#/components/parameters/GistParams.locale"
+        - $ref: "#/components/parameters/GistParams.order"
+        - $ref: "#/components/parameters/GistParams.page"
+        - $ref: "#/components/parameters/GistParams.pageListName"
+        - $ref: "#/components/parameters/GistParams.pageSize"
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - $ref: "#/components/parameters/GistParams.references"
+        - $ref: "#/components/parameters/GistParams.rootJunction"
+        - $ref: "#/components/parameters/GistParams.total"
+        - $ref: "#/components/parameters/GistParams.totalPages"
+        - $ref: "#/components/parameters/GistParams.translate"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  oneOf: 
+                  - type: object
+                  - type: array
+                    items: {}
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/{property}/gist.csv: 
+      get: 
+        description: |-
+          [no description yet]
+        operationId: User.getObjectPropertyGistAsCsv
+        tags: 
+        - management
+        - user
+        parameters: 
+        - $ref: "#/components/parameters/GistParams.absoluteUrls"
+        - $ref: "#/components/parameters/GistParams.auto"
+        - $ref: "#/components/parameters/GistParams.describe"
+        - $ref: "#/components/parameters/GistParams.fields"
+        - $ref: "#/components/parameters/GistParams.filter"
+        - $ref: "#/components/parameters/GistParams.headless"
+        - $ref: "#/components/parameters/GistParams.inverse"
+        - $ref: "#/components/parameters/GistParams.locale"
+        - $ref: "#/components/parameters/GistParams.order"
+        - $ref: "#/components/parameters/GistParams.page"
+        - $ref: "#/components/parameters/GistParams.pageListName"
+        - $ref: "#/components/parameters/GistParams.pageSize"
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - $ref: "#/components/parameters/GistParams.references"
+        - $ref: "#/components/parameters/GistParams.rootJunction"
+        - $ref: "#/components/parameters/GistParams.total"
+        - $ref: "#/components/parameters/GistParams.totalPages"
+        - $ref: "#/components/parameters/GistParams.translate"
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              text/csv: 
+                schema: 
+                  type: string
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              text/csv: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+    /users/{uid}/{property}/{itemId}: 
+      post: 
+        description: |-
+          [no description yet]
+        operationId: User.addCollectionItem
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: itemId
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+      delete: 
+        description: |-
+          [no description yet]
+        operationId: User.deleteCollectionItem
+        tags: 
+        - management
+        - user
+        parameters: 
+        - name: itemId
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+        - name: property
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            enum: 
+            - access
+            - accountExpiry
+            - attributeValues
+            - avatar
+            - birthday
+            - catDimensionConstraints
+            - code
+            - cogsDimensionConstraints
+            - created
+            - createdBy
+            - dataViewMaxOrganisationUnitLevel
+            - dataViewOrganisationUnits
+            - disabled
+            - displayName
+            - education
+            - email
+            - employer
+            - externalAuth
+            - facebookMessenger
+            - favorite
+            - favorites
+            - firstName
+            - gender
+            - href
+            - id
+            - interests
+            - introduction
+            - invitation
+            - jobTitle
+            - languages
+            - lastCheckedInterpretations
+            - lastLogin
+            - lastUpdated
+            - lastUpdatedBy
+            - ldapId
+            - nationality
+            - openId
+            - organisationUnits
+            - password
+            - passwordLastUpdated
+            - phoneNumber
+            - selfRegistered
+            - settings
+            - sharing
+            - skype
+            - surname
+            - teiSearchOrganisationUnits
+            - telegram
+            - translations
+            - twitter
+            - twoFactorEnabled
+            - user
+            - userCredentials
+            - userGroups
+            - userRoles
+            - username
+            - welcomeMessage
+            - whatsApp
+        - name: uid
+          in: path
+          description: |-
+            [no description yet]
+          required: true
+          schema: 
+            type: string
+            format: uid
+            pattern: ^[0-9a-zA-Z]{11}$
+            minLength: 11
+            maxLength: 11
+            example: |-
+              r87xh9Xn8ON
+            description: |-
+              A UID for an User object  
+              (Java name `org.hisp.dhis.user.User`)
+        responses: 
+          "200": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "400": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "403": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "404": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+          "409": 
+            description: |-
+              [no description yet]
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/WebMessage"
+  components: 
+    securitySchemes: 
+      basicAuth: 
+        type: http
+        scheme: basic
+    schemas: 
+      Access: 
+        type: object
+        properties: 
+          data: 
+            $ref: "#/components/schemas/AccessData"
+          delete: 
+            type: boolean
+          externalize: 
+            type: boolean
+          manage: 
+            type: boolean
+          read: 
+            type: boolean
+          update: 
+            type: boolean
+          write: 
+            type: boolean
+      AccessData: 
+        type: object
+        properties: 
+          read: 
+            type: boolean
+          write: 
+            type: boolean
+      AddOperation: 
+        type: object
+        properties: 
+          op: 
+            type: string
+          path: 
+            type: string
+          value: 
+            type: object
+      AttributeValue: 
+        type: object
+        properties: 
+          attribute: 
+            type: object
+            required: 
+            - id
+            properties: 
+              id: 
+                type: string
+                format: uid
+                pattern: ^[0-9a-zA-Z]{11}$
+                minLength: 11
+                maxLength: 11
+                example: |-
+                  ce5CG4iu357
+            description: |-
+              A UID reference to a Attribute  
+              (Java name `org.hisp.dhis.attribute.Attribute`)
+          value: 
+            type: string
+      BulkJsonPatch: 
+        type: object
+        properties: 
+          patch: 
+            $ref: "#/components/schemas/JsonPatch"
+          targetIds: 
+            type: object
+            additionalProperties: 
+              type: array
+              items: 
+                type: string
+      GistPager: 
+        type: object
+        required: 
+        - pageSize
+        - page
+        properties: 
+          nextPage: 
+            type: string
+          page: 
+            type: integer
+            format: int32
+          pageCount: 
+            type: integer
+            format: int32
+          pageSize: 
+            type: integer
+            format: int32
+          prevPage: 
+            type: string
+          total: 
+            type: integer
+            format: int32
+      IdentifiableObjects: 
+        type: object
+        properties: 
+          additions: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    q8DC41fB6W6
+              description: |-
+                A UID reference to a any type of object  
+                (Java name `org.hisp.dhis.common.BaseIdentifiableObject`)
+          deletions: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    q8DC41fB6W6
+              description: |-
+                A UID reference to a any type of object  
+                (Java name `org.hisp.dhis.common.BaseIdentifiableObject`)
+          identifiableObjects: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    q8DC41fB6W6
+              description: |-
+                A UID reference to a any type of object  
+                (Java name `org.hisp.dhis.common.BaseIdentifiableObject`)
+      JsonPatch: 
+        type: object
+        properties: 
+          operations: 
+            type: array
+            items: 
+              oneOf: 
+              - $ref: "#/components/schemas/AddOperation"
+              - $ref: "#/components/schemas/RemoveOperation"
+              - $ref: "#/components/schemas/RemoveByIdOperation"
+              - $ref: "#/components/schemas/ReplaceOperation"
+      Pager: 
+        type: object
+        required: 
+        - pageCount
+        - total
+        - pageSize
+        - page
+        properties: 
+          nextPage: 
+            type: string
+          page: 
+            type: integer
+            format: int32
+          pageCount: 
+            type: integer
+            format: int32
+          pageSize: 
+            type: integer
+            format: int32
+          prevPage: 
+            type: string
+          total: 
+            type: integer
+            format: int64
+      RemoveByIdOperation: 
+        type: object
+        properties: 
+          op: 
+            type: string
+          path: 
+            type: string
+      RemoveOperation: 
+        type: object
+        properties: 
+          op: 
+            type: string
+          path: 
+            type: string
+      ReplaceOperation: 
+        type: object
+        properties: 
+          op: 
+            type: string
+          path: 
+            type: string
+          value: 
+            type: object
+      Sharing: 
+        type: object
+        properties: 
+          external: 
+            type: boolean
+          owner: 
+            type: string
+          public: 
+            type: string
+          userGroups: 
+            type: object
+            additionalProperties: 
+              $ref: "#/components/schemas/UserGroupAccess"
+          users: 
+            type: object
+            additionalProperties: 
+              $ref: "#/components/schemas/UserAccess"
+      Translation: 
+        type: object
+        properties: 
+          locale: 
+            type: string
+          property: 
+            type: string
+          value: 
+            type: string
+      User: 
+        type: object
+        properties: 
+          access: 
+            $ref: "#/components/schemas/Access"
+          accountExpiry: 
+            type: string
+            format: date-time
+          attributeValues: 
+            type: array
+            items: 
+              $ref: "#/components/schemas/AttributeValue"
+          avatar: 
+            type: object
+            required: 
+            - id
+            properties: 
+              id: 
+                type: string
+                format: uid
+                pattern: ^[0-9a-zA-Z]{11}$
+                minLength: 11
+                maxLength: 11
+                example: |-
+                  k6ms4Sj3LV2
+            description: |-
+              A UID reference to a FileResource  
+              (Java name `org.hisp.dhis.fileresource.FileResource`)
+          birthday: 
+            type: string
+            format: date-time
+          catDimensionConstraints: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    dU4oD3ey2A6
+              description: |-
+                A UID reference to a Category  
+                (Java name `org.hisp.dhis.category.Category`)
+          code: 
+            type: string
+          cogsDimensionConstraints: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    r8EC4cs3j3k
+              description: |-
+                A UID reference to a CategoryOptionGroupSet  
+                (Java name `org.hisp.dhis.category.CategoryOptionGroupSet`)
+          created: 
+            type: string
+            format: date-time
+          createdBy: 
+            type: object
+            required: 
+            - id
+            properties: 
+              id: 
+                type: string
+                format: uid
+                pattern: ^[0-9a-zA-Z]{11}$
+                minLength: 11
+                maxLength: 11
+                example: |-
+                  r87xh9Xn8ON
+            description: |-
+              A UID reference to a User  
+              (Java name `org.hisp.dhis.user.User`)
+          dataViewMaxOrganisationUnitLevel: 
+            type: integer
+            format: int32
+          dataViewOrganisationUnits: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    xj2sS1ni0Q9
+              description: |-
+                A UID reference to a OrganisationUnit  
+                (Java name `org.hisp.dhis.organisationunit.OrganisationUnit`)
+          disabled: 
+            type: boolean
+          displayName: 
+            type: string
+          education: 
+            type: string
+          email: 
+            type: string
+          employer: 
+            type: string
+          externalAuth: 
+            type: boolean
+          facebookMessenger: 
+            type: string
+          favorite: 
+            type: boolean
+          favorites: 
+            type: array
+            items: 
+              type: string
+          firstName: 
+            type: string
+          gender: 
+            type: string
+          href: 
+            type: string
+          id: 
+            type: string
+          interests: 
+            type: string
+          introduction: 
+            type: string
+          invitation: 
+            type: boolean
+          jobTitle: 
+            type: string
+          languages: 
+            type: string
+          lastCheckedInterpretations: 
+            type: string
+            format: date-time
+          lastLogin: 
+            type: string
+            format: date-time
+          lastUpdated: 
+            type: string
+            format: date-time
+          lastUpdatedBy: 
+            type: object
+            required: 
+            - id
+            properties: 
+              id: 
+                type: string
+                format: uid
+                pattern: ^[0-9a-zA-Z]{11}$
+                minLength: 11
+                maxLength: 11
+                example: |-
+                  r87xh9Xn8ON
+            description: |-
+              A UID reference to a User  
+              (Java name `org.hisp.dhis.user.User`)
+          ldapId: 
+            type: string
+          nationality: 
+            type: string
+          openId: 
+            type: string
+          organisationUnits: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    xj2sS1ni0Q9
+              description: |-
+                A UID reference to a OrganisationUnit  
+                (Java name `org.hisp.dhis.organisationunit.OrganisationUnit`)
+          password: 
+            type: string
+          passwordLastUpdated: 
+            type: string
+            format: date-time
+          phoneNumber: 
+            type: string
+          selfRegistered: 
+            type: boolean
+          settings: 
+            $ref: "#/components/schemas/UserSettings"
+          sharing: 
+            $ref: "#/components/schemas/Sharing"
+          skype: 
+            type: string
+          surname: 
+            type: string
+          teiSearchOrganisationUnits: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    xj2sS1ni0Q9
+              description: |-
+                A UID reference to a OrganisationUnit  
+                (Java name `org.hisp.dhis.organisationunit.OrganisationUnit`)
+          telegram: 
+            type: string
+          translations: 
+            type: array
+            items: 
+              $ref: "#/components/schemas/Translation"
+          twitter: 
+            type: string
+          twoFactorEnabled: 
+            type: boolean
+          user: 
+            type: object
+            required: 
+            - id
+            properties: 
+              id: 
+                type: string
+                format: uid
+                pattern: ^[0-9a-zA-Z]{11}$
+                minLength: 11
+                maxLength: 11
+                example: |-
+                  r87xh9Xn8ON
+            description: |-
+              A UID reference to a User  
+              (Java name `org.hisp.dhis.user.User`)
+          userCredentials: 
+            $ref: "#/components/schemas/UserCredentialsDto"
+          userGroups: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    wd5C82cv3p6
+              description: |-
+                A UID reference to a UserGroup  
+                (Java name `org.hisp.dhis.user.UserGroup`)
+          userRoles: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    vc4Bi38eb5R
+              description: |-
+                A UID reference to a UserRole  
+                (Java name `org.hisp.dhis.user.UserRole`)
+          username: 
+            type: string
+          welcomeMessage: 
+            type: string
+          whatsApp: 
+            type: string
+      UserAccess: 
+        type: object
+        properties: 
+          access: 
+            type: string
+          displayName: 
+            type: string
+          id: 
+            type: string
+      UserCredentialsDto: 
+        type: object
+        properties: 
+          access: 
+            $ref: "#/components/schemas/Access"
+          accountExpiry: 
+            type: string
+            format: date-time
+          catDimensionConstraints: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    dU4oD3ey2A6
+              description: |-
+                A UID reference to a Category  
+                (Java name `org.hisp.dhis.category.Category`)
+          cogsDimensionConstraints: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    r8EC4cs3j3k
+              description: |-
+                A UID reference to a CategoryOptionGroupSet  
+                (Java name `org.hisp.dhis.category.CategoryOptionGroupSet`)
+          disabled: 
+            type: boolean
+          externalAuth: 
+            type: boolean
+          id: 
+            type: string
+          idToken: 
+            type: string
+          invitation: 
+            type: boolean
+          lastLogin: 
+            type: string
+            format: date-time
+          ldapId: 
+            type: string
+          openId: 
+            type: string
+          password: 
+            type: string
+          passwordLastUpdated: 
+            type: string
+            format: date-time
+          previousPasswords: 
+            type: array
+            items: 
+              type: string
+          restoreExpiry: 
+            type: string
+            format: date-time
+          restoreToken: 
+            type: string
+          selfRegistered: 
+            type: boolean
+          sharing: 
+            $ref: "#/components/schemas/Sharing"
+          twoFA: 
+            type: boolean
+          uid: 
+            type: string
+          userRoles: 
+            type: array
+            items: 
+              type: object
+              required: 
+              - id
+              properties: 
+                id: 
+                  type: string
+                  format: uid
+                  pattern: ^[0-9a-zA-Z]{11}$
+                  minLength: 11
+                  maxLength: 11
+                  example: |-
+                    vc4Bi38eb5R
+              description: |-
+                A UID reference to a UserRole  
+                (Java name `org.hisp.dhis.user.UserRole`)
+          username: 
+            type: string
+          uuid: 
+            type: string
+      UserGroupAccess: 
+        type: object
+        properties: 
+          access: 
+            type: string
+          displayName: 
+            type: string
+          id: 
+            type: string
+      UserSettings: 
+        type: object
+        required: 
+        - analysisDisplayProperty
+        properties: 
+          analysisDisplayProperty: 
+            type: string
+            enum: 
+            - NAME
+            - SHORTNAME
+          dbLocale: 
+            type: string
+          messageEmailNotification: 
+            type: boolean
+          messageSmsNotification: 
+            type: boolean
+          style: 
+            type: string
+          trackerDashboardLayout: 
+            type: string
+          uiLocale: 
+            type: string
+      WebMessage: 
+        type: object
+        required: 
+        - errorCode
+        - status
+        properties: 
+          code: 
+            type: integer
+            format: int32
+          devMessage: 
+            type: string
+          errorCode: 
+            type: string
+            enum: 
+            - E1000
+            - E1001
+            - E1002
+            - E1003
+            - E1004
+            - E1005
+            - E1006
+            - E1100
+            - E1101
+            - E1102
+            - E1103
+            - E1104
+            - E1105
+            - E1106
+            - E1107
+            - E1108
+            - E1109
+            - E1110
+            - E1111
+            - E1112
+            - E1113
+            - E1114
+            - E1115
+            - E1116
+            - E1117
+            - E1118
+            - E1119
+            - E1120
+            - E1500
+            - E1501
+            - E1502
+            - E1503
+            - E1504
+            - E1510
+            - E1511
+            - E1512
+            - E1513
+            - E1514
+            - E1515
+            - E1516
+            - E1520
+            - E1521
+            - E1522
+            - E1523
+            - E1530
+            - E1531
+            - E1532
+            - E1533
+            - E1540
+            - E1541
+            - E1542
+            - E1543
+            - E2000
+            - E2001
+            - E2002
+            - E2003
+            - E2004
+            - E2005
+            - E2006
+            - E2007
+            - E2008
+            - E2009
+            - E2010
+            - E2011
+            - E2012
+            - E2013
+            - E2014
+            - E2015
+            - E2016
+            - E2017
+            - E2018
+            - E2019
+            - E2020
+            - E2021
+            - E2022
+            - E2023
+            - E2024
+            - E2025
+            - E2026
+            - E2027
+            - E2028
+            - E2029
+            - E2030
+            - E2031
+            - E2032
+            - E2033
+            - E2034
+            - E2035
+            - E2036
+            - E2037
+            - E2038
+            - E2039
+            - E2040
+            - E2041
+            - E2042
+            - E2043
+            - E2044
+            - E2045
+            - E2200
+            - E2201
+            - E2202
+            - E2203
+            - E2204
+            - E2205
+            - E2206
+            - E2207
+            - E2208
+            - E2209
+            - E2210
+            - E2211
+            - E2212
+            - E2213
+            - E2300
+            - E2301
+            - E3000
+            - E3001
+            - E3002
+            - E3003
+            - E3004
+            - E3005
+            - E3006
+            - E3008
+            - E3009
+            - E3010
+            - E3011
+            - E3012
+            - E3013
+            - E3014
+            - E3015
+            - E3016
+            - E3017
+            - E3018
+            - E3019
+            - E3020
+            - E3021
+            - E3022
+            - E3023
+            - E3024
+            - E3025
+            - E3026
+            - E3027
+            - E3028
+            - E3029
+            - E3030
+            - E3031
+            - E3032
+            - E3040
+            - E3041
+            - E4000
+            - E4001
+            - E4002
+            - E4003
+            - E4004
+            - E4005
+            - E4006
+            - E4007
+            - E4008
+            - E4009
+            - E4010
+            - E4011
+            - E4012
+            - E4013
+            - E4014
+            - E4015
+            - E4016
+            - E4017
+            - E4018
+            - E4019
+            - E4020
+            - E4021
+            - E4022
+            - E4023
+            - E4024
+            - E4025
+            - E4026
+            - E4027
+            - E4028
+            - E4029
+            - E4030
+            - E4031
+            - E4032
+            - E4033
+            - E4034
+            - E4035
+            - E4036
+            - E4037
+            - E4038
+            - E4039
+            - E4040
+            - E4041
+            - E4042
+            - E4043
+            - E4044
+            - E4045
+            - E4046
+            - E4047
+            - E4048
+            - E4049
+            - E4054
+            - E4056
+            - E4055
+            - E4050
+            - E4051
+            - E4052
+            - E4053
+            - E4057
+            - E4058
+            - E4060
+            - E4061
+            - E4062
+            - E4063
+            - E4064
+            - E4065
+            - E4066
+            - E4067
+            - E4068
+            - E4069
+            - E4070
+            - E4300
+            - E4301
+            - E4302
+            - E4303
+            - E4304
+            - E4305
+            - E4306
+            - E4307
+            - E4308
+            - E4309
+            - E4310
+            - E4311
+            - E4312
+            - E4313
+            - E4314
+            - E4315
+            - E5000
+            - E5001
+            - E5002
+            - E5003
+            - E5004
+            - E5005
+            - E5006
+            - E5007
+            - E5008
+            - E6000
+            - E6001
+            - E6002
+            - E6003
+            - E6004
+            - E6005
+            - E6006
+            - E6007
+            - E6008
+            - E6009
+            - E6010
+            - E6011
+            - E6012
+            - E6013
+            - E6014
+            - E6015
+            - E6016
+            - E6017
+            - E6018
+            - E6019
+            - E6020
+            - E6021
+            - E6022
+            - E6100
+            - E6101
+            - E6102
+            - E6103
+            - E6200
+            - E6201
+            - E6202
+            - E6203
+            - E6204
+            - E6205
+            - E6206
+            - E6207
+            - E6208
+            - E6209
+            - E6210
+            - E6211
+            - E6300
+            - E6301
+            - E6302
+            - E6303
+            - E6304
+            - E6305
+            - E7000
+            - E7003
+            - E7004
+            - E7005
+            - E7006
+            - E7007
+            - E7010
+            - E7020
+            - E7021
+            - E7022
+            - E7023
+            - E7024
+            - E7100
+            - E7101
+            - E7102
+            - E7103
+            - E7104
+            - E7105
+            - E7106
+            - E7107
+            - E7108
+            - E7109
+            - E7110
+            - E7111
+            - E7112
+            - E7113
+            - E7114
+            - E7115
+            - E7116
+            - E7117
+            - E7118
+            - E7119
+            - E7120
+            - E7121
+            - E7122
+            - E7123
+            - E7124
+            - E7125
+            - E7126
+            - E7127
+            - E7128
+            - E7129
+            - E7130
+            - E7131
+            - E7132
+            - E7133
+            - E7134
+            - E7135
+            - E7137
+            - E7138
+            - E7139
+            - E7140
+            - E7141
+            - E7142
+            - E7143
+            - E7144
+            - E7145
+            - E7146
+            - E7180
+            - E7181
+            - E7200
+            - E7201
+            - E7202
+            - E7203
+            - E7204
+            - E7205
+            - E7206
+            - E7207
+            - E7208
+            - E7209
+            - E7210
+            - E7211
+            - E7212
+            - E7213
+            - E7214
+            - E7215
+            - E7216
+            - E7217
+            - E7218
+            - E7219
+            - E7220
+            - E7221
+            - E7222
+            - E7223
+            - E7224
+            - E7225
+            - E7226
+            - E7227
+            - E7228
+            - E7229
+            - E7230
+            - E7231
+            - E7232
+            - E7234
+            - E7235
+            - E7236
+            - E7237
+            - E7238
+            - E7250
+            - E7251
+            - E7300
+            - E7301
+            - E7302
+            - E7400
+            - E7500
+            - E7501
+            - E7502
+            - E7503
+            - E7600
+            - E7601
+            - E7602
+            - E7603
+            - E7604
+            - E7610
+            - E7611
+            - E7612
+            - E7613
+            - E7614
+            - E7615
+            - E7616
+            - E7617
+            - E7618
+            - E7619
+            - E7620
+            - E7621
+            - E7622
+            - E7630
+            - E7631
+            - E7632
+            - E7633
+            - E7634
+            - E7635
+            - E7636
+            - E7637
+            - E7638
+            - E7639
+            - E7640
+            - E7641
+            - E7642
+            - E7643
+            - E7644
+            - E7645
+            - E7650
+            - E7651
+            - E7652
+            - E7653
+            - E7700
+            - E7701
+            - E7702
+            - E7703
+            - E7704
+            - E7705
+            - E7706
+            - E7707
+            - E7708
+            - E7709
+            - E7710
+            - E7711
+            - E7712
+          httpStatus: 
+            type: string
+          httpStatusCode: 
+            type: integer
+            format: int32
+          message: 
+            type: string
+          response: 
+            type: object
+          status: 
+            type: string
+            enum: 
+            - OK
+            - WARNING
+            - ERROR
+      PropertyNames_User: 
+        type: string
+        enum: 
+        - access
+        - accountExpiry
+        - attributeValues
+        - avatar
+        - birthday
+        - catDimensionConstraints
+        - code
+        - cogsDimensionConstraints
+        - created
+        - createdBy
+        - dataViewMaxOrganisationUnitLevel
+        - dataViewOrganisationUnits
+        - disabled
+        - displayName
+        - education
+        - email
+        - employer
+        - externalAuth
+        - facebookMessenger
+        - favorite
+        - favorites
+        - firstName
+        - gender
+        - href
+        - id
+        - interests
+        - introduction
+        - invitation
+        - jobTitle
+        - languages
+        - lastCheckedInterpretations
+        - lastLogin
+        - lastUpdated
+        - lastUpdatedBy
+        - ldapId
+        - nationality
+        - openId
+        - organisationUnits
+        - password
+        - passwordLastUpdated
+        - phoneNumber
+        - selfRegistered
+        - settings
+        - sharing
+        - skype
+        - surname
+        - teiSearchOrganisationUnits
+        - telegram
+        - translations
+        - twitter
+        - twoFactorEnabled
+        - user
+        - userCredentials
+        - userGroups
+        - userRoles
+        - username
+        - welcomeMessage
+        - whatsApp
+      UID_User: 
+        type: string
+        format: uid
+        pattern: ^[0-9a-zA-Z]{11}$
+        minLength: 11
+        maxLength: 11
+        example: |-
+          r87xh9Xn8ON
+        description: |-
+          A UID for an User object  
+          (Java name `org.hisp.dhis.user.User`)
+    parameters: 
+      GistParams.absoluteUrls: 
+        name: absoluteUrls
+        in: query
+        description: |-
+          Use absolute (`true`) or relative URLs (`false`, default) when linking to other objects.  
+          See [Gist absoluteUrls parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_absoluteUrls).
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      GistParams.auto: 
+        name: auto
+        in: query
+        description: |-
+          The extent of fields to include when no specific list of fields is provided using `fields` so that  that listed fields are automatically determined.  
+          See [Gist auto parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#the-auto-parameter).
+        required: false
+        schema: 
+          type: string
+          enum: 
+          - XL
+          - L
+          - M
+          - S
+          - XS
+      GistParams.describe: 
+        name: describe
+        in: query
+        description: |-
+          When `true` the query is not executed but the planned execution is described back similar to using _describe_ in SQL/database context.
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      GistParams.fields: 
+        name: fields
+        in: query
+        description: |-
+          A comma seperated list of fields to include in the response. `*` includes all `auto` detected fields.  
+          See [Gist fields parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_fields).
+        required: false
+        schema: 
+          type: string
+      GistParams.filter: 
+        name: filter
+        in: query
+        description: |-
+          A comma seperated list of filters.  
+          See [Gist filter parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_filter).
+        required: false
+        schema: 
+          type: string
+      GistParams.headless: 
+        name: headless
+        in: query
+        description: |-
+          Endpoints returning a list by default wrap the items with an envelope containing the pager and the list, which is named according to the type of object listed.  
+          See [Gist headless parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_headless).
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      GistParams.inverse: 
+        name: inverse
+        in: query
+        description: |-
+          Inverse can be used in context of a collection field gist of the form /api/<object-type>/<object-id>/<field-name>/gist to not list all items that are contained in the member collection but all items that are not contained in the member collection.  
+          See [Gist inverse parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#the-inverse-parameter).
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      GistParams.locale: 
+        name: locale
+        in: query
+        description: |-
+          Switch translation language of display names. If not specified the translation language is the one configured in the users account settings.  
+          See [Gist locale parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_locale).
+        required: false
+        schema: 
+          type: string
+          default: 
+      GistParams.order: 
+        name: order
+        in: query
+        description: |-
+          To sort the list of items - one or more order expressions can be given.  
+          See [Gist order parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_order).
+        required: false
+        schema: 
+          type: string
+      GistParams.page: 
+        name: page
+        in: query
+        description: |-
+          The viewed page in paged list starting with 1 for the first page  
+          See [Gist page parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_page).
+        required: false
+        schema: 
+          type: integer
+          format: int32
+          default: 1
+      GistParams.pageListName: 
+        name: pageListName
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: string
+      GistParams.pageSize: 
+        name: pageSize
+        in: query
+        description: |-
+          The number of items on a page. Maximum is 1000 items.  
+          See [Gist pageSize parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_pageSize).
+        required: false
+        schema: 
+          type: integer
+          format: int32
+          default: 50
+      GistParams.references: 
+        name: references
+        in: query
+        description: |-
+          By default, the Gist API includes links to referenced objects. This can be disabled by using `references=false`.
+        required: false
+        schema: 
+          type: boolean
+          default: true
+      GistParams.rootJunction: 
+        name: rootJunction
+        in: query
+        description: |-
+          Combine `filter`s with `AND` (default) or `OR` logic combinator  
+          See [Gist rootJunction parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_rootJunction).
+        required: false
+        schema: 
+          type: string
+          default: AND
+          enum: 
+          - AND
+          - OR
+      GistParams.total: 
+        name: total
+        in: query
+        description: |-
+          By default, a gist query will not count the total number of matches should those exceed the `pageSize` limit.  
+          Using `total=true` the pager includes the total number of matches.  
+          See [Gist total parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_total).
+        required: false
+        schema: 
+          type: boolean
+      GistParams.totalPages: 
+        name: totalPages
+        in: query
+        description: |-
+          Get the total number of pages and entries by specifying `totalPages=true`. Defaults to `false`.
+        required: false
+        schema: 
+          type: boolean
+      GistParams.translate: 
+        name: translate
+        in: query
+        description: |-
+          Fields like _name_ or _shortName_ can be translated (internationalised).  
+          By default, any translatable field that has a translation is returned translated given that the user requesting the gist has an interface language configured.  
+          To return the plain non-translated field use `translate=false`.  
+          See [Gist translate parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata-gist.html#gist_parameters_translate).
+        required: false
+        schema: 
+          type: boolean
+          default: true
+      MetadataImportParams.async: 
+        name: async
+        in: query
+        description: |-
+          Asynchronous import, returns immediately with a _Location_ header pointing to the location of the _importReport_. The payload also contains a json object of the job created.
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      MetadataImportParams.atomicMode: 
+        name: atomicMode
+        in: query
+        description: |-
+          Sets atomic mode, in the old importer we always did a best effort import, which means that even if some references did not exist, we would still import (i.e. missing data elements on a data element group import). Default for new importer is to not allow this, and similar reject any validation errors. Setting the `NONE` mode emulated the old behavior.
+        required: false
+        schema: 
+          type: string
+          default: ALL
+          enum: 
+          - ALL
+          - NONE
+      MetadataImportParams.flushMode: 
+        name: flushMode
+        in: query
+        description: |-
+          Sets the flush mode, which controls when to flush the internal cache. It is strongly recommended to keep this to `AUTO` (which is the default). Only use `OBJECT` for debugging purposes, where you are seeing hibernate exceptions and want to pinpoint the exact place where the stack happens (hibernate will only throw when flushing, so it can be hard to know which object had issues).
+        required: false
+        schema: 
+          type: string
+          default: AUTO
+          enum: 
+          - OBJECT
+          - AUTO
+      MetadataImportParams.identifier: 
+        name: identifier
+        in: query
+        description: |-
+          Sets the identifier scheme to use for reference matching. `AUTO` means try `UID` first, then `CODE`.
+        required: false
+        schema: 
+          type: string
+          default: UID
+          enum: 
+          - UID
+          - CODE
+      MetadataImportParams.importMode: 
+        name: importMode
+        in: query
+        description: |-
+          Sets overall import mode, decides whether or not to only `VALIDATE` or also `COMMIT` the metadata, this has similar functionality as our old dryRun flag.
+        required: false
+        schema: 
+          type: string
+          default: COMMIT
+          enum: 
+          - COMMIT
+          - VALIDATE
+      MetadataImportParams.importReportMode: 
+        name: importReportMode
+        in: query
+        description: |-
+          Sets the `ImportReport` mode, controls how much is reported back after the import is done. `ERRORS` only includes ObjectReports for object which has errors. `FULL` returns an ObjectReport for all objects imported, and `DEBUG` returns the same plus a name for the object (if available).
+        required: false
+        schema: 
+          type: string
+          default: ERRORS
+          enum: 
+          - FULL
+          - ERRORS
+          - ERRORS_NOT_OWNER
+          - DEBUG
+      MetadataImportParams.importStrategy: 
+        name: importStrategy
+        in: query
+        description: |-
+          Sets import strategy, `CREATE_AND_UPDATE` will try and match on identifier, if it doesn't exist, it will create the object.
+        required: false
+        schema: 
+          type: string
+          default: CREATE_AND_UPDATE
+          enum: 
+          - CREATE
+          - UPDATE
+          - CREATE_AND_UPDATE
+          - DELETE
+          - SYNC
+          - NEW_AND_UPDATES
+          - NEW
+          - UPDATES
+          - DELETES
+      MetadataImportParams.metadataSyncImport: 
+        name: metadataSyncImport
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      MetadataImportParams.overrideUser: 
+        name: overrideUser
+        in: query
+        description: |-
+          If userOverrideMode is `SELECTED`, use this parameter to select the user you want override with.
+        required: false
+        schema: 
+          type: string
+          format: uid
+          pattern: ^[0-9a-zA-Z]{11}$
+          minLength: 11
+          maxLength: 11
+          example: |-
+            r87xh9Xn8ON
+          description: |-
+            A UID for an User object  
+            (Java name `org.hisp.dhis.user.User`)
+      MetadataImportParams.preheatMode: 
+        name: preheatMode
+        in: query
+        description: |-
+          Sets the preheater mode, used to signal if preheating should be done for `ALL` (as it was before with `preheatCache=true`) or do a more intelligent scan of the objects to see what to preheat (now the default), setting this to `NONE` is not recommended.
+        required: false
+        schema: 
+          type: string
+          default: REFERENCE
+          enum: 
+          - REFERENCE
+          - ALL
+          - NONE
+      MetadataImportParams.skipSharing: 
+        name: skipSharing
+        in: query
+        description: |-
+          Skip sharing properties, does not merge sharing when doing updates, and does not add user group access when creating new objects.
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      MetadataImportParams.skipTranslation: 
+        name: skipTranslation
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      MetadataImportParams.skipValidation: 
+        name: skipValidation
+        in: query
+        description: |-
+          Skip validation for import. **NOT RECOMMENDED**
+        required: false
+        schema: 
+          type: boolean
+          default: false
+      MetadataImportParams.user: 
+        name: user
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: string
+          format: uid
+          pattern: ^[0-9a-zA-Z]{11}$
+          minLength: 11
+          maxLength: 11
+          example: |-
+            r87xh9Xn8ON
+          description: |-
+            A UID for an User object  
+            (Java name `org.hisp.dhis.user.User`)
+      MetadataImportParams.userOverrideMode: 
+        name: userOverrideMode
+        in: query
+        description: |-
+          Allows you to override the user property of every object you are importing, the options are `NONE` (do nothing), `CURRENT` (use import user), `SELECTED` (select a specific user using overrideUser=X)
+        required: false
+        schema: 
+          type: string
+          default: NONE
+          enum: 
+          - NONE
+          - CURRENT
+          - SELECTED
+      OrderParams.orders: 
+        name: orders
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: array
+          items: 
+            type: string
+      TranslateParams.locale: 
+        name: locale
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: string
+      TranslateParams.translate: 
+        name: translate
+        in: query
+        description: |-
+          [no description yet]
+        required: false
+        schema: 
+          type: boolean
+          default: true
+      WebOptions.page: 
+        name: page
+        in: query
+        description: |-
+          Defines which page number to return.
+        required: false
+        schema: 
+          type: integer
+          format: int32
+      WebOptions.pageSize: 
+        name: pageSize
+        in: query
+        description: |-
+          Defines the number of elements to return for each page.
+        required: false
+        schema: 
+          type: integer
+          format: int32
+      WebOptions.paging: 
+        name: paging
+        in: query
+        description: |-
+          Indicates whether to return lists of elements in pages.
+        required: false
+        schema: 
+          type: boolean
+      WebOptions.rootJunction: 
+        name: rootJunction
+        in: query
+        description: |-
+          Combine filters with `AND` (default) or `OR`
+        required: false
+        schema: 
+          type: string
+          enum: 
+          - AND
+          - OR
