@@ -213,6 +213,7 @@ module.exports = {
             'data-project-color': '#393D4D',
             'data-project-logo': '/img/logo.png',
             'data-modal-title': 'DHIS2 Developers AI',
+            'data-user-analytics-fingerprint-enabled': 'true',
             'data-modal-disclaimer':
                 'Answers are AI generated based on the DHIS2 Documentation. Be aware it might not be 100% accurate or up-to-date, check the sources to know for sure.',
             async: true,
