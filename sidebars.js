@@ -192,6 +192,7 @@ module.exports = {
                                         'app-runtime/advanced/offline/useOnlineStatus',
                                     ],
                                 },
+                                'app-runtime/advanced/CustomDataProvider',
                                 'app-runtime/advanced/services',
                                 'app-runtime/advanced/DataEngine',
                                 'app-runtime/advanced/DataEngineLinks',
