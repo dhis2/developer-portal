@@ -215,7 +215,7 @@ module.exports = {
             'data-modal-title': 'DHIS2 Developers AI',
             'data-user-analytics-fingerprint-enabled': 'true',
             'data-modal-disclaimer':
-                'Answers are AI generated based on the DHIS2 Documentation. Be aware it might not be 100% accurate or up-to-date, check the sources to know for sure.',
+                'Answers are AI generated based on the DHIS2 Documentation. Be aware it might not be 100% accurate or up-to-date, check the sources to know for sure. Please note that all conversations are recorded by kapa.ai for quality and training purposes.',
             async: true,
         },
     ],
