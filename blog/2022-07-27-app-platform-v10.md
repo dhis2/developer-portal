@@ -1,7 +1,7 @@
 ---
 slug: 2022/07/app-platform-v10
 title: App-platform v10
-author_title: DHIS2 Core Team
+authors: core
 tags: [app platform, developer tools, webapp, announcement]
 ---
 

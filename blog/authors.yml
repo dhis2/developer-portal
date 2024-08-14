@@ -1,37 +1,48 @@
 austin:
     name: Austin McGee
+    title: DHIS2 Core Team
     url: https://github.com/amcgee
     image_url: https://github.com/amcgee.png
 
 jennifer:
     name: Jennifer Arnesen
+    title: DHIS2 Core Team
     url: https://github.com/jenniferarnesen
     image_url: https://github.com/jenniferarnesen.png
 
 joe:
     name: Joe Cooper
+    title: DHIS2 Core Team
     url: https://github.com/cooper-joe
     image_url: https://github.com/cooper-joe.png
 
 varl:
     name: Viktor Varland
+    title: DHIS2 Core Team
     url: https://github.com/varl
     image_url: https://github.com/varl.png
 
 claudemamo:
     name: Claude Mamo
+    title: DHIS2 Core Team
     url: https://github.com/cjmamo
     image_url: https://github.com/cjmamo.png
 
 kai:
     name: Kai Vandivier
+    title: DHIS2 Core Team
     url: https://github.com/KaiVandivier
     image_url: https://github.com/KaiVandivier.png
 rene:
     name: Rene Pot
+    title: DHIS2 Core Team
     url: https://github.com/Topener
     image_url: https://github.com/Topener.png
 birk:
     name: Birk Johansson
+    title: DHIS2 Core Team
     url: https://github.com/Birkbjo
     image_url: https://github.com/Birkbjo.png
+core:
+    name: DHIS2 Core Team
+    image_url: https://github.com/dhis2.png
