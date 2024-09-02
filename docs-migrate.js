@@ -150,5 +150,5 @@ migrateDocs({
     repo: 'https://github.com/dhis2/dhis2-mobile-ui.git',
     tempDir: '.mui-repo-temp',
     targetDir: './mobile/mobile-ui',
-    branch: 'develop'
+    branch: 'docs'
 })
