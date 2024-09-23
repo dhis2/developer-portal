@@ -28,6 +28,7 @@ docs/cli/cypress
 docs/app-runtime
 docs/cli/style
 docs/capture-plugins
+docs/ui
 
 # temp directories for copied docs
 .cli-repo-temp
@@ -35,3 +36,4 @@ docs/capture-plugins
 .cypress-repo-temp
 .ar-repo-temp
 .clistyle-repo-temp
+.ui-repo-temp

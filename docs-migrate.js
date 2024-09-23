@@ -5,6 +5,7 @@ const fs = require('fs-extra')
 const migrateDocs = ({
     repo,
     branch = 'master',
+    sourceDir = 'docs',
     tempDir,
     targetDir,
     extraFiles = [],
@@ -27,7 +28,7 @@ const migrateDocs = ({
 
         // Set up sparse checkout to retrieve only the 'docs' directory
         execSync('git sparse-checkout init')
-        execSync('git sparse-checkout set docs')
+        execSync(`git sparse-checkout add ${sourceDir}`)
 
         postDownloadActions.forEach((action) => {
             console.log(`executing post download action: ${action}`)
@@ -42,13 +43,12 @@ const migrateDocs = ({
 
         // Copy the directory to another place and create missing directories
         console.log(`copy files to ${targetDir}`)
-        fs.copySync(`${tempDir}/docs`, targetDir, {
+        fs.copySync(`${tempDir}/${sourceDir}`, targetDir, {
             recursive: true,
-            filter: (src) => !ignoreDirs.some(dir => src
-                .includes(path
-                    .join(tempDir, 'docs', dir)
+            filter: (src) =>
+                !ignoreDirs.some((dir) =>
+                    src.includes(path.join(tempDir, sourceDir, dir))
                 ),
-            ),
         })
 
         // Copy extra files
@@ -143,5 +143,12 @@ migrateDocs({
     repo: 'https://github.com/dhis2/capture-app.git',
     tempDir: '.capture-repo-temp',
     targetDir: './docs/capture-plugins',
-    ignoreDirs: ['user']
+    ignoreDirs: ['user'],
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/ui.git',
+    tempDir: '.ui-repo-temp',
+    targetDir: './docs/ui',
+    sourceDir: 'docs/docs',
 })
