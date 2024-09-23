@@ -58,7 +58,7 @@ module.exports = {
         {
             label: 'Web App Development',
             type: 'category',
-            collapsed: true,
+            collapsed: false,
             collapsible: true,
             items: [
                 {
@@ -322,9 +322,9 @@ module.exports = {
                         'capture-plugins/developer/enrollment-plugins/introduction',
                         'capture-plugins/developer/enrollment-plugins/developer-details',
                         'capture-plugins/developer/enrollment-plugins/manual-setup',
-                    ]
-                }
-            ]
+                    ],
+                },
+            ],
         },
         {
             CLI: [
