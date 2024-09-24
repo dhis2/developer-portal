@@ -11,6 +11,7 @@ const migrateDocs = ({
     extraFiles = [],
     postDownloadActions = [],
     ignoreDirs = [],
+    processMarkdown = false,
 }) => {
     try {
         // reset the working directory between each migration
@@ -40,6 +41,11 @@ const migrateDocs = ({
         // Remove any previous copy
         console.log(`removing previous copy at ${targetDir}`)
         fs.removeSync(targetDir)
+
+        if (processMarkdown) {
+            console.log(`Processing markdown files in ${sourceDir}`)
+            processUIMarkdownFiles(path.join(tempDir, sourceDir))
+        }
 
         // Copy the directory to another place and create missing directories
         console.log(`copy files to ${targetDir}`)
@@ -77,6 +83,40 @@ function replaceEmailsWithBackticks(filePath) {
         '`$1`'
     )
     fs.writeFileSync(filePath, updatedContent, 'utf8')
+}
+
+const processUIMarkdownFiles = (directory) => {
+    const files = fs.readdirSync(directory)
+
+    files.forEach((file) => {
+        const filePath = path.join(directory, file)
+
+        if (fs.statSync(filePath).isDirectory()) {
+            processUIMarkdownFiles(filePath) // Recurse into subdirectories
+        } else if (file.endsWith('.md')) {
+            let content = fs.readFileSync(filePath, 'utf-8')
+
+            // Find the import line that matches 'import API from ...'
+            const importRegex = /import API from ['"]([^'"]*)['"]/
+            const importMatch = content.match(importRegex)
+
+            if (importMatch) {
+                const apiFilePath = path.resolve(directory, importMatch[1])
+                if (fs.existsSync(apiFilePath)) {
+                    const apiContent = fs.readFileSync(apiFilePath, 'utf-8')
+
+                    // Replace the <API /> placeholder with the content from the API file
+                    content = content.replace(importMatch[0], '') // Remove import line
+                    content = content.replace('<API />', apiContent) // Replace placeholder
+
+                    fs.writeFileSync(filePath, content, 'utf-8')
+                    console.log(`Processed ${filePath}`)
+                } else {
+                    console.error(`API file not found: ${apiFilePath}`)
+                }
+            }
+        }
+    })
 }
 
 migrateDocs({
@@ -151,4 +191,16 @@ migrateDocs({
     tempDir: '.ui-repo-temp',
     targetDir: './docs/ui',
     sourceDir: 'docs/docs',
+    extraFiles: [
+        {
+            from: 'docs/src/components',
+            to: '../../src/components',
+        },
+        {
+            from: 'docs/src/constants.js',
+            to: '../../src/constants.js',
+        },
+    ],
+    processMarkdown: true,
+    postDownloadActions: ['git sparse-checkout add components docs'],
 })
