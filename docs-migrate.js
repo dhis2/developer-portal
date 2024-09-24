@@ -209,10 +209,6 @@ migrateDocs({
             to: '../../src/components',
         },
         {
-            from: 'docs/src/constants.js',
-            to: '../../src/constants.js',
-        },
-        {
             from: 'docs/static',
             to: '../../static/ui',
         },
