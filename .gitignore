@@ -30,6 +30,11 @@ docs/cli/style
 docs/capture-plugins
 docs/ui
 
+# Copied UI Doc accessories
+static/ui
+src/components
+src/constants.js
+
 # temp directories for copied docs
 .cli-repo-temp
 .ap-repo-temp

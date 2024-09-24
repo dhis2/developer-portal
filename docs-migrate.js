@@ -84,7 +84,6 @@ function replaceEmailsWithBackticks(filePath) {
     )
     fs.writeFileSync(filePath, updatedContent, 'utf8')
 }
-
 const processUIMarkdownFiles = (directory) => {
     const files = fs.readdirSync(directory)
 
@@ -115,10 +114,24 @@ const processUIMarkdownFiles = (directory) => {
                     console.error(`API file not found: ${apiFilePath}`)
                 }
             }
+
+            // Find and update image paths that start with '/images/' and append '/ui/' in front
+            const imageRegex = /!\[([^\]]*)\]\((\/images\/[^)]*\.png)\)/g
+            content = content.replace(
+                imageRegex,
+                (match, altText, imagePath) => {
+                    const newImagePath = `/ui${imagePath}` // Append /ui/ to image path
+                    return `![${altText}](${newImagePath})`
+                }
+            )
+
+            fs.writeFileSync(filePath, content, 'utf-8')
+            console.log(`Processed ${filePath}`)
         }
     })
 }
 
+/*
 migrateDocs({
     repo: 'https://github.com/dhis2/cli.git',
     tempDir: '.cli-repo-temp',
@@ -185,6 +198,7 @@ migrateDocs({
     targetDir: './docs/capture-plugins',
     ignoreDirs: ['user'],
 })
+*/
 
 migrateDocs({
     repo: 'https://github.com/dhis2/ui.git',
@@ -200,7 +214,16 @@ migrateDocs({
             from: 'docs/src/constants.js',
             to: '../../src/constants.js',
         },
+        {
+            from: 'docs/static',
+            to: '../../static/ui',
+        },
+        {
+            from: 'CHANGELOG.md',
+            to: 'package/changelog.md',
+        },
     ],
     processMarkdown: true,
     postDownloadActions: ['git sparse-checkout add components docs'],
+    branch: 'devrel-18-prepare',
 })
