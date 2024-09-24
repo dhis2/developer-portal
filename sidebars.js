@@ -297,11 +297,6 @@ module.exports = {
                     ],
                 },
                 {
-                    href: 'https://ui.dhis2.nu',
-                    label: 'UI Library',
-                    type: 'link',
-                },
-                {
                     label: 'UI Components',
                     type: 'category',
                     collapsed: true,
