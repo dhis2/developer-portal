@@ -131,7 +131,6 @@ const processUIMarkdownFiles = (directory) => {
     })
 }
 
-/*
 migrateDocs({
     repo: 'https://github.com/dhis2/cli.git',
     tempDir: '.cli-repo-temp',
@@ -198,7 +197,6 @@ migrateDocs({
     targetDir: './docs/capture-plugins',
     ignoreDirs: ['user'],
 })
-*/
 
 migrateDocs({
     repo: 'https://github.com/dhis2/ui.git',
