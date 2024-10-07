@@ -38,6 +38,11 @@ module.exports = {
                     position: 'left',
                 },
                 {
+                    to: 'ui',
+                    label: 'UI',
+                    position: 'left',
+                },
+                {
                     type: 'search',
                     position: 'right',
                 },
@@ -127,6 +132,15 @@ module.exports = {
                 path: 'community',
                 routeBasePath: 'community',
                 sidebarPath: require.resolve('./sidebarsCommunity.js'),
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'ui',
+                path: 'ui',
+                routeBasePath: 'ui',
+                sidebarPath: require.resolve('./sidebarsUI.js'),
             },
         ],
         [

@@ -28,7 +28,8 @@ docs/cli/cypress
 docs/app-runtime
 docs/cli/style
 docs/capture-plugins
-docs/ui
+docs/ui/components
+ui
 
 # Copied UI Doc accessories
 static/ui

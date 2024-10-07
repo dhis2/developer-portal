@@ -201,7 +201,7 @@ migrateDocs({
 migrateDocs({
     repo: 'https://github.com/dhis2/ui.git',
     tempDir: '.ui-repo-temp',
-    targetDir: './docs/ui',
+    targetDir: './ui',
     sourceDir: 'docs/docs',
     extraFiles: [
         {
@@ -215,6 +215,10 @@ migrateDocs({
         {
             from: 'CHANGELOG.md',
             to: 'package/changelog.md',
+        },
+        {
+            from: 'docs/docs/components',
+            to: '../docs/ui/components',
         },
     ],
     processMarkdown: true,
