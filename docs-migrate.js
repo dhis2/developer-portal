@@ -27,7 +27,7 @@ const migrateDocs = ({
 
         // Set up sparse checkout to retrieve only the 'docs' directory
         execSync('git sparse-checkout init')
-        execSync('git sparse-checkout set docs')
+        execSync('git sparse-checkout add docs')
 
         postDownloadActions.forEach((action) => {
             console.log(`executing post download action: ${action}`)
@@ -97,7 +97,7 @@ migrateDocs({
         { from: 'dist/markdown/api.md', to: 'api.md' },
     ],
     postDownloadActions: [
-        'git sparse-checkout set src docs',
+        'git sparse-checkout add src docs',
         'yarn',
         'yarn build:jsdoc',
     ],
@@ -144,4 +144,11 @@ migrateDocs({
     tempDir: '.capture-repo-temp',
     targetDir: './docs/capture-plugins',
     ignoreDirs: ['user']
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/dhis2-mobile-ui.git',
+    tempDir: '.mui-repo-temp',
+    targetDir: './mobile/mobile-ui',
+    branch: 'main'
 })

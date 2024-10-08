@@ -29,9 +29,12 @@ docs/app-runtime
 docs/cli/style
 docs/capture-plugins
 
+mobile/mobile-ui
+
 # temp directories for copied docs
 .cli-repo-temp
 .ap-repo-temp
 .cypress-repo-temp
 .ar-repo-temp
 .clistyle-repo-temp
+.mui-repo-temp
