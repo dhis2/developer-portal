@@ -10,6 +10,7 @@ const migrateDocs = ({
     targetDir,
     extraFiles = [],
     postDownloadActions = [],
+    removeFiles = [],
     ignoreDirs = [],
     processMarkdown = false,
 }) => {
@@ -66,6 +67,11 @@ const migrateDocs = ({
             fs.copySync(`${tempDir}/${file.from}`, `${targetDir}/${file.to}`, {
                 recursive: true,
             })
+        })
+
+        removeFiles.forEach((file) => {
+            console.log(`removing file(s) post copy: ${file}`)
+            fs.removeSync(`${tempDir}/${file}`)
         })
 
         // Remove the checked out code
@@ -223,5 +229,6 @@ migrateDocs({
     ],
     processMarkdown: true,
     postDownloadActions: ['git sparse-checkout add components docs'],
+    removeFiles: ['../ui/components'],
     branch: 'devrel-18-prepare',
 })
