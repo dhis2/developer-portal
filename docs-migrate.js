@@ -212,11 +212,11 @@ migrateDocs({
     extraFiles: [
         {
             from: 'docs/src/components',
-            to: '../../src/components',
+            to: '../src/components',
         },
         {
             from: 'docs/static',
-            to: '../../static/ui',
+            to: '../static/ui',
         },
         {
             from: 'CHANGELOG.md',
