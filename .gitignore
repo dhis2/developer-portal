@@ -35,6 +35,8 @@ ui
 static/ui
 src/components
 
+mobile/mobile-ui
+
 # temp directories for copied docs
 .cli-repo-temp
 .ap-repo-temp
@@ -42,3 +44,4 @@ src/components
 .ar-repo-temp
 .clistyle-repo-temp
 .ui-repo-temp
+.mui-repo-temp

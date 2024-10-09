@@ -366,11 +366,6 @@ module.exports = {
         'aditionalreferences',
         {
             type: 'link',
-            label: 'Android SDK',
-            href: 'https://docs.dhis2.org/en/develop/developing-with-the-android-sdk/about-this-guide.html',
-        },
-        {
-            type: 'link',
             label: 'Web API',
             href: 'https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-240/introduction.html',
         },

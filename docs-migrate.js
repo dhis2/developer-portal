@@ -155,7 +155,7 @@ migrateDocs({
         { from: 'dist/markdown/api.md', to: 'api.md' },
     ],
     postDownloadActions: [
-        'git sparse-checkout set src docs',
+        'git sparse-checkout add src docs',
         'yarn',
         'yarn build:jsdoc',
     ],
@@ -231,4 +231,12 @@ migrateDocs({
     postDownloadActions: ['git sparse-checkout add components docs'],
     removeFiles: ['../ui/components'],
     branch: 'devrel-18-prepare',
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/dhis2-mobile-ui.git',
+    tempDir: '.mui-repo-temp',
+    targetDir: './mobile/mobile-ui',
+    branch: 'main',
+    sourceDir: 'docs',
 })
