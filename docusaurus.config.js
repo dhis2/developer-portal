@@ -32,6 +32,11 @@ module.exports = {
                     label: 'Mobile Development',
                     position: 'left',
                 },
+                {
+                    to: 'ui',
+                    label: 'UI',
+                    position: 'left',
+                },
                 { to: 'blog', label: 'Blog', position: 'left' },
                 {
                     to: 'events/developer-meetups',
@@ -142,6 +147,15 @@ module.exports = {
                 path: 'community',
                 routeBasePath: 'community',
                 sidebarPath: require.resolve('./sidebarsCommunity.js'),
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'ui',
+                path: 'ui',
+                routeBasePath: 'ui',
+                sidebarPath: require.resolve('./sidebarsUI.js'),
             },
         ],
         [
