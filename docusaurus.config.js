@@ -32,6 +32,11 @@ module.exports = {
                     label: 'Mobile Development',
                     position: 'left',
                 },
+                {
+                    to: 'ui',
+                    label: 'UI',
+                    position: 'left',
+                },
                 { to: 'blog', label: 'Blog', position: 'left' },
                 {
                     to: 'events/developer-meetups',
@@ -41,11 +46,6 @@ module.exports = {
                 {
                     to: 'community/support',
                     label: 'Community',
-                    position: 'left',
-                },
-                {
-                    to: 'ui',
-                    label: 'UI',
                     position: 'left',
                 },
                 {
