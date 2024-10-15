@@ -13,6 +13,7 @@ const migrateDocs = ({
     removeFiles = [],
     ignoreDirs = [],
     processMarkdown = false,
+    sparseCheckout = true,
 }) => {
     try {
         // reset the working directory between each migration
@@ -21,17 +22,21 @@ const migrateDocs = ({
         fs.removeSync(tempDir)
 
         // Clone the repository and switch to the specified branch
-        execSync(
-            `git clone --depth 1 --sparse ${repo} --branch ${branch} ${tempDir}`
-        )
+        const cloneCommand = `git clone ${
+            !sparseCheckout ? '' : '--depth 1 --sparse'
+        } ${repo} --branch ${branch} ${tempDir}`
+
+        console.log(`cloning repository with: ${cloneCommand}`)
+        execSync(cloneCommand)
 
         // Navigate to the cloned repository
         process.chdir(tempDir)
 
-        // Set up sparse checkout to retrieve only the 'docs' directory
-        execSync('git sparse-checkout init')
-        execSync(`git sparse-checkout add ${sourceDir}`)
-
+        if (sparseCheckout) {
+            // Set up sparse checkout to retrieve only the 'docs' directory
+            execSync('git sparse-checkout init')
+            execSync(`git sparse-checkout add ${sourceDir}`)
+        }
         postDownloadActions.forEach((action) => {
             console.log(`executing post download action: ${action}`)
             execSync(action)
@@ -205,6 +210,14 @@ migrateDocs({
 })
 
 migrateDocs({
+    repo: 'https://github.com/dhis2/dhis2-mobile-ui.git',
+    tempDir: '.mui-repo-temp',
+    targetDir: './mobile/mobile-ui',
+    branch: 'main',
+    sourceDir: 'docs',
+})
+
+migrateDocs({
     repo: 'https://github.com/dhis2/ui.git',
     tempDir: '.ui-repo-temp',
     targetDir: './ui',
@@ -228,15 +241,13 @@ migrateDocs({
         },
     ],
     processMarkdown: true,
-    postDownloadActions: ['git sparse-checkout add components docs'],
+    sparseCheckout: false,
+    // postDownloadActions: [
+    //     'yarn',
+    //     'yarn setup',
+    //     'cd storybook',
+    //     'yarn build',
+    // ],
     removeFiles: ['../ui/components'],
     branch: 'devrel-18-prepare',
-})
-
-migrateDocs({
-    repo: 'https://github.com/dhis2/dhis2-mobile-ui.git',
-    tempDir: '.mui-repo-temp',
-    targetDir: './mobile/mobile-ui',
-    branch: 'main',
-    sourceDir: 'docs',
 })
