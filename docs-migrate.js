@@ -39,8 +39,7 @@ const migrateDocs = ({
         }
         postDownloadActions.forEach((action) => {
             console.log(`executing post download action: ${action}`)
-            const result = execSync(action)
-            console.log(result.toString())
+            execSync(action, { stdio: 'inherit' })
         })
 
         process.chdir('..')
@@ -240,13 +239,17 @@ migrateDocs({
             from: 'docs/docs/components',
             to: '../docs/ui/components',
         },
+        {
+            from: 'dist/demo',
+            to: '../static/demo',
+        },
     ],
     processMarkdown: true,
     sparseCheckout: false,
     postDownloadActions: [
-        'yarn',
+        'yarn install --frozen-lockfile',
         'yarn setup',
-        'yarn workspace ui-storybook build',
+        'yarn build',
     ],
     removeFiles: ['../ui/components'],
     branch: 'devrel-18-prepare',
