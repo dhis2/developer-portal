@@ -39,7 +39,8 @@ const migrateDocs = ({
         }
         postDownloadActions.forEach((action) => {
             console.log(`executing post download action: ${action}`)
-            execSync(action)
+            const result = execSync(action)
+            console.log(result.toString())
         })
 
         process.chdir('..')
@@ -242,12 +243,11 @@ migrateDocs({
     ],
     processMarkdown: true,
     sparseCheckout: false,
-    // postDownloadActions: [
-    //     'yarn',
-    //     'yarn setup',
-    //     'cd storybook',
-    //     'yarn build',
-    // ],
+    postDownloadActions: [
+        'yarn',
+        'yarn setup',
+        'yarn workspace ui-storybook build',
+    ],
     removeFiles: ['../ui/components'],
     branch: 'devrel-18-prepare',
 })
