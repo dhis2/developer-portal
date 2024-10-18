@@ -31,6 +31,9 @@ docs/capture-plugins
 docs/ui/components
 ui
 
+# Copied storybook
+static/demo
+
 # Copied UI Doc accessories
 static/ui
 src/components
