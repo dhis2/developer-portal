@@ -20,7 +20,7 @@ In this section you will learn about the [DHIS2 CLI](/docs/cli) and create a new
 
 ### Learn about DHIS2 UI Library
 
-In this short [tutorial](/docs/tutorials/ui-library) you will learn more about [DHIS2 UI Components](https://ui.dhis2.nu/#/) and how to get started using the `@dhis2/ui` library.
+In this short [tutorial](/docs/tutorials/ui-library) you will learn more about [DHIS2 UI Components](/docs/ui/webcomponents) and how to get started using the `@dhis2/ui` library.
 
 You will also see how to import and use UI components into your application.
 
