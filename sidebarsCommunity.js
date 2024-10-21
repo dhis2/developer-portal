@@ -3,6 +3,7 @@ module.exports = {
         'support',
         'stay-connected',
         'newsletter',
+        'app-winners',
         'meetups',
         {
             type: 'category',
