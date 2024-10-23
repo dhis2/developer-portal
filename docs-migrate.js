@@ -2,6 +2,7 @@ const { execSync } = require('child_process')
 const path = require('path')
 const fs = require('fs-extra')
 
+
 const migrateDocs = ({
     repo,
     branch = 'master',
@@ -33,7 +34,7 @@ const migrateDocs = ({
             console.log(`executing post download action: ${action}`)
             execSync(action)
         })
-
+		
         process.chdir('..')
 
         // Remove any previous copy
@@ -151,4 +152,17 @@ migrateDocs({
     tempDir: '.mui-repo-temp',
     targetDir: './mobile/mobile-ui',
     branch: 'main'
+})
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/dhis2-android-sdk.git',
+    tempDir: '.android-sdk-repo-temp',
+    targetDir: './mobile/android-sdk',
+    branch: 'ANDROSDK-1925',
+    postDownloadActions: [
+		'node ./docs/scripts/mobileSDKprocessor.js',
+        'mv docs/content/developer developer',
+        'rm -R docs',
+        'mv developer docs'
+    ],
 })
