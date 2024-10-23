@@ -2,7 +2,6 @@ const { execSync } = require('child_process')
 const path = require('path')
 const fs = require('fs-extra')
 
-
 const migrateDocs = ({
     repo,
     branch = 'master',
@@ -34,7 +33,7 @@ const migrateDocs = ({
             console.log(`executing post download action: ${action}`)
             execSync(action)
         })
-		
+
         process.chdir('..')
 
         // Remove any previous copy
@@ -160,7 +159,7 @@ migrateDocs({
     targetDir: './mobile/android-sdk',
     branch: 'ANDROSDK-1925',
     postDownloadActions: [
-		'node ./docs/scripts/mobileSDKprocessor.js',
+        'node ./docs/scripts/mobileSDKprocessor.js',
         'mv docs/content/developer developer',
         'rm -R docs',
         'mv developer docs'
