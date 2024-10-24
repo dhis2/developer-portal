@@ -152,3 +152,16 @@ migrateDocs({
     targetDir: './mobile/mobile-ui',
     branch: 'main'
 })
+
+migrateDocs({
+    repo: 'https://github.com/dhis2/dhis2-android-sdk.git',
+    tempDir: '.android-sdk-repo-temp',
+    targetDir: './mobile/android-sdk',
+    branch: 'ANDROSDK-1925',
+    postDownloadActions: [
+        'node ./docs/scripts/mobileSDKprocessor.js',
+        'mv docs/content/developer developer',
+        'rm -R docs',
+        'mv developer docs'
+    ],
+})
