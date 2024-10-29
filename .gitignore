@@ -29,7 +29,7 @@ docs/app-runtime
 docs/cli/style
 docs/capture-plugins
 docs/ui/components
-ui
+design
 
 # Copied storybook
 static/demo

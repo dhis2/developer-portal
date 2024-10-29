@@ -25,7 +25,7 @@ These are the tools you can use for your web-app development.
 - [Application Runtime](app-runtime/getting-started)
 - [d2 style](cli/style/getting-started)
 - [Cypress](cli/cypress/getting-started)
-- [UI Library](/ui) and the related [components library](/docs/ui/webcomponents)
+- [UI Library](/design) and the related [components library](/docs/ui/webcomponents)
 
 ### CLI
 

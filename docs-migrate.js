@@ -220,7 +220,7 @@ migrateDocs({
 migrateDocs({
     repo: 'https://github.com/dhis2/ui.git',
     tempDir: '.ui-repo-temp',
-    targetDir: './ui',
+    targetDir: './design',
     sourceDir: 'docs/docs',
     extraFiles: [
         {

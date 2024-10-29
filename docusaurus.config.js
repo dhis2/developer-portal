@@ -33,7 +33,7 @@ module.exports = {
                     position: 'left',
                 },
                 {
-                    to: 'ui',
+                    to: 'design',
                     label: 'Design System',
                     position: 'left',
                 },
@@ -152,9 +152,9 @@ module.exports = {
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'ui',
-                path: 'ui',
-                routeBasePath: 'ui',
+                id: 'design',
+                path: 'design',
+                routeBasePath: 'design',
                 sidebarPath: require.resolve('./sidebarsUI.js'),
             },
         ],
