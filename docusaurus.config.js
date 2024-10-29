@@ -34,7 +34,7 @@ module.exports = {
                 },
                 {
                     to: 'ui',
-                    label: 'Design',
+                    label: 'Design System',
                     position: 'left',
                 },
                 { to: 'blog', label: 'Blog', position: 'left' },
