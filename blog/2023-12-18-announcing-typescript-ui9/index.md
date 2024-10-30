@@ -48,7 +48,7 @@ But once upgraded, you will see the following:
 
 ![Auto-Completion with TypeScript](./ui9.png)
 
-As you can see, there's many properties autocompleted for which you previously had to either remember they existed, or reference the [documentation](/ui). But now you no longer have to.
+As you can see, there's many properties autocompleted for which you previously had to either remember they existed, or reference the [documentation](/design). But now you no longer have to.
 
 But it gets better. If you select one of the properties from the autocomplete, you'll get a description of what it does:
 
