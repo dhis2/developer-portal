@@ -12,7 +12,7 @@ First things first, UI 9 is an easy upgrade from UI 8, however it does have a br
 
 ## Breaking Change
 
-The breaking change is, as specified in the [releasenotes at the UI documentation page](/ui/package/changelog) and in the [Releases Section on GitHub](https://github.com/dhis2/ui/releases/tag/v9.0.0)
+The breaking change is, as specified in the [releasenotes at the UI documentation page](/design/package/changelog) and in the [Releases Section on GitHub](https://github.com/dhis2/ui/releases/tag/v9.0.0)
 
 **constants**: `buttonVariantPropType` has been removed from constants. This is mostly intended for internal use, but was part of the public API prior to this release.
 
