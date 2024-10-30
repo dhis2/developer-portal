@@ -155,7 +155,7 @@ module.exports = {
                 id: 'design',
                 path: 'design',
                 routeBasePath: 'design',
-                sidebarPath: require.resolve('./sidebarsUI.js'),
+                sidebarPath: require.resolve('./sidebarsDesign.js'),
             },
         ],
         [
