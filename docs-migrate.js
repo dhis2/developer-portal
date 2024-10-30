@@ -247,7 +247,7 @@ migrateDocs({
     processMarkdown: true,
     sparseCheckout: false,
     postDownloadActions: [
-        'NODE_TLS_REJECT_UNAUTHORIZED=0 yarn install --frozen-lockfile',
+        'yarn install --frozen-lockfile',
         'yarn setup',
         'yarn build',
     ],
