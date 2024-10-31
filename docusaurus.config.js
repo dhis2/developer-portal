@@ -32,6 +32,11 @@ module.exports = {
                     label: 'Mobile Development',
                     position: 'left',
                 },
+                {
+                    to: 'design',
+                    label: 'Design System',
+                    position: 'left',
+                },
                 { to: 'blog', label: 'Blog', position: 'left' },
                 {
                     to: 'events/developer-meetups',
@@ -142,6 +147,15 @@ module.exports = {
                 path: 'community',
                 routeBasePath: 'community',
                 sidebarPath: require.resolve('./sidebarsCommunity.js'),
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'design',
+                path: 'design',
+                routeBasePath: 'design',
+                sidebarPath: require.resolve('./sidebarsDesign.js'),
             },
         ],
         [

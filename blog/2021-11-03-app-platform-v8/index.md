@@ -247,7 +247,7 @@ supplying the `hidePageSummary` property to the component.
 
 _Click on the image to see a live demo_
 
-[![](./pagination-no-summary.png)](https://ui.dhis2.nu/demo/?path=/story/navigation-pagination--without-page-summary)
+[![](./pagination-no-summary.png)](pathname:///demo/?path=/story/pagination--without-page-summary)
 
 ### New feature: Loading state for DataTableBody component
 
@@ -265,7 +265,7 @@ The `DataTableBody` component will now show a loading indicator when the
 
 _Click on the image to see a live demo_
 
-[![](./datatablebody-loading.png)](https://ui.dhis2.nu/demo/?path=/story/data-display-datatable--loading)
+[![](./datatablebody-loading.png)](pathname:///demo/?path=/story/datatable--loading)
 
 ### New feature: More control for Organisation Unit Tree expanded paths
 
@@ -286,7 +286,7 @@ This addition allows for fine grained control over expanding and collapsing the 
 
 _Click on the image to see a live demo_
 
-[![](./orgunittree-expanded.png)](https://ui.dhis2.nu/demo/?path=/story/forms-organisation-unit-tree--custom-expanded-imperative-open)
+[![](./orgunittree-expanded.png)](pathname:///demo/?path=/story/organisation-unit-tree--custom-expanded-imperative-open)
 
 ### Breaking change: `@dhis2/ui-core` and `@dhis2/ui-widgets` has been removed
 

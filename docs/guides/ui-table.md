@@ -3,7 +3,7 @@ id: ui-table
 title: How to add a Table component
 ---
 
-Follow this quick guide to add a `Table` component to your application using the [DHIS2 UI Library](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page).
+Follow this quick guide to add a `Table` component to your application using the [DHIS2 UI Library](/design).
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ This guide assumes that you're developing an application using the [DHIS2 Applic
 
 ## 1. Import `Table`
 
-First, let's import the [Table](https://ui.dhis2.nu/demo/?path=/docs/data-display-table--static-layout) component as well as its child components:
+First, let's import the [Table](pathname:///demo/?path=/docs/table--static-layout) component as well as its child components:
 
 ```js
 import {
@@ -104,6 +104,6 @@ In your browser, you should be able to see the following `Table` 👇
 
 ### More examples?
 
-Please check the [UI Library documentation](https://ui.dhis2.nu/demo/?path=/docs/data-display-table--static-layout) for more examples and a list of demos as well as **code snippets** that let you easily copy and paste into your application! 👌🏽
+Please check the [UI Library documentation](pathname:///demo/?path=/docs//table--static-layout) for more examples and a list of demos as well as **code snippets** that let you easily copy and paste into your application! 👌🏽
 
 ---
