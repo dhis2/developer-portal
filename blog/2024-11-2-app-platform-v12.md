@@ -25,7 +25,7 @@ These are some things that you'll see right away after upgrading:
     -   Code is shared between entrypoints, which makes bundles smaller
     -   Hot Module Replacement (HMR) for code changes in the plugin will be as fast as in the app
 -   There are some new TypeScript features:
-    -   Bootstrapping an app with a TypeScript template is supported: `d2-app-scripts init --typescript my-app`. See the [`init` docs](../scripts/init.md) for more about the command
+    -   Bootstrapping an app with a TypeScript template is supported: `d2-app-scripts init --typescript my-app`. See the [`init` docs](https://example.org)<!-- todo: (app-platform/scripts/init.md) --> for more about the command
     -   Vite has native support for TypeScript
     -   Although not in the App Platform package, with the latest `@dhis2/cli-style`, TypeScript type checking is performed when running `d2-style lint`
     -   With `@dhis2/ui` version 9, the UI library is now typed as well
@@ -51,8 +51,8 @@ By running these steps, you should be able to run your app right away:
 2. `npx yarn-deduplicate yarn.lock && yarn`
 3. Try out `yarn start --allowJsxInJs`, and your app should be running 🚀
 
-There will be some other changes you will want to make, which are described in detail in the [migration guide](to-do:link). Our goal is to make it easy to adopt the new changes, so we have some tools to facilitate the process.
+There will be some other changes you will want to make, which are described in detail in the [migration guide](https://example.org)<!-- todo: (app-platform/migration/v12) -->. Our goal is to make it easy to adopt the new changes, so we have some tools to facilitate the process.
 
-Head on over to the [migration guide](to-do:link) for more instructions and technical info.
+Head on over to the [migration guide](https://example.org)<!-- todo: (app-platform/migration/v12) --> for more instructions and technical info.
 
 Enjoy the updates, and happy coding!
