@@ -12,7 +12,7 @@ module.exports = {
     projectName: 'developer-portal',
     themeConfig: {
         prism: {
-            additionalLanguages: ['java', 'yaml', 'json'],
+            additionalLanguages: ['diff', 'java', 'json', 'yaml'],
         },
         navbar: {
             logo: {
