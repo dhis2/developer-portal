@@ -7,9 +7,9 @@ tags: [app platform, developer tools, webapp, announcement]
 
 # Platform v12 Release, Vite and React 18 Migration Guide
 
-Good news! Vite and React 18 in the app platform are ready to use!
+Good news! Vite and React 18 in the app platform are ready to use! Vite replaces the deprecated Create React App (CRA) for starting and build apps, and React v18 replaces v16. 
 
-We're very excited for these updates — both will significantly modernize the App Platform, and Vite will be a big upgrade from Create React App (CRA), which we used under the hood to build and serve apps previously. It will greatly improve the developer experience, and with greater control over the configuration, it will open up some powerful new possibilities for the platform.
+We're very excited for these updates — both will significantly modernize the App Platform, and Vite will be a big upgrade from CRA. It will greatly improve the developer experience, and with greater control over the configuration, it will open up some powerful new possibilities for the platform.
 
 Here are some tips about what to expect, and how to easily upgrade to the latest version of `@dhis2/cli-app-scripts` to take advantage of Vite and React 18.
 
