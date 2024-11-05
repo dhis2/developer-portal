@@ -1,11 +1,11 @@
 ---
 slug: 2024/11/app-platform-v12
 title: App Platform v12
-authors: core
+authors: [core, kai]
 tags: [app platform, developer tools, webapp, announcement]
 ---
 
-# Platform v12 Migration Guide: Vite & React 18
+# Platform v12 Release, Vite and React 18 Migration Guide
 
 Good news! Vite and React 18 in the app platform are ready to use!
 
@@ -36,7 +36,7 @@ These are some things that you'll see right away after upgrading:
 
 ### Future changes
 
-With Vite, the door is open for some big future improvements:
+With Vite, the door is open for some big future improvements. We've already created JIRA tickets for these, so if you're interested in staying up-to-date on them you can watch these tickets.
 
 -   Extensible config: developers can add their own options to the Vite config, for example a plugin for Flow types, or to define import aliases ([LIBS-706](https://dhis2.atlassian.net/browse/LIBS-706))
 -   Arbitrary entrypoints, beyond app/plugin/lib: Make a regular app, a configuration app, a capture plugin, a dashboard plugin, and more all from the same repo and sharing code between them ([LIBS-394](https://dhis2.atlassian.net/browse/LIBS-394))
@@ -51,8 +51,8 @@ By running these steps, you should be able to run your app right away:
 2. `npx yarn-deduplicate yarn.lock && yarn`
 3. Try out `yarn start --allowJsxInJs`, and your app should be running 🚀
 
-There will be some other changes you will want to make, which are described in detail in the [migration guide](https://example.org)<!-- todo: (app-platform/migration/v12) -->. Our goal is to make it easy to adopt the new changes, so we have some tools to facilitate the process.
+There will be some other changes you will want to make, which are described in detail in the [migration guide](https://example.org)<!-- todo: (/docs/app-platform/migration/v12) -->. Our goal is to make it easy to adopt the new changes, so we have some tools to facilitate the process.
 
-Head on over to the [migration guide](https://example.org)<!-- todo: (app-platform/migration/v12) --> for more instructions and technical info.
+Head on over to the [migration guide](https://example.org)<!-- todo: (/docs/app-platform/migration/v12) --> for more detailed instructions and technical background information.
 
 Enjoy the updates, and happy coding!
