@@ -13,19 +13,19 @@ On top of the sidebar you'll find general guides and tutorials. Below that you'l
 
 ## Quick Links
 
-- [Initial Setup](quickstart)
-- [Tutorials](tutorials)
-- [Guides](guides)
+- [Initial Setup](/docs/quickstart)
+- [Tutorials](/docs/tutorials)
+- [Guides](/docs/guides)
 
 ### Web Development
 
 These are the tools you can use for your web-app development. 
 
-- [Application Platform](app-platform/getting-started)
-- [Application Runtime](app-runtime/getting-started)
-- [d2 style](cli/style/getting-started)
-- [Cypress](cli/cypress/getting-started)
-- [UI Library](/design) and the related [components library](/docs/ui/webcomponents)
+- [Application Platform](/docs/app-platform/getting-started)
+- [Application Runtime](/docs/app-runtime/getting-started)
+- [d2 style](/docs/cli/style/getting-started)
+- [Cypress](/docs/cli/cypress/getting-started)
+- [UI Library](/docs/design) and the related [components library](/docs/ui/webcomponents)
 
 ### CLI
 

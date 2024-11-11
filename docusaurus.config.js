@@ -23,13 +23,13 @@ module.exports = {
                 {
                     to: 'docs',
                     activeBasePath: 'docs',
-                    label: 'Web Development',
+                    label: 'Guides & Tutorials',
                     position: 'left',
                 },
                 {
-                    to: 'mobile',
-                    activeBasePath: 'mobile',
-                    label: 'Mobile Development',
+                    to: 'docs/references',
+                    activeBasePath: 'docs',
+                    label: 'References',
                     position: 'left',
                 },
                 {
@@ -129,15 +129,6 @@ module.exports = {
                 path: 'events',
                 routeBasePath: 'events',
                 sidebarPath: require.resolve('./sidebarsEvents.js'),
-            },
-        ],
-        [
-            '@docusaurus/plugin-content-docs',
-            {
-                id: 'mobile',
-                path: 'mobile',
-                routeBasePath: 'mobile',
-                sidebarPath: require.resolve('./sidebarsMobile.js'),
             },
         ],
         [

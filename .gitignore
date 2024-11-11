@@ -29,6 +29,7 @@ docs/app-runtime
 docs/cli/style
 docs/capture-plugins
 docs/ui/components
+docs/mobile/mobile-ui
 design
 
 # Copied storybook
@@ -38,7 +39,6 @@ static/demo
 static/ui
 src/components
 
-mobile/mobile-ui
 
 # temp directories for copied docs
 .cli-repo-temp
