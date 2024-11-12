@@ -25,7 +25,7 @@ These are the tools you can use for your web-app development.
 - [Application Runtime](/docs/app-runtime/getting-started)
 - [d2 style](/docs/cli/style/getting-started)
 - [Cypress](/docs/cli/cypress/getting-started)
-- [UI Library](/docs/design) and the related [components library](/docs/ui/webcomponents)
+- [Design System](/design) and the related [Web UI components library](/docs/ui/webcomponents)
 
 ### CLI
 
@@ -39,6 +39,8 @@ These are the CLI tools you can use for your development on DHIS2.
 ### Android
 
 To get started with Android Development, read the documentation on [docs.dhis2.org](https://docs.dhis2.org/en/develop/developing-with-the-android-sdk/about-this-guide.html).
+
+
 
 
 ### Web API

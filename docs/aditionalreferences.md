@@ -1,5 +1,6 @@
 ---
 title: Additional References
+sidebar_label: Overview
 ---
 
 The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages that are not yet covered in the Developer Portal.

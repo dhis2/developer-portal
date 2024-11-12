@@ -6,292 +6,137 @@ module.exports = {
             defaultStyle: true,
         },
         'references-overview',
+
         {
-            label: 'Web App Development',
-            type: 'category',
-            collapsed: false,
-            collapsible: true,
-            items: [
-                {
-                    'Application Platform': [
-                        'app-platform/getting-started',
-                        'app-platform/installation',
-                        'app-platform/bootstrapping',
-                        {
-                            'CLI Scripts': [
-                                {
-                                    id: 'app-platform/scripts',
-                                    label: 'Overview',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/build',
-                                    label: 'build',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/deploy',
-                                    label: 'deploy',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/init',
-                                    label: 'init',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/pack',
-                                    label: 'pack',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/publish',
-                                    label: 'publish',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/start',
-                                    label: 'start',
-                                    type: 'doc',
-                                },
-                                {
-                                    id: 'app-platform/scripts/test',
-                                    label: 'test',
-                                    type: 'doc',
-                                },
-                            ],
-                        },
-                        {
-                            type: 'category',
-                            label: 'Configuration',
-                            link: { id: 'app-platform/config', type: 'doc' },
-                            items: [
-                                'app-platform/config/types',
-                                'app-platform/config/d2-config-js-reference',
-                                'app-platform/config/environment',
-                            ],
-                        },
-                        {
-                            Usage: [
-                                'app-platform/usage/dependencies',
-                                'app-platform/usage/css',
-                                'app-platform/usage/static-files',
-                                'app-platform/usage/app-icon',
-                            ],
-                        },
-                        'app-platform/pwa/pwa',
-                        'app-platform/architecture',
-                        'app-platform/troubleshooting',
-                        'app-platform/proxy',
-                        {
-                            id: 'app-platform/changelog',
-                            label: 'Changelog',
-                            type: 'doc',
-                        },
-                    ],
-                },
-                {
-                    'Application Runtime': [
-                        'app-runtime/getting-started',
-                        'app-runtime/provider',
-                        {
-                            Hooks: [
-                                {
-                                    id: 'app-runtime/hooks/README',
-                                    label: 'Overview',
-                                    type: 'doc',
-                                },
-                                'app-runtime/hooks/useConfig',
-                                'app-runtime/hooks/useDataQuery',
-                                'app-runtime/hooks/useDataMutation',
-                                'app-runtime/hooks/useDataEngine',
-                                'app-runtime/hooks/useAlert',
-                                'app-runtime/hooks/useAlerts',
-                                'app-runtime/hooks/useTimeZoneConversion',
-                            ],
-                        },
-                        {
-                            Components: [
-                                {
-                                    id: 'app-runtime/components/README',
-                                    label: 'Overview',
-                                    type: 'doc',
-                                },
-                                'app-runtime/components/DataQuery',
-                                'app-runtime/components/DataMutation',
-                                'app-runtime/components/Plugin',
-                            ],
-                        },
-                        {
-                            Types: [
-                                'app-runtime/types/Config',
-                                'app-runtime/types/Query',
-                                'app-runtime/types/Mutation',
-                            ],
-                        },
-                        {
-                            Advanced: [
-                                {
-                                    'Offline Tools': [
-                                        {
-                                            id: 'app-runtime/advanced/offline/README',
-                                            label: 'Overview',
-                                            type: 'doc',
-                                        },
-                                        'app-runtime/advanced/offline/CacheableSections',
-                                        'app-runtime/advanced/offline/useDhis2ConnectionStatus',
-                                        'app-runtime/advanced/offline/useOnlineStatus',
-                                    ],
-                                },
-                                'app-runtime/advanced/CustomDataProvider',
-                                'app-runtime/advanced/services',
-                                'app-runtime/advanced/DataEngine',
-                                'app-runtime/advanced/DataEngineLinks',
-                                'app-runtime/advanced/redux',
-                            ],
-                        },
-                        {
-                            href: 'https://play.dhis2.org/demo/api/apps/query-playground/index.html',
-                            label: 'Query Playground',
-                            type: 'link',
-                        },
-                        {
-                            id: 'app-runtime/changelog',
-                            label: 'Changelog',
-                            type: 'doc',
-                        },
-                    ],
-                },
-                {
-                    'd2 style': [
-                        {
-                            id: 'cli/style/getting-started',
-                            type: 'doc',
-                            label: 'Getting Started',
-                        },
-                        {
-                            id: 'cli/style/migrate-guide',
-                            type: 'doc',
-                            label: 'Migration Guide',
-                        },
-                        {
-                            Configuration: [
-                                {
-                                    id: 'cli/style/ignore-files',
-                                    type: 'doc',
-                                    label: 'Ignore Files',
-                                },
-                                {
-                                    id: 'cli/style/overrides',
-                                    type: 'doc',
-                                    label: 'Configuration Overrides',
-                                },
-                            ],
-                        },
-                        { id: 'cli/style/faq', type: 'doc', label: 'FAQ' },
-                        {
-                            id: 'cli/style/api',
-                            type: 'doc',
-                            label: 'API Reference',
-                        },
-                        {
-                            id: 'cli/style/changelog',
-                            type: 'doc',
-                            label: 'Changelog',
-                        },
-                    ],
-                },
-                {
-                    Cypress: [
-                        {
-                            id: 'cli/cypress/getting-started',
-                            type: 'doc',
-                            label: 'Getting Started',
-                        },
-                        'cli/cypress/upgrade-guide',
-                        {
-                            Guides: [
-                                'cli/cypress/guides/setting-up-cli-tool',
-                                'cli/cypress/guides/enable-auto-login',
-                                'cli/cypress/guides/using-cucumber',
-                                'cli/cypress/guides/using-the-network-shim',
-                                'cli/cypress/guides/cross-site-cookies',
-                                'cli/cypress/guides/custom-data-test-syntax',
-                                'cli/cypress/guides/add-login-credentials',
-                            ],
-                            'API: Commands': [
-                                'cli/cypress/commands/getWithDataTest',
-                                'cli/cypress/commands/findWithDataTest',
-                                'cli/cypress/commands/fillInLoginForm',
-                                'cli/cypress/commands/all',
-                            ],
-                            'API: Helper Functions': [
-                                'cli/cypress/helpers',
-                                'cli/cypress/helpers/dataTestNameToSelector',
-                                'cli/cypress/helpers/parseSelectorWithDataTest',
-                            ],
-                            'API: Setup': [
-                                'cli/cypress/setups/enable-auto-login',
-                            ],
-                            'Developer Docs': [
-                                'cli/cypress/developer',
-                                'cli/cypress/developer/install',
-                                'cli/cypress/developer/network-shim',
-                                'cli/cypress/developer/troubleshooting',
-                            ],
-                        },
-                        {
-                            id: 'cli/cypress/changelog',
-                            label: 'Changelog',
-                            type: 'doc',
-                        },
-                    ],
-                },
-                {
-                    label: 'UI Components',
-                    type: 'category',
-                    collapsed: true,
-                    link: {
-                        type: 'generated-index',
-                        title: 'Web UI Components',
-                        // description:
-                        //     'Learn about the most important Docusaurus concepts!',
-                        slug: 'ui/webcomponents',
-                    },
-                    items: [
-                        {
-                            type: 'autogenerated',
-                            dirName: 'ui/components',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            label: 'Capture Plugins',
+            label: 'UI Components',
             type: 'category',
             collapsed: true,
-            collapsible: true,
+            link: {
+                type: 'generated-index',
+                title: 'Web UI Components',
+                slug: 'ui/webcomponents',
+            },
             items: [
-                'capture-plugins/developer/getting-started',
-                'capture-plugins/developer/develop-a-capture-plugin',
-                'capture-plugins/developer/configure-a-capture-plugin',
                 {
-                    'Form Field Plugin': [
-                        'capture-plugins/developer/form-field-plugins/introduction',
-                        'capture-plugins/developer/form-field-plugins/developer-details',
-                        'capture-plugins/developer/form-field-plugins/manual-setup',
-                    ],
-                    'Enrollment Plugin': [
-                        'capture-plugins/developer/enrollment-plugins/introduction',
-                        'capture-plugins/developer/enrollment-plugins/developer-details',
-                        'capture-plugins/developer/enrollment-plugins/manual-setup',
-                    ],
+                    type: 'autogenerated',
+                    dirName: 'ui/components',
                 },
             ],
         },
+
         {
-            CLI: [
+            type: 'html',
+            value: '<strong>CLI Tooling</strong>',
+            defaultStyle: true,
+        },
+        {
+            label: 'd2 style',
+            type: 'category',
+            collapsed: true,
+            link: {
+                type: 'doc',
+                id: 'cli/style/getting-started',
+            },
+            items: [
+                {
+                    id: 'cli/style/getting-started',
+                    type: 'doc',
+                    label: 'Getting Started',
+                },
+                {
+                    id: 'cli/style/migrate-guide',
+                    type: 'doc',
+                    label: 'Migration Guide',
+                },
+                {
+                    Configuration: [
+                        {
+                            id: 'cli/style/ignore-files',
+                            type: 'doc',
+                            label: 'Ignore Files',
+                        },
+                        {
+                            id: 'cli/style/overrides',
+                            type: 'doc',
+                            label: 'Configuration Overrides',
+                        },
+                    ],
+                },
+                { id: 'cli/style/faq', type: 'doc', label: 'FAQ' },
+                {
+                    id: 'cli/style/api',
+                    type: 'doc',
+                    label: 'API Reference',
+                },
+                {
+                    id: 'cli/style/changelog',
+                    type: 'doc',
+                    label: 'Changelog',
+                },
+            ],
+        },
+
+        {
+            label: 'Cypress',
+            type: 'category',
+            collapsed: true,
+            link: {
+                type: 'doc',
+                id: 'cli/cypress/getting-started',
+            },
+            items: [
+                {
+                    id: 'cli/cypress/getting-started',
+                    type: 'doc',
+                    label: 'Getting Started',
+                },
+                'cli/cypress/upgrade-guide',
+                {
+                    Guides: [
+                        'cli/cypress/guides/setting-up-cli-tool',
+                        'cli/cypress/guides/enable-auto-login',
+                        'cli/cypress/guides/using-cucumber',
+                        'cli/cypress/guides/using-the-network-shim',
+                        'cli/cypress/guides/cross-site-cookies',
+                        'cli/cypress/guides/custom-data-test-syntax',
+                        'cli/cypress/guides/add-login-credentials',
+                    ],
+                    'API: Commands': [
+                        'cli/cypress/commands/getWithDataTest',
+                        'cli/cypress/commands/findWithDataTest',
+                        'cli/cypress/commands/fillInLoginForm',
+                        'cli/cypress/commands/all',
+                    ],
+                    'API: Helper Functions': [
+                        'cli/cypress/helpers',
+                        'cli/cypress/helpers/dataTestNameToSelector',
+                        'cli/cypress/helpers/parseSelectorWithDataTest',
+                    ],
+                    'API: Setup': ['cli/cypress/setups/enable-auto-login'],
+                    'Developer Docs': [
+                        'cli/cypress/developer',
+                        'cli/cypress/developer/install',
+                        'cli/cypress/developer/network-shim',
+                        'cli/cypress/developer/troubleshooting',
+                    ],
+                },
+                {
+                    id: 'cli/cypress/changelog',
+                    label: 'Changelog',
+                    type: 'doc',
+                },
+            ],
+        },
+
+        {
+            label: 'CLI',
+            type: 'category',
+            collapsed: true,
+            link: {
+                type: 'doc',
+                id: 'cli/readme',
+            },
+            items: [
                 'cli/readme',
                 'cli/cli/commands/d2-overview',
                 {
@@ -307,18 +152,45 @@ module.exports = {
             ],
         },
         {
-            Integration: [
-                'integration/overview',
-                'integration/dhis2-java-sdk',
-                'integration/apache-camel',
-                'integration/camel-dhis2-component',
-            ],
+            type: 'html',
+            value: '<strong>Integration</strong>',
+            defaultStyle: true,
+        },
+
+        'integration/overview',
+        'integration/dhis2-java-sdk',
+        'integration/apache-camel',
+        'integration/camel-dhis2-component',
+        {
+            type: 'html',
+            value: '<strong>Mobile Development</strong>',
+            defaultStyle: true,
+        },
+        {
+            type: 'link',
+            label: 'Android SDK',
+            href: 'https://docs.dhis2.org/en/develop/developing-with-the-android-sdk/about-this-guide.html',
+        },
+        {
+            type: 'link',
+            label: 'Mobile UI Library',
+            href: 'https://dhis2.github.io/dhis2-mobile-ui/api/-mobile%20-u-i/org.hisp.dhis.mobile.ui.designsystem.component/index.html',
+        },
+        {
+            type: 'html',
+            value: '<strong>Additional References</strong>',
+            defaultStyle: true,
         },
         'aditionalreferences',
         {
             type: 'link',
+            label: 'Design System',
+            href: '/design',
+        },
+        {
+            type: 'link',
             label: 'Web API',
-            href: 'https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-240/introduction.html',
+            href: 'https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-241/introduction.html',
         },
     ],
 }
