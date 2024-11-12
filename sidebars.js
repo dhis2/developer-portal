@@ -24,6 +24,21 @@ module.exports = {
 
         {
             type: 'html',
+            value: '<strong>Tutorials</strong>',
+            defaultStyle: true,
+        },
+        'tutorials',
+        'tutorials/setup-env',
+        'tutorials/dhis2-docker',
+        'tutorials/ui-library',
+        {
+            'DHIS2 App Runtime': [
+                'tutorials/app-runtime-query',
+                'tutorials/app-runtime-mutation',
+            ],
+        },
+        {
+            type: 'html',
             value: '<strong>Web Development</strong>',
             defaultStyle: true,
         },
@@ -219,21 +234,6 @@ module.exports = {
                 },
             ],
         },
-
-        {
-            Tutorials: [
-                'tutorials',
-                'tutorials/setup-env',
-                'tutorials/dhis2-docker',
-                'tutorials/ui-library',
-                {
-                    'DHIS2 App Runtime': [
-                        'tutorials/app-runtime-query',
-                        'tutorials/app-runtime-mutation',
-                    ],
-                },
-            ],
-        },
         {
             Guides: [
                 'guides',
@@ -254,6 +254,18 @@ module.exports = {
                 },
             ],
         },
+        {
+            type: 'html',
+            value: '<strong>Mobile Development</strong>',
+            defaultStyle: true,
+        },
+        sidebarMobile.mobile,
+
+        {
+            type: 'html',
+            value: '<strong>General Guides</strong>',
+            defaultStyle: true,
+        },
         'dev-videos',
         {
             Conceptual: [
@@ -262,12 +274,5 @@ module.exports = {
                 'conceptual/jira-workflow',
             ],
         },
-        {},
-        {
-            type: 'html',
-            value: '<strong>Mobile Development</strong>',
-            defaultStyle: true,
-        },
-        sidebarMobile.mobile,
     ],
 }
