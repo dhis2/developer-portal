@@ -79,7 +79,7 @@ Usage: #definition
 * rest.resource[=].interaction.code = #read
 ```
 
-As per the above capability statement, a server following this IG will only need to serve a single type of FHIR resource which is the QuestionnaireResponse. 
+As per the above capability statement, a server following this IG will only need to serve a single type of FHIR resource which is the QuestionnaireResponse.
 
 ### Logical Model
 
@@ -180,9 +180,9 @@ The script maps the tracked entity to a [FHIR Bundle](https://www.hl7.org/fhir/b
 
 4. Map the tracked entity ID to the QuestionnaireResponse `id` data item
 
-5. Appends the tracked entity ID to the Bundle's `request.url` data item 
+5. Appends the tracked entity ID to the Bundle's `request.url` data item
 
-Apart from the mapping, the script hard-codes several data items in QuestionnaireResponse like the `meta.profile` and `status` data items. 
+Apart from the mapping, the script hard-codes several data items in QuestionnaireResponse like the `meta.profile` and `status` data items.
 
 The IG will be ready for consumption after it is published. Publishing means running from your terminal, where the current directory is the IG project directory, the following command and responding positively to any user prompts:
 
@@ -218,7 +218,7 @@ Ensure that all prerequisites for running Camel Archetype DHIS2 have been met (e
 mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate \
 -DarchetypeGroupId=org.hisp.dhis.integration.camel \
 -DarchetypeArtifactId=camel-archetype-dhis2 \
--DarchetypeVersion=1.0.4 \
+-DarchetypeVersion=2.0.1 \
 -DgroupId=org.hisp.dhis.integration.fhir \
 -Dhawtio=Y \
 -Ddatasonnet=N \
@@ -235,7 +235,7 @@ Windows users should run:
 mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate ^
 -DarchetypeGroupId=org.hisp.dhis.integration.camel ^
 -DarchetypeArtifactId=camel-archetype-dhis2 ^
--DarchetypeVersion=1.0.4 ^
+-DarchetypeVersion=2.0.1 ^
 -DgroupId=org.hisp.dhis.integration.fhir ^
 -Dhawtio=Y ^
 -Ddatasonnet=N ^
@@ -254,7 +254,7 @@ The project created from above command will be located in the directory `dhis2-f
 Head over the [DHIS2 developer docs](/docs/integration/apache-camel/) for a primer into Camel.
 :::
 
-Currently, the generated template project has a single HTTP endpoint described in `dhis2-fhir-gateway/src/main/resources/camel/api.yaml`. This endpoint accepts an HTTP request and delegates its processing to the route described in `HelloWorldRouteBuilder.java`.
+Currently, the generated template project has a single HTTP endpoint described in `dhis2-fhir-gateway/src/main/resources/camel/api.yaml`. This endpoint accepts an HTTP request and delegates its processing to the route described in `hello-word.camel.yaml`.
 
 ### Generating Gateway Endpoints
 
@@ -363,18 +363,22 @@ Before wiring the `/QuestionnaireResponse/{rid}` endpoint to the Camel route pro
 ```java
 package org.hisp.dhis.integration.fhir;
 
-import org.apache.camel.*;
-import org.hl7.fhir.r5.elementmodel.*;
+import org.apache.camel.Exchange;
+import org.apache.camel.Expression;
+import org.apache.camel.RuntimeCamelException;
+import org.hl7.fhir.r5.elementmodel.Element;
+import org.hl7.fhir.r5.elementmodel.Manager;
 import org.hl7.fhir.r5.formats.IParser;
-import org.hl7.fhir.utilities.*;
-import org.hl7.fhir.validation.*;
-import org.springframework.stereotype.Component;
+import org.hl7.fhir.utilities.ByteProvider;
+import org.hl7.fhir.utilities.VersionUtilities;
+import org.hl7.fhir.validation.IgLoader;
+import org.hl7.fhir.validation.ValidationEngine;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
-@Component
 public class FhirMapper implements Expression {
 
     private final ValidationEngine validationEngine;
@@ -429,38 +433,27 @@ The code inside the constructor loads the IG within `package.tgz`. The `evaluate
 
 ### Processing the FHIR QuestionnaireResponse Request
 
-We now wire the QuestionnaireResponse endpoint configured in `api.yaml` to a new Camel route which processes the FHIR request. Delete the `HelloWorldRouteBuilder.java` file in the package `org.hisp.dhis.integration.fhir.route` and create a new route builder class named `FhirGatewayRouteBuilder`, located within the same package. Add a route to the class as shown below:
+We now wire the QuestionnaireResponse endpoint configured in `api.yaml` to a new Camel route which processes the FHIR request. Delete the `hello-world.camel.yaml` file and create a new YAML file named `read-questionnaire-response-route.camel.yaml`. Add a route to the file as shown below:
 
-```java
-package org.hisp.dhis.integration.fhir.route;
-
-import org.apache.camel.Exchange;
-import org.apache.camel.builder.RouteBuilder;
-import org.hisp.dhis.integration.fhir.FhirMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.Map;
-
-@Component
-public class FhirGatewayRouteBuilder extends RouteBuilder {
-    
-  @Autowired
-  protected FhirMapper fhirMapper;
-
-  @Override
-  public void configure() throws Exception {
-      
-    from("direct:readQuestionnaireResponse")
-        .setHeader("CamelDhis2.queryParams", () -> Map.of("program", "IpHINAT79UW", "ouMode", "ACCESSIBLE"))
-        .toD("dhis2://get/resource?path=tracker/trackedEntities/${header.rid}&fields=*&client=#dhis2Client")
-        .transform(fhirMapper);
-    
-  }
-}
+```yaml
+- from:
+    uri: direct:readQuestionnaireResponse
+    steps:
+      - setHeader:
+          name: CamelDhis2.queryParams
+          groovy: "['program': 'IpHINAT79UW', 'ouMode': 'ACCESSIBLE']"
+      - toD:
+          uri: dhis2:get/resource
+          parameters:
+            path: tracker/trackedEntities/${header.rid}
+            fields: '*'
+            client: '#dhis2Client'
+      - transform:
+          method:
+            beanType: org.hisp.dhis.integration.fhir.FhirMapper
 ```
 
-The route fetches the tracked entity from DHIS2, with the help of the DHIS2 component. `setHeader` is setting the query parameters to be included in the request sent out from the DHIS2 endpoint, that is, it sets the program ID query parameter to `IpHINAT79UW` and the organisation unit mode query parameter to `ACCESSIBLE`. The outbound DHIS2 endpoint configured in `toD("dhis2://get/resource?path=tracker/trackedEntities/${header.rid}&fields=*&client=#dhis2Client")` is fetching a tracked entity by ID. The ID is a variable referencing a Camel message header as denoted in `${header.rid}`. The header `rid` is a path parameter bound to the QuestionnaireResponse ID.
+The route fetches the tracked entity from DHIS2, with the help of the DHIS2 component. `setHeader` is setting the query parameters to be included in the request sent out from the DHIS2 endpoint, that is, it sets the program ID query parameter to `IpHINAT79UW` and the organisation unit mode query parameter to `ACCESSIBLE`. The outbound DHIS2 endpoint configured in `dhis2:get/resource` is fetching a tracked entity by ID. The ID is a variable referencing a Camel message header as denoted in `${header.rid}`. The header `rid` is a path parameter bound to the QuestionnaireResponse ID.
 
 :::tip
 Head over the [DHIS2 developer docs](/docs/integration/camel-dhis2-component) for a primer into the Camel DHIS2 Component.
@@ -470,7 +463,7 @@ The output of the DHIS2 endpoint, the JSON tracked entity in other words, is fed
 
 ### Testing
 
-The finishing touch is to rename the `HelloWorldRouteBuilderFunctionalTestCase` Java integration test to `FhirGatewayRouteBuilderFunctionalTestCase` and replace the endpoint under test such that the URL `http://localhost:%s/api/orgUnits` is substituted with `http://localhost:%s/api/QuestionnaireResponse/SBjuNw0Xtkn`. The complete integration test case is shown underneath:
+The finishing touch is to rename the `HelloWorldRouteFunctionalTestCase` Java integration test to `FhirGatewayRouteFunctionalTestCase` and replace the endpoint under test such that the URL `http://localhost:%s/api/orgUnits` is substituted with `http://localhost:%s/api/QuestionnaireResponse/SBjuNw0Xtkn`. The complete integration test case is shown underneath:
 
 ```java
 package org.hisp.dhis.integration.fhir.route;
@@ -481,7 +474,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FhirGatewayRouteBuilderFunctionalTestCase extends AbstractRouteFunctionalTestCase {
+public class FhirGatewayRouteFunctionalTestCase extends AbstractRouteFunctionalTestCase {
   @LocalServerPort 
   private int serverPort;
 
@@ -499,7 +492,7 @@ public class FhirGatewayRouteBuilderFunctionalTestCase extends AbstractRouteFunc
 
 ### Running
 
-Open `dhis2-fhir-gateway/src/main/resources/application.yaml` and set the key `dhis2.apiUrl` to the address of a DHIS2 demo server. We set the `apiUrl` to the DHIS2 demo server `https://play.im.dhis2.org/stable-2-40-3-1/api`. 
+Open `dhis2-fhir-gateway/src/main/resources/application.yaml` and set the key `dhis2.apiUrl` to the address of a DHIS2 demo server. We set the `apiUrl` to the DHIS2 demo server `https://play.im.dhis2.org/stable-2-40-3-1/api`.
 
 :::tip
 The list of live DHIS2 demo servers is available from the [DHIS2 play web page](https://play.dhis2.org/).
@@ -511,7 +504,7 @@ From the terminal, running `mvn clean install` in the `dhis2-fhir-gateway` direc
 java -jar target/dhis2-fhir-gateway-1.0.0-SNAPSHOT.jar
 ```
 
-When the gateway is up and running, open your browser and enter the address `http://localhost:8080/api/QuestionnaireResponse/SBjuNw0Xtkn` to send a request to the FHIR gateway running on your local machine. The gateway should respond to the browser with an _HTTP 200 OK_ and the following Bundle resource: 
+When the gateway is up and running, open your browser and enter the address `http://localhost:8080/api/QuestionnaireResponse/SBjuNw0Xtkn` to send a request to the FHIR gateway running on your local machine. The gateway should respond to the browser with an _HTTP 200 OK_ and the following Bundle resource:
 
 ```json
 {
