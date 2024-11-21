@@ -1,5 +1,5 @@
 ---
-id: overview
+id: guides-overview
 title: Developer Portal Documentation
 sidebar_label: Overview
 slug: /

@@ -1,6 +1,6 @@
 ---
 id: app-runtime-query
-title: Data Query
+title: Fetching data with useDataQuery
 ---
 
 In this tutorial, you will do the following:

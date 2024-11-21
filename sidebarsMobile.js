@@ -1,6 +1,6 @@
 module.exports = {
     mobile: [
-        { id: 'overview', label: 'Overview', type: 'doc' },
+        { id: 'mobile/overview', label: 'Overview', type: 'doc' },
         {
             'Mobile UI': [
                 {

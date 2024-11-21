@@ -6,6 +6,11 @@ module.exports = {
             defaultStyle: true,
         },
         'references-overview',
+        {
+            type: 'html',
+            value: '<strong>Web Development</strong>',
+            defaultStyle: true,
+        },
 
         {
             label: 'UI Components',
@@ -151,16 +156,6 @@ module.exports = {
                 },
             ],
         },
-        {
-            type: 'html',
-            value: '<strong>Integration</strong>',
-            defaultStyle: true,
-        },
-
-        'integration/overview',
-        'integration/dhis2-java-sdk',
-        'integration/apache-camel',
-        'integration/camel-dhis2-component',
         {
             type: 'html',
             value: '<strong>Mobile Development</strong>',

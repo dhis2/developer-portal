@@ -1,6 +1,6 @@
 ---
 id: app-runtime-mutation
-title: Data Mutation
+title: Updating data with mutations
 ---
 
 This tutorial is a continuation of the [DHIS2 application runtime](/docs/app-runtime/getting-started) tutorial on [Data Query](/docs/tutorials/app-runtime-query).

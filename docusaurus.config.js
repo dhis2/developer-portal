@@ -3,7 +3,7 @@ const redirects = require('./redirects.config.js')
 module.exports = {
     title: 'DHIS2 Developer Portal',
     tagline: 'Welcome to the DHIS2 application development community!',
-    url: 'https://dhis2.github.io',
+    url: 'https://developers.dhis2.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
