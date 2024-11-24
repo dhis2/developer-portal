@@ -477,12 +477,12 @@ The above route deletes the organisation unit `jUb8gELQApl` in DHIS2 thanks to t
 
 ```yaml
 - to:
-  uri: dhis2:delete/resource
-  parameters:
-    path: organisationUnits/jUb8gELQApl
-    username: admin
-    password: district
-    baseApiUrl: https://play.im.dhis2.org/stable-2-40-5/api
+    uri: dhis2:delete/resource
+    parameters:
+      path: organisationUnits/jUb8gELQApl
+      username: admin
+      password: district
+      baseApiUrl: https://play.im.dhis2.org/stable-2-40-5/api
 ```
 
 `organisationUnits/jUb8gELQApl` is the `path` parameter which identifies the path where the resource to be deleted is located in DHIS2. A resource can be added to the HTTP request sent by setting the message body to the resource. The body produced from `dhis2:put/resource` is of type `java.io.InputStream`. In this example, the route deserialises the reply into a `java.util.Map` object with:
