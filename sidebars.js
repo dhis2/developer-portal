@@ -73,6 +73,12 @@ module.exports = {
                                     label: 'Overview',
                                     type: 'doc',
                                 },
+                                // Todo: add after merging platform docs (currently breaks build)
+                                // {
+                                //     migrate: [
+                                //         'app-platform/scripts/migrate/js-to-jsx',
+                                //     ],
+                                // },
                                 {
                                     id: 'app-platform/scripts/build',
                                     label: 'build',
@@ -132,6 +138,10 @@ module.exports = {
                         'app-platform/architecture',
                         'app-platform/troubleshooting',
                         'app-platform/proxy',
+                        // Todo: add after merging platform docs
+                        // {
+                        //     Migration: ['app-platform/migration/v12'],
+                        // },
                         {
                             id: 'app-platform/changelog',
                             label: 'Changelog',
