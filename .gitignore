@@ -39,7 +39,6 @@ static/demo
 static/ui
 src/components
 
-
 # temp directories for copied docs
 .cli-repo-temp
 .ap-repo-temp

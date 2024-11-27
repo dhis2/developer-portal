@@ -20,7 +20,7 @@ The UI library more than just a collection of components, there also are princip
 
 ### Live demos documentation
 
-To learn more about the [DHIS2 UI library](/design) and see a list of demos, make sure to check out the [component documentation](/docs/ui/webcomponents) that uses Storybook to showcase all available components. Here, you will find a description for each component and you will be able to interact with its props. You can also find code snippets for each demo to easily copy and paste them into your project.
+The [DHIS2 Design System](/design) contains a lot of help *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
 
 ### Installation
 

@@ -23,12 +23,6 @@ module.exports = {
         'tutorials/dhis2-docker',
         {
             type: 'html',
-            value: '<strong>Tutorials</strong>',
-            defaultStyle: true,
-        },
-        'tutorials',
-        {
-            type: 'html',
             value: '<strong>Web Development</strong>',
             defaultStyle: true,
         },
