@@ -189,7 +189,7 @@ module.exports = {
         {
             type: 'link',
             label: 'Design System',
-            href: '/design',
+            href: '/design-system',
         },
         {
             type: 'link',

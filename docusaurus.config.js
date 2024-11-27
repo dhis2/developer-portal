@@ -144,8 +144,8 @@ module.exports = {
             '@docusaurus/plugin-content-docs',
             {
                 id: 'design',
-                path: 'design-system',
-                routeBasePath: 'design',
+                path: 'design',
+                routeBasePath: 'design-system',
                 sidebarPath: require.resolve('./sidebarsDesign.js'),
             },
         ],
