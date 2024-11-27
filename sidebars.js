@@ -1,3 +1,4 @@
+// importing both sidebars to be loaded.
 const sideBarReferences = require('./sidebarsReferences.js')
 const sidebarsGuides = require('./sidebarsGuides.js')
 
