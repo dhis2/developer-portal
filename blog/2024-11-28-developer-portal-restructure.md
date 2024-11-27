@@ -31,7 +31,7 @@ Previously both Guides & Tutorial and References were found in the same section,
 
 ## Searching within Developer Portal & AI
 
-Because of all the new sections added to the Developer Portal, the search bar on the top-right has also become more useful. Not only is it able to search whatever was there before the merge, but now it knows of many more pages. This is incredibly useful as a on-stop search.
+Because of all the new sections added to the Developer Portal, the search bar on the top-right has also become more useful. Not only is it able to search whatever was there before the merge, but now it knows of many more pages. This is incredibly useful as a one-stop search.
 
 But if  that is not enough, several months ago we released a new AI Search Assistent. This AI is accesable through the "Ask AI" button on the top-right. This is powered by the amazing [Kapa AI](https://kapa.ai/) and is able to answer many of your questions. But as it knows much more than just what is in the Developer Portal, it can also answer questions about the DHIS2 Web API, the DHIS2 Community of Practice, and general usage of the DHIS2 system. 
 
