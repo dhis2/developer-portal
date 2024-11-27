@@ -3,7 +3,7 @@ id: ui-table
 title: How to add a Table component
 ---
 
-Follow this quick guide to add a `Table` component to your application using the [DHIS2 UI Library](/design).
+Follow this quick guide to add a `Table` component to your application using the [DHIS2 UI Library](/design-system).
 
 ## Prerequisites
 

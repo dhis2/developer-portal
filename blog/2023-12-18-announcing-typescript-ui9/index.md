@@ -12,7 +12,7 @@ First things first, UI 9 is an easy upgrade from UI 8, however it does have a br
 
 ## Breaking Change
 
-The breaking change is, as specified in the [releasenotes at the UI documentation page](/design/package/changelog) and in the [Releases Section on GitHub](https://github.com/dhis2/ui/releases/tag/v9.0.0)
+The breaking change is, as specified in the [releasenotes at the UI documentation page](/design-system/package/changelog) and in the [Releases Section on GitHub](https://github.com/dhis2/ui/releases/tag/v9.0.0)
 
 **constants**: `buttonVariantPropType` has been removed from constants. This is mostly intended for internal use, but was part of the public API prior to this release.
 
@@ -48,7 +48,7 @@ But once upgraded, you will see the following:
 
 ![Auto-Completion with TypeScript](./ui9.png)
 
-As you can see, there's many properties autocompleted for which you previously had to either remember they existed, or reference the [documentation](/design). But now you no longer have to.
+As you can see, there's many properties autocompleted for which you previously had to either remember they existed, or reference the [documentation](/design-system). But now you no longer have to.
 
 But it gets better. If you select one of the properties from the autocomplete, you'll get a description of what it does:
 

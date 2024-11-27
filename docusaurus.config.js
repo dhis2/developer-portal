@@ -33,7 +33,7 @@ module.exports = {
                     position: 'left',
                 },
                 {
-                    to: 'design',
+                    to: 'design-system',
                     label: 'Design System',
                     position: 'left',
                 },
@@ -144,7 +144,7 @@ module.exports = {
             '@docusaurus/plugin-content-docs',
             {
                 id: 'design',
-                path: 'design',
+                path: 'design-system',
                 routeBasePath: 'design',
                 sidebarPath: require.resolve('./sidebarsDesign.js'),
             },

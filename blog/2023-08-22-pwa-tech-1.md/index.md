@@ -61,7 +61,7 @@ At run-time, our platform offers React components and hooks that provide service
     1. **Data Service**: Publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
     2. **Config Service**: Exposes several app configuration parameters
     3. **Alerts Service**: Provides a declarative API for showing and hiding in-app alerts. This also coordinates with an Alerts Manager component in the App Adapter to show the UI
-2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](/design) and the [`ui` repository](https://github.com/dhis2/ui).
+2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](/design-system) and the [`ui` repository](https://github.com/dhis2/ui).
 
 ### The App Platform orchestra
 
