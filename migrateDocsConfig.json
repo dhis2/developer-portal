@@ -94,6 +94,10 @@
                     "to": "../docs/ui/components"
                 },
                 {
+                    "from": "docs/docs/recipes",
+                    "to": "../docs/ui/recipes"
+                },
+                {
                     "from": "dist/demo",
                     "to": "../static/demo"
                 }
@@ -105,7 +109,7 @@
                 "yarn setup",
                 "yarn build"
             ],
-            "removeFiles": ["../ui/components"],
+            "removeFiles": ["../design/components", "../design/recipes"],
             "branch": "devrel-18-prepare"
         }
     ]

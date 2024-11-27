@@ -38,12 +38,6 @@ module.exports = {
             ],
         },
         {
-            Recipes: [
-                'recipes/recipes',
-                'recipes/transfer-infinite-loading-all-options-selected',
-            ],
-        },
-        {
             Help: [
                 'help/migrating',
                 'help/troubleshooting',
