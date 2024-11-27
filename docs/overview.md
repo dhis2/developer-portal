@@ -5,7 +5,7 @@ sidebar_label: Overview
 slug: /
 ---
 
-In this section you'll find guides and tutorials on how to use the tools documented in the developer portal. Looking for references? Check the [API Reference](/docs/references) section.
+In this section you'll find guides and tutorials on how to use the tools documented in the developer portal. Looking for references? Check the [Reference Docs](/docs/references) section.
 
 ## Getting started
 

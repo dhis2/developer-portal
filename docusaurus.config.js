@@ -29,7 +29,7 @@ module.exports = {
                 {
                     to: 'docs/references',
                     activeBasePath: 'docs',
-                    label: 'References',
+                    label: 'References Docs',
                     position: 'left',
                 },
                 {
