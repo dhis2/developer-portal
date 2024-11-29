@@ -27,7 +27,7 @@ The Mobile Documentation has been introduced into the Developer portal only rece
 
 ### Splitting of Guides & Tutorials from Reference Docs
 
-Previously both Guides & Tutorial and References were found in the same section, hidden under the "docs" label in the top-level navigation. However, as the Developer Portal has grown, we've decided to split these two parts into two separate top-level sections. Guides & Tutorials can be found in the [Guides & Tutorials section](/docs), while References can be found in the [References section](/docs/references). This makes it easier to find the information you need, and also makes it easier to add new sections in the future.
+Previously, all guides, tutorial and references were found in the same section, hidden under the "docs" label in the top-level navigation. However, as the Developer Portal has grown, we've decided to split these two parts into two separate top-level sections. Guides & Tutorials can be found in the [Guides & Tutorials section](/docs), while References can be found in the [Reference Docs section](/docs/references). This makes it easier to find the information you need, and also makes it easier to add new sections in the future.
 
 ## Searching within Developer Portal & AI
 
