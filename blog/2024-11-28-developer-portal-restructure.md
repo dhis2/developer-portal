@@ -31,12 +31,12 @@ Previously, all guides, tutorial and references were found in the same section, 
 
 ## Searching within Developer Portal & AI
 
-Because of all the new sections added to the Developer Portal, the search bar on the top-right has also become more useful. Not only is it able to search whatever was there before the merge, but now it knows of many more pages. This is incredibly useful as a one-stop search.
+Because many new sections have been added to the Developer Portal, the search bar on the top-right has also become more useful. Not only is it able to search whatever was there before the merge, but now it knows about many more pages. This is incredibly useful as a one-stop search.
 
-But if  that is not enough, several months ago we released a new AI Search Assistent. This AI is accesable through the "Ask AI" button on the top-right. This is powered by the amazing [Kapa AI](https://kapa.ai/) and is able to answer many of your questions. But as it knows much more than just what is in the Developer Portal, it can also answer questions about the DHIS2 Web API, the DHIS2 Community of Practice, and general usage of the DHIS2 system. 
+But if  that is not enough, several months ago we released a new AI Search Assistent. This AI is accessible through the "Ask AI" button in the bottom-right corner of the Developer Portal. This is powered by the amazing [Kapa AI](https://kapa.ai/) and is able to answer many of your questions. But as it knows much more than just what is in the Developer Portal, it can also answer questions about the DHIS2 Web API, the DHIS2 Community of Practice, and general usage of DHIS2. 
 
 If you're using this, make sure to give us feedback by pressing the thumbs-up or thumbs-down button after you've received an answer. Then, when applicable, you can add a comment to your rating which we'll be able to see. This will help us improve the AI over time.
 
 ## Conclusion
 
-We hope that with this new structure, it will be easier to find the information you need. Overall it should make the Developer Portal a more pleasant experience to use. If you have any feedback, please let us know on the [Community of Practice](https://community.dhis2.org/c/development/developer-portal/). We're always looking for ways to improve the Developer Portal, and your feedback is invaluable to us.
+We hope that with this new structure it will be easier to find the information you need. It should make the Developer Portal a more pleasant experience to use. If you have any feedback, please let us know on the [Community of Practice](https://community.dhis2.org/c/development/developer-portal/). We're always looking for ways to improve the Developer Portal, and your feedback is invaluable to us.
