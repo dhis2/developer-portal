@@ -102,9 +102,9 @@ If you want to add more components to your application, make sure to follow this
 
 ### Want to learn more?
 
--   Check the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system) repo or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
+-   Check the [DHIS2 Design System](/design-system) or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
 
--   Check the [UI Library documentation](/design-system) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
+-   Check the [UI Library documentation](/docs/tutorials/ui-library) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
 
 ## What's next?
 
