@@ -19,7 +19,7 @@ The UI library was previously hosted on a separate site, but we've now moved it 
 
 You can find the [Design System](/design-system) in the top bar navigation of the Developer Portal, while the [Web UI components](/docs/ui/webcomponents) are found in the Reference Docs section.
 
-We've also moved the interactive demo into the developer portal, but it still lives as a separate page. You can find the [Interactive Demo](pathname:///demo/) from within each Web UI component page through the in-line demo's.
+We've also moved the interactive demo into the developer portal, but it still lives as a separate page. You can find the [Interactive Demo](pathname:///demo/) from within each Web UI component page through the in-line demos.
 
 ### Mobile Documentation
 
