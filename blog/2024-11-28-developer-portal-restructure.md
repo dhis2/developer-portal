@@ -25,7 +25,7 @@ We've also moved the interactive demo into the developer portal, but it still li
 
 The Mobile Documentation has been introduced into the Developer portal only recently, and has shortly lived as a top-level navigation item. But as it *actually* had a place as a sub-section of the Guides & Tutorials section, we've moved it there. You can find the [Mobile Documentation in the Guides & Tutorials section](/docs/mobile). You can expect more content to be added to this section in the near future.
 
-### Splitting of Guides & Tutorials and References
+### Splitting of Guides & Tutorials from Reference Docs
 
 Previously both Guides & Tutorial and References were found in the same section, hidden under the "docs" label in the top-level navigation. However, as the Developer Portal has grown, we've decided to split these two parts into two separate top-level sections. Guides & Tutorials can be found in the [Guides & Tutorials section](/docs), while References can be found in the [References section](/docs/references). This makes it easier to find the information you need, and also makes it easier to add new sections in the future.
 
