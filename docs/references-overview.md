@@ -5,7 +5,7 @@ sidebar_label: Overview
 slug: /references
 ---
 
-Welcome to the references section of the developer portal, where you'll find reference material for many of the tooling available for DHIS2. For deep dives on any DHIS2 Development Topic, have a look at the [Guides & Tutorials](/docs) section.
+Welcome to the references section of the developer portal, where you'll find reference material for many of the tools available for DHIS2 developers. For deep dives on any DHIS2 development topic, have a look at the [Guides & Tutorials](/docs) section.
 
 ## Getting Started
 

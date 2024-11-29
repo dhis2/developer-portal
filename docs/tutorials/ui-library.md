@@ -16,9 +16,9 @@ Before we continue, make sure that you followed the steps provided in the first 
 
 ### DHIS2 UI Library Principles
 
-The UI library more than just a collection of components, there also are principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 UI documentation](/design-system).
+The UI library is a collection of components which implement the DHIS2 Design System principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 Design System section](/design-system).
 
-### Live demos documentation
+### Web UI Components
 
 The [DHIS2 Design System](/design-system) contains a lot of guidance on *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
 
