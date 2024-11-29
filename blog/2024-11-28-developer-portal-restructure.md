@@ -15,7 +15,7 @@ The Developer Portal Docs section has always consisted of a split between Guides
 
 ### UI Library
 
-The UI library used to be hosted on a separate site, but we've now moved it to the Developer Portal. The UI Library is a collection of reusable components that can be used to build your own DHIS2 applications. But not only does it contain Web UI Components, it also contains best practices, predefined colors, an icon library and other Patterns and Principles. The Design System is now separated from the Web UI components. The Design system is applicable to all DHIS2 applications (Web & Android), while the Web UI components are specifically for web applications.
+The UI library was previously hosted on a separate site, but we've now moved it to the Developer Portal. The UI Library is a collection of reusable components which can be used to build your own DHIS2 applications.  These components implement the [DHIS2 Design System](/design-system) which consists of best practices, predefined colors, an icon library and other patterns and principles. The Design System documentation is now separated from the Web UI components. The Design system is applicable to all DHIS2 applications (Web & Android), while the Web UI components are specifically for use in web applications.
 
 You can find the [Design System at the top level navigation](/design-system) of the Developer Portal, while the Web UI components are found in the [References section](/docs/ui/webcomponents).
 
