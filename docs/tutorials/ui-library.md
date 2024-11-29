@@ -20,7 +20,7 @@ The UI library more than just a collection of components, there also are princip
 
 ### Live demos documentation
 
-The [DHIS2 Design System](/design-system) contains a lot of help *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
+The [DHIS2 Design System](/design-system) contains a lot of guidance on *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
 
 ### Installation
 

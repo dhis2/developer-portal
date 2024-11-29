@@ -5,7 +5,7 @@ authors: rene
 tags: [developer-portal]
 ---
 
-In the recent months more and more sections of the Developer Documentation have been released in the Developer Portal. But with many new additions to the documentation, the navigation structure of the Developer Portal has become a bit cluttered. To make it easier to find the information you need, we've restructured the navigation of the Developer Portal.
+In recent months, more and more documentation has been added to the Developer Portal. But with many new additions, the navigation structure of the Developer Portal has become a bit cluttered. To make it easier to find the information you need, we've restructured the navigation of the Developer Portal.
 
 In this blogpost we'll quickly go over all the new releases, and how the new structure is implemented to not only make it more organized, but also to be more future-proof for new sections that will be added in the future.
 
@@ -15,7 +15,7 @@ The Developer Portal Docs section has always consisted of a split between Guides
 
 ### UI Library
 
-The UI library used to be hosted on a separate site, but we've now moved it to the Developer Portal. The UI Library is a collection of reusable components that can be used to build your own DHIS2 applications. But not only does it contain Web UI Components, it also contains best practices, predefined colors, an icon library and other Paterns and Principles. The Design System is now separated from the Web UI components. The Design system is applicable to all DHIS2 applications (Web & Android), while the Web UI components are specifically for web applications.
+The UI library was previously hosted on a separate site, but we've now moved it to the Developer Portal. The UI Library is a collection of reusable components which can be used to build your own DHIS2 applications.  These components implement the [DHIS2 Design System](/design-system) which consists of best practices, predefined colors, an icon library and other patterns and principles. The Design System documentation is now separated from the Web UI components. The Design system is applicable to all DHIS2 applications (Web & Android), while the Web UI components are specifically for use in web applications.
 
 You can find the [Design System at the top level navigation](/design-system) of the Developer Portal, while the Web UI components are found in the [References section](/docs/ui/webcomponents).
 
@@ -31,7 +31,7 @@ Previously both Guides & Tutorial and References were found in the same section,
 
 ## Searching within Developer Portal & AI
 
-Because of all the new sections added to the Developer Portal, the search bar on the top-right has also become more useful. Not only is it able to search whatever was there before the merge, but now it knows of many more pages. This is incredibly useful as a on-stop search.
+Because of all the new sections added to the Developer Portal, the search bar on the top-right has also become more useful. Not only is it able to search whatever was there before the merge, but now it knows of many more pages. This is incredibly useful as a one-stop search.
 
 But if  that is not enough, several months ago we released a new AI Search Assistent. This AI is accesable through the "Ask AI" button on the top-right. This is powered by the amazing [Kapa AI](https://kapa.ai/) and is able to answer many of your questions. But as it knows much more than just what is in the Developer Portal, it can also answer questions about the DHIS2 Web API, the DHIS2 Community of Practice, and general usage of the DHIS2 system. 
 
