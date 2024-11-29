@@ -97,7 +97,7 @@ In your browser, you should be able to see something similar when you click the 
 That's it for the `Button` component! 👏🏽
 
 :::note
-If you want to add more components to your application, make sure to follow this quick guide on [How to add a Table component](/docs/guides/ui-table) as an example.
+If you want to add more components to your application, make sure to follow this quick guide on [How to add a Table component](/docs/ui/recipes/ui-table) as an example.
 :::
 
 ### Want to learn more?

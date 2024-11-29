@@ -14,7 +14,7 @@ Practical step-by-step guides to help you achieve a specific goal. Most useful w
 ### DHIS2 UI Components
 
 -   How to use the DHIS2 UI library - [Watch this short video](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=801) from the Developer Academy 2021
--   [How to add a Table component](/docs/guides/ui-table)
+-   [How to add a Table component](/docs/ui/recipes/ui-table)
 
 ### DHIS2 App Runtime
 
