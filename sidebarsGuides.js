@@ -121,7 +121,6 @@ module.exports = {
             },
             items: [
                 'app-runtime/getting-started',
-                'tutorials/ui-library',
                 'app-runtime/provider',
                 {
                     Hooks: [
@@ -193,7 +192,7 @@ module.exports = {
                 },
             ],
         },
-
+        'tutorials/ui-library',
         {
             label: 'Capture Plugins',
             type: 'category',

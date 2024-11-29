@@ -13,7 +13,7 @@ The References section is categorized based on the type of tooling you are looki
 
 ### Web Development
 
-Most of the Web Development documentation can be found in [Guides & Tutorials](/docs). However, if you are looking for a specific reference, you can find it in the sidebar. Most notably all [Web UI Components](/docs/ui/webcomponents) are documented here. Links to API documentation can be found in the sidebar as well.
+Most of the Web Development documentation can be found in [Guides & Tutorials](/docs). However, if you are looking for a the references you have arrived at the right location. Most notably all [Web UI Components](/docs/ui/webcomponents) are documented here. Links to API documentation can be found in the sidebar as well.
 
 ### CLI Tooling
 
