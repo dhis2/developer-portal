@@ -5,7 +5,7 @@ authors: rene
 tags: [developer-portal]
 ---
 
-In the recent months more and more sections of the Developer Documentation have been released in the Developer Portal. But with many new additions to the documentation, the navigation structure of the Developer Portal has become a bit cluttered. To make it easier to find the information you need, we've restructured the navigation of the Developer Portal.
+In recent months, more and more documentation has been added to the Developer Portal. But with many new additions, the navigation structure of the Developer Portal has become a bit cluttered. To make it easier to find the information you need, we've restructured the navigation of the Developer Portal.
 
 In this blogpost we'll quickly go over all the new releases, and how the new structure is implemented to not only make it more organized, but also to be more future-proof for new sections that will be added in the future.
 
