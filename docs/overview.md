@@ -43,7 +43,7 @@ These are the CLI tools you can use for your development on DHIS2.
 
 The Web API documentation can be found on [docs.dhis2.org](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-241/introduction.html). 
 
-An Interactive demo of the Web API can be found on [dhis2.stoplight.io](https://dhis2.stoplight.io/docs/dhis2/).
+The [OpenAPI specification](https://www.openapis.org/) for the DHIS2 Web API can be viewed at [dhis2.stoplight.io](https://dhis2.stoplight.io/docs/dhis2/).
 
 ### Integration
 
