@@ -3,7 +3,7 @@ const redirects = require('./redirects.config.js')
 module.exports = {
     title: 'DHIS2 Developer Portal',
     tagline: 'Welcome to the DHIS2 application development community!',
-    url: 'https://dhis2.github.io',
+    url: 'https://developers.dhis2.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -12,7 +12,7 @@ module.exports = {
     projectName: 'developer-portal',
     themeConfig: {
         prism: {
-            additionalLanguages: ['java'],
+            additionalLanguages: ['java', 'yaml', 'json'],
         },
         navbar: {
             logo: {
@@ -23,13 +23,18 @@ module.exports = {
                 {
                     to: 'docs',
                     activeBasePath: 'docs',
-                    label: 'Web Development',
+                    label: 'Guides & Tutorials',
                     position: 'left',
                 },
                 {
-                    to: 'mobile',
-                    activeBasePath: 'mobile',
-                    label: 'Mobile Development',
+                    to: 'docs/references',
+                    activeBasePath: 'docs',
+                    label: 'Reference Docs',
+                    position: 'left',
+                },
+                {
+                    to: 'design-system',
+                    label: 'Design System',
                     position: 'left',
                 },
                 { to: 'blog', label: 'Blog', position: 'left' },
@@ -129,19 +134,19 @@ module.exports = {
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'mobile',
-                path: 'mobile',
-                routeBasePath: 'mobile',
-                sidebarPath: require.resolve('./sidebarsMobile.js'),
+                id: 'community',
+                path: 'community',
+                routeBasePath: 'community',
+                sidebarPath: require.resolve('./sidebarsCommunity.js'),
             },
         ],
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'community',
-                path: 'community',
-                routeBasePath: 'community',
-                sidebarPath: require.resolve('./sidebarsCommunity.js'),
+                id: 'design',
+                path: 'design',
+                routeBasePath: 'design-system',
+                sidebarPath: require.resolve('./sidebarsDesign.js'),
             },
         ],
         [

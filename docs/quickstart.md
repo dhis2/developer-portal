@@ -1,7 +1,7 @@
 ---
 id: quickstart
 title: Prerequisites and initial setup
-sidebar_label: Prerequisites and initial setup
+sidebar_label: Knowledge prerequisites
 slug: /quickstart
 ---
 

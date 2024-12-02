@@ -1,6 +1,7 @@
 ---
 id: dhis2-docker
 title: DHIS2 in Docker
+sidebar_label: Run DHIS2 in Docker
 ---
 
 ## Prerequisites

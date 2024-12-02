@@ -16,11 +16,11 @@ Before we continue, make sure that you followed the steps provided in the first 
 
 ### DHIS2 UI Library Principles
 
-The UI library more than just a collection of components, there also are principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 UI documentation](https://ui.dhis2.nu/).
+The UI library is a collection of components which implement the DHIS2 Design System principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 Design System section](/design-system).
 
-### Live demos documentation
+### Web UI Components
 
-To learn more about the [DHIS2 UI library](https://ui.dhis2.nu/#/) and see a list of demos, make sure to check out the [live demos documentation](https://ui.dhis2.nu/demo/?path=/story/about-this-documentation-for-readers--page) that uses Storybook to showcase all available components. Here, you will find a description for each component and you will be able to interact with its props. You can also find code snippets for each demo to easily copy and paste them into your project.
+The [DHIS2 Design System](/design-system) contains a lot of guidance on *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
 
 ### Installation
 
@@ -36,7 +36,7 @@ In this example, we'll be adding a simple `Button` component to get familiar wit
 
 ### Add a Button
 
-First, open up the `src/App.js` file and import a [Button](https://ui.dhis2.nu/demo/?path=/docs/actions-buttons-button--basic) into our application as shown below:
+First, open up the `src/App.js` file and import a [Button](pathname:///demo/?path=/docs/button--basic) into our application as shown below:
 
 ```js
 import { Button } from '@dhis2/ui'
@@ -44,7 +44,7 @@ import { Button } from '@dhis2/ui'
 
 Then, we'll add a `Button` component that's `primary` and `large`.
 
-Remember that you can easily copy and paste the code from the [documentation](https://ui.dhis2.nu/demo/?path=/docs/actions-buttons-button--basic).
+Remember that you can easily copy and paste the code from the [documentation](pathname:///demo/?path=/docs/button--basic).
 
 You should have something like this:
 
@@ -97,14 +97,14 @@ In your browser, you should be able to see something similar when you click the 
 That's it for the `Button` component! 👏🏽
 
 :::note
-If you want to add more components to your application, make sure to follow this quick guide on [How to add a Table component](/docs/guides/ui-table) as an example.
+If you want to add more components to your application, make sure to follow this quick guide on [How to add a Table component](/docs/ui/recipes/ui-table) as an example.
 :::
 
 ### Want to learn more?
 
--   Check the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system) repo or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
+-   Check the [DHIS2 Design System](/design-system) or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
 
--   Check the [UI Library Storybook documentation](https://ui.dhis2.nu/demo/?path=/docs/about-this-documentation-for-readers--page) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
+-   Check the [UI Library documentation](/docs/tutorials/ui-library) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
 
 ## What's next?
 

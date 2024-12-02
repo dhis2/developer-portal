@@ -1,5 +1,6 @@
 ---
 title: Additional References
+sidebar_label: Overview
 ---
 
 The DHIS2 ecosystem has many different libraries and with them come different documentations. This document contains links to all relevant documentation pages that are not yet covered in the Developer Portal.
@@ -17,6 +18,6 @@ The DHIS2 ecosystem has many different libraries and with them come different do
 ### Legacy libraries
 
 -   [d2-i18n](https://github.com/dhis2/d2-i18n) - will be superceded by the App Runtime
--   [d2-ui](https://github.com/dhis2/d2-ui) - DEPRECATED, use [DHIS2 UI](https://ui.dhis2.nu/#/) instead
+-   [d2-ui](https://github.com/dhis2/d2-ui) - DEPRECATED, use [DHIS2 UI](/design-system) instead
 -   [d2](https://github.com/dhis2/d2) - DEPRECATED, use [App Runtime](app-runtime/getting-started) instead
 -   [d2-i18n-extract](https://github.com/dhis2/d2-i18n-extract), [d2-i18n-generate](https://github.com/dhis2/d2-i18n-generate) - DEPRECATED, use [App Platform](app-platform/getting-started) instead

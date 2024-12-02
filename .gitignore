@@ -28,8 +28,17 @@ docs/cli/cypress
 docs/app-runtime
 docs/cli/style
 docs/capture-plugins
+docs/ui/components
+docs/ui/recipes
+docs/mobile/mobile-ui
+design
 
-mobile/mobile-ui
+# Copied storybook
+static/demo
+
+# Copied UI Doc accessories
+static/ui
+src/components
 
 # temp directories for copied docs
 .cli-repo-temp
@@ -37,4 +46,5 @@ mobile/mobile-ui
 .cypress-repo-temp
 .ar-repo-temp
 .clistyle-repo-temp
+.ui-repo-temp
 .mui-repo-temp

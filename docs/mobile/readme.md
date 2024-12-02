@@ -11,7 +11,7 @@ Welcome to the documentation section for Mobile development, where you'll find r
 DHIS2 Mobile UI library is an open source design system based on [Compose multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/). 
 This library simplifies the development process by allowing developers to write Compose UI code once and target both Android and desktop platforms with minimal changes.
 
-- [Mobile UI documentation](/mobile/mobile-ui/overview)
+- [Mobile UI documentation](/docs/mobile/mobile-ui/overview)
 
 ## Android SDK
 
