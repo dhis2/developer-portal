@@ -146,16 +146,3 @@ const processUIMarkdownFiles = (directory) => {
 migrations.migrations.forEach((migration) => {
     migrateDocs(migration)
 })
-
-migrateDocs({
-    repo: 'https://github.com/dhis2/dhis2-android-sdk.git',
-    tempDir: '.android-sdk-repo-temp',
-    targetDir: './mobile/android-sdk',
-    branch: 'master',
-    postDownloadActions: [
-        'node ./docs/scripts/mobileSDKprocessor.js',
-        'mv docs/content/developer developer',
-        'rm -R docs',
-        'mv developer docs'
-    ],
-})

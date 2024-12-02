@@ -173,7 +173,7 @@ module.exports = {
         {
             type: 'link',
             label: 'Android SDK',
-            href: 'https://docs.dhis2.org/en/develop/developing-with-the-android-sdk/about-this-guide.html',
+            href: 'https://dhis2.github.io/dhis2-android-sdk/api/index.html',
         },
         {
             type: 'link',
