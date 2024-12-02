@@ -72,7 +72,7 @@
             "sourceDir": "docs"
         },
         {
-            "repo": "https:/github.com/dhis2/dhis2-android-sdk.git",
+            "repo": "https://github.com/dhis2/dhis2-android-sdk.git",
             "tempDir": ".android-sdk-repo-temp",
             "targetDir": "./docs/mobile/android-sdk",
             "branch": "master",
