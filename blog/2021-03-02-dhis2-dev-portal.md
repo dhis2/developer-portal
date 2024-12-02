@@ -19,7 +19,7 @@ This is a work in progress but for now let's see what's new 👇
 The docs page offers a well-organized documentation system. The sidebar is divided into different types of docs:
 
 -   [**Quick Start**](/docs/): Learn how to connect to a DHIS2 local instance and create a new application
--   [**Tutorials**](/docs/tutorials): Learn the basics of DHIS2 app development and get familiar with the DHIS2 App Platform, as well as components and libraries
+-   [**Tutorials**](/docs/): Learn the basics of DHIS2 app development and get familiar with the DHIS2 App Platform, as well as components and libraries
 -   [**How-To-Guides**](/docs/guides): Get easy step-by-step guides to do something specific
 -   [**Reference**](/docs/aditionalreferences): Get more more technical information like the DHIS2 Web API
 -   [**Conceptual**](/docs/conceptual): Get higher-level explanations of DHIS2 concepts in general
