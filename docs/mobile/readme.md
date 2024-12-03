@@ -18,4 +18,4 @@ This library simplifies the development process by allowing developers to write 
 DHIS2 Android SDK is a library that abstracts the complexity of interacting with DHIS2 web api. It aims to be a starting point 
 to build Android apps for DHIS2, covering some tasks that any Android app should implement, like metadata and data synchronization.
 
-- [Android SDK documentation](/mobile/android-sdk/overview.md)
+- [Android SDK documentation](/docs/mobile/android-sdk/overview.md)
