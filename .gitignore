@@ -31,6 +31,7 @@ docs/capture-plugins
 docs/ui/components
 docs/ui/recipes
 docs/mobile/mobile-ui
+docs/mobile/android-sdk
 design
 
 # Copied storybook
