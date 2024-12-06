@@ -3,6 +3,7 @@ slug: 2021/07/design-system-figma-library
 title: Design System Figma library available now
 authors: joe
 tags: [design, developer tools]
+date: 2021-07-20
 ---
 
 The [DHIS2 Design System](https://github.com/dhis2/design-system) is now available as a [Figma Community library](https://www.figma.com/community/file/999207206720939258/DHIS2-Design-System).

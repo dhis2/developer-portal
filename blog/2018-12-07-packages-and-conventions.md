@@ -3,6 +3,7 @@ slug: 2018/12/packages-and-conventions
 title: Packages and style conventions
 authors: varl
 tags: [js, style, packages, code-style]
+date: 2018-12-07
 ---
 
 Style conventions are always a topic for debate. Everyone agrees that

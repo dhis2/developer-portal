@@ -3,6 +3,7 @@ slug: 2022/12/dhis-to-rapidpro-in-the-field
 title: DHIS-to-RapidPro in the Field
 authors: claudemamo
 tags: [dhis2, rapidpro, dhis-to-rapidpro]
+date: 2022-12-13
 ---
 
 The general availability of [DHIS-to-RapidPro](https://github.com/dhis2/integration-dhis-rapidpro) was announced in the [DHIS 2.39 release](https://dhis2.org/overview/version-239/). Funded by UNICEF, DHIS-to-RapidPro provides connectivity between DHIS2 and an open-source workflow engine geared towards mobile-based services called [RapidPro](https://community.rapidpro.io/about-rapidpro-new/).
