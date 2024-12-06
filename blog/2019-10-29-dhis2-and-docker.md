@@ -5,6 +5,7 @@ author: Gintare Vilkelyte
 author_url: https://github.com/vilkg
 author_image_url: https://avatars.githubusercontent.com/u/12664326?s=400&v=4
 tags: [docker]
+date: 2019-10-29
 ---
 
 :::caution

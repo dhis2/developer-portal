@@ -3,6 +3,7 @@ slug: 2019/07/what-is-this-app-platform
 title: What is this DHIS2 Application Platform?
 authors: austin
 tags: [app platform, developer tools, build system, architecture]
+date: 2019-07-09
 ---
 
 During the DHIS2 Annual Conference a few weeks ago I had the pleasure of introducing our ongoing efforts to develop a formalized and consolidation Application Platform here at UiO.

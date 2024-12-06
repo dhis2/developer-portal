@@ -3,6 +3,7 @@ slug: 2023/08/on-lab-integration
 title: On Lab Integration
 authors: claudemamo
 tags: [lab-integration, lis, lab-machines]
+date: 2023-08-08
 ---
 
 COVID-19 has highlighted the importance of having public laboratories efficiently integrated with the rest of the healthcare architecture. It’s been shown through numerous case studies that connecting labs with the country’s health information exchanges (HIEs) significantly facilitates critical activities such as disease surveillance, notification of test results, reporting to stakeholders, and inventory control. It follows that DHIS2 can play a pivotal role in these use cases. Imagine the national Health Management Information System (HMIS) displaying the daily tally of new positive tuberculosis cases on its dashboard as soon as the test results are available at the lab, or a surveillance system notifying patients of their results. Another innovative use case gaining traction is for DHIS2 to collect the state of lab diagnostics (i.e., error rates, usage frequency, online status, etc…) in order to simplify their management.

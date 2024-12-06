@@ -3,6 +3,7 @@ slug: 2023/02/introducing-the-dhis2-java-sdk
 title: Introducing the DHIS2 Java SDK
 authors: claudemamo
 tags: [dhis2-java-sdk, integration]
+date: 2023-02-20
 ---
 
 At HISP Centre, we've been engineering numerous run-of-the-mill integration projects where data is exchanged back and forth with DHIS2 through its [Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-239/introduction.html). Typically, this data is filtered, mapped, transformed, enriched, and routed to or from an application which could be the same DHIS2 instance, a different instance, or even a distinct application altogether. 

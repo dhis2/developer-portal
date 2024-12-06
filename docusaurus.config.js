@@ -214,6 +214,9 @@ module.exports = {
                         'https://github.com/dhis2/developer-portal/edit/main/',
                     authorsMapPath: 'authors.yml',
                     blogSidebarCount: 15,
+                    feedOptions: {
+                        xslt: true,
+                    },
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),

@@ -3,6 +3,7 @@ slug: 2022/02/automating-dhis2-integration-tests-in-junit-5
 title: Automating tests for DHIS2 integrations with JUnit 5
 authors: claudemamo
 tags: [docker, junit, testcontainers, integration, testing, dhis2]
+date: 2022-02-10
 ---
 
 DHIS2 is a platform that can receive and host data from different sources, while it can also share data with other systems and reporting mechanisms. [Integrating with DHIS2](https://dhis2.org/integration), or building any integration for that matter, requires manual or automated testing of the integration itself. The growth of container technology, and in particular Docker, has reduced the pain of automating the testing of integrations. By automating, I mean self-contained integration test suites that run out-of-the-box and require no manual setup of their external runtime dependencies ([Docker Engine](https://docs.docker.com/engine/install/) is assumed to be installed on the machine running the tests). 

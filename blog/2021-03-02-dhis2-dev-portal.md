@@ -5,6 +5,7 @@ author: Debora Galeano
 author_url: https://github.com/deboragaleano
 author_image_url: https://avatars.githubusercontent.com/u/36022831?s=400&u=dea8b5f06077d6f0039c1d82603afd1b71ac26a3&v=4
 tags: [developer-portal, documentation]
+date: 2021-03-02
 ---
 
 We're excited to announce that the revamped [DHIS2 Developer Portal](/) is live! 🎊  

@@ -3,6 +3,7 @@ slug: 2021/11/app-platform-v8
 title: App Platform v8
 authors: varl
 tags: [app platform, developer tools, webapp, announcement]
+date: 2021-11-03
 ---
 
 The App Platform `8.x` series has been released, and is ready for general

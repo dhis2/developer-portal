@@ -3,6 +3,7 @@ slug: 2019/03/introducing-d2
 title: Introducing d2, the DHIS2 CLI
 authors: austin
 tags: [cli, developer tools, best practices, style, packages]
+date: 2019-03-28
 ---
 
 Today we are excited to announce the stable v1.0 release of `d2`, the [DHIS2 CLI](https://www.npmjs.com/package/@dhis2/cli)!

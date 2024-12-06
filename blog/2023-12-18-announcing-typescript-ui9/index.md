@@ -2,6 +2,7 @@
 title: UI 9 release, Announcing TypeScript Support
 authors: [rene, birk]
 tags: [UI, TypeScript]
+date: 2023-12-18
 ---
 
 We're pleased to announce the release of UI 9, which includes support for TypeScript. All the UI components and forms now have type definitions, which will make it easier to use UI in TypeScript projects, or have better auto-completion in JavaScript projects.
