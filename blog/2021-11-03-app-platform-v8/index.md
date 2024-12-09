@@ -3,6 +3,7 @@ slug: 2021/11/app-platform-v8
 title: App Platform v8
 authors: varl
 tags: [app platform, developer tools, webapp, announcement]
+date: 2021-11-03
 ---
 
 The App Platform `8.x` series has been released, and is ready for general
@@ -377,15 +378,7 @@ vote for them on Jira !
 
 ## Get involved with the community
 
-We also have a developer oriented Slack at
-[dhis2-dev-community.slack.com](https://dhis2-dev-community.slack.com)
-where you can chat with other DHIS2 developers. It's a welcoming and
-nice community to hang out with !
-
-And just in case, we also have a section for [App
-Development](https://community.dhis2.org/c/development/app-development/40)
-over at [community.dhis2.org](https://community.dhis2.org) that is also
-a good resource for questions and answers.
+We have a section for [App Development](https://community.dhis2.org/c/development/app-development/40) over at [community.dhis2.org](https://community.dhis2.org) that is a good resource for questions and answers.
 
 ## Summary
 

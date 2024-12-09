@@ -5,11 +5,13 @@ title: Stay connected
 
 ## Official channels
 
--   **Twitter**
+-   **X**
 
-<!-- Follow the [DHIS2 Developers Twitter account](https://twitter.com/dhis2devs) for all developer news and events.  -->
+Follow the [DHIS2 X account](https://twitter.com/dhis_2) to find out what's happening in the world of DHIS2.
 
-Follow the [DHIS2 Twitter account](https://twitter.com/dhis_2) to find out what's happening in the world of DHIS2.
+-   **BlueSky**
+
+Follow the [DHIS2 BlueSky account](https://bsky.app/profile/dhis2.org) to find out what's happening in the world of DHIS2.
 
 -   **YouTube**
 
@@ -32,4 +34,4 @@ Keep an eye on the CoP [Development](https://community.dhis2.org/c/development/1
 Looking forward to seeing you there! 🎊
 
 #### I want to present at a meetup!
-That's great! We are always looking for new speakers. If you have a topic you would like to present, please post your topic on the CoP [Development](https://community.dhis2.org/c/development/10) category, or reach out to [Rene Pot](https://community.dhis2.org/u/rene/summary) directly through a message.
+That's great! We are always looking for new speakers. If you have a topic you would like to present, please post your topic on the CoP [Development](https://community.dhis2.org/c/development/10) category.
