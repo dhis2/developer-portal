@@ -110,7 +110,7 @@
                 "yarn build"
             ],
             "removeFiles": ["../design/components", "../design/recipes"],
-            "branch": "devrel-18-prepare"
+            "branch": "master"
         }
     ]
 }
