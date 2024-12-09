@@ -1,9 +1,7 @@
 ---
 slug: 2021/03/dhis2-dev-portal
 title: Revamped Developer Portal
-author: Debora Galeano
-author_url: https://github.com/deboragaleano
-author_image_url: https://avatars.githubusercontent.com/u/36022831?s=400&u=dea8b5f06077d6f0039c1d82603afd1b71ac26a3&v=4
+authors: debora
 tags: [developer-portal, documentation]
 date: 2021-03-02
 ---
