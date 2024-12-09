@@ -35,7 +35,7 @@ The [Events](/events/webinars) page offers a sidebar that organizes events by ty
 
 ## Community
 
-The [Community](/community) page is an important one as it provides links and resources to the DHIS2 Developer Community. Besides the Community of Practice, we have just created a [Slack workspace](/community#slack-workspace-for-dhis2-developers) for DHIS2 Developers to meet and share all things developer.
+The [Community](/community) page is an important one as it provides links and resources to the DHIS2 Developer Community. 
 
 ## Contribution
 
