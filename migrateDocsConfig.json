@@ -72,6 +72,19 @@
             "sourceDir": "docs"
         },
         {
+            "repo": "https://github.com/dhis2/dhis2-android-sdk.git",
+            "tempDir": ".android-sdk-repo-temp",
+            "targetDir": "./docs/mobile/android-sdk",
+            "branch": "master",
+            "postDownloadActions": [
+                "node ./docs/scripts/mobileSDKprocessor.js",
+                "mv docs/content/developer developer",
+                "rm -R docs",
+                "rm developer/about-this-guide.md",
+                "mv developer docs"
+            ]
+        },
+        {
             "repo": "https://github.com/dhis2/ui.git",
             "tempDir": ".ui-repo-temp",
             "targetDir": "./design",
