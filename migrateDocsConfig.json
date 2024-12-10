@@ -80,6 +80,7 @@
                 "node ./docs/scripts/mobileSDKprocessor.js",
                 "mv docs/content/developer developer",
                 "rm -R docs",
+                "rm developer/about-this-guide.md",
                 "mv developer docs"
             ]
         },
