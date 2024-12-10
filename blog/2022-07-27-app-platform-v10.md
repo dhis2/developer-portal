@@ -3,6 +3,7 @@ slug: 2022/07/app-platform-v10
 title: App-platform v10
 authors: core
 tags: [app platform, developer tools, webapp, announcement]
+date: 2022-07-27
 ---
 
 We have just released a new major version of the app-platform: version 10. Upgrading to version 10 should be relatively easy for all apps currently using version 9 of `cli-app-scripts`. In this post we'll walk you through the most important change for this release.

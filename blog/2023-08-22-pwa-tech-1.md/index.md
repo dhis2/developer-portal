@@ -3,6 +3,7 @@ slug: 2023/08/pwa-tech-1
 title: A deep-dive on a Progressive Web App implementation for a React-based App Platform (DHIS2)
 authors: kai
 tags: [dhis2, health, java, javascript, react, pwa]
+date: 2023-08-22
 ---
 
 We are excited about the recent release of Progressive Web App (PWA) features in our App Platform, which you can read about in [this blog post introducing them](https://developers.dhis2.org/blog/2021/11/introducing-pwa), and we think we have some interesting stories to share about their development. We faced interesting design challenges as we sought to make these features easily generalizable to any app, and the ways we used available technologies to solve those challenges are quite unique. The purpose of this post is to share our novel approach to managing service worker lifecycles and other PWA functionality in a generic way.
@@ -473,4 +474,4 @@ We hope you enjoyed this introduction to the DHIS2 App Platform and to its PWA f
 
 In a follow-up post we'll describe design challenges and solutions for creating the Cacheable Sections and some other App Runtime features that were described in the [PWA introduction blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa) -- stay tuned to the [DHIS2 developer's blog](https://developers.dhis2.org/blog).
 
-Is there anything you'd like to know more about on this subject, or have any other questions or comments? Feel free to reach out to us via [e-mail](mailto:community@dhis2.com), [Slack](https://dhis2-dev-community.slack.com), [Twitter](https://twitter.com/dhis_2) or our [Community of Practice](https://community.dhis2.org/c/development/10)! We're always happy to hear from interested developers and community members. If you would like to join our team to tackle challenges like the PWA implementation please check our [careers section](https://dhis2.org/careers) in our website. All of our software team roles are remote-friendly, and we encourage people of all identities and backgrounds to apply.
+Is there anything you'd like to know more about on this subject, or have any other questions or comments? Feel free to reach out to us via [e-mail](mailto:community@dhis2.com), [X](https://x.com/dhis_2), [BlueSky](https://bsky.app/profile/dhis2.org) or our [Community of Practice](https://community.dhis2.org/c/development/10)! We're always happy to hear from interested developers and community members. If you would like to join our team to tackle challenges like the PWA implementation please check our [careers section](https://dhis2.org/careers) in our website. All of our software team roles are remote-friendly, and we encourage people of all identities and backgrounds to apply.

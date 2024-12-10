@@ -213,7 +213,10 @@ module.exports = {
                     editUrl:
                         'https://github.com/dhis2/developer-portal/edit/main/',
                     authorsMapPath: 'authors.yml',
-                    blogSidebarCount: 15,
+                    blogSidebarCount: 25,
+                    feedOptions: {
+                        xslt: true,
+                    },
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
