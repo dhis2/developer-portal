@@ -4,7 +4,7 @@ title: Creating a DHIS2 Android app
 sidebar_label: Creating a DHIS2 Android app
 ---
 
-Please check the [Getting Started](/docs/mobile/android-sdk/getting-started.md) section of our [Developing with the Android SDK](/docs/mobile/android-sdk/overview) guide.
+Please check the [Getting Started](/docs/mobile/android-sdk/getting-started) section of our [Developing with the Android SDK](/docs/mobile/android-sdk/overview) guide.
 
 ### Next steps
 
