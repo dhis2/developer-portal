@@ -3,46 +3,79 @@ austin:
     title: DHIS2 Core Team
     url: https://github.com/amcgee
     image_url: https://github.com/amcgee.png
+    socials:
+        github: amcgee
 
 jennifer:
     name: Jennifer Arnesen
     title: DHIS2 Core Team
     url: https://github.com/jenniferarnesen
     image_url: https://github.com/jenniferarnesen.png
+    socials:
+        github: jenniferarnesen
 
 joe:
     name: Joe Cooper
     title: DHIS2 Core Team
     url: https://github.com/cooper-joe
     image_url: https://github.com/cooper-joe.png
+    socials:
+        github: cooper-joe
 
 varl:
     name: Viktor Varland
     title: DHIS2 Core Team
     url: https://github.com/varl
     image_url: https://github.com/varl.png
+    socials:
+        github: varl
 
 claudemamo:
     name: Claude Mamo
     title: DHIS2 Core Team
     url: https://github.com/cjmamo
     image_url: https://github.com/cjmamo.png
+    socials:
+        github: cjmamo
 
 kai:
     name: Kai Vandivier
     title: DHIS2 Core Team
     url: https://github.com/KaiVandivier
     image_url: https://github.com/KaiVandivier.png
+    socials:
+        github: KaiVandivier
+
 rene:
     name: Rene Pot
     title: DHIS2 Core Team
     url: https://github.com/Topener
     image_url: https://github.com/Topener.png
+    socials:
+        github: Topener
+
 birk:
     name: Birk Johansson
     title: DHIS2 Core Team
     url: https://github.com/Birkbjo
     image_url: https://github.com/Birkbjo.png
+    socials:
+        github: Birkbjo
+
 core:
     name: DHIS2 Core Team
     image_url: https://github.com/dhis2.png
+    socials:
+        github: dhis2
+
+gintare:
+    name: Gintare Vilkelyte
+    url: https://github.com/vilkg
+    title: DHIS2 Core Team
+    image_url: https://avatars.githubusercontent.com/u/12664326?s=400&v=4
+
+debora:
+    name: Debora Galeano
+    url: https://github.com/deboragaleano
+    title: DHIS2 Core Team
+    image_url: https://avatars.githubusercontent.com/u/36022831?s=400&u=dea8b5f06077d6f0039c1d82603afd1b71ac26a3&v=4

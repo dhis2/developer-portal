@@ -1,9 +1,7 @@
 ---
 slug: 2021/03/dhis2-dev-portal
 title: Revamped Developer Portal
-author: Debora Galeano
-author_url: https://github.com/deboragaleano
-author_image_url: https://avatars.githubusercontent.com/u/36022831?s=400&u=dea8b5f06077d6f0039c1d82603afd1b71ac26a3&v=4
+authors: debora
 tags: [developer-portal, documentation]
 ---
 
@@ -36,7 +34,7 @@ The [Events](/events/webinars) page offers a sidebar that organizes events by ty
 
 ## Community
 
-The [Community](/community) page is an important one as it provides links and resources to the DHIS2 Developer Community. Besides the Community of Practice, we have just created a [Slack workspace](/community#slack-workspace-for-dhis2-developers) for DHIS2 Developers to meet and share all things developer.
+The [Community](/community) page is an important one as it provides links and resources to the DHIS2 Developer Community. 
 
 ## Contribution
 
