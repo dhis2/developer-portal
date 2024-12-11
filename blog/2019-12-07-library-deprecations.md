@@ -3,7 +3,6 @@ slug: 2019/12/library-deprecations
 title: Web Application Library deprecations
 authors: varl
 tags: [deprecation, libraries, webapp]
-date: 2019-12-07
 ---
 
 In 2019 we established a new application development paradigm with

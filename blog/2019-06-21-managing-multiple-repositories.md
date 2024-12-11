@@ -3,7 +3,6 @@ slug: 2019/06/managing-multiple-repositories
 title: Command a fleet of repositories
 authors: varl
 tags: [cli, developer tools]
-date: 2019-06-21
 ---
 
 As a developer you operate on many repositories. To keep all of the

@@ -3,7 +3,6 @@ slug: 2021/03/dhis2-dev-portal
 title: Revamped Developer Portal
 authors: debora
 tags: [developer-portal, documentation]
-date: 2021-03-02
 ---
 
 We're excited to announce that the revamped [DHIS2 Developer Portal](/) is live! 🎊  

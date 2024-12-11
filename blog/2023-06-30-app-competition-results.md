@@ -3,7 +3,6 @@ slug: 2023/06/app-competition-results
 title: 2023 App Competition Results
 authors: rene
 tags: [dac2023, app-competition, android, web, apps]
-date: 2023-06-30
 ---
 
 *As we’ve recently had the DHIS2 Annual Conference, we’ve also completed the 2023 App Competition tied to the conference. On Thursday, the finalists were able, in 7 minutes, to present their Android or Web application, and once all were done, the audience decided which app they thought was the best.*

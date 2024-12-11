@@ -3,7 +3,6 @@ slug: 2019/03/build-acrobatics
 title: Build acrobatics
 authors: varl
 tags: [build system, architecture]
-date: 2019-03-25
 ---
 
 Ready for some practical tricks on how to use the build system? Create

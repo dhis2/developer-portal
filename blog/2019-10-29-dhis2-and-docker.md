@@ -3,7 +3,6 @@ slug: 2019/10/dhis2-and-docker
 title: DHIS2 with Docker
 authors: gintare
 tags: [docker]
-date: 2019-10-29
 ---
 
 :::caution

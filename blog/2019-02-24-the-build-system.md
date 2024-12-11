@@ -3,7 +3,6 @@ slug: 2019/02/the-build-system
 title: The Build System
 authors: [varl, jennifer]
 tags: [build system, architecture]
-date: 2019-02-24
 ---
 
 The last year has seen some significant changes to how the build system

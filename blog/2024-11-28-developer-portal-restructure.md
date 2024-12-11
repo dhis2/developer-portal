@@ -3,7 +3,6 @@ slug: 2024/11/developer-portal-restructure
 title: Developer Portal has a new Navigation Structure
 authors: rene
 tags: [developer-portal]
-date: 2024-11-28
 ---
 
 In recent months, more and more documentation has been added to the Developer Portal. But with many new additions, the navigation structure of the Developer Portal has become a bit cluttered. To make it easier to find the information you need, we've restructured the navigation of the Developer Portal.

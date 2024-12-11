@@ -3,7 +3,6 @@ slug: 2021/11/introducing-pwa
 title: Introducing PWA in the App Platform
 authors: kai
 tags: [app platform, pwa, announcement]
-date: 2021-11-04
 ---
 
 The DHIS2 App Platform now supports PWA capabilities in apps made with the platform! The Dashboard App will be the first core app to take advantage of these features to enable offline capability, and it will be used as an example in this article to describe the details of these features.
