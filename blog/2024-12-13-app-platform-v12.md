@@ -13,6 +13,8 @@ We're very excited for these updates — both will significantly modernize the A
 
 Here are some tips about what to expect, and how to easily upgrade to the latest version of `@dhis2/cli-app-scripts` to take advantage of Vite and React 18.
 
+<!-- truncate -->
+
 ### Notable changes
 
 These are some things that you'll see right away after upgrading:
