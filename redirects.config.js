@@ -1,6 +1,6 @@
 module.exports = [
     {
-        to: '/docs/',
+        to: '/docs',
         from: [
             '/guides/quickstart-app-development',
             '/guides/jira-workflow',

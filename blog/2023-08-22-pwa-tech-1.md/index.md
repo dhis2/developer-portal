@@ -61,7 +61,7 @@ At run-time, our platform offers React components and hooks that provide service
     1. **Data Service**: Publishes a declarative API for sending and receiving data to and from the DHIS2 back-end
     2. **Config Service**: Exposes several app configuration parameters
     3. **Alerts Service**: Provides a declarative API for showing and hiding in-app alerts. This also coordinates with an Alerts Manager component in the App Adapter to show the UI
-2. A **UI Library** that offers reusable interface components that implement the DHIS2 design system. See more at the [UI documentation](/design) and the [`ui` repository](https://github.com/dhis2/ui).
+2. A **UI Library** that offers reusable interface components that implement the DHIS2 [design system](/design-system). See more at the [UI documentation](/docs/tutorials/ui-library) and the [`ui` repository](https://github.com/dhis2/ui).
 
 ### The App Platform orchestra
 
@@ -473,4 +473,4 @@ We hope you enjoyed this introduction to the DHIS2 App Platform and to its PWA f
 
 In a follow-up post we'll describe design challenges and solutions for creating the Cacheable Sections and some other App Runtime features that were described in the [PWA introduction blog post](https://developers.dhis2.org/blog/2021/11/introducing-pwa) -- stay tuned to the [DHIS2 developer's blog](https://developers.dhis2.org/blog).
 
-Is there anything you'd like to know more about on this subject, or have any other questions or comments? Feel free to reach out to us via [e-mail](mailto:community@dhis2.com), [Slack](https://dhis2-dev-community.slack.com), [Twitter](https://twitter.com/dhis_2) or our [Community of Practice](https://community.dhis2.org/c/development/10)! We're always happy to hear from interested developers and community members. If you would like to join our team to tackle challenges like the PWA implementation please check our [careers section](https://dhis2.org/careers) in our website. All of our software team roles are remote-friendly, and we encourage people of all identities and backgrounds to apply.
+Is there anything you'd like to know more about on this subject, or have any other questions or comments? Feel free to reach out to us via [e-mail](mailto:community@dhis2.com), [X](https://x.com/dhis_2), [BlueSky](https://bsky.app/profile/dhis2.org) or our [Community of Practice](https://community.dhis2.org/c/development/10)! We're always happy to hear from interested developers and community members. If you would like to join our team to tackle challenges like the PWA implementation please check our [careers section](https://dhis2.org/careers) in our website. All of our software team roles are remote-friendly, and we encourage people of all identities and backgrounds to apply.

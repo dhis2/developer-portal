@@ -16,11 +16,11 @@ Before we continue, make sure that you followed the steps provided in the first 
 
 ### DHIS2 UI Library Principles
 
-The UI library more than just a collection of components, there also are principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 UI documentation](/design).
+The UI library is a collection of components which implement the DHIS2 Design System principles, such as predefined colors, layout, typography, icons and patterns. You can find all of these in the [DHIS2 Design System section](/design-system).
 
-### Live demos documentation
+### Web UI Components
 
-To learn more about the [DHIS2 UI library](/design) and see a list of demos, make sure to check out the [component documentation](/docs/ui/webcomponents) that uses Storybook to showcase all available components. Here, you will find a description for each component and you will be able to interact with its props. You can also find code snippets for each demo to easily copy and paste them into your project.
+The [DHIS2 Design System](/design-system) contains a lot of guidance on *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
 
 ### Installation
 
@@ -97,14 +97,14 @@ In your browser, you should be able to see something similar when you click the 
 That's it for the `Button` component! 👏🏽
 
 :::note
-If you want to add more components to your application, make sure to follow this quick guide on [How to add a Table component](/docs/guides/ui-table) as an example.
+If you want to add more components to your application, make sure to follow this quick guide on [How to add a Table component](/docs/ui/recipes/ui-table) as an example.
 :::
 
 ### Want to learn more?
 
--   Check the [DHIS2 Design System](https://github.com/dhis2/design-system#dhis2-design-system) repo or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
+-   Check the [DHIS2 Design System](/design-system) or watch this [short presentation](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=43) (less than 15 min)
 
--   Check the [UI Library documentation](/design) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
+-   Check the [UI Library documentation](/docs/tutorials/ui-library) or watch this [short demo](https://youtu.be/Brvi4DsIRN8?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=802) about it (about 15 min)
 
 ## What's next?
 

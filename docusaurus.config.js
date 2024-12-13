@@ -3,7 +3,7 @@ const redirects = require('./redirects.config.js')
 module.exports = {
     title: 'DHIS2 Developer Portal',
     tagline: 'Welcome to the DHIS2 application development community!',
-    url: 'https://dhis2.github.io',
+    url: 'https://developers.dhis2.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -23,17 +23,17 @@ module.exports = {
                 {
                     to: 'docs',
                     activeBasePath: 'docs',
-                    label: 'Web Development',
+                    label: 'Guides & Tutorials',
                     position: 'left',
                 },
                 {
-                    to: 'mobile',
-                    activeBasePath: 'mobile',
-                    label: 'Mobile Development',
+                    to: 'docs/references',
+                    activeBasePath: 'docs',
+                    label: 'Reference Docs',
                     position: 'left',
                 },
                 {
-                    to: 'design',
+                    to: 'design-system',
                     label: 'Design System',
                     position: 'left',
                 },
@@ -134,15 +134,6 @@ module.exports = {
         [
             '@docusaurus/plugin-content-docs',
             {
-                id: 'mobile',
-                path: 'mobile',
-                routeBasePath: 'mobile',
-                sidebarPath: require.resolve('./sidebarsMobile.js'),
-            },
-        ],
-        [
-            '@docusaurus/plugin-content-docs',
-            {
                 id: 'community',
                 path: 'community',
                 routeBasePath: 'community',
@@ -154,7 +145,7 @@ module.exports = {
             {
                 id: 'design',
                 path: 'design',
-                routeBasePath: 'design',
+                routeBasePath: 'design-system',
                 sidebarPath: require.resolve('./sidebarsDesign.js'),
             },
         ],
@@ -222,7 +213,10 @@ module.exports = {
                     editUrl:
                         'https://github.com/dhis2/developer-portal/edit/main/',
                     authorsMapPath: 'authors.yml',
-                    blogSidebarCount: 15,
+                    blogSidebarCount: 25,
+                    feedOptions: {
+                        xslt: true,
+                    },
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),

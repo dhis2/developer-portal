@@ -63,9 +63,11 @@ function Feature({ imageUrl, url, title, description }) {
             )}
             <h3>{title}</h3>
             <p>{description}</p>
-            <p>
-                <a href={url}>Learn more →</a>
-            </p>
+            {url && (
+                <p>
+                    <a href={url}>Learn more →</a>
+                </p>
+            )}
         </div>
     )
 }
@@ -88,9 +90,19 @@ function Home() {
                                 'button button--secondary button--lg',
                                 styles.getStarted
                             )}
-                            to={useBaseUrl('docs/')}
+                            to={useBaseUrl('docs')}
                         >
                             Get Started
+                        </Link>
+
+                        <Link
+                            className={clsx(
+                                'button button--secondary button--lg',
+                                styles.getStarted
+                            )}
+                            to={useBaseUrl('docs/references')}
+                        >
+                            Explore references
                         </Link>
                     </div>
                 </div>

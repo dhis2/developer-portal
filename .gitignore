@@ -29,6 +29,9 @@ docs/app-runtime
 docs/cli/style
 docs/capture-plugins
 docs/ui/components
+docs/ui/recipes
+docs/mobile/mobile-ui
+docs/mobile/android-sdk
 design
 
 # Copied storybook
@@ -37,8 +40,6 @@ static/demo
 # Copied UI Doc accessories
 static/ui
 src/components
-
-mobile/mobile-ui
 
 # temp directories for copied docs
 .cli-repo-temp

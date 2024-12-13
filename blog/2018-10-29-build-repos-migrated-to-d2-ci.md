@@ -1,7 +1,7 @@
 ---
 slug: 2018/10/build-repos-migrated-to-d2-ci
 title: Build repos migrated to d2-ci organization on GitHub
-authors: varl
+authors: [varl]
 ---
 
 Now that the amount of build repos are ranging in the fifties, it's time

@@ -1,0 +1,129 @@
+{
+    "migrations": [
+        {
+            "repo": "https://github.com/dhis2/cli.git",
+            "tempDir": ".cli-repo-temp",
+            "targetDir": "./docs/cli/cli"
+        },
+        {
+            "repo": "https://github.com/dhis2/cli-style.git",
+            "tempDir": ".clistyle-repo-temp",
+            "targetDir": "./docs/cli/style",
+            "extraFiles": [
+                {
+                    "from": "CHANGELOG.md",
+                    "to": "changelog.md"
+                },
+                {
+                    "from": "dist/markdown/api.md",
+                    "to": "api.md"
+                }
+            ],
+            "postDownloadActions": [
+                "git sparse-checkout add src docs",
+                "yarn",
+                "yarn build:jsdoc"
+            ]
+        },
+        {
+            "repo": "https://github.com/dhis2/app-platform.git",
+            "tempDir": ".ap-repo-temp",
+            "targetDir": "./docs/app-platform",
+            "extraFiles": [
+                {
+                    "from": "CHANGELOG.md",
+                    "to": "changelog.md"
+                }
+            ]
+        },
+        {
+            "repo": "https://github.com/dhis2/cli-utils-cypress.git",
+            "tempDir": ".cypress-repo-temp",
+            "targetDir": "./docs/cli/cypress",
+            "extraFiles": [
+                {
+                    "from": "CHANGELOG.md",
+                    "to": "changelog.md"
+                }
+            ]
+        },
+        {
+            "repo": "https://github.com/dhis2/app-runtime.git",
+            "tempDir": ".ar-repo-temp",
+            "targetDir": "./docs/app-runtime",
+            "extraFiles": [
+                {
+                    "from": "CHANGELOG.md",
+                    "to": "changelog.md"
+                }
+            ]
+        },
+        {
+            "repo": "https://github.com/dhis2/capture-app.git",
+            "tempDir": ".capture-repo-temp",
+            "targetDir": "./docs/capture-plugins",
+            "ignoreDirs": ["user"]
+        },
+        {
+            "repo": "https://github.com/dhis2/dhis2-mobile-ui.git",
+            "tempDir": ".mui-repo-temp",
+            "targetDir": "./docs/mobile/mobile-ui",
+            "branch": "main",
+            "sourceDir": "docs"
+        },
+        {
+            "repo": "https://github.com/dhis2/dhis2-android-sdk.git",
+            "tempDir": ".android-sdk-repo-temp",
+            "targetDir": "./docs/mobile/android-sdk",
+            "branch": "master",
+            "postDownloadActions": [
+                "node ./docs/scripts/mobileSDKprocessor.js",
+                "mv docs/content/developer developer",
+                "rm -R docs",
+                "rm developer/about-this-guide.md",
+                "mv developer docs"
+            ]
+        },
+        {
+            "repo": "https://github.com/dhis2/ui.git",
+            "tempDir": ".ui-repo-temp",
+            "targetDir": "./design",
+            "sourceDir": "docs/docs",
+            "extraFiles": [
+                {
+                    "from": "docs/src/components",
+                    "to": "../src/components"
+                },
+                {
+                    "from": "docs/static",
+                    "to": "../static/ui"
+                },
+                {
+                    "from": "CHANGELOG.md",
+                    "to": "package/changelog.md"
+                },
+                {
+                    "from": "docs/docs/components",
+                    "to": "../docs/ui/components"
+                },
+                {
+                    "from": "docs/docs/recipes",
+                    "to": "../docs/ui/recipes"
+                },
+                {
+                    "from": "dist/demo",
+                    "to": "../static/demo"
+                }
+            ],
+            "processMarkdown": true,
+            "sparseCheckout": false,
+            "postDownloadActions": [
+                "yarn install --frozen-lockfile",
+                "yarn setup",
+                "yarn build"
+            ],
+            "removeFiles": ["../design/components", "../design/recipes"],
+            "branch": "master"
+        }
+    ]
+}
