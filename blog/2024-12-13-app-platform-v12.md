@@ -1,5 +1,5 @@
 ---
-slug: 2024/11/app-platform-v12
+slug: 2024/12/app-platform-v12
 title: App Platform v12
 authors: [core, kai]
 tags: [app platform, developer tools, webapp, announcement]
