@@ -46,6 +46,15 @@ module.exports = {
                             type: 'doc',
                         },
                         {
+                            migrate: [
+                                {
+                                    id: 'app-platform/scripts/migrate/js-to-jsx',
+                                    label: 'js-to-jsx',
+                                    type: 'doc',
+                                },
+                            ],
+                        },
+                        {
                             id: 'app-platform/scripts/build',
                             label: 'build',
                             type: 'doc',
@@ -104,6 +113,9 @@ module.exports = {
                 'app-platform/architecture',
                 'app-platform/troubleshooting',
                 'app-platform/proxy',
+                {
+                    Migration: ['app-platform/migration/v12'],
+                },
                 {
                     id: 'app-platform/changelog',
                     label: 'Changelog',
