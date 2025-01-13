@@ -12,6 +12,54 @@ module.exports = {
             defaultStyle: true,
         },
         {
+            label: 'App Runtime',
+            type: 'category',
+            collapsed: true,
+            items: [
+                'app-runtime/provider',
+                {
+                    Hooks: [
+                        {
+                            id: 'app-runtime/hooks/README',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        'tutorials/app-runtime-query',
+                        'tutorials/app-runtime-mutation',
+                        'app-runtime/hooks/useConfig',
+                        'app-runtime/hooks/useDataQuery',
+                        'app-runtime/hooks/useDataMutation',
+                        'app-runtime/hooks/useDataEngine',
+                        'app-runtime/hooks/useAlert',
+                        'app-runtime/hooks/useAlerts',
+                        'app-runtime/hooks/useTimeZoneConversion',
+                    ],
+                },
+                {
+                    Components: [
+                        {
+                            id: 'app-runtime/components/README',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        'app-runtime/components/DataQuery',
+                        'app-runtime/components/DataMutation',
+                        'app-runtime/components/Plugin',
+                    ],
+                },
+                {
+                    Types: [
+                        'app-runtime/types/Config',
+                        'app-runtime/types/Query',
+                        'app-runtime/types/Mutation',
+                    ],
+                },
+                'app-runtime/advanced/CustomDataProvider',
+                'app-runtime/advanced/services',
+                'app-runtime/advanced/redux',
+            ],
+        },
+        {
             label: 'UI Components',
             type: 'category',
             collapsed: true,

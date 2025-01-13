@@ -133,63 +133,22 @@ module.exports = {
             },
             items: [
                 'app-runtime/getting-started',
-                'app-runtime/provider',
                 {
-                    Hooks: [
+                    Guides: [
+                        'app-runtime/guides/display-alerts',
+                        'app-runtime/guides/using-dataquery',
+                    ],
+                },
+                {
+                    'Offline Tools': [
                         {
-                            id: 'app-runtime/hooks/README',
+                            id: 'app-runtime/advanced/offline/README',
                             label: 'Overview',
                             type: 'doc',
                         },
-                        'tutorials/app-runtime-query',
-                        'tutorials/app-runtime-mutation',
-                        'app-runtime/hooks/useConfig',
-                        'app-runtime/hooks/useDataQuery',
-                        'app-runtime/hooks/useDataMutation',
-                        'app-runtime/hooks/useDataEngine',
-                        'app-runtime/hooks/useAlert',
-                        'app-runtime/hooks/useAlerts',
-                        'app-runtime/hooks/useTimeZoneConversion',
-                    ],
-                },
-                {
-                    Components: [
-                        {
-                            id: 'app-runtime/components/README',
-                            label: 'Overview',
-                            type: 'doc',
-                        },
-                        'app-runtime/components/DataQuery',
-                        'app-runtime/components/DataMutation',
-                        'app-runtime/components/Plugin',
-                    ],
-                },
-                {
-                    Types: [
-                        'app-runtime/types/Config',
-                        'app-runtime/types/Query',
-                        'app-runtime/types/Mutation',
-                    ],
-                },
-                {
-                    Advanced: [
-                        {
-                            'Offline Tools': [
-                                {
-                                    id: 'app-runtime/advanced/offline/README',
-                                    label: 'Overview',
-                                    type: 'doc',
-                                },
-                                'app-runtime/advanced/offline/CacheableSections',
-                                'app-runtime/advanced/offline/useDhis2ConnectionStatus',
-                                'app-runtime/advanced/offline/useOnlineStatus',
-                            ],
-                        },
-                        'app-runtime/advanced/CustomDataProvider',
-                        'app-runtime/advanced/services',
-                        'app-runtime/advanced/DataEngine',
-                        'app-runtime/advanced/DataEngineLinks',
-                        'app-runtime/advanced/redux',
+                        'app-runtime/advanced/offline/CacheableSections',
+                        'app-runtime/advanced/offline/useDhis2ConnectionStatus',
+                        'app-runtime/advanced/offline/useOnlineStatus',
                     ],
                 },
                 {
