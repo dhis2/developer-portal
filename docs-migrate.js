@@ -148,5 +148,6 @@ migrations.migrations.forEach((migration) => {
     if (args.length > 0 && migration.repo.indexOf(args[0]) === -1) {
         return
     }
+
     migrateDocs(migration)
 })
