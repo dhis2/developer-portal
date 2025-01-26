@@ -32,12 +32,7 @@ const features = [
         title: 'Web UI Components',
         imageUrl: 'img/components.svg',
         url: '/docs/ui/webcomponents',
-        description: (
-            <>
-                Learn more about the DHIS2 UI components, analytics helper
-                functions the SMS library.
-            </>
-        ),
+        description: <>Learn more about the DHIS2 UI components.</>,
     },
     {},
     {
