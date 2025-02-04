@@ -51,7 +51,6 @@
             "repo": "https://github.com/dhis2/app-runtime.git",
             "tempDir": ".ar-repo-temp",
             "targetDir": "./docs/app-runtime",
-            "branch": "docs-update",
             "extraFiles": [
                 {
                     "from": "CHANGELOG.md",
