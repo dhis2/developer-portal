@@ -133,24 +133,7 @@ module.exports = {
             },
             items: [
                 'app-runtime/getting-started',
-                {
-                    Guides: [
-                        'app-runtime/guides/display-alerts',
-                        'app-runtime/guides/using-dataquery',
-                    ],
-                },
-                {
-                    'Offline Tools': [
-                        {
-                            id: 'app-runtime/advanced/offline/README',
-                            label: 'Overview',
-                            type: 'doc',
-                        },
-                        'app-runtime/advanced/offline/CacheableSections',
-                        'app-runtime/advanced/offline/useDhis2ConnectionStatus',
-                        'app-runtime/advanced/offline/useOnlineStatus',
-                    ],
-                },
+
                 {
                     href: 'https://play.dhis2.org/demo/api/apps/query-playground/index.html',
                     label: 'Query Playground',
@@ -218,7 +201,11 @@ module.exports = {
                     ],
                 },
                 {
-                    'DHIS2 App Runtime': ['guides/query-playground'],
+                    'DHIS2 App Runtime': [
+                        'guides/query-playground',
+                        'app-runtime/guides/display-alerts',
+                        'app-runtime/guides/using-dataquery',
+                    ],
                     'App Hub': [
                         'guides/submit-apphub',
                         'guides/apphub-guidelines',

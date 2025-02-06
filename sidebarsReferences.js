@@ -54,6 +54,18 @@ module.exports = {
                         'app-runtime/types/Mutation',
                     ],
                 },
+                {
+                    'Offline Tools': [
+                        {
+                            id: 'app-runtime/advanced/offline/README',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        'app-runtime/advanced/offline/CacheableSections',
+                        'app-runtime/advanced/offline/useDhis2ConnectionStatus',
+                        'app-runtime/advanced/offline/useOnlineStatus',
+                    ],
+                },
                 'app-runtime/advanced/CustomDataProvider',
                 'app-runtime/advanced/services',
                 'app-runtime/advanced/redux',
