@@ -16,6 +16,7 @@ module.exports = {
             type: 'category',
             collapsed: true,
             items: [
+                'app-runtime/getting-started',
                 'app-runtime/provider',
                 {
                     Hooks: [
@@ -67,6 +68,16 @@ module.exports = {
                 'app-runtime/advanced/CustomDataProvider',
                 'app-runtime/advanced/services',
                 'app-runtime/advanced/redux',
+                {
+                    href: 'https://play.dhis2.org/demo/api/apps/query-playground/index.html',
+                    label: 'Query Playground',
+                    type: 'link',
+                },
+                {
+                    id: 'app-runtime/changelog',
+                    label: 'Changelog',
+                    type: 'doc',
+                },
             ],
         },
         {

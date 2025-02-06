@@ -123,29 +123,6 @@ module.exports = {
                 },
             ],
         },
-        {
-            label: 'Application Runtime',
-            type: 'category',
-            collapsed: true,
-            link: {
-                type: 'doc',
-                id: 'app-runtime/getting-started',
-            },
-            items: [
-                'app-runtime/getting-started',
-
-                {
-                    href: 'https://play.dhis2.org/demo/api/apps/query-playground/index.html',
-                    label: 'Query Playground',
-                    type: 'link',
-                },
-                {
-                    id: 'app-runtime/changelog',
-                    label: 'Changelog',
-                    type: 'doc',
-                },
-            ],
-        },
         'tutorials/ui-library',
         {
             label: 'Capture Plugins',
