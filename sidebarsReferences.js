@@ -24,8 +24,6 @@ module.exports = {
                             label: 'Overview',
                             type: 'doc',
                         },
-                        'tutorials/app-runtime-query',
-                        'tutorials/app-runtime-mutation',
                         'app-runtime/hooks/useConfig',
                         'app-runtime/hooks/useDataQuery',
                         'app-runtime/hooks/useDataMutation',
