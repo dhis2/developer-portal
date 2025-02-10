@@ -12,6 +12,172 @@ module.exports = {
             defaultStyle: true,
         },
         {
+            label: 'App Runtime',
+            type: 'category',
+            collapsed: true,
+            items: [
+                'app-runtime/getting-started',
+                'app-runtime/provider',
+                {
+                    Hooks: [
+                        {
+                            id: 'app-runtime/hooks/README',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        'app-runtime/hooks/useConfig',
+                        'app-runtime/hooks/useDataQuery',
+                        'app-runtime/hooks/useDataMutation',
+                        'app-runtime/hooks/useDataEngine',
+                        'app-runtime/hooks/useAlert',
+                        'app-runtime/hooks/useAlerts',
+                        'app-runtime/hooks/useTimeZoneConversion',
+                    ],
+                },
+                {
+                    Components: [
+                        {
+                            id: 'app-runtime/components/README',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        'app-runtime/components/DataQuery',
+                        'app-runtime/components/DataMutation',
+                        'app-runtime/components/Plugin',
+                    ],
+                },
+                {
+                    Types: [
+                        'app-runtime/types/Config',
+                        'app-runtime/types/Query',
+                        'app-runtime/types/Mutation',
+                    ],
+                },
+                {
+                    'Offline Tools': [
+                        {
+                            id: 'app-runtime/advanced/offline/README',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        'app-runtime/advanced/offline/CacheableSections',
+                        'app-runtime/advanced/offline/useDhis2ConnectionStatus',
+                        'app-runtime/advanced/offline/useOnlineStatus',
+                    ],
+                },
+                'app-runtime/advanced/CustomDataProvider',
+                'app-runtime/advanced/services',
+                'app-runtime/advanced/redux',
+                {
+                    href: 'https://play.dhis2.org/demo/api/apps/query-playground/index.html',
+                    label: 'Query Playground',
+                    type: 'link',
+                },
+                {
+                    id: 'app-runtime/changelog',
+                    label: 'Changelog',
+                    type: 'doc',
+                },
+            ],
+        },
+        {
+            label: 'Application Platform',
+            type: 'category',
+            collapsed: true,
+            link: {
+                type: 'doc',
+                id: 'app-platform/getting-started',
+            },
+            items: [
+                'app-platform/getting-started',
+                'app-platform/installation',
+                'app-platform/bootstrapping',
+                {
+                    'CLI Scripts': [
+                        {
+                            id: 'app-platform/scripts',
+                            label: 'Overview',
+                            type: 'doc',
+                        },
+                        {
+                            migrate: [
+                                {
+                                    id: 'app-platform/scripts/migrate/js-to-jsx',
+                                    label: 'js-to-jsx',
+                                    type: 'doc',
+                                },
+                            ],
+                        },
+                        {
+                            id: 'app-platform/scripts/build',
+                            label: 'build',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'app-platform/scripts/deploy',
+                            label: 'deploy',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'app-platform/scripts/init',
+                            label: 'init',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'app-platform/scripts/pack',
+                            label: 'pack',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'app-platform/scripts/publish',
+                            label: 'publish',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'app-platform/scripts/start',
+                            label: 'start',
+                            type: 'doc',
+                        },
+                        {
+                            id: 'app-platform/scripts/test',
+                            label: 'test',
+                            type: 'doc',
+                        },
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Configuration',
+                    link: { id: 'app-platform/config', type: 'doc' },
+                    items: [
+                        'app-platform/config/types',
+                        'app-platform/config/d2-config-js-reference',
+                        'app-platform/config/environment',
+                    ],
+                },
+                {
+                    Usage: [
+                        'app-platform/usage/dependencies',
+                        'app-platform/usage/css',
+                        'app-platform/usage/static-files',
+                        'app-platform/usage/app-icon',
+                    ],
+                },
+                'app-platform/pwa/pwa',
+                'app-platform/architecture',
+                'app-platform/troubleshooting',
+                'app-platform/proxy',
+                {
+                    Migration: ['app-platform/migration/v12'],
+                },
+                {
+                    id: 'app-platform/changelog',
+                    label: 'Changelog',
+                    type: 'doc',
+                },
+            ],
+        },
+        {
             label: 'UI Components',
             type: 'category',
             collapsed: true,

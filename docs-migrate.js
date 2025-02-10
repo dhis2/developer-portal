@@ -2,6 +2,7 @@ const { execSync } = require('child_process')
 const path = require('path')
 const fs = require('fs-extra')
 const migrations = require('./migrateDocsConfig.json')
+const args = process.argv.slice(2)
 
 const migrateDocs = ({
     repo,
@@ -144,5 +145,9 @@ const processUIMarkdownFiles = (directory) => {
 }
 
 migrations.migrations.forEach((migration) => {
+    if (args.length > 0 && migration.repo.indexOf(args[0]) === -1) {
+        return
+    }
+
     migrateDocs(migration)
 })

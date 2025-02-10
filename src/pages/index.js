@@ -20,7 +20,7 @@ const features = [
     {
         title: 'DHIS2 App Platform',
         imageUrl: 'img/app-platform.svg',
-        url: '/docs/tutorials/',
+        url: '/docs/app-platform/getting-started',
         description: (
             <>
                 Common build system, development tools, runtime support, and
@@ -29,15 +29,10 @@ const features = [
         ),
     },
     {
-        title: 'Components & Libraries',
+        title: 'Web UI Components',
         imageUrl: 'img/components.svg',
-        url: '/docs/tutorials/',
-        description: (
-            <>
-                Learn more about the DHIS2 UI components, analytics helper
-                functions the SMS library.
-            </>
-        ),
+        url: '/docs/ui/webcomponents',
+        description: <>Learn more about the DHIS2 UI components.</>,
     },
     {},
     {
