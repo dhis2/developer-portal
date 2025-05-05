@@ -19,7 +19,11 @@ You will need to have the following installed before proceeding:
 
 Make sure that you are running a compatible version of Node as using older versions may throw some errors during setup.
 
-2. Install [Yarn](https://yarnpkg.com/getting-started/install)
+2. Install [Yarn](https://classic.yarnpkg.com/en/docs/install)
+
+:::note
+DHIS2 libraries and repositories assume the use of Yarn Classic, i.e. version 1.
+:::
 
 ## 2. Install the DHIS2 CLI
 
@@ -38,6 +42,12 @@ Verify your installation and check all the commands that are available to you:
 ```shell
 d2 --help
 ```
+
+:::info
+If you get a message like `command not found: d2`, you may need to add Yarn to the `PATH` variable in your terminal:
+
+> To have access to Yarn’s executables globally, you will need to set up the `PATH` environment variable in your terminal. To do this, add export ```PATH="$PATH:`yarn global bin`"``` to your profile, or if you use Fish shell, simply run the command `set -U fish_user_paths (yarn global bin) $fish_user_paths`
+:::
 
 You’re now ready to start using `@dhis2/cli` commands to create a new app! ✨
 
