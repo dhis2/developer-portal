@@ -23,7 +23,6 @@ The Global Shell is enabled by the following new components:
     2. The Command Palette, a new navigation menu which can be launched from the header bar, but also with a keyboard shortcut
     3. A router that loads the apps and connects to them
 
-
 ## How the routing works
 
 ### A new URL scheme
@@ -33,9 +32,9 @@ Recall that without the Global Shell, core apps are loaded at `/dhis-web-<coreAp
 Now with the Global Shell, app URLs will look like `/apps/<appName>`. The Global Shell is loaded at `/apps/`, and the app name that follows will determine which app to load, e.g. `/apps/dashboard`.
 
 Trying to reach an app at one of the old URLs while the Global Shell is active will result in a redirect to the Global Shell, using the URL that will load the respective app there.
-So, if you have links saved that point to one of the older formats, those links will still work: the server will redirect those requests to the new URLs. 
+So, if you have links saved that point to one of the older formats, those links will still work: the server will redirect those requests to the new URLs.
 
-“Deep linking” still works, both with URLs using the new and old format. That is, you can save the URL to a particular dashboard, visualization, or data entry context selection, then use that link later to open that same view. 
+“Deep linking” still works, both with URLs using the new and old format. That is, you can save the URL to a particular dashboard, visualization, or data entry context selection, then use that link later to open that same view.
 
 ### Example
 
@@ -51,7 +50,7 @@ Therefore, the resulting URL is `/dhis-web-dashboard/index.html?redirect=false#/
 
 ### Client-side routing and app routing
 
-The routing has somewhat of a two-way function: the top-level URL will determine what’s loaded, and the behavior of the app itself can affect the top-level URL. 
+The routing has somewhat of a two-way function: the top-level URL will determine what’s loaded, and the behavior of the app itself can affect the top-level URL.
 
 For example, loading `/apps/dashboard#/<dashboardId>` will load the dashboard app, and also pass the hash value to the Dashboard app, loading that particular dashboard in the app.
 
@@ -104,12 +103,12 @@ If an app uses client-side routing using a hash router, and those hash routes sh
 Apps using React Router version 5 or below already do this by publishing `popstate` events that the Global Shell can observe, so they don’t need any changes.
 
 Apps using other routing solutions can communicate routing changes to the Global Shell by triggering `popstate` events manually. (Note: soon the Global Shell will support listening to a different, arbitrary event, in case `popstate` events create local side effects). Examples can be seen here:
-* In the Data Visualizer app, which uses the `history` library: [dispatch popstate](https://github.com/dhis2/data-visualizer-app/blob/04182ec0441d244bae7d0693d8be0e9096c3b4e2/src/components/App.js#L149-L167)
-* In the new Maintenance (preview) app, which uses React Router > v6: [dispatch popstate](https://github.com/dhis2/maintenance-app-beta/pull/533/files)
+
+-   In the Data Visualizer app, which uses the `history` library: [dispatch popstate](https://github.com/dhis2/data-visualizer-app/blob/04182ec0441d244bae7d0693d8be0e9096c3b4e2/src/components/App.js#L149-L167)
+-   In the new Maintenance (preview) app, which uses React Router > v6: [dispatch popstate](https://github.com/dhis2/maintenance-app-beta/pull/533/files)
 
 ### External links
 
 Links to external domains can’t be loaded in the Global Shell. Add a `target=“_blank”` attribute to the `a` tag to open the link in a new tab when it’s clicked, or `target=“_top”` to navigate the current tab to that link.
 
 Note: Soon `@dhis2/cli-app-scripts` will be updated to set the `base` HTML element with the attribute `target="_top"` in platform apps, which becomes the default target for links. This feature already exists on the latest `11.x` release of `@dhis2/cli-app-scripts`.
-
