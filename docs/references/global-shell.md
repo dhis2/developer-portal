@@ -7,6 +7,8 @@ The Global App Shell is a new feature in DHIS2 v42. It’s a shared launching po
 
 Its intention is to create a consistent experience across DHIS2, consolidate functionality that’s needed across all the apps, and make it easier to roll out shared features to all the apps at once. The first examples of these new features include a redesign of the DHIS2 header bar and the introduction of a new navigation menu, called the Command Palette.
 
+![The Command Palette](./assets/global-shell-command-palette.png)
+
 ### Incremental design
 
 The Global Shell is currently designed to require as few changes from apps as possible. In later stages of its implementation, it will require some more updates from apps, but will hoist a number of features that are common to all apps up to itself, improving performance and simplifying the apps. These features might include fetching common requests, managing alerts and localization, and a more semantic connection for routing and PWA communication.
