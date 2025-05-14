@@ -3,7 +3,7 @@ id: global-shell
 title: Global Shell
 ---
 
-The Global App Shell is a new feature in DHIS2 v42. It’s a shared wrapper for all of the apps: when you visit DHIS2, the Global Shell will open, and then the Global Shell will load apps inside of itself.
+The Global App Shell is a new feature in DHIS2 v42. It’s a shared wrapper for all of the apps: when you visit DHIS2, the Global Shell will open, and then the Global Shell will load apps inside itself.
 
 Its intention is to create a consistent experience across DHIS2, consolidate functionality that’s needed across all the apps, and make it easier to roll out shared features to all the apps at once. The first examples of these new features include a redesign of the DHIS2 header bar and the introduction of a new navigation menu, called the Command Palette.
 
