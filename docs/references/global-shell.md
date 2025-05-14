@@ -31,6 +31,7 @@ For the future, we’re investigating using the Global Shell to run apps in a sa
     -   [Header bars](#header-bars)
     -   [Hash routing and notifying the Global Shell for deep linking](#hash-routing-and-notifying-the-global-shell-for-deep-linking)
     -   [External links](#external-links)
+-   [Troubleshooting](#troubleshooting)
 
 ## Components
 
@@ -137,3 +138,16 @@ Apps using other routing solutions can communicate routing changes to the Global
 Links to external domains can’t be loaded in the Global Shell. Add a `target=“_blank”` attribute to the `a` tag to open the link in a new tab when it’s clicked, or `target=“_top”` to navigate the current tab to that link.
 
 Note: Soon `@dhis2/cli-app-scripts` will be updated to set the `base` HTML element with the attribute `target="_top"` in platform apps, which becomes the default target for links. This feature already exists on the latest `11.x` release of `@dhis2/cli-app-scripts`.
+
+## Troubleshooting
+
+The Global Shell is a new way for handling apps that has many inputs and outputs and manages very many potential cases for navigating and routing. The core team has performed thorough testing for many cases, but in case something unexpected happens, here are a few troubleshooting tips.
+
+-   If you are navigating DHIS2 and end up loading an app outside the Global Shell — that is, with the old header bar and probably with `?redirect=false` in the URL — you can get back to the Global Shell by using the app menu to navigate to any app. That app should then load normally in the Global Shell.
+    -   This might happen in apps using React Router when right-clicking on a link and choosing “Open in a new tab”
+-   Some custom apps need some adaptations to work with the Global Shell. See the [Adapting your app to the Global Shell](#adapting-your-app-to-the-global-shell) section for solutions to these cases that may arise:
+    -   Plugins not working
+    -   Double header bars
+    -   Hash routes for deep linking not appearing in the top-level URL
+    -   Links to external websites don't work
+-   If there is a persistent problem with the Global Shell, it can be disabled by an admin under System Settings > Appearance. See also other options for bypassing the Global Shell in the [Bypasses](#bypasses) section.
