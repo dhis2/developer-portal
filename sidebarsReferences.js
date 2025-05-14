@@ -194,6 +194,7 @@ module.exports = {
                 },
             ],
         },
+        'references/global-shell',
         {
             label: 'Web API Guides',
             type: 'link',
