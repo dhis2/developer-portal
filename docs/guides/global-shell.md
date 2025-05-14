@@ -13,6 +13,21 @@ The Global Shell is currently designed to require as few changes from apps as po
 
 For the future, we’re investigating using the Global Shell to run apps in a sandbox, so that the Global Shell can mediate per-app permissions and improve the security and trustability of third-party apps.
 
+-   [Components](#components)
+-   [How the routing works](#how-the-routing-works)
+    -   [A new URL scheme](#a-new-url-scheme)
+    -   [Example](#example)
+    -   [Client-side routing and app routing](#client-side-routing-and-app-routing)
+    -   [Bypasses](#bypasses)
+-   [Other features](#other-features)
+    -   [PWA Updates](#pwa-updates)
+    -   [Command palette and key bindings](#command-palette-and-key-bindings)
+-   [Adapting your app to the Global Shell](#adapting-your-app-to-the-global-shell)
+    -   [Plugins and ‘window.top’](#plugins-and-windowtop)
+    -   [Header bars](#header-bars)
+    -   [Hash routing and notifying the Global Shell for deep linking](#hash-routing-and-notifying-the-global-shell-for-deep-linking)
+    -   [External links](#external-links)
+
 ## Components
 
 The Global Shell is enabled by the following new components:
