@@ -3,7 +3,7 @@ id: global-shell
 title: Global Shell
 ---
 
-A new feature in DHIS2 v42 is the Global App Shell. It’s a shared launching point for all of the apps: when you visit DHIS2, the Global Shell will open, and then the Global Shell will load apps inside of itself.
+The Global App Shell is a new feature in DHIS2 v42. It’s a shared launching point for all of the apps: when you visit DHIS2, the Global Shell will open, and then the Global Shell will load apps inside of itself.
 
 Its intention is to create a consistent experience across DHIS2, consolidate functionality that’s needed across all the apps, and make it easier to roll out shared features to all the apps at once. The first examples of these new features include a redesign of the DHIS2 header bar and the introduction of a new navigation menu, called the Command Palette.
 
@@ -12,6 +12,8 @@ Its intention is to create a consistent experience across DHIS2, consolidate fun
 The Global Shell is currently designed to require as few changes from apps as possible. In later stages of its implementation, it will require some more updates from apps, but will hoist a number of features that are common to all apps up to itself, improving performance and simplifying the apps. These features might include fetching common requests, managing alerts and localization, and a more semantic connection for routing and PWA communication.
 
 For the future, we’re investigating using the Global Shell to run apps in a sandbox, so that the Global Shell can mediate per-app permissions and improve the security and trustability of third-party apps.
+
+### Table of contents
 
 -   [Components](#components)
 -   [How the routing works](#how-the-routing-works)
@@ -23,7 +25,7 @@ For the future, we’re investigating using the Global Shell to run apps in a sa
     -   [PWA Updates](#pwa-updates)
     -   [Command palette and key bindings](#command-palette-and-key-bindings)
 -   [Adapting your app to the Global Shell](#adapting-your-app-to-the-global-shell)
-    -   [Plugins and ‘window.top’](#plugins-and-windowtop)
+    -   [Plugins and targeting the right `window`](#plugins-and-targeting-the-right-window)
     -   [Header bars](#header-bars)
     -   [Hash routing and notifying the Global Shell for deep linking](#hash-routing-and-notifying-the-global-shell-for-deep-linking)
     -   [External links](#external-links)
@@ -32,11 +34,11 @@ For the future, we’re investigating using the Global Shell to run apps in a sa
 
 The Global Shell is enabled by the following new components:
 
-1. Back-end routing changes to direct app requests to the Global Shell app
-2. The Global Shell app, which is hosted at `/apps/`. The app features the following components:
+1. The Global Shell app, which is hosted at `/apps/`. The app features the following components:
     1. The header bar, which has gotten a new design
     2. The Command Palette, a new navigation menu which can be launched from the header bar, but also with a keyboard shortcut
-    3. A router that loads the apps and connects to them
+    3. A router that loads the apps and connects to them in several ways
+2. Back-end routing changes to direct app requests to the Global Shell app
 
 ## How the routing works
 
@@ -44,16 +46,20 @@ The Global Shell is enabled by the following new components:
 
 Recall that without the Global Shell, core apps are loaded at `/dhis-web-<coreAppName>/`, and custom apps are loaded at `/api/apps/<customAppName>/`.
 
-Now with the Global Shell, app URLs will look like `/apps/<appName>`. The Global Shell is loaded at `/apps/`, and the app name that follows will determine which app to load, e.g. `/apps/dashboard`.
+Now, with the Global Shell, app URLs will look like `/apps/<appName>`. The Global Shell is loaded at `/apps/`, and the app name that follows will determine which app to load, e.g. `/apps/dashboard`.
+
+#### Old URLs get redirected
 
 Trying to reach an app at one of the old URLs while the Global Shell is active will result in a redirect to the Global Shell, using the URL that will load the respective app there.
 So, if you have links saved that point to one of the older formats, those links will still work: the server will redirect those requests to the new URLs.
+
+#### Deep linking
 
 “Deep linking” still works, both with URLs using the new and old format. That is, you can save the URL to a particular dashboard, visualization, or data entry context selection, then use that link later to open that same view.
 
 ### Example
 
-Take for example a request to `/apps/dashboard#/nghVC4wtyzi`, where `nghVC4wtyzi` is the ID of a dashboard. The server sees this request and routes it to the Global Shell, which is an app hosted at `/apps/`. The Global Shell loads and starts its routing process.
+Take for example a request to `/apps/dashboard#/nghVC4wtyzi`, where `nghVC4wtyzi` is the ID of a dashboard. The server sees this request and routes it to the Global Shell, which is an app hosted at `/apps/`. The Global Shell loads and starts its routing process: it will construct a URL to load the Dashboard app in an `iframe` with any other URL information it received itself.
 
 It starts with determining the requested app: It sees `dashboard` as the path segment following `/apps/`, which it uses as the name of the requested app. It finds the Dashboard app in the server’s app list, and gets the Dashboard app’s launch path, `/dhis-web-dashboard/index.html`.
 
@@ -69,7 +75,7 @@ The routing has somewhat of a two-way function: the top-level URL will determine
 
 For example, loading `/apps/dashboard#/<dashboardId>` will load the dashboard app, and also pass the hash value to the Dashboard app, loading that particular dashboard in the app.
 
-In the reverse direction, if the user navigates to another Dashboard, the Global Shell can watch for that change inside the iframe and then update the Hash Route at the top level URL.
+In the reverse direction, if the user navigates to another Dashboard, the Global Shell can watch for that change inside the `iframe` and then update the hash value of the top level URL.
 
 ### Bypasses
 
@@ -97,13 +103,15 @@ NB: Since keypress events are limited to the window that’s focused, this keybo
 
 ## Adapting your app to the Global Shell
 
-### Plugins and ‘window.top’
+### Plugins and targeting the right `window`
 
-The Global Shell revealed a bug in the plugin-side of App Platform code. Loading a plugin in an app that’s loaded by the Global Shell might encounter an error that reads like “No handler found for message ‘getPropsFromParent’”, and the plugin doesn’t receive any props or render at the correct size. Simply upgrading to the latest version of `@dhis2/cli-app-scripts` in the plugin fixes the issue. There’s even a fix released on the `11.x` branch of `@dhis2/cli-app-scripts` for apps that can’t upgrade to `12.x` with Vite and React 18.
+The Global Shell revealed a bug in the plugin-side of App Platform code. Loading a plugin in an app that’s loaded by the Global Shell might encounter an error that reads like “No handler found for message ‘getPropsFromParent’”, and the plugin doesn’t receive any props or render at the correct size.
+
+Simply upgrading to the latest version of `@dhis2/cli-app-scripts` in the plugin fixes the issue. There’s even a fix released on the `11.x` branch of `@dhis2/cli-app-scripts` for apps that can’t upgrade to `12.x` with Vite and React 18.
 
 ### Header bars
 
-The Global Shell can hide header bars in apps that use the App Platform. If your app doesn’t use the App Platform and renders a header bar in a different way, make sure your header bar gets hidden when it’s in the Global Shell. There are a few ways that can be done.
+To avoid "double header bars" from both the app and the Global Shell each rendering one, the Global Shell can hide header bars in apps that use the App Platform. If your app doesn’t use the App Platform and renders a header bar in a different way, make sure your header bar gets hidden when it’s in the Global Shell. There are a few ways that can be done.
 
 One way is to check if your app is running at `window.top`, i.e. `window.self === window.top`, then apply a class to your header bar and app container to adjust the styles accordingly. Here’s an example from the [ADEx Flow app](https://github.com/dhis2/gf-adex-flow-app/pull/9/files).
 
@@ -115,7 +123,7 @@ Also consider migrating to use the App Platform to build your app, which comes w
 
 If an app uses client-side routing using a hash router, and those hash routes should appear in the top-level URL for deep linking purposes, then the app needs to communicate hash route changes to the Global Shell somehow.
 
-Apps using React Router version 5 or below already do this by publishing `popstate` events that the Global Shell can observe, so they don’t need any changes.
+Apps using React Router version 5 or below already do this, since React Router publishes `popstate` events upon hash route changes that the Global Shell can observe, so these apps don’t need any changes.
 
 Apps using other routing solutions can communicate routing changes to the Global Shell by triggering `popstate` events manually. (Note: soon the Global Shell will support listening to a different, arbitrary event, in case `popstate` events create local side effects). Examples can be seen here:
 
