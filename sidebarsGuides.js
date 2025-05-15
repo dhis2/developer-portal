@@ -55,6 +55,20 @@ module.exports = {
             ],
         },
         {
+            label: 'Dashboard Plugins',
+            type: 'category',
+            collapsed: true,
+            collapsible: true,
+            link: {
+                type: 'doc',
+                id: 'dashboard-plugins/developer/getting-started',
+            },
+            items: [
+                'dashboard-plugins/developer/getting-started',
+                'dashboard-plugins/developer/implement-a-dashboard-plugin',
+            ],
+        },
+        {
             Guides: [
                 'guides',
                 {

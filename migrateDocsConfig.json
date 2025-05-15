@@ -65,6 +65,12 @@
             "ignoreDirs": ["user"]
         },
         {
+            "repo": "https://github.com/dhis2/dashboard-app.git",
+            "tempDir": ".dashboard-repo-temp",
+            "targetDir": "./docs/dashboard-plugins/developer",
+            "sourceDir": "docs/developer"
+        },
+        {
             "repo": "https://github.com/dhis2/dhis2-mobile-ui.git",
             "tempDir": ".mui-repo-temp",
             "targetDir": "./docs/mobile/mobile-ui",
