@@ -28,6 +28,7 @@ docs/cli/cypress
 docs/app-runtime
 docs/cli/style
 docs/capture-plugins
+docs/dashboard-plugins
 docs/ui/components
 docs/ui/recipes
 docs/mobile/mobile-ui
