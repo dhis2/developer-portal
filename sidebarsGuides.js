@@ -106,6 +106,7 @@ module.exports = {
                         'guides/submit-apphub',
                         'guides/apphub-guidelines',
                         'guides/publish-apphub',
+                        'guides/setup-changelog'
                     ],
                     Translation: ['guides/translation-support'],
                 },
