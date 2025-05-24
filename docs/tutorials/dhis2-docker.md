@@ -22,7 +22,7 @@ Make sure you have the following tools installed
 Running DHIS2 with the `d2 cluster` CLI is very simple:
 
 ```shell
-d2 cluster up 2.40.0.1 --db-version 2.40 --seed
+d2 cluster up 2.40.7 --db-version 2.40 --seed
 ```
 
 This way of running DHIS2 provides extra features like running multiple DHIS2 "clusters" at once, saving different configuration combinations and more.
