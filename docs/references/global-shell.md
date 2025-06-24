@@ -17,6 +17,7 @@ For the future, we’re investigating using the Global Shell to run apps in a sa
 
 ### Table of contents
 
+-   [Managing the Global Shell](#managing-the-global-shell)
 -   [Components](#components)
 -   [How the routing works](#how-the-routing-works)
     -   [A new URL scheme](#a-new-url-scheme)
@@ -32,6 +33,12 @@ For the future, we’re investigating using the Global Shell to run apps in a sa
     -   [Hash routing and notifying the Global Shell for deep linking](#hash-routing-and-notifying-the-global-shell-for-deep-linking)
     -   [External links](#external-links)
 -   [Troubleshooting](#troubleshooting)
+
+## Managing the Global Shell
+
+The Global Shell is constructed just like other DHIS2 apps and can be managed in the same ways. It reserves special treatment by the instance by having its `name` property be `'global-shell'`.
+
+In order to work offline and support other offline-capable apps like the Dashboard app, the Global Shell is a [Progressive Web App (PWA)](https://developers.dhis2.org/docs/app-platform/pwa/) and therefore subject to caching in users' browsers. If the Global Shell version has been updated on the server but a user doesn't see the latest version in their browser, have the user check the profile menu for a "New updates available" item. Clicking that should update the cached version of the Global Shell in the user's browser and reload the page, at which point they should see the latest version.
 
 ## Components
 
