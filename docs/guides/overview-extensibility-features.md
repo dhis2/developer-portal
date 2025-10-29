@@ -26,6 +26,7 @@ This page provides an overview of all of the extensibility features that are ava
 -   Plugins
     -   Dashboard
     -   Capture (x3)
+        -   [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin)
 -   Java SDK
 -   Android apps
     -   (Forked capture)
@@ -39,5 +40,14 @@ This page provides an overview of all of the extensibility features that are ava
 -   Shortcuts
 -   Integration
     -   Reference implementations
-    -   FHIR IG Generator
+        - [Reference DHIS2-MOSIP Integration](https://github.com/dhis2/reference-dhis2-mosip-integration)
+        - [Reference Civil Registry Lookup](https://github.com/dhis2/reference-civil-registry-lookup)
+        - [Reference Organisation Unit Synchronisation](https://github.com/dhis2/reference-org-unit-sync)
+    -   [FHIR IG Generator](https://github.com/dhis2/fhir-ig-generator-app)
     -   Apache Camel DHIS2 components
+        -   [Apache Camel DHIS2 documentation](https://camel.apache.org/components/4.14.x/dhis2-component.html)
+        -   [Camel DHIS2 Source Code](https://github.com/dhis2/camel-dhis2)
+        -   [Camel Archetype DHIS2](https://github.com/dhis2/camel-archetype-dhis2)
+    -   [Integration Examples](https://github.com/dhis2/integration-examples)
+        -   [dhis2 fhir gateway](https://developers.dhis2.org/blog/2024/05/standing-up-a-fhir-gateway-for-dhis2-from-an-ig/)
+    -   [FHIR Integration Strategy](https://dhis2.org/integration/fhir/)
