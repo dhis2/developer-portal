@@ -9,6 +9,7 @@ module.exports = {
         },
 
         'guides-overview',
+        'guides/overview-extensibility-features',
 
         {
             type: 'html',
