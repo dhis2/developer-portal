@@ -38,6 +38,10 @@ cd my-app && pnpm start
 
 Replace `pnpm start` with `npm start` or `yarn start` if you chose a different package manager.
 
+:::note
+Most places in the rest of the DHIS2 documentation assume `yarn` classic as the package manager. This was historically the default, but we are deprecating it in favour of more modern package managers.  You can still choose `yarn` classic when initialising new applications, but we recommend using `pnpm` or `npm` unless you have a very good reason not to.
+:::
+
 ### Connecting your Web app to DHIS2
 
 1. From the browser, navigate to your DHIS2 Web App, which by default runs under port 3000 [http://localhost:3000](http://localhost:3000). You will see the following page:
