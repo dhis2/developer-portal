@@ -320,6 +320,7 @@ module.exports = {
             },
             items: [
                 'cli/readme',
+                'cli/cli/commands/create-app',
                 'cli/cli/commands/d2-overview',
                 {
                     'd2 cluster': [

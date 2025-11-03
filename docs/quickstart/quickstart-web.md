@@ -6,23 +6,41 @@ sidebar_label: Creating a DHIS2 Web app
 
 It's time to create a new Web app! Below we'll show you how to quickly bootstrap an app and how to connect it to a DHIS2 instance.
 
-:::note
-If you haven't yet set up the DHIS2 CLI, head over to the [Prerequisites and Initial Setup](../quickstart.md#running-dhis2-locally-in-a-container-optional) page to find the `d2` installation instructions.
-:::
-
 ### Creating a new Web app
 
 1. From the terminal, create a new DHIS2 app called "my-app"
 
-```shell
-d2 app scripts init my-app
+```sh
+# with pnpm
+pnpm create @dhis2/app my-app --yes
 ```
+
+We recommend the use of [pnpm](https://pnpm.io/motivation) as a package manager, but you can also use `npm` if you prefer:
+
+```sh
+# with npm
+npx @dhis2/create-app my-app --yes
+```
+
+![](../assets/quickstart_guides/create-app-cli-default.png)
+
+The `--yes` will create a new DHIS2 web application using the default options (`pnpm` as a package manager, and `TypeScript` for the language).
+
+If you remove the `--yes` flag, then you will have the chance to go through the wizard and customize the project, to choose `JavaScript` instead of `TypeScript`, or the legacy `yarn 1` package manager.
+
+![](../assets/quickstart_guides/create-app-cli-options.png)
 
 2. Change directories to `./my-app` and start the app
 
-```shell
-cd my-app && yarn start
+```sh
+cd my-app && pnpm start
 ```
+
+Replace `pnpm start` with `npm start` or `yarn start` if you chose a different package manager.
+
+:::note
+Most places in the rest of the DHIS2 documentation assume `yarn` classic as the package manager. This was historically the default, but we are deprecating it in favour of more modern package managers.  You can still choose `yarn` classic when initialising new applications, but we recommend using `pnpm` or `npm` unless you have a very good reason not to.
+:::
 
 ### Connecting your Web app to DHIS2
 
@@ -37,8 +55,21 @@ server: http://localhost:8080
 username: admin
 password: district
 ```
+
 :::note
 If you're running into some Cross-Origin Resource Sharing [(CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy issues when trying to connect to your application, please check the guide on [how to debug common development errors](../guides/debug-instance.md).
+:::
+
+:::note
+You can also run your web app by creating a proxy to one of the environments on [play.dhis2.org](https://im.dhis2.org/public/instances).
+
+To do so, run:
+
+```sh
+pnpm start --proxy https://play.im.dhis2.org/dev-2-42
+```
+
+This will create a proxy from http://localhost:8080 to the _play_ instance, and you can enter `http://localhost:8080` as the server url, and login using the _play_ credentials.
 :::
 
 3. You will see the default admin user name and a welcome message
