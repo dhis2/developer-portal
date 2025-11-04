@@ -51,6 +51,11 @@ module.exports = {
                         'capture-plugins/developer/enrollment-plugins/developer-details',
                         'capture-plugins/developer/enrollment-plugins/manual-setup',
                     ],
+                    'Bulk data entry Plugin': [
+                        'capture-plugins/developer/bulk-data-entry-plugin/introduction',
+                        'capture-plugins/developer/bulk-data-entry-plugin/developer-details',
+                        'capture-plugins/developer/bulk-data-entry-plugin/manual-setup',
+                    ],
                 },
             ],
         },
