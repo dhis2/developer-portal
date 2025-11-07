@@ -154,6 +154,7 @@ module.exports = {
                         'app-platform/config/d2-config-js-reference',
                         'app-platform/config/environment',
                         'app-platform/config/extending-vite-config',
+                        'app-platform/config/adding-shortcuts',
                     ],
                 },
                 {
