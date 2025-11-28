@@ -25,7 +25,7 @@ The diagram above conceptualises the key components and interactions of the Civi
 8. The plugin uses a mapping file, downloaded from DHIS2's data store, to transform the FHIR bundle into a structure it can read. Having the mapping defined in the data store allows you to change only the mapping without having to modify, rebuild, and reinstall the plugin source code whenever the form field content is adjusted or the JSON structure of the civil registry response changes.
 9. The plugin goes on to read the transformation output and populate the Capture form.
 
- When adapting this implementation to your own context, the civil registry lookup workflow itself will remain more or less the same. Likely customisation points would be the (1) Capture programme, (2) the lookup key, (3) the person details exchanged, (4) the civil registry response mapping, the (5) underlying technologies, as well as the (6) security controls. For example, during customisation, you might:
+ When adapting this implementation to your own context, the civil registry lookup workflow itself will remain more or less the same. Likely customisation points would be (1) the Capture programme, (2) the lookup key, (3) the person details exchanged, (4) the civil registry response mapping, the (5) underlying technologies, as well as the (6) security controls. For example, during customisation, you might:
 
 * Change the DRS Capture programme to an Antenatal one.
 * Replace the national ID lookup key with a Personal Health Number (PHN).
