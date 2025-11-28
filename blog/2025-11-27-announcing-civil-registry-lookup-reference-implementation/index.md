@@ -17,7 +17,7 @@ The diagram above conceptualises the key components and interactions of the Civi
 
 1. From the Capture app, the health worker begins enrolling a participant into the anti-TB DRS programme.
 2. The health worker obtains the national ID from the participant and types it into a Capture plugin field which is part of the programme form. 
-3. When the health worker clicks the search button next to the national ID field, the Capture app lookup plugin transmits a request to look up the participant by their national ID to a DHIS2 route.
+3. When the health worker clicks the search button next to the national ID field, the Capture app plugin transmits a request to look up the participant by their national ID to a DHIS2 route.
 4. The DHIS2 route proxies the request to a mediator sitting in front of the civil registry.
 5. The mediator obtains an access token from an authorisation server and includes this token in a query it sends to the civil registry
 6. A gateway intercepts the query and validates the token before forwarding the authorised query to the civil registry
