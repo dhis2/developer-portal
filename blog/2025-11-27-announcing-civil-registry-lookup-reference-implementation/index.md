@@ -16,7 +16,7 @@ In this reference implementation, we demonstrate a fully functional, self-contai
 The diagram above conceptualises the key components and interactions of the Civil Registry Lookup Reference Implementation. Let us walkthrough the lookup workflow:
 
 1. The health worker types the national ID in a field contained within a Capture app form and then clicks on the search button
-2. The Capture app lookup plugin transmits a request for looking up a person by their national ID to a DHIS2 route.
+2. The Capture app lookup plugin transmits a request to look up a person by their national ID to a DHIS2 route.
 3. The DHIS2 route proxies the request to a mediator sitting in front of the civil registry.
 4. The mediator obtains an access token from an authorisation server and includes this token in a query it sends to the civil registry
 5. A gateway intercepts the query and validates the token before forwarding the authorised query to the civil registry
