@@ -15,7 +15,7 @@ In this reference implementation, we demonstrate a fully functional, self-contai
 
 The diagram above conceptualises the key components and interactions of the Civil Registry Lookup Reference Implementation. Let us walkthrough the lookup workflow:
 
-1. From the Capture app, the health worker begins enrolling a participant into the anti-TB DRS programme.
+1. From the Capture app, the health worker begins enrolling a participant into the Anti-TB DRS programme.
 2. The health worker obtains the national ID from the participant and types it into a Capture plugin field which is part of the programme form. 
 3. When the health worker clicks the search button next to the national ID field, the Capture app plugin transmits a request to look up the participant by their national ID to a DHIS2 route.
 4. The DHIS2 route proxies the request to a mediator sitting in front of the civil registry.
@@ -28,7 +28,7 @@ The diagram above conceptualises the key components and interactions of the Civi
 
  When adapting this implementation to your own context, the civil registry lookup workflow itself will remain more or less the same. Likely customisation points would be (1) the Capture programme, (2) the lookup key, (3) the person details exchanged, (4) the civil registry response mapping, the (5) underlying technologies, as well as the (6) security controls. For example, during customisation, you might:
 
-* Change the anti-TB DRS Capture programme to an Antenatal one.
+* Change the Anti-TB DRS Capture programme to an Antenatal one.
 * Replace the national ID lookup key with a Personal Health Number (PHN).
 * Swap the data store mapping definition with one that expects a non-FHIR structure.
 * Substitute the [Apache Camel](https://developers.dhis2.org/docs/integration/apache-camel/) mediator with [OpenHIM](https://openhim.org/) or [OpenFn](https://www.openfn.org/). It is worth noting that a mediator might not be even needed depending on the constraints you have.
