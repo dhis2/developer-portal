@@ -20,7 +20,7 @@ The diagram above conceptualises the key components and interactions of the Civi
 3. When the health worker clicks the search button next to the national ID field, the Capture app plugin transmits a request to look up the participant by their national ID to a DHIS2 route.
 4. The DHIS2 route proxies the request to a mediator sitting in front of the civil registry.
 5. The mediator obtains an access token from an authorisation server and includes this token in a query it sends to the civil registry
-6. A gateway intercepts the query and validates the token before forwarding the authorised query to the civil registry
+6. A gateway intercepts the query and validates the token before forwarding the authorised query to the civil registry.
 7. If found, the civil registry responds with the person's details contained within a [FHIR bundle](https://hl7.org/fhir/bundle.html).
 8. The response is returned to the downstream client, that is, the plugin.
 9. The plugin uses a mapping file, downloaded from DHIS2's data store, to transform the FHIR bundle into a structure it can read. Having the mapping defined in the data store allows you to change only the mapping without having to modify, rebuild, and reinstall the plugin source code whenever the form field content is adjusted or the JSON structure of the civil registry response changes.
