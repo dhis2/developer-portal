@@ -25,7 +25,7 @@ The diagram above conceptualises the key components and interactions of the Civi
 6. A gateway intercepts the query and validates the token before forwarding the authorised query to the civil registry.
 7. If found, the civil registry responds with the person's details contained within a [FHIR bundle](https://hl7.org/fhir/bundle.html).
 8. The response is returned to the downstream client, that is, the plugin.
-9. The plugin uses a mapping file, downloaded from DHIS2's data store, to transform the FHIR bundle into a structure it can read. Having the transformation rules residing in the data store allows you to edit the mapping without having to modify, rebuild, and reinstall the plugin source code whenever the transformation output is adjusted or the JSON structure of the civil registry response changes.
+9. The plugin uses a mapping file, downloaded from DHIS2's data store, to transform the FHIR bundle into a structure it can read. Having the transformation rules reside in the data store allows you to edit the mapping without having to modify, rebuild, and reinstall the plugin source code whenever the transformation output is adjusted or the JSON structure of the civil registry response changes.
 10. The plugin proceeds to autopopulate the personal identifiable and demographic information form fields with the transformed output.
 
 When adapting this implementation to your own context, the civil registry lookup workflow itself will remain more or less the same. Likely customisation points would be (1) the Tracker programme, (2) the lookup key, (3) the person details exchanged, (4) the civil registry response mapping, the (5) underlying technologies, as well as the (6) security controls. For example, during customisation, you might:
