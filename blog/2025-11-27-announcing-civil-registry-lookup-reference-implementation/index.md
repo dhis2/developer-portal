@@ -7,6 +7,8 @@ tags: [reference implementation, announcement]
 
 The [DHIS2 2025 Annual Conference](https://youtu.be/Kz6216OsN74?list=PLo6Seh-066Rw-rq2ujVcsf0Ka0EhMLuaE&t=3104) gave us a sneak peek into our first DHIS2 reference implementations. These artefacts, which the HISP UiO core team is [gradually rolling out](https://community.dhis2.org/t/announcing-the-reference-org-unit-sync-implementation/66514), guide you in implementing common use cases. A reference implementation is not meant to be prescriptive or an off-the-shelf solution. Instead, it is a well-documented starting point that focuses on certain characteristics (e.g., reliability) over others (e.g., performance). In addition to serving as an example, such an artefact can be adapted or modified for use in production DHIS2 implementations. Today, I am thrilled to announce the general availability of the [Civil Registry Lookup Reference Implementation](https://github.com/dhis2/reference-civil-registry-lookup).
 
+<!-- truncate -->
+
 ![Civil Registry Lookup Reference Implementation](./ref-civil-registry-lookup-implementation.png)
 
 A civil registry is a national database for storing personal details of citizens. Whereas DHIS2 can be configured to support the collection and management of civil registry data, HISP UiO identified a need from the DHIS2 community for the [Capture app](https://docs.dhis2.org/en/use/user-guides/dhis-core-version-master/tracking-individual-level-data/capture.html) to integrate with civil registries. Such integration would allow a Capture programme to look up information from the civil registry to automatically populate forms. Automatic population reduces the chances of errors and provides a quick way to prefill forms with patient information that is accurate and up-to-date.
