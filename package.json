@@ -14,7 +14,9 @@
         "clear": "docusaurus clear"
     },
     "dependencies": {
+        "@dhis2/app-runtime": "^3.14.6",
         "@dhis2/cli-style": "10.1.1",
+        "@dhis2/ui": "^10.10.0",
         "@docusaurus/core": "^3.6.3",
         "@docusaurus/plugin-client-redirects": "^3.6.3",
         "@docusaurus/preset-classic": "^3.6.3",
@@ -22,7 +24,8 @@
         "@mdx-js/react": "^3",
         "clsx": "^1.1.1",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "styled-jsx": "^4.0.1"
     },
     "browserslist": {
         "production": [
