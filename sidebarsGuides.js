@@ -133,6 +133,7 @@ module.exports = {
         'integration/dhis2-java-sdk',
         'integration/apache-camel',
         'integration/camel-dhis2-component',
+        'integration/dhis2-python-client',
         {
             type: 'html',
             value: '<strong>General Guides</strong>',
