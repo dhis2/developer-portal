@@ -3,7 +3,7 @@ id: app-runtime-mutation
 title: Updating data with mutations
 ---
 
-This tutorial is a continuation of the [DHIS2 application runtime](/docs/app-runtime/getting-started) tutorial on [Data Query](/docs/tutorials/app-runtime-query).
+This tutorial is a continuation of the [DHIS2 application runtime](/docs/app-runtime/getting-started) tutorial on [Dynamic Data Queries](/docs/tutorials/app-runtime-dynamic-query).
 
 In this section we will:
 
@@ -247,3 +247,4 @@ import { DeleteProgram } from './DeleteProgram'
 
 Learn how to submit your DHIS2 application to the [App Hub](https://apps.dhis2.org/) by checking out this
 [guide](/docs/guides/submit-apphub) as well as the [App Hub Submission Guidelines](/docs/guides/apphub-guidelines).
+

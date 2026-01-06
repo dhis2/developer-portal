@@ -97,6 +97,7 @@ module.exports = {
                 {
                     'DHIS2 App Runtime': [
                         'tutorials/app-runtime-query',
+                        'tutorials/app-runtime-dynamic-query',
                         'tutorials/app-runtime-mutation',
                         'guides/query-playground',
                         'app-runtime/guides/display-alerts',
