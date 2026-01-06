@@ -26,6 +26,7 @@ module.exports = {
                             type: 'doc',
                         },
                         'app-runtime/hooks/useConfig',
+                        'app-runtime/hooks/useCurrentUserInfo',
                         'app-runtime/hooks/useDataQuery',
                         'app-runtime/hooks/useDataMutation',
                         'app-runtime/hooks/useDataEngine',
