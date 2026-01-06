@@ -3,7 +3,7 @@ id: app-runtime-dynamic-query
 title: Using dynamic queries with useDataQuery
 ---
 
-This tutorial is a continuation of the [DHIS2 application runtime](/docs/app-runtime/getting-started) tutorial on [Data Query](/docs/tutorials/app-runtime-query).
+This tutorial is a continuation of the [DHIS2 application runtime](/docs/app-runtime/getting-started) tutorial on [Fetching data with useDataQuery](/docs/tutorials/app-runtime-query).
 
 In this tutorial, you will do the following:
 1. Understand the difference between static and dynamic queries
@@ -17,7 +17,7 @@ In the previous tutorial, we learned how to fetch data using a static query with
 
 Dynamic queries allow parts of the query to be determined at runtime using variables. The [DHIS2 application runtime](/docs/app-runtime/getting-started) supports dynamic queries by letting us declare query parameters (or even resource IDs) as functions that depend on variables. We can then supply those variables when calling the `useDataQuery` hook (or via the `refetch` function) to fetch data on demand. This enables common use cases like pagination, user-driven filtering, or toggling how much data to load, all using the same `useDataQuery` hook.
 
-> **_Note:_**  To follow this guide, you should have a React application set up with `@dhis2/app-runtime` (See **Getting Started** in the [Previous Tutorial](/docs/tutorials/app-runtime-query)). We will build on the previous example that fetched a list of programs. 
+> **_Note:_**  To follow this guide, you should have a React application set up with `@dhis2/app-runtime` (See the **Getting Started** section in the [Previous Tutorial](/docs/tutorials/app-runtime-query)). We will build on the previous example that fetched a list of programs. 
 
 ### 2. Define a dynamic data query
 
@@ -147,11 +147,11 @@ const MyApp = () => {
 export default MyApp
 ```
 
-In the code above, we call `useDataQuery(myQuery, { variables: { page: 1 } })` to fetch data. This ensures we start on page 1 and makes it explicit which variables the query expects.
+In the code above, we call `useDataQuery(myQuery, ... )` to fetch data. This ensures we start on page 1 and makes it explicit which variables the query expects.
 
 The `Pagination` component is wired to the `handlePageChange` callback. When the user changes page, we call `refetch({ page: nextPage })`. This tells the runtime to re-run `myQuery` with the new `page` variable. The `useDataQuery` hook will fetch the results for that page and update the `data` object in our component.
 
-> **_Tip:_** Prefer using [DHIS2 UI components](https://developers.dhis2.org/docs/tutorials/ui-library/) (like `Pagination` and `CircularLoader`) instead of building pagination controls and loading indicators from scratch. This helps you avoid reinventing the wheel and lets you focus on the runtime query logic.
+> **_Tip:_** When possible, use [DHIS2 UI components](https://developers.dhis2.org/docs/tutorials/ui-library/) (like `Pagination` and `CircularLoader`) instead of building pagination controls and loading indicators from scratch. This helps you avoid reinventing the wheel and lets you focus on the runtime query logic.
 
 ### Check your browser
 
