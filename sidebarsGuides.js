@@ -131,6 +131,7 @@ module.exports = {
 
         'integration/overview',
         'integration/dhis2-java-sdk',
+        'integration/dhis2-python-client',
         'integration/apache-camel',
         'integration/camel-dhis2-component',
         {
