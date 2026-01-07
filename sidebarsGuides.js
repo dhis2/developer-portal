@@ -17,7 +17,6 @@ module.exports = {
         },
 
         'quickstart',
-        'tutorials/setup-env',
         'quickstart/quickstart-web',
         'quickstart/quickstart-android',
         'tutorials/dhis2-docker',
@@ -111,7 +110,7 @@ module.exports = {
                         'guides/submit-apphub',
                         'guides/apphub-guidelines',
                         'guides/publish-apphub',
-                        'guides/setup-changelog'
+                        'guides/setup-changelog',
                     ],
                     Translation: ['guides/translation-support'],
                 },
