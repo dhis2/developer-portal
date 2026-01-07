@@ -73,7 +73,7 @@ pnpm start --proxy https://play.im.dhis2.org/dev-2-42
 This will create a proxy from http://localhost:8080 to the _play_ instance, and you can enter `http://localhost:8080` as the server url, and login using the _play_ credentials.
 :::
 
-3. You will see the default page with a welcome message to the currently logged-in user, and listing some metadata (data elements).
+3. You will see the default page with a welcome message to the currently logged-in user and a list of some metadata (data elements).
 
 ![](../assets/quickstart_guides/template-basic.png)
 
@@ -81,9 +81,9 @@ Congratulations! You are ready to start developing a DHIS2 app 🎊. Open the co
 
 ### Other templates
 
-The default template lists the last data elements, and displays them in a table, using our app-platform libraries (i.e. [@dhis2/ui](/docs/tutorials/ui-library), [@dhis2/app-runtime](/docs/app-runtime/getting-started)).
+The default template lists the last data elements and displays them in a table using our app-platform libraries (i.e. [@dhis2/ui](/docs/tutorials/ui-library) and [@dhis2/app-runtime](/docs/app-runtime/getting-started)).
 
-We also provide a more advanced starting template that sets your project with React Router, which is a common scenario for most real-world applications.
+We also provide a more advanced starting template that sets up your project with React Router, which is a common scenario for most real-world applications.
 
 To scaffold this template, you can run:
 
