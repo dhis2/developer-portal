@@ -12,19 +12,20 @@ It's time to create a new Web app! Below we'll show you how to quickly bootstrap
 
 ```sh
 # with pnpm
-pnpm create @dhis2/app my-app --yes
+pnpm create @dhis2/app@latest my-app --yes
 ```
 
 We recommend the use of [pnpm](https://pnpm.io/motivation) as a package manager, but you can also use `npm` if you prefer:
 
 ```sh
 # with npm
-npx @dhis2/create-app my-app --yes
+npm create @dhis2/app@latest my-app -- --yes
+# or npx @dhis2/create-app@latest my-app --yes
 ```
 
 ![](../assets/quickstart_guides/create-app-cli-default.png)
 
-The `--yes` will create a new DHIS2 web application using the default options (`pnpm` as a package manager, and `TypeScript` for the language).
+The `--yes` will create a new DHIS2 web application using the default options (`pnpm` as a package manager, and `TypeScript` for the language, using the default `basic` template).
 
 If you remove the `--yes` flag, then you will have the chance to go through the wizard and customize the project, to choose `JavaScript` instead of `TypeScript`, or the legacy `yarn 1` package manager.
 
@@ -39,7 +40,7 @@ cd my-app && pnpm start
 Replace `pnpm start` with `npm start` or `yarn start` if you chose a different package manager.
 
 :::note
-Most places in the rest of the DHIS2 documentation assume `yarn` classic as the package manager. This was historically the default, but we are deprecating it in favour of more modern package managers.  You can still choose `yarn` classic when initialising new applications, but we recommend using `pnpm` or `npm` unless you have a very good reason not to.
+Most places in the rest of the DHIS2 documentation assume `yarn` classic as the package manager. This was historically the default, but we are deprecating it in favour of more modern package managers. You can still choose `yarn` classic when initialising new applications, but we recommend using `pnpm` or `npm` unless you have a very good reason not to.
 :::
 
 ### Connecting your Web app to DHIS2
@@ -72,11 +73,29 @@ pnpm start --proxy https://play.im.dhis2.org/dev-2-42
 This will create a proxy from http://localhost:8080 to the _play_ instance, and you can enter `http://localhost:8080` as the server url, and login using the _play_ credentials.
 :::
 
-3. You will see the default admin user name and a welcome message
+3. You will see the default page with a welcome message to the currently logged-in user, and listing some metadata (data elements).
 
-![](../assets/quickstart_guides/new-app-login-success.png)
+![](../assets/quickstart_guides/template-basic.png)
 
-Congratulations! You are ready to start developing a DHIS2 app 🎊
+Congratulations! You are ready to start developing a DHIS2 app 🎊. Open the code in your favourite editor and start changing and amending it.
+
+### Other templates
+
+The default template lists the last data elements, and displays them in a table, using our app-platform libraries (i.e. [@dhis2/ui](/docs/tutorials/ui-library), [@dhis2/app-runtime](/docs/app-runtime/getting-started)).
+
+We also provide a more advanced starting template that sets your project with React Router, which is a common scenario for most real-world applications.
+
+To scaffold this template, you can run:
+
+```bash
+pnpm create @dhis2/app my-app --template react-router
+```
+
+or simply run `pnpm create @dhis2/app` and choose the template when prompted.
+
+![](../assets/quickstart_guides/template-react-router.png)
+
+We intend to add more templates based on developers' feedback, as well as allow developers to specify their own templates.
 
 ### Next steps
 
