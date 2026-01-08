@@ -32,9 +32,9 @@ const PAGE_SIZE = 5
 const myQuery = {
     results: {
         resource: 'programs',
-        params: ({ page }) => ({
+        params: ({ page = 1 }) => ({
             pageSize: PAGE_SIZE,
-            page, // fetches the given page of results (defaults to page 1 if not specified)
+            page, // fetches the given page of results
             fields: ['id', 'displayName'],
         }),
     },
@@ -42,9 +42,30 @@ const myQuery = {
 // ...
 ```
 
-In the above code, `params` is set to a function. The [DHIS2 app runtime](/docs/app-runtime/getting-started) will call this function with an object containing any variables we pass in. The function should return an object of parameters. Here we return a simple object with `pageSize`, `page` and `fields`. If we don't provide a `page` variable, the `page` parameter will be omitted from the request - the DHIS2 Web API will then default to page 1. We still request 5 items per page (`PAGE_SIZE`) and the same fields (`id` and `displayName`) as before.
+In the above code, `params` is set to a function. The [DHIS2 app runtime](/docs/app-runtime/getting-started) will call this function with an object containing any variables we pass in. The function should return an object of parameters. Here we return a simple object with `pageSize`, `page` and `fields`. We also set a default value for `page` (`page = 1`) so that our query behaves predictably even before we introduce query variables in the next step. We still request 5 items per page (`PAGE_SIZE`) and the same fields (`id` and `displayName`) as before.
 
-> **_Note:_**  You can make other parts of a query dynamic in a similar way. For example, you could define the `resource` ID or a `filter` value based on variables. In this guide, we focus on the page number for simplicity. Ensure that any parameter names in your query (like `page` or `filter`) match the [DHIS2 Web API's](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_browsing_the_web_api) parameter names.
+> **_Note:_** You can make other parts of a query dynamic in a similar way. In the official docs, dynamic queries are typically implemented by making `params` and/or `id` depend on variables, while `resource` is expected to be a static string in the query definition.
+>
+> If you truly need to query different endpoints, it’s usually clearer to define multiple query objects (each with a different `resource`) and choose between them in your code.
+>
+> Ensure that any parameter names in your query (like `page` or `filter`) match the [DHIS2 Web API's](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html#webapi_browsing_the_web_api) parameter names.
+
+#### Clarification: resource vs resource ID
+
+A common source of confusion is mixing up the `resource` (the Web API endpoint) with the resource **ID** (which identifies a specific item under that endpoint). In the app runtime, these are typically separate.
+
+Below is an example taken from the [datastore-app](https://github.com/dhis2/datastore-app/blob/c2ddc79540cea81c3b811f036eb3b163d7a56f8d/src/components/panels/KeysPanel.tsx#L16):
+
+```jsx
+export const dataStoreKeysQuery = {
+    results: {
+        resource: 'dataStore',
+        id: ({ id }) => id,
+    },
+}
+```
+
+Here, `resource` stays constant while `id` is provided dynamically via query variables.
 
 ### 3. Fetching data with dynamic variables
 
@@ -57,17 +78,12 @@ To follow best practices, the additional imports below are also commonly include
 
 - `@dhis2/ui` components (pagination and loading states)
 - `@dhis2/d2-i18n` for translations
-- a CSS module for basic layout styling
-- `./locales` (populated when you run your app) to ensure translations are registered
 
 ```jsx title="src/App.js"
 import React from 'react'
 import { useDataQuery } from '@dhis2/app-runtime'
 import { Pagination, CircularLoader } from '@dhis2/ui'
 import i18n from '@dhis2/d2-i18n'
-import classes from './App.module.css'
-// './locales' will be populated after running start or build scripts
-import './locales'
 // ...
 ```
 ### Use the dynamic query in a component
@@ -79,7 +95,7 @@ In this example, we'll fetch page 1 on load by passing initial variables through
 Notice that we destructure an additional value `refetch` from the hook. The `refetch` function allows us to manually re-run the query with new variables. We'll use this to load the next page of data on a button click. 
 
 
-```jsx title="src/App.js"
+```jsx {25} title="src/App.js"
 // ...
 
 const PAGE_SIZE = 5
@@ -87,7 +103,7 @@ const PAGE_SIZE = 5
 const myQuery = {
     results: {
         resource: 'programs',
-        params: ({ page }) => ({
+        params: ({ page = 1 }) => ({
             pageSize: PAGE_SIZE,
             page,
             fields: ['id', 'displayName'],
@@ -123,8 +139,10 @@ const MyApp = () => {
             {loading && <CircularLoader />}
 
             {data && (
+                // We use a simple list for readability in this guide.
+                // In a real app, you might prefer a DHIS2 UI DataTable (or another semantically appropriate component).
                 <ul>
-                    {data.results.programs.map((prog) => (
+                    {data.results?.programs?.map((prog) => (
                         <li key={prog.id}>{prog.displayName}</li>
                     ))}
                 </ul>
@@ -155,7 +173,7 @@ The `Pagination` component is wired to the `handlePageChange` callback. When the
 
 ### Check your browser
 
-With the dynamic query in place, run your application and open it in the browser. You should see the list of programs for page 1. When you click the "Next Page" button, the app will fetch and display the next set of programs from the DHIS2 instance:
+With the dynamic query in place, run your application and open it in the browser. You should see the list of programs for page 1. When you change page using the pagination controls, the app will fetch and display the next set of programs from the DHIS2 instance:
 
 ![](./assets/app-runtime-dynamic-query.png)
 
@@ -163,15 +181,14 @@ You have now fetched data using a dynamic query. Each time the user changes page
 
 You can try extending this example by experimenting with **dynamic filters** - for instance, allowing a user to input a search term and refetching with a `filter` parameter.
 
-### More examples?
--   Please check the app runtime documentation for more examples [like this one](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/IndicatorList.js)
--   You can also try to follow [this exercise](https://github.com/dhis2/academy-web-app-dev-2021/tree/main/workshop-1/04-app-runtime/query) on data queries from the [web app academy 2021](/events/academy-workshops-2021)
-- Another example of using dynamic queries to fetch pages can be found [here](https://developers.dhis2.org/docs/app-runtime/hooks/usedataquery/#dynamic-query)
-
 ### Want to learn more? 
 -   Check the [DHIS2 application runtime](/docs/app-runtime/getting-started) documentation or watch this [short video presentation](https://youtu.be/pvIppH5plMU?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm&t=54) introducing the app runtime (about 30 min)
 
 -   Get an overview of the DHIS2 Web API in this [video presentation](https://youtu.be/F95LTzAzESQ?list=PLo6Seh-066Rze0f3zo-mIRRueKdhw4Vnm) (about 30 min) or check out the [DHIS2 Core Web API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/introduction.html) documentation
+
+-   The [Web Academy 2025 App Runtime section](https://dhis2.github.io/academy-web-app-dev/docs/web-academy/appruntime) includes hands-on tasks on data queries and pagination
+
+- Another example of using dynamic queries to fetch pages can be found [here](https://developers.dhis2.org/docs/app-runtime/hooks/usedataquery/#dynamic-query)
 
 ## What's Next?
 In the next section, you’ll learn how to use the `useDataMutation` hook to mutate or write data!
