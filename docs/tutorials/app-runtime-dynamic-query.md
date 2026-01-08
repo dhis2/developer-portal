@@ -95,7 +95,7 @@ In this example, we'll fetch page 1 on load by passing initial variables through
 Notice that we destructure an additional value `refetch` from the hook. The `refetch` function allows us to manually re-run the query with new variables. We'll use this to load the next page of data on a button click. 
 
 
-```jsx {25} title="src/App.js"
+```jsx {21} title="src/App.js"
 // ...
 
 const PAGE_SIZE = 5
