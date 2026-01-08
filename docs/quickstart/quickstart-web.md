@@ -97,29 +97,9 @@ or simply run `pnpm create @dhis2/app` and choose the template when prompted.
 
 We intend to add more templates based on developers' feedback, as well as allow developers to specify their own templates.
 
-#### Advanced usage of the CLI
-
-Similar to the previous example where we specified the template by passing the `--template` argument, you can pass other arguments to specify other settings without going through the wizard.
-
-You can run `pnpm create @dhis2/app@alpha --help` for the list arguments available, but here are some examples:
-
-```bash
-# create a new app using the default settings (pnpm, TypeScript, basic template)
-pnpm create @dhis2/app my-app --yes
-
-
-# use the default settings but override the template
-pnpm create @dhis2/app my-app --yes --template react-router
-
-# use yarn as a package manager (and prompt for other settings)
-pnpm create @dhis2/app my-app --packageManager yarn
-
-# use yarn, JavaScript and the react-router template
-pnpm create @dhis2/app my-app --packageManager yarn --no-typescript --template react-router
-
-# run in debug mode
-pnpm create @dhis2/app my-app --debug
-```
+:::note
+For more information about the @dhis2/create-app CLI and the options you can pass to it, check [the reference page](/docs/cli/create-app/#examples)
+:::
 
 ### Next steps
 
