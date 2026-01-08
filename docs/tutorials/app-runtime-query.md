@@ -137,4 +137,4 @@ That's it for fetching and displaying data from a DHIS2 instance API! 👏🏽
 
 ## What's next?
 
-In the next section, you’ll learn how to use the `useDataMutation` hook to mutate or write data!
+In the next section, we'll extend upon this tutorial by learning how to define dynamic queries!
