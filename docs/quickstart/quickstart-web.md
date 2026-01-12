@@ -68,6 +68,7 @@ To do so, run:
 
 ```sh
 pnpm start --proxy https://play.im.dhis2.org/dev-2-42
+# or npm start -- --proxy https://play.im.dhis2.org/dev-2-42
 ```
 
 This will create a proxy from http://localhost:8080 to the _play_ instance, and you can enter `http://localhost:8080` as the server url, and login using the _play_ credentials.
