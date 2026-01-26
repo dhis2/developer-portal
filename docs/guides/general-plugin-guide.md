@@ -84,7 +84,7 @@ For a complete example with additional context and implementation details, see t
 
 ### 1. Scaffold a Plugin App
 
-Use the [DHIS2 CLI](/docs/cli/readme) to bootstrap your plugin project:
+Use the [DHIS2 CLI](/docs/cli) to bootstrap your plugin project:
 
 ```bash
 yarn global add @dhis2/cli
