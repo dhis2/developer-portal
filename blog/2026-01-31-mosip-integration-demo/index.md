@@ -14,7 +14,7 @@ tags: [reference implementation, announcement]
     2. Use case
 4. The integration
     2. DHIS2 Login with ESignet
-    3. Capture plugin for ESignet verification
+    3. Capture plugin for ESignet verification for patient
     4. FHIR sync service
     5. NEHR
     6. Patient portal & Clinician portal
