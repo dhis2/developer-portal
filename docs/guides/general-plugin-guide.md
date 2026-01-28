@@ -18,10 +18,10 @@ A plugin is packaged as a DHIS2 app, but instead of rendering its own app shell 
 
 Across plugin types, the fundamentals are the same:
 
-- They are React-based and built using the [DHIS2 App Platform tooling](/docs/app-platform/getting-started.md)
-- They are loaded and rendered by a host application (Capture, Dashboard, etc.)
-- They receive all context and data through props
-- They do not manage routing, navigation, or global application state
+- React-based, built with the [DHIS2 App Platform tooling](/docs/app-platform/getting-started.md)
+- Loaded and rendered by a host app (Capture, Dashboard, etc.)
+- Driven by props
+- No routing, navigation, or global app state
 
 The different plugin types include:
 
@@ -66,8 +66,6 @@ my-plugin/
 ├─ d2.config.js
 ├─ package.json
 ```
-
-Key points:
 
 - `Plugin.*` exports the plugin component that the host app loads.
 - `App.*` is optional, but convenient for local development (it can render your plugin with mocked props).
@@ -116,19 +114,18 @@ Use `pluginType: 'CAPTURE'` for Capture plugins and `pluginType: 'DASHBOARD'` fo
 
 ### 3. Implement the Plugin Component
 
-The plugin component is a React function that receives props from the host app. The exact props differ between plugin types, but the pattern stays the same:
+The plugin component is a React function that receives props from the host app. The exact props differ between plugin types, but the pattern is consistent:
 
 - read context from props
 - render UI
 - call host-provided setters/callbacks in response to user actions
 
-In practice:
+In most plugins you’ll do two things:
 
-- **Props as input**: the plugin reads the current value from `values`.
-- **Host callbacks as output**: the plugin requests a host state update by calling `setFieldValue`.
-- **No global app concerns**: there is no routing or navigation; the plugin only renders UI.
+- render based on incoming props
+- call host callbacks when you want to update something
 
-The example below is intentionally small. It’s meant to show the input/output flow between host app state (props) and host app updates (callbacks).
+The example below is intentionally small. It’s just enough to show the props/callback loop.
 
 :::info Minimal functional example
 This example is intentionally minimal (but functional). It uses plain HTML elements and does not leverage the DHIS2 UI library.
@@ -136,7 +133,7 @@ This example is intentionally minimal (but functional). It uses plain HTML eleme
 For a more complete example (including DHIS2 UI components, i18n patterns, and additional safeguards), see the [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin).
 :::
 
-Here is a minimal Capture example (form field plugin):
+Here is a minimal Capture form field example:
 
 
 ```jsx
@@ -169,7 +166,7 @@ export default function Plugin({ values, setFieldValue }) {
 }
 ```
 
-This plugin renders a field and a button that generates a custom ID. It reads the current value from `values` and updates it by calling `setFieldValue`.
+This plugin reads the current value from `values` and updates the form by calling `setFieldValue`.
 
 ![Minimal functional form field plugin example (Capture)](./assets/simple-form-field-plugin.gif)
 
@@ -181,11 +178,7 @@ For form field plugins, the `fieldId` you pass to `setFieldValue` must match the
 
 Plugins receive props from the host app to provide context and control interactions.
 
-Think of props as the plugin’s contract:
-
-- Props are the single source of truth for host-provided state.
-- Your plugin should react to prop changes.
-- Avoid duplicating host state in your own React state unless necessary.
+Treat props as the contract with the host app. Use them as the source of truth, and keep local state to a minimum.
 
 #### Capture Plugin Props
 
@@ -198,11 +191,11 @@ Most Capture plugins work with some combination of:
 - `setFieldValue()` – update a field
 - `setContextFieldValue()` – update context fields like `enrolledAt`
 
-The Capture example above shows the most important pattern: read from props, and call host callbacks to request updates.
+The Capture example above shows the basic pattern: read from props, call host callbacks to request updates.
 
 In a real plugin, you could expand that example by using `fieldsMetadata` to render the configured form label/placeholder and by using `errors`/`warnings` and `formSubmitted` to show validation feedback.
 
-Full details: [Capture Plugin Props](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/developer-details#props)
+Full details (form field/enrollment): [Capture Plugin Props](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/developer-details#props)
 
 #### Bulk Data Entry plugin props
 
