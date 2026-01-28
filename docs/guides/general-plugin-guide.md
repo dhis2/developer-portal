@@ -12,11 +12,11 @@ The plugin framework is supported in **DHIS2 version 40.5 and later**. Dashboard
 :::
 
 ## Introduction
-Plugins let you extend DHIS2 core apps by adding custom functionality that behaves like a native component.
+Plugins let you extend DHIS2 core apps with custom UI and logic that runs inside the host app.
 
-A plugin is packaged as a DHIS2 app, but instead of rendering a full application shell, it exposes one or more React components that are mounted by a host app at well-defined extension points.
+A plugin is packaged as a DHIS2 app, but instead of rendering its own app shell it exports one or more React components. The host app (Capture, Dashboard, etc.) loads and mounts those components at specific extension points.
 
-While the concrete use cases differ, all DHIS2 plugins follow the same core ideas:
+Across plugin types, the fundamentals are the same:
 
 - They are React-based and built using the [DHIS2 App Platform tooling](/docs/app-platform/getting-started.md)
 - They are loaded and rendered by a host application (Capture, Dashboard, etc.)
@@ -25,15 +25,13 @@ While the concrete use cases differ, all DHIS2 plugins follow the same core idea
 
 The different plugin types include:
 
-- [Form Field Plugins](/docs/capture-plugins/developer/form-field-plugins/introduction.md), which extend Capture data entry forms, for example by auto-generating values or validating input. A complete [reference implementation](https://github.com/dhis2/reference-form-field-plugin) is available on GitHub.
+- [Form Field Plugins](/docs/capture-plugins/developer/form-field-plugins/introduction.md), which extend Capture data entry forms (for example by auto-generating values or validating input). A complete [reference implementation](https://github.com/dhis2/reference-form-field-plugin) is available on GitHub.
 - [Enrollment Plugins](/docs/capture-plugins/developer/enrollment-plugins/introduction), which add custom views or dashboards on tracker enrollment pages. See the official [WHO Growth Chart Plugin](https://apps.dhis2.org/app/09f48f78-b67c-4efa-90ad-9ac2fed53bb8) on the App Hub for an example.
 - [Dashboard Plugins](/docs/dashboard-plugins/developer/getting-started.md) embed custom visualizations or controls in the Dashboard app.
 
-All plugins are built as [DHIS2 App Platform apps](/docs/app-platform/getting-started.md) with a `plugin` entry point configured in `d2.config.js`, and they receive context props from the host app (see [Consuming plugin props](#4-consuming-plugin-props) below).
+All plugins are built as [DHIS2 App Platform apps](/docs/app-platform/getting-started.md) with a `plugin` entry point configured in `d2.config.js`. They receive context through props from the host app (see [Consuming plugin props](#consuming-plugin-props) below).
 
 For more information about how plugins are loaded at runtime, see the App Runtime [Plugin component](/docs/app-runtime/components/Plugin).
-
-This guide focuses on what is common across all plugin types: setup, development workflow, deployment, and the core “props contract” between host apps and plugins. It is intended as an entry point before diving into the plugin-type-specific documentation.
 
 ## What is a plugin?
 
@@ -45,7 +43,7 @@ At runtime, a plugin is just a React component. The host app decides:
 
 The plugin itself is responsible only for rendering UI and reacting to prop changes. It should not make assumptions about routing, user navigation, or surrounding layout. 
 
-Under the hood, the host app uses the `Plugin` component from `@dhis2/app-runtime` to dynamically load the plugin bundle and mount the exported plugin component.
+Under the hood, the host app uses the `Plugin` component from `@dhis2/app-runtime` to dynamically load the plugin bundle and mount the exported component.
 
 You do not manually instantiate plugins in code. Instead, you:
 
@@ -76,9 +74,9 @@ Key points:
 
 ## Developing a Plugin
 
-When developing a plugin, you can reuse most of your existing knowledge from regular DHIS2 app development. The key difference is that a plugin is *embedded* inside another app and communicates with it using props.
+When developing a plugin, most of the tooling and patterns are the same as for a regular DHIS2 app. The key difference is that a plugin is *embedded* inside another app and communicates with it using props.
 
-This section walks you through setting up a basic plugin skeleton, configuring it to work as a plugin, developing the main component, consuming props, and deploying it for use in Capture or Dashboard.
+This section walks through scaffolding, configuration, a minimal example, and what to expect from props.
 
 For a complete example with additional context and implementation details, see the [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin).
 
@@ -92,7 +90,7 @@ d2 app scripts init my-plugin
 cd my-plugin
 ```
 
-Pick `app` as the app type, then remove the default `app` entry point if you only need a plugin.
+Pick `app` as the app type. If you only need a plugin, you can remove the default `app` entry point later.
 
 ### 2. Configure Your Plugin
 
@@ -117,19 +115,19 @@ Use `pluginType: 'CAPTURE'` for Capture plugins and `pluginType: 'DASHBOARD'` fo
 
 ### 3. Implement the Plugin Component
 
-The plugin component is a React function that receives props from the host app. These props differ depending on whether you're building a Capture plugin or a Dashboard plugin, but the general pattern is the same:
+The plugin component is a React function that receives props from the host app. The exact props differ between plugin types, but the pattern stays the same:
 
 - read context from props
 - render UI
 - call host-provided setters/callbacks in response to user actions
 
-This is what those concepts look like in practice:
+In practice:
 
 - **Props as input**: the plugin reads the current value from `values`.
 - **Host callbacks as output**: the plugin requests a host state update by calling `setFieldValue`.
 - **No global app concerns**: there is no routing or navigation; the plugin only renders UI.
 
-The examples in this guide are intentionally small: the goal is to show how host apps pass state down via props and how your plugin communicates changes back up via callbacks.
+The example below is intentionally small. It’s meant to show the input/output flow between host app state (props) and host app updates (callbacks).
 
 :::info Minimal functional example
 This example is intentionally minimal (but functional). It uses plain HTML elements and does not leverage the DHIS2 UI library.
@@ -137,7 +135,7 @@ This example is intentionally minimal (but functional). It uses plain HTML eleme
 For a more complete example (including DHIS2 UI components, i18n patterns, and additional safeguards), see the [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin).
 :::
 
-Below is a simplified Capture plugin example:
+Here is a minimal Capture example:
 
 
 ```jsx
@@ -170,13 +168,13 @@ export default function Plugin({ values, setFieldValue }) {
 }
 ```
 
-This minimal plugin renders a field and a button that generates a custom ID. It’s a simple example of logic that can be hard to express in a native DHIS2 configuration, which is exactly the kind of case where a plugin adds value. It reads the current value from the `values` prop and updates it using the `setFieldValue` function provided by the Capture app.
+This plugin renders a field and a button that generates a custom ID. It reads the current value from `values` and updates it by calling `setFieldValue`.
 
 ![Minimal functional form field plugin example (Capture)](./assets/simple-form-field-plugin.gif)
 
 *Example: clicking "Generate ID" updates the mapped Capture form field via `setFieldValue`.*
 
-The `id` must match the plugin field alias configured in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin.mdx) or manually in the `dataEntryForms` config. (`id` is just an example alias name here.) If the field isn't mapped, the plugin won't receive the value and updates will have no effect.
+The `id` must match the plugin field alias configured in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin.mdx) (or manually in the `dataEntryForms` config). If the field isn't mapped, the plugin won't receive the value and updates will have no effect.
 
 #### Field mapping example (Tracker Plugin Configurator)
 If your plugin field mapping in the configurator looks like this: 
@@ -193,9 +191,9 @@ Then in your plugin code, you must reference that field like this:
 setFieldValue({ fieldId: 'id', value: 'ID-1234' })
 ```
 
-This updates the corresponding tracked entity attribute in the form state. The value will be included when the form is submitted.
+This updates the corresponding tracked entity attribute in the form state, and the value will be included when the form is submitted.
 
-This pattern is useful for basic form field plugins that need to provide custom input widgets or integrations with external services.
+This is a common pattern for form field plugins that add custom input widgets or integrate with external services.
 
 ### 4. Consuming Plugin Props
 
