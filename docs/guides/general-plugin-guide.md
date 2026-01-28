@@ -27,9 +27,10 @@ The different plugin types include:
 
 - [Form Field Plugins](/docs/capture-plugins/developer/form-field-plugins/introduction.md), which extend Capture data entry forms (for example by auto-generating values or validating input). A complete [reference implementation](https://github.com/dhis2/reference-form-field-plugin) is available on GitHub.
 - [Enrollment Plugins](/docs/capture-plugins/developer/enrollment-plugins/introduction), which add custom views or dashboards on tracker enrollment pages. See the official [WHO Growth Chart Plugin](https://apps.dhis2.org/app/09f48f78-b67c-4efa-90ad-9ac2fed53bb8) on the App Hub for an example.
+- [Bulk Data Entry Plugins](/docs/capture-plugins/developer/bulk-data-entry-plugin/introduction), which enable bulk operations in Capture (for example updating data across multiple tracked entities).
 - [Dashboard Plugins](/docs/dashboard-plugins/developer/getting-started.md) embed custom visualizations or controls in the Dashboard app.
 
-All plugins are built as [DHIS2 App Platform apps](/docs/app-platform/getting-started.md) with a `plugin` entry point configured in `d2.config.js`. They receive context through props from the host app (see [Consuming plugin props](#consuming-plugin-props) below).
+All plugins are built as [DHIS2 App Platform apps](/docs/app-platform/getting-started.md) with a `plugin` entry point configured in `d2.config.js`. They receive context through props from the host app (see [Consuming plugin props](#4-consuming-plugin-props) below).
 
 For more information about how plugins are loaded at runtime, see the App Runtime [Plugin component](/docs/app-runtime/components/Plugin).
 
@@ -135,7 +136,7 @@ This example is intentionally minimal (but functional). It uses plain HTML eleme
 For a more complete example (including DHIS2 UI components, i18n patterns, and additional safeguards), see the [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin).
 :::
 
-Here is a minimal Capture example:
+Here is a minimal Capture example (form field plugin):
 
 
 ```jsx
@@ -174,26 +175,7 @@ This plugin renders a field and a button that generates a custom ID. It reads th
 
 *Example: clicking "Generate ID" updates the mapped Capture form field via `setFieldValue`.*
 
-The `id` must match the plugin field alias configured in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin.mdx) (or manually in the `dataEntryForms` config). If the field isn't mapped, the plugin won't receive the value and updates will have no effect.
-
-#### Field mapping example (Tracker Plugin Configurator)
-If your plugin field mapping in the configurator looks like this: 
-```json
-{
-  "IdFromApp": "BdvE9shT6GX",        // Tracked Entity Attribute ID
-  "IdFromPlugin": "id",   // Alias used in your plugin
-  "objectType": "TrackedEntityAttribute"
-}
-```
-
-Then in your plugin code, you must reference that field like this:
-```jsx
-setFieldValue({ fieldId: 'id', value: 'ID-1234' })
-```
-
-This updates the corresponding tracked entity attribute in the form state, and the value will be included when the form is submitted.
-
-This is a common pattern for form field plugins that add custom input widgets or integrate with external services.
+For form field plugins, the `fieldId` you pass to `setFieldValue` must match the field alias configured in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin.mdx) (or manually in `dataEntryForms`). If the field isn't mapped, the plugin won't receive the value and updates will have no effect.
 
 ### 4. Consuming Plugin Props
 
@@ -207,7 +189,7 @@ Think of props as the plugin’s contract:
 
 #### Capture Plugin Props
 
-Form Field and Enrollment plugins receive a consistent set of props, including:
+Most Capture plugins work with some combination of:
 
 - `values` – current form values
 - `errors`, `warnings` – field-level errors and warnings
@@ -216,11 +198,20 @@ Form Field and Enrollment plugins receive a consistent set of props, including:
 - `setFieldValue()` – update a field
 - `setContextFieldValue()` – update context fields like `enrolledAt`
 
-The Capture example above already shows the most important pattern: using `values` as input and `setFieldValue` as the output channel back to the host app.
+The Capture example above shows the most important pattern: read from props, and call host callbacks to request updates.
 
 In a real plugin, you could expand that example by using `fieldsMetadata` to render the configured form label/placeholder and by using `errors`/`warnings` and `formSubmitted` to show validation feedback.
 
 Full details: [Capture Plugin Props](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/developer-details#props)
+
+#### Bulk Data Entry plugin props
+
+Bulk Data Entry plugins have a different shape because they run as a workflow. The key thing to look for is lifecycle callbacks such as:
+
+- `onDefer()` – exit the plugin and return to the host view
+- `onComplete()` – close the plugin and clean up state
+
+Full details: [Bulk Data Entry Plugin developer details](/docs/capture-plugins/developer/bulk-data-entry-plugin/developer-details)
 
 #### Dashboard Plugin Props
 
