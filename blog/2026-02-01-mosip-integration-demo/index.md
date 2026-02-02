@@ -2,7 +2,7 @@
 slug: 2026/02/mosip-integration-demo
 title: MOSIP Integration Demo with DHIS2
 authors: [johan, kai]
-tags: [reference implementation, announcement]
+tags: [reference implementation, announcement, mosip, symbionix, fhir, plugin, route]
 ---
 
 The DHIS2 core team recently collaborated on an interesting ID provider integration demonstration with [MOSIP](https://www.mosip.io/), [HISP Sri Lanka](https://hispsrilanka.org/), and [Symbionix](https://www.symbionix.co/) that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This demo integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
