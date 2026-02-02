@@ -15,6 +15,8 @@ The DHIS2 core team recently collaborated on an interesting ID provider integrat
 
 Together, the four groups established a fitting use case to demonstrate an integration with an ID provider: an antental care (ANC) program that matches that used in Sri Lanka. [eSignet](https://docs.esignet.io/), an OIDC provider developed by MOSIP to use one's digital ID to authorize or log in to other services, would be used to both log in to DHIS2 as a user and to verify a patient's ID. DHIS2 data would be synced to a shared EHR (the National EHR, or NEHR, in this demo), and then patient and clinician portals developed by Symbionix would also use eSignet to verify a patient's ID, then access data in the NEHR.
 
+[TO DO: PHN and identifiers]
+
 The following would be the patient journey in this ANC use case:
 
 1. A pregnant mother arrives at an ANC clinic
@@ -24,7 +26,7 @@ The following would be the patient journey in this ANC use case:
 4. The clinic worker then completes the enrollment, and can enter data for other ANC stages
 5. Each time the patient’s data is updated in DHIS2, it’s synced to a National Electronic Health Registry (NEHR), which is shared across the digital services in the health domain
 6. Later, the mother can visit a patient portal website, where they can verify their identity with eSignet. Once verified, they can view their health history in the NEHR, even without sharing their National ID.
-7. When the mother is referred to a specialist later, the specialist clinician can have the mother verify with eSignet to grant the specialist access to their previous history.
+7. When the mother is referred to a specialist later, the specialist clinician can search the NEHR for the patient's previous history to continue care.
 
 ## The integration
 
@@ -229,7 +231,7 @@ The NEHR returns FHIR resources for the patient (their summary, encounters, and 
 
 [TO DO: Video]
 
-The Clinician Portal again uses eSignet for the clinician to log in. Then, they can use an identifier  to search for a patient in the NEHR: either the patient’s national ID, or personal health number (PHN), a human-friendly value that is also a health domain-unique identifier that is independent of the person’s national ID. The FHIR resources are collected from the NEHR, and the portal renders them to the clinician as the patient’s history.
+In the Clinician Portal (a simulated EMR), a clinician can search for a patient in the NEHR by several parameters, including the PHN mentioned in [the use case section](#the-use-case) above. The FHIR resources are collected from the NEHR and rendered as patient results, then a patient can be clicked on to view the patient’s history.
 
 [TO DO: Screenshot]
 
