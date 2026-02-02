@@ -24,7 +24,7 @@ The following would be the patient journey in this ANC use case:
 4. The clinic worker then completes the enrollment, and can enter data for other ANC stages
 5. Each time the patient’s data is updated in DHIS2, it’s synced to a National Electronic Health Registry (NEHR), which is shared across the digital services in the health domain
 6. Later, the mother can visit a patient portal website, where they can verify their identity with eSignet. Once verified, they can view their health history in the NEHR, even without sharing their National ID.
-7. When the mother is referred to a specialist later, the specialist clinician can have the mother verify with eSignet to grant the specialist access to their previous history. (Stretch goal: Then, the clinician can record data and images and also add them to the patient’s history in the NEHR.)
+7. When the mother is referred to a specialist later, the specialist clinician can have the mother verify with eSignet to grant the specialist access to their previous history.
 
 ## The integration
 
