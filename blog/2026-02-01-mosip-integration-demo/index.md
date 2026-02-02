@@ -219,9 +219,19 @@ This structure worked well for the demo. The mappings are easy to set up, and ch
 
 Due to this decoupling, it is also easier to test. Example tracker payloads can be run through the transformation and validated against expected FHIR output at both resource and bundle level, which made the NEHR alignment validation easier.
 
-## Patient & Clinician portals
+## Patient & Clinician Portals
 
-[TO DO]
+Once patient data is synced to the NEHR, other services can take advantage of it too. The team at Symbionix developed a patient portal, where a patient can use eSignet to log in to the portal and view their visit history, and a clinician portal, where a specialist clinician at another facility can search for a patient’s history.
+
+Both portals are standalone web apps. The Patient Portal uses eSignet to allow patients to log in using their national ID and choose which ID data they want to share with the portal. Then, the Patient Portal searches for the patient’s information from the NEHR, using eSignet’s unique identifier for that person in the health domain, i.e. the `sub` value on the person’s `userInfo` payload returned from the OIDC auth flow. This makes it unnecessary for the patient to share their national ID with the portal if they don’t want to.
+
+The NEHR returns FHIR resources for the patient (their summary, encounters, and observations), and the portal uses those to render the patient’s history.
+
+[TO DO: Video]
+
+The Clinician Portal again uses eSignet for the clinician to log in. Then, they can use an identifier  to search for a patient in the NEHR: either the patient’s national ID, or personal health number (PHN), a human-friendly value that is also a health domain-unique identifier that is independent of the person’s national ID. The FHIR resources are collected from the NEHR, and the portal renders them to the clinician as the patient’s history.
+
+[TO DO: Screenshot]
 
 ## Next steps
 
