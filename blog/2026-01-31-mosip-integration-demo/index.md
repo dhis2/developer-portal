@@ -9,7 +9,7 @@ tags: [reference implementation, announcement]
 
 ## Introduction ("We're supporting MOSIP-DHIS2 integrations and made a demo for a Sri Lanka use-case")
 
-Developers at DHIS2 recently collaborated on an interesting ID provider integration demonstration with MOSIP, HISP Sri Lanka, and Symbionix [TO DO: LINKS] that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
+The DHIS2 core team recently collaborated on an interesting ID provider integration demonstration with MOSIP, HISP Sri Lanka, and Symbionix [TO DO: LINKS] that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
 
 ## The use case
 
