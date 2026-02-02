@@ -123,7 +123,7 @@ For the next step in the patient journey, the ANC clinic worker will enroll the 
 
 The eSignet verification flow is accomplished by several components to orchestrate the OIDC verification flow, as shown in the diagram below:
 
-1. A plugin for the Capture app [TODO: LINK TO DOCS] to render the “Verify with National ID” button and kick off the OIDC flow
+1. A Capture [form field plugin](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/introduction) to render the “Verify with National ID” button and kick off the OIDC flow
     1. This points to the eSignet UI and opens it in a new window so the Capture form state is saved
     2. When the user finishes verification in the eSignet UI, they’ll get redirected to page in the plugin app that will capture the grant authorization code in the redirected URL and send it to the backend to continue the back-channel portion of the OIDC flow, using a Route
 2. A Route is set up to securely handle the request from the frontend and pass it to the backend relying party service, an internal service to the server
@@ -132,7 +132,7 @@ The eSignet verification flow is accomplished by several components to orchestra
     1. It uses the private key set up for this client (configured independently from the DHIS2 login) to:
         1. Use the authorization grant returned from the frontend to retrieve an access token for the authenticated patient
         2. Use the access token to retrieve demographic information about the patient (name, email, etc.)
-    2. (For the purposes of this demo, we were able to use the docker image of MOSIP’s [TODO: LINK HERE] mock relying party backend service, providing necessary variables as environment variables)
+    2. (For the purposes of this demo, we were able to use the docker image of MOSIP’s [mock relying party backend service](https://github.com/mosip/esignet-mock-services/tree/master/mock-relying-party-service), providing necessary variables as environment variables)
 
 The user info for the patient is then returned as the result of the request to the Route, which can then be used to populate the fields in the enrollment form.
 
@@ -284,6 +284,6 @@ All these would be valuable as supports to DHIS2-MOSIP integrations, so they are
 
 ## Closing thoughts
 
-For more, head over to the reference repository for the integration to look into the code and the integration set up. [TODO: LINK]
+If you want to dive into the code and investigate the nitty gritty of the implementation, feel free to browse the [reference repository for the integration](https://github.com/dhis2/reference-dhis2-mosip-integration/tree/FEAT(INTEROP-87)-Sri-Lanka-demo) to look into the code and the integration setup (although, disclaimer: the repository is not yet documented as of the publishing of the blog).
 
-Special thanks to MOSIP, HISP Sri Lanka, and Symbionix for collaborating on this project. This is an exciting integration, and we at DHIS2 look forward to more!
+Finally, special thanks to MOSIP, HISP Sri Lanka, and Symbionix for collaborating on this project. This is an exciting integration, and we at DHIS2 look forward to more!
