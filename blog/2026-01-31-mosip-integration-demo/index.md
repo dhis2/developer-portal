@@ -39,7 +39,6 @@ To achieve this integration, the following components were set up, as shown in t
 
 ![MOSIP-DHIS2-Sri Lanka-Symbionix integration architecture](./mosip-integration-architecture.png)
 
-
 ### DHIS2 login using eSignet
 
 At the time of working on this integration demo, DHIS2 supports [logging in using an OIDC flow](https://docs.dhis2.org/en/manage/reference/openid-connect-oidc.html) from several providers (Google, Azure, WSO2, and Okta), and also has [some generic support](https://docs.dhis2.org/en/manage/reference/openid-connect-oidc.html?h=#generic-providers) for other OIDC providers, if they fit some constraints.
@@ -72,7 +71,7 @@ oidc.oauth2.login.enabled = on
 
 # eSignet variables:
 oidc.provider.esignet.client_id = {client-id}
-oidc.provider.esignet.client_secret = {client-secret}
+oidc.provider.esignet.client_secret = my-client-secret # Not used for the private_key_jwt auth method
 oidc.provider.esignet.mapping_claim = email
 oidc.provider.esignet.scopes = profile openid
 oidc.provider.esignet.authorization_uri = https://esignet-mosipid.collab.mosip.net/authorize
@@ -97,7 +96,7 @@ For the next step in the patient journey, the ANC clinic worker will enroll the 
 
 [TODO: VIDEO]
 
-This interface is accomplished by several components to orchestrate the OIDC verification flow:
+This interface is accomplished by several components to orchestrate the OIDC verification flow, as shown in the diagram below:
 
 1. A plugin for the Capture app [TODO: LINK TO DOCS] to render the “Verify with National ID” button and kick off the OIDC flow
     1. This points to the eSignet UI and opens it in a new window so the Capture form state is saved
@@ -112,6 +111,8 @@ This interface is accomplished by several components to orchestrate the OIDC ver
 
 The user info for the patient is then returned as the result of the request to the Route, which can then be used to populate the fields in the enrollment form.
 
+![eSignet OIDC flow with Capture plugin](./mosip-integration-detailed-plugin-flow.png)
+
 ### FHIR Sync Agent
 
 The FHIR Sync Agent is a small Java application powered by [Apache Camel](https://developers.dhis2.org/docs/integration/apache-camel/) that mirrors the ANC enrollments from DHIS2 to NEHR as FHIR patients. More concretely, the agent:
@@ -121,7 +122,7 @@ The FHIR Sync Agent is a small Java application powered by [Apache Camel](https:
 3. translates the entity into a FHIR [Patient resource](https://www.hl7.org/fhir/patient.html), and then
 4. upserts the FHIR resource in a [HAPI FHIR](https://hapifhir.io/) server that conforms to the [Sri Lanka NEHR FHIR Implementation Guide](https://ig.hiu.lk/nehr/)
 
-Let us dive into the above sequence of actions. 
+Let us dive into the above sequence of actions.
 
 The synchronisation is kicked off from the DHIS2 database thanks to [PostgreSQL logical replication](https://www.postgresql.org/docs/current/logical-replication.html). The database notifies the agent when a tracked entity is created or updated. The notification carries the ID of the tracked entity which the agent uses to call the DHIS2 Web API and fetch the tracked entity. This tracked entity, which includes enrollments and attributes, becomes the source of truth for the subsequent transformation that follows.
 
