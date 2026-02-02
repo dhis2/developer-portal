@@ -148,5 +148,26 @@ Due to this decoupling, it is also easier to test. Example tracker payloads can 
 
     5. NEHR
     6. Patient portal & Clinician portal
-5. Next steps
-6. Closing thoughts
+
+## Next steps
+
+The demo has been a successful proof of concept for an integration between DHIS2 and MOSIP’s identity provider services, and showcases good ways of taking advantage of that continuity of patient data across multiple health domain services.
+
+To make such an integration easier in the future, there are several useful things that can be developed:
+1. Features to expand OIDC login for DHIS2 users, as mentioned above, so using eSignet for login is supported out-of-the-box
+2. A more generic plugin for verifying with eSignet in the Capture app
+3. A more generic relying party backend service for the back-channel part of the OIDC flow, that takes advantage of all of eSignet’s OIDC features
+4. Written guidance and documentation on setting up these components to make production integrations
+5. Advanced DHIS2 interoperability features:
+    1. Data mapping at the Routes, for example to map User Info from eSignet to T.E. attribute values in DHIS2
+    2. An eventing system for tracked entities
+
+(The last two features combined would replace the need for the FHIR sync service in the integration, by sending an event via a route that maps TE data to FHIR)
+
+All these would be valuable as supports to DHIS2-MOSIP integrations, so they are in the wishlist for future development.
+
+## Closing thoughts
+
+For more, head over to the reference repository for the integration to look into the code and the integration set up. [TO DO: LINK]
+
+Special thanks to MOSIP, HISP Sri Lanka, and Symbionix for collaborating on this project. This is an exciting integration, and we at DHIS2 look forward to more!
