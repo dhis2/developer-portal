@@ -107,7 +107,7 @@ For the next step in the patient journey, the ANC clinic worker will enroll the 
 
 [TODO: VIDEO]
 
-This interface is accomplished by several components to orchestrate the OIDC verification flow, as shown in the diagram below:
+The eSignet verification flow is accomplished by several components to orchestrate the OIDC verification flow, as shown in the diagram below:
 
 1. A plugin for the Capture app [TODO: LINK TO DOCS] to render the “Verify with National ID” button and kick off the OIDC flow
     1. This points to the eSignet UI and opens it in a new window so the Capture form state is saved
@@ -123,6 +123,10 @@ This interface is accomplished by several components to orchestrate the OIDC ver
 The user info for the patient is then returned as the result of the request to the Route, which can then be used to populate the fields in the enrollment form.
 
 ![eSignet OIDC flow with Capture plugin](./mosip-integration-detailed-plugin-flow.png)
+
+Behind the scenes, once the patient's information is returned to populate the field, eSignet's unique identifier for the person -- the `sub` property of the `userInfo` returned by the OIDC flow -- is saved as an attribute on the tracked entity using a hidden field in the enrollment form.
+
+After that, another plugin in the form let's the clinic worker generate a PHN for the patient or use an existing one.
 
 ### FHIR Sync Agent
 
