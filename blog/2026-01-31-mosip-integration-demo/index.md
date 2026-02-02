@@ -7,14 +7,30 @@ tags: [reference implementation, announcement]
 
 <!-- truncate -->
 
-1. Introduction ("We're supporting MOSIP-DHIS2 integrations and made a demo for a Sri Lanka use-case")
-2. What are MOSIP and ESignet
-3. The collaboration
-    1. Context & Process
-    2. Use case
-4. The integration
-    2. DHIS2 Login with ESignet
-    3. Capture plugin for ESignet verification for patient
+## Introduction ("We're supporting MOSIP-DHIS2 integrations and made a demo for a Sri Lanka use-case")
+
+Developers at DHIS2 recently collaborated on an interesting ID provider integration demonstration with MOSIP, HISP Sri Lanka, and Symbionix [TO DO: LINKS] that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
+
+## The use case
+
+The use case for the integration demo is modeled after a realistic antenatal care (ANC) program scenario:
+
+[TO DO]
+
+1. A pregnant mother arrives at an ANC clinic
+2. The clinic worker logs into DHIS2 using eSignet, using their national ID to verify
+3. In the Capture app, the ANC enrollment form has a button to let the patient use eSignet to verify their identity and authorize use of their info.
+	The patient can choose not to share their National ID with DHIS2; eSignet will keep it private, and the patient will still get a unique identifier that can be used to identify them in other services in the health domain
+4. The clinic worker then completes the enrollment, and can enter data for other ANC stages
+5. Each time the patient’s data is updated in DHIS2, it’s synced to a National Electronic Health Registry (NEHR), which is shared across the digital services in the health domain
+6. Later, the mother can visit a patient portal website, where they can verify their identity with eSignet. Once verified, they can view their health history in the NEHR, even without sharing their National ID.
+7. When the mother is referred to a specialist later, the specialist clinician can have the mother verify with eSignet to grant the specialist access to their previous history. (Stretch goal: Then, the clinician can record data and images and also add them to the patient’s history in the NEHR.)
+
+## The integration
+
+2. The integration
+    1. DHIS2 Login with ESignet
+    2. Capture plugin for ESignet verification for patient
 ### FHIR Sync Service
 The FHIR sync service moves selected tracker data (TEIs) from DHIS2 into the NEHR-conformant HAPI FHIR server used for the demo. The sync agent detects relevant changes in DHIS2 tracked entities, fetches the full TEI payload via the Web API, and transforms it into FHIR resources that conform to the Sri Lanka NEHR Implementation Guide before pushing them to the FHIR server.
 
