@@ -5,13 +5,15 @@ authors: [johan, kai]
 tags: [reference implementation, announcement]
 ---
 
-The DHIS2 core team recently collaborated on an interesting ID provider integration demonstration with MOSIP, HISP Sri Lanka, and Symbionix [TO DO: LINKS] that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
+The DHIS2 core team recently collaborated on an interesting ID provider integration demonstration with [MOSIP](https://www.mosip.io/), [HISP Sri Lanka](https://hispsrilanka.org/), and [Symbionix](https://www.symbionix.co/) that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This demo integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
 
 <!-- truncate -->
 
+![Logging in to DHIS2 with eSignet](./dhis2-login-screenshot.png)
+
 ## The use case
 
-Together, the four groups established a fitting use case to demonstrate an integration with an ID provider: an antental care (ANC) program that matches that used in Sri Lanka. eSignet [TODO: LINK], an OIDC provider developed by MOSIP to use one's digital ID to authorize or log in to other services, would be used to both log in to DHIS2 as a user and to verify a patient's ID. DHIS2 data would be synced to a shared EHR (the National EHR, or NEHR, in this demo), and then patient and clinician portals developed by Symbionix would also use eSignet to verify a patient's ID, then access data in the NEHR.
+Together, the four groups established a fitting use case to demonstrate an integration with an ID provider: an antental care (ANC) program that matches that used in Sri Lanka. [eSignet](https://docs.esignet.io/), an OIDC provider developed by MOSIP to use one's digital ID to authorize or log in to other services, would be used to both log in to DHIS2 as a user and to verify a patient's ID. DHIS2 data would be synced to a shared EHR (the National EHR, or NEHR, in this demo), and then patient and clinician portals developed by Symbionix would also use eSignet to verify a patient's ID, then access data in the NEHR.
 
 The following would be the patient journey in this ANC use case:
 
