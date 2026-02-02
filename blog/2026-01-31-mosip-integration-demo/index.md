@@ -100,7 +100,7 @@ This interface is accomplished by several components to orchestrate the OIDC ver
 
 The user info for the patient is then returned as the result of the request to the Route, which can then be used to populate the fields in the enrollment form.
 
-## FHIR Sync Agent
+### FHIR Sync Agent
 
 The FHIR Sync Agent is a small Java application powered by [Apache Camel](https://developers.dhis2.org/docs/integration/apache-camel/) that mirrors the ANC enrollments from DHIS2 to NEHR as FHIR patients. More concretely, the agent:
 
