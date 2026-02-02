@@ -1,5 +1,5 @@
 ---
-slug: 2026/01/mosip-integration-demo
+slug: 2026/02/mosip-integration-demo
 title: MOSIP Integration Demo with DHIS2
 authors: [johan, kai]
 tags: [reference implementation, announcement]
