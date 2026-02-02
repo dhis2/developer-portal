@@ -5,17 +5,15 @@ authors: [johan, kai]
 tags: [reference implementation, announcement]
 ---
 
-<!-- truncate -->
-
-## Introduction ("We're supporting MOSIP-DHIS2 integrations and made a demo for a Sri Lanka use-case")
-
 The DHIS2 core team recently collaborated on an interesting ID provider integration demonstration with MOSIP, HISP Sri Lanka, and Symbionix [TO DO: LINKS] that we're excited to share. MOSIP develops open-source ID provider services, a valuable part of digital public infrastructure, and the intention of this project is to show an integration between MOSIP and DHIS2, where both patients and DHIS2 users can verify their identity with a common ID provider service. This integration also incorporates a shared electronic health registry (EHR), and demonstrates how using that EHR and the common ID provider service across different digital health services can lead to continuity of data across the health sector.
+
+<!-- truncate -->
 
 ## The use case
 
-The use case for the integration demo is modeled after a realistic antenatal care (ANC) program scenario:
+Together, the four groups established a fitting use case to demonstrate an integration with an ID provider: an antental care (ANC) program that matches that used in Sri Lanka. eSignet [TODO: LINK], an OIDC provider developed by MOSIP to use one's digital ID to authorize or log in to other services, would be used to both log in to DHIS2 as a user and to verify a patient's ID. DHIS2 data would be synced to a shared EHR (the National EHR, or NEHR, in this demo), and then patient and clinician portals developed by Symbionix would also use eSignet to verify a patient's ID, then access data in the NEHR.
 
-[TO DO]
+The following would be the patient journey in this ANC use case:
 
 1. A pregnant mother arrives at an ANC clinic
 2. The clinic worker logs into DHIS2 using eSignet, using their national ID to verify
@@ -27,6 +25,20 @@ The use case for the integration demo is modeled after a realistic antenatal car
 7. When the mother is referred to a specialist later, the specialist clinician can have the mother verify with eSignet to grant the specialist access to their previous history. (Stretch goal: Then, the clinician can record data and images and also add them to the patient’s history in the NEHR.)
 
 ## The integration
+
+To achieve this integration, the following components were set up, as shown in the diagram below:
+
+1. DHIS2, customized to use eSignet as an OIDC provider for user login
+2. Several components to enable the OIDC flow for patient verification in the Capture app:
+    1. A data entry form field plugin for the Capture app, which handles the front-end portion of the OIDC flow
+    2. A backend eSignet auth service to handle the back-end portion of the OIDC flow
+    3. A route to securely connect the Capture plugin to the backend eSignet auth service
+3. An NEHR, a FHIR server modeled after the one designed in Sri Lanka, using a custom Patient profile
+4. A patient portal, where a patient can log in using eSignet to see their data from the NEHR
+5. A clinician portal, where a clinician can have a patient verify using eSignet to access records from other facilities
+
+![MOSIP-DHIS2-Sri Lanka-Symbionix integration architecture](./mosip-integration-architecture.png)
+
 
 ### DHIS2 login using eSignet
 
@@ -202,9 +214,11 @@ Visit, registration and referral mappings follow the same structure. Event data 
 
 This structure worked well for the demo. The mappings are easy to set up, and changes tend to stay local to a single file. The transformation layer stays decoupled from the Camel route logic of the `fhir-sync-agent`. Adding a new mapping usually means a writing Jsonnet module and including it in the DataSonnet entry point. It is also easier to test due to this decoupling. Example tracker payloads can be run through the transformation and validated against expected FHIR output at both resource and bundle level, which made the NEHR alignment validation easier.
 
-    5. NEHR
-    6. Patient portal & Clinician portal
 Due to this decoupling, it is also easier to test. Example tracker payloads can be run through the transformation and validated against expected FHIR output at both resource and bundle level, which made the NEHR alignment validation easier.
+
+## Patient & Clinician portals
+
+[TO DO]
 
 ## Next steps
 
