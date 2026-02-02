@@ -240,11 +240,11 @@ Both portals are standalone web apps. The Patient Portal uses eSignet to allow p
 
 The NEHR returns FHIR resources for the patient (their summary, encounters, and observations), and the portal uses those to render the patient’s history.
 
-[TO DO: Video]
+[TODO: Video]
 
 In the Clinician Portal (a simulated EMR), a clinician can search for a patient in the NEHR by several parameters, including the PHN mentioned in [the use case section](#the-use-case) above. The FHIR resources are collected from the NEHR and rendered as patient results, then a patient can be clicked on to view the patient’s history.
 
-[TO DO: Screenshot]
+[TODO: Screenshot]
 
 ## Next steps
 
@@ -266,6 +266,6 @@ All these would be valuable as supports to DHIS2-MOSIP integrations, so they are
 
 ## Closing thoughts
 
-For more, head over to the reference repository for the integration to look into the code and the integration set up. [TO DO: LINK]
+For more, head over to the reference repository for the integration to look into the code and the integration set up. [TODO: LINK]
 
 Special thanks to MOSIP, HISP Sri Lanka, and Symbionix for collaborating on this project. This is an exciting integration, and we at DHIS2 look forward to more!
