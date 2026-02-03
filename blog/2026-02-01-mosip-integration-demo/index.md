@@ -134,20 +134,21 @@ oidc.provider.esignet.login_image = /dhis-web-commons/oidc/esignet.svg
   <source src="/vid/mosip-integration/capture-plugin.mp4" type="video/mp4" />
 </video>
 
-For the next step in the patient journey, the ANC clinic worker will enroll the patient in the DHIS2 ANC program. At this stage, the patient this time can use eSignet and their National ID to verify their identity, and autofill several fields in the form. In the real world, this is imagined as the clinic worker handing the device over to the patient, who types in their ID, then receives a one-time password (or other two-factor authentication method) on their personal device, which they can use on the clinic’s device. Then they can values about themselves they authorize DHIS2 to access. Once complete, the patient will be verified and fields in the enrollment form will be filled. Note: other flows can be used for real-world use cases, like sending a link to the user’s device to go through the whole flow there.
+For the next step in the patient journey, the ANC clinic worker will enroll the patient in the DHIS2 ANC program. At this stage, the *patient* can use eSignet to verify their identity using their national ID, and autofill several fields in the form at the same time.
 
-The eSignet verification flow is accomplished by several components to orchestrate the OIDC verification flow, as shown in the diagram below:
+In the real world, this is imagined as the clinic worker handing the device over to the patient, who types in their ID, then receives a one-time password (or other two-factor authentication method) on their personal device, which they can use to finish the flow on the clinic’s device. Then they can choose which personal info values from the ID system they authorize DHIS2 to access. Once complete, the patient will be verified, and fields in the enrollment form will be filled. Note: other flows can be used for real-world use cases, like sending a link to the user’s device to go through the whole flow there.
 
-1. A Capture [form field plugin](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/introduction) to render the “Verify with National ID” button and kick off the OIDC flow
-    1. This points to the eSignet UI and opens it in a new window so the Capture form state is saved
-    2. When the user finishes verification in the eSignet UI, they’ll get redirected to page in the plugin app that will capture the grant authorization code in the redirected URL and send it to the backend to continue the back-channel portion of the OIDC flow, using a Route
-2. A Route is set up to securely handle the request from the frontend and pass it to the backend relying party service, an internal service to the server
-    1. (The “relying party” means a system using eSignet as an OIDC provider; in this case, DHIS2)
-3. The backend relying party service [is internal to the server and completes the back-channel part of the OIDC flow]
+The eSignet verification flow from the Capture app is accomplished by several components to orchestrate the OIDC verification flow, as shown in the diagram below:
+
+1. A Capture [form field plugin](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/introduction) renders the “Verify with National ID” button and kicks off the OIDC flow when clicked.
+    1. This opens a new window to save the Capture app form state, and points it to the eSignet UI to start the front-end portion of the OIDC flow.
+    2. When the user finishes verification in the eSignet UI, they’ll get redirected to page in the plugin app, which will capture the authorization grant that eSignet attaches to redirected URL.
+    3. Then, it will use a [Route](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/route.html?h=route) to send on that authorization grant to the backend eSignet auth service which will continue the back-channel portion of the OIDC flow.
+2. The backend eSignet auth service continues the back-channel portion of the OIDC flow:
     1. It uses the private key set up for this client (configured independently from the DHIS2 login) to:
-        1. Use the authorization grant returned from the frontend to retrieve an access token for the authenticated patient
-        2. Use the access token to retrieve demographic information about the patient (name, email, etc.)
-    2. (For the purposes of this demo, we were able to use the docker image of MOSIP’s [mock relying party backend service](https://github.com/mosip/esignet-mock-services/tree/master/mock-relying-party-service), providing necessary variables as environment variables)
+        1. use the authorization grant returned from the frontend to retrieve an access token for the authenticated patient, then
+        2. use the access token to retrieve demographic information about the patient (name, email, etc.)
+    2. (Note: for the purposes of this demo, we were able to use the docker image of MOSIP’s [mock relying party backend service](https://github.com/mosip/esignet-mock-services/tree/master/mock-relying-party-service), providing necessary variables as environment variables)
 
 The user info for the patient is then returned as the result of the request to the Route, which can then be used to populate the fields in the enrollment form.
 
@@ -155,7 +156,7 @@ The user info for the patient is then returned as the result of the request to t
 
 Behind the scenes, once the patient's information is returned to populate the field, eSignet's unique identifier for the person -- the `sub` property of the `userInfo` returned by the OIDC flow -- is saved as an attribute on the tracked entity using a hidden field in the enrollment form.
 
-After that, another plugin in the form let's the clinic worker generate a PHN for the patient or use an existing one.
+After that, another plugin in the form lets the clinic worker generate a PHN for the patient or use an existing one.
 
 ### FHIR Sync Agent
 
@@ -263,7 +264,7 @@ Due to this decoupling, it is also easier to test. Example tracker payloads can 
 
 ## Patient & Clinician Portals
 
-Once patient data is synced to the NEHR, other services can take advantage of it too. The team at Symbionix developed a patient portal, where a patient can use eSignet to log in to the portal and view their visit history, and a clinician portal, where a specialist clinician at another facility can search for a patient’s history.
+Once patient data is synced to the NEHR, other services can take advantage of it too. The team at Symbionix developed a patient portal, where a patient can use eSignet to log in to the portal and view their visit history; and a clinician portal, where a specialist clinician at another facility can search for a patient’s history.
 
 Both portals are standalone web apps. The Patient Portal uses eSignet to allow patients to log in using their national ID and choose which ID data they want to share with the portal. Then, the Patient Portal searches for the patient’s information from the NEHR, using eSignet’s unique identifier for that person in the health domain, i.e. the `sub` value on the person’s `userInfo` payload returned from the OIDC auth flow. This makes it unnecessary for the patient to share their national ID with the portal if they don’t want to.
 
