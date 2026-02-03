@@ -79,22 +79,24 @@ The eSignet components and MOSIP ID provider services are hosted at MOSIP's [Col
   <source src="/vid/mosip-integration/dhis2-login.mp4" type="video/mp4" />
 </video>
 
-At the time of working on this integration demo, DHIS2 supports [logging in using an OIDC flow](https://docs.dhis2.org/en/manage/reference/openid-connect-oidc.html) from several providers (Google, Azure, WSO2, and Okta), and also has [some generic support](https://docs.dhis2.org/en/manage/reference/openid-connect-oidc.html?h=#generic-providers) for other OIDC providers, if they fit some constraints.
+At the time of working on this integration demo, DHIS2 supports [logging in using an OIDC flow](https://docs.dhis2.org/en/manage/reference/openid-connect-oidc.html) from a few providers (Google, Azure, WSO2, and Okta), and also has [some generic support](https://docs.dhis2.org/en/manage/reference/openid-connect-oidc.html?h=#generic-providers) for other OIDC providers, if they fit some constraints.
 
 A couple of eSignet’s features weren’t those that were generically supported by DHIS2, however, so a couple changes had to be made specially for this case:
 
--   eSignet uses `private_key_jwt` as its authentication method, which had to be added to the generic provider support
--   The `userInfo` response from eSignet is a signed JWT, which needs to be verified
--   X509 thumbprints are added to the public keys shown on the DHIS2 instance to match the server-side keys
-    These features will soon be added to the core in a generic way, so more people can take advantage of them.
+-   eSignet uses `private_key_jwt` as its authentication method, which had to be added to the generic provider support.
+-   The `userInfo` response from eSignet is a signed JWT, which needed to a verification step to be added.
+-   X509 thumbprints were added to the public keys shown on the DHIS2 instance to match the server-side keys.
 
-Other than that, the setup process was the same as for other generic providers:
+These features will soon be added to the core in a generic way, so more people can take advantage of them.
 
-1. A Java key store was generated using the Java `keytool` util: `keytool -genkey -alias {key-alias} -keyalg RSA -keystore {keystore-filename}.jks -storepass {keystore-pass} -keypass {key-pass}` (replace the values in braces `{}` with your own)
-2. DHIS2 configuration for the OIDC login was set up in `dhis.conf`, which looks like the snippet below
-3. DHIS2 was registered as a client for the eSignet provider, using a public key from DHIS2’s well-known endpoint
+Other than that, setting up eSignet as an OIDC login provider for DHIS2 was the same as for other generic providers:
 
-At that point, login using eSignet should be ready to go.
+1. A Java key store was generated using the Java `keytool` util: `keytool -genkey -alias {key-alias} -keyalg RSA -keystore {keystore-filename}.jks -storepass {keystore-pass} -keypass {key-pass}` (replace the values in braces `{}` with your own).
+2. An eSignet icon is added to `dhis-web-commons` to use on the login page button.
+3. DHIS2 configuration for the OIDC login was set up in `dhis.conf`, which looks like the snippet below.
+4. DHIS2 was registered as a client for the eSignet provider, using a public key from DHIS2’s well-known endpoint.
+
+At that point, after restarting the server, login using eSignet was ready to go.
 
 ```conf title="dhis.conf"
 oauth2.server.enabled = on
