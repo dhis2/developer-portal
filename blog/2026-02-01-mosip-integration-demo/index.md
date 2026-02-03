@@ -289,7 +289,7 @@ To make such an integration easier in the future, there are several useful thing
 1. Features to expand OIDC login for DHIS2 users, as mentioned above, so using eSignet for login is supported out-of-the-box
 2. A more generic plugin for verifying with eSignet in the Capture app
 3. A more generic relying party backend service for the back-channel part of the OIDC flow, that takes advantage of all of eSignet’s OIDC features
-4. Written guidance and documentation on setting up these components to make production integrations, including a fully-fledge reference implementation
+4. Written guidance and documentation on setting up these components to make production integrations, including a fully-fledged reference implementation
 5. Advanced DHIS2 interoperability features:
     1. Data mapping at the Routes, for example to map User Info from eSignet to T.E. attribute values in DHIS2
     2. An eventing system for tracked entities
