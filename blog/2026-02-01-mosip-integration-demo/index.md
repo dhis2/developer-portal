@@ -45,7 +45,7 @@ The following is the full patient journey in this ANC use case:
 1. A pregnant mother arrives at a PHM clinic.
 2. The PHM logs into DHIS2 using eSignet, using their national ID to authenticate.
     1. In the Capture app, the ANC enrollment form has a button to let the _patient_ use eSignet to verify their identity and authorize use of some of their personal info.
-    2. A PHN can either generated for the patient, or an existing one can be used.
+    2. A PHN can either be generated for the patient, or an existing one can be used.
         1. Behind the scenes, eSignet's unique (non-national ID) identifier is also saved for the patient.
         2. The national ID is optional to share here.
         3. The clinic worker then completes the enrollment, and can enter data for other ANC stages.
@@ -84,7 +84,7 @@ At the time of working on this integration demo, DHIS2 supports [logging in usin
 A couple of eSignet’s features weren’t those that were generically supported by DHIS2, however, so a couple changes had to be made specially for this case:
 
 -   eSignet uses `private_key_jwt` as its authentication method, which had to be added to the generic provider support.
--   The `userInfo` response from eSignet is a signed JWT, which needed to a verification step to be added.
+-   The `userInfo` response from eSignet is a signed JWT, which needed a verification step to be added.
 -   X509 thumbprints were added to the public keys shown on the DHIS2 instance to match the server-side keys.
 
 These features will soon be added to the core in a generic way, so more people can take advantage of them.
@@ -134,7 +134,7 @@ oidc.provider.esignet.login_image = /dhis-web-commons/oidc/esignet.svg
   <source src="/vid/mosip-integration/capture-plugin.mp4" type="video/mp4" />
 </video>
 
-For the next step in the patient journey, the ANC clinic worker will enroll the patient in the DHIS2 ANC program. At this stage, the *patient* can use eSignet to verify their identity using their national ID, and autofill several fields in the form at the same time.
+For the next step in the patient journey, the ANC clinic worker will enroll the patient in the DHIS2 ANC program. At this stage, the _patient_ can use eSignet to verify their identity using their national ID, and autofill several fields in the form at the same time.
 
 In the real world, this is imagined as the clinic worker handing the device over to the patient, who types in their ID, then receives a one-time password (or other two-factor authentication method) on their personal device, which they can use to finish the flow on the clinic’s device. Then they can choose which personal info values from the ID system they authorize DHIS2 to access. Once complete, the patient will be verified, and fields in the enrollment form will be filled. Note: other flows can be used for real-world use cases, like sending a link to the user’s device to go through the whole flow there.
 
@@ -142,7 +142,7 @@ The eSignet verification flow from the Capture app is accomplished by several co
 
 1. A Capture [form field plugin](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/introduction) renders the “Verify with National ID” button and kicks off the OIDC flow when clicked.
     1. This opens a new window to save the Capture app form state, and points it to the eSignet UI to start the front-end portion of the OIDC flow.
-    2. When the user finishes verification in the eSignet UI, they’ll get redirected to page in the plugin app, which will capture the authorization grant that eSignet attaches to redirected URL.
+    2. When the user finishes verification in the eSignet UI, they’ll get redirected to a page in the plugin app, which will capture the authorization grant that eSignet attaches to the redirected URL.
     3. Then, it will use a [Route](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/route.html?h=route) to send on that authorization grant to the backend eSignet auth service which will continue the back-channel portion of the OIDC flow.
 2. The backend eSignet auth service continues the back-channel portion of the OIDC flow:
     1. It uses the private key set up for this client (configured independently from the DHIS2 login) to:
@@ -171,7 +171,7 @@ Let us dive into the above sequence of actions.
 
 The synchronisation is kicked off from the DHIS2 database thanks to [PostgreSQL logical replication](https://www.postgresql.org/docs/current/logical-replication.html). The database notifies the agent when a tracked entity is created or updated. The notification carries the ID of the tracked entity which the agent uses to call the DHIS2 Web API and fetch the tracked entity. This tracked entity, which includes enrollments and attributes, becomes the source of truth for the subsequent transformation that follows.
 
-In this demo, the transformation is undirectional: DHIS2 is the source while the FHIR server is the target. The agent needs to transform the tracked entity into FHIR resources that conform with the structure and semantics defined in the Sri Lanka NEHR Implementation Guide. Most of the tracked entity attributes map directly to a FHIR `Patient` resource. Additional clinical data within attributes is mapped into `Observation` resources and linked to the `Patient`. The `Patient` resource acts as the anchor for the rest of the mapped resources, so they are linked back to the same patient to preserve the data model from DHIS2. Tracker program stages contain most of the clinical data. Each completed event results in a FHIR `Encounter`, with `Observation` resources created from program stage data elements and linked back to that encounter and patient. These resources are then pushed to the NEHR-compliant FHIR server, where they are used by the patient and clinical portals.
+In this demo, the transformation is unidirectional: DHIS2 is the source while the FHIR server is the target. The agent needs to transform the tracked entity into FHIR resources that conform with the structure and semantics defined in the Sri Lanka NEHR Implementation Guide. Most of the tracked entity attributes map directly to a FHIR `Patient` resource. Additional clinical data within attributes is mapped into `Observation` resources and linked to the `Patient`. The `Patient` resource acts as the anchor for the rest of the mapped resources, so they are linked back to the same patient to preserve the data model from DHIS2. Tracker program stages contain most of the clinical data. Each completed event results in a FHIR `Encounter`, with `Observation` resources created from program stage data elements and linked back to that encounter and patient. These resources are then pushed to the NEHR-compliant FHIR server, where they are used by the patient and clinical portals.
 
 The transformation itself is implemented with [DataSonnet](https://datasonnet.com/: a Java flavour of [Jsonnet](https://jsonnet.org/) for declaratively mapping JSON. Expressing complex mappings between DHIS2 and FHIR resources in DataSonnet allowed us to stay away from writing low-level Java transformation code. The main DataSonnet mapping definition constructs identifiers, iterates over relevant program stage events, and imports DataSonnet libraries to transform the events into individual FHIR resources which are then assembled into a FHIR bundle within the main mapping definition. A simplified version of this mapping definition is shown below:
 
@@ -256,9 +256,9 @@ As an example, an abridged version of the patient module used is shown below:
 }
 ```
 
-Visit, registration and referral mappings follow the same structure. Event data elements are turned into clinical resources (e.g., `Observation`) and linked back to both the encounter and the patient. The DataSonnet script then assembles the bundle, while modules defines and populates the structure of each resource.
+Visit, registration and referral mappings follow the same structure. Event data elements are turned into clinical resources (e.g., `Observation`) and linked back to both the encounter and the patient. The DataSonnet script then assembles the bundle, while modules define and populate the structure of each resource.
 
-This structure worked well for the demo. The mappings are easy to set up, and changes tend to stay local to a single file. The transformation layer stays decoupled from the Camel route logic of the `fhir-sync-agent`. Adding a new mapping usually means a writing Jsonnet module and including it in the DataSonnet entry point. It is also easier to test due to this decoupling. Example tracker payloads can be run through the transformation and validated against expected FHIR output at both resource and bundle level, which made the NEHR alignment validation easier.
+This structure worked well for the demo. The mappings are easy to set up, and changes tend to stay local to a single file. The transformation layer stays decoupled from the Camel route logic of the `fhir-sync-agent`. Adding a new mapping usually means writing a Jsonnet module and including it in the DataSonnet entry point. It is also easier to test due to this decoupling. Example tracker payloads can be run through the transformation and validated against expected FHIR output at both resource and bundle level, which made the NEHR alignment validation easier.
 
 Due to this decoupling, it is also easier to test. Example tracker payloads can be run through the transformation and validated against expected FHIR output at both resource and bundle level, which made the NEHR alignment validation easier.
 
