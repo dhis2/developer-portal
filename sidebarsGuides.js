@@ -27,6 +27,7 @@ module.exports = {
             defaultStyle: true,
         },
         'tutorials/ui-library',
+        'guides/general-plugin-guide',
         {
             label: 'Capture Plugins',
             type: 'category',
