@@ -299,6 +299,7 @@ For more detailed plugin usage and patterns, see the [reference form field plugi
 This guide covered the shared concepts behind all DHIS2 plugins. For more information, dive into the plugin-type-specific documentation:
 
 -   Capture plugins: [Getting started](/docs/capture-plugins/developer/getting-started/)
+-   Bulk data entry plugins: [Introduction](/docs/capture-plugins/developer/bulk-data-entry-plugin/introduction.mdx)
 -   Form field plugins: [Introduction](/docs/capture-plugins/developer/form-field-plugins/introduction.md)
 -   Enrollment plugins: [Introduction](/docs/capture-plugins/developer/enrollment-plugins/introduction)
 -   Dashboard plugins: [Getting started](/docs/dashboard-plugins/developer/getting-started.md)
