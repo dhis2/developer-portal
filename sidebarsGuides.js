@@ -32,21 +32,15 @@ module.exports = {
             type: 'category',
             collapsed: true,
             collapsible: true,
-            link: {
-                type: 'doc',
-                id: 'plugins/general-plugin-guide',
-            },
             items: [
+                'plugins/general-plugin-guide',
                 {
                     label: 'Capture Plugins',
                     type: 'category',
                     collapsed: true,
                     collapsible: true,
-                    link: {
-                        type: 'doc',
-                        id: 'capture-plugins/developer/getting-started',
-                    },
                     items: [
+                        'capture-plugins/developer/getting-started',
                         'capture-plugins/developer/develop-a-capture-plugin',
                         'capture-plugins/developer/configure-a-capture-plugin',
                         {
@@ -73,11 +67,8 @@ module.exports = {
                     type: 'category',
                     collapsed: true,
                     collapsible: true,
-                    link: {
-                        type: 'doc',
-                        id: 'dashboard-plugins/developer/getting-started',
-                    },
                     items: [
+                        'dashboard-plugins/developer/getting-started',
                         'dashboard-plugins/developer/implement-a-dashboard-plugin',
                     ],
                 },
