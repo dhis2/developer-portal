@@ -28,49 +28,50 @@ module.exports = {
         },
         'tutorials/ui-library',
         {
-            label: 'Capture Plugins',
+            label: 'Plugins',
             type: 'category',
             collapsed: true,
             collapsible: true,
-            link: {
-                type: 'doc',
-                id: 'capture-plugins/developer/getting-started',
-            },
             items: [
-                'capture-plugins/developer/getting-started',
-                'capture-plugins/developer/develop-a-capture-plugin',
-                'capture-plugins/developer/configure-a-capture-plugin',
+                'plugins/general-plugin-guide',
                 {
-                    'Form Field Plugin': [
-                        'capture-plugins/developer/form-field-plugins/introduction',
-                        'capture-plugins/developer/form-field-plugins/developer-details',
-                        'capture-plugins/developer/form-field-plugins/manual-setup',
-                    ],
-                    'Enrollment Plugin': [
-                        'capture-plugins/developer/enrollment-plugins/introduction',
-                        'capture-plugins/developer/enrollment-plugins/developer-details',
-                        'capture-plugins/developer/enrollment-plugins/manual-setup',
-                    ],
-                    'Bulk data entry Plugin': [
-                        'capture-plugins/developer/bulk-data-entry-plugin/introduction',
-                        'capture-plugins/developer/bulk-data-entry-plugin/developer-details',
-                        'capture-plugins/developer/bulk-data-entry-plugin/manual-setup',
+                    label: 'Capture Plugins',
+                    type: 'category',
+                    collapsed: true,
+                    collapsible: true,
+                    items: [
+                        'capture-plugins/developer/getting-started',
+                        'capture-plugins/developer/develop-a-capture-plugin',
+                        'capture-plugins/developer/configure-a-capture-plugin',
+                        {
+                            'Form Field Plugin': [
+                                'capture-plugins/developer/form-field-plugins/introduction',
+                                'capture-plugins/developer/form-field-plugins/developer-details',
+                                'capture-plugins/developer/form-field-plugins/manual-setup',
+                            ],
+                            'Enrollment Plugin': [
+                                'capture-plugins/developer/enrollment-plugins/introduction',
+                                'capture-plugins/developer/enrollment-plugins/developer-details',
+                                'capture-plugins/developer/enrollment-plugins/manual-setup',
+                            ],
+                            'Bulk data entry Plugin': [
+                                'capture-plugins/developer/bulk-data-entry-plugin/introduction',
+                                'capture-plugins/developer/bulk-data-entry-plugin/developer-details',
+                                'capture-plugins/developer/bulk-data-entry-plugin/manual-setup',
+                            ],
+                        },
                     ],
                 },
-            ],
-        },
-        {
-            label: 'Dashboard Plugins',
-            type: 'category',
-            collapsed: true,
-            collapsible: true,
-            link: {
-                type: 'doc',
-                id: 'dashboard-plugins/developer/getting-started',
-            },
-            items: [
-                'dashboard-plugins/developer/getting-started',
-                'dashboard-plugins/developer/implement-a-dashboard-plugin',
+                {
+                    label: 'Dashboard Plugins',
+                    type: 'category',
+                    collapsed: true,
+                    collapsible: true,
+                    items: [
+                        'dashboard-plugins/developer/getting-started',
+                        'dashboard-plugins/developer/implement-a-dashboard-plugin',
+                    ],
+                },
             ],
         },
         {
