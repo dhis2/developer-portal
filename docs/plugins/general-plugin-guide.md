@@ -14,7 +14,7 @@ The plugin framework is supported in **DHIS2 version 40.5 and later**. Dashboard
 
 ## Introduction
 
-Plugins let you extend DHIS2 apps with custom UI and logic that a host app loads and renders at specific extension points. DHIS2 core apps (like Capture and Dashboard) provide predefined extension points, and custom DHIS2 apps can also host plugins using the Plugin component [Plugin component](/docs/app-runtime/components/Plugin).
+Plugins let you extend DHIS2 apps with custom UI and logic that a host app loads and renders at specific extension points. DHIS2 core apps (like Capture and Dashboard) provide predefined extension points, and custom DHIS2 apps can also host plugins using the App Runtime [Plugin component](/docs/app-runtime/components/Plugin).
 
 A plugin is packaged as a DHIS2 app, but instead of rendering its own app shell it exports one or more React components. The host app (Capture, Dashboard, or your own DHIS2 app) loads and mounts those components at specific extension points.
 
@@ -25,9 +25,7 @@ Across plugin types, the fundamentals are the same:
 -   Driven by props
 -   No routing, navigation, or global app state
 
-The different plugin types include:
-
-These are the currently documented plugin types for DHIS2 core apps. You can also build plugins for custom DHIS2 apps by hosting them with the App Runtime [Plugin component](/docs/app-runtime/components/Plugin).
+These are the currently documented plugin types for DHIS2 core apps. You can also build plugins for custom DHIS2 apps by hosting them with the App Runtime [Plugin component](/docs/app-runtime/components/Plugin):
 
 -   [Form Field Plugins](/docs/capture-plugins/developer/form-field-plugins/introduction.md), which extend Capture data entry forms (for example by auto-generating values or validating input). A complete [reference implementation](https://github.com/dhis2/reference-form-field-plugin) is available on GitHub.
 -   [Enrollment Plugins](/docs/capture-plugins/developer/enrollment-plugins/introduction), which add custom views or dashboards on tracker enrollment pages. See the official [WHO Growth Chart Plugin](https://apps.dhis2.org/app/09f48f78-b67c-4efa-90ad-9ac2fed53bb8) on the App Hub for an example.
@@ -42,9 +40,9 @@ For more information about how plugins are loaded at runtime, see the App Runtim
 
 At runtime, a plugin is just a React component. The host app decides:
 
--   **When** the plugin is rendered
--   **Where** it is rendered
--   **Which props** are passed to it
+-   When the plugin is rendered
+-   Where it is rendered
+-   Which props are passed to it
 
 The plugin itself is responsible only for rendering UI and reacting to prop changes. It should not make assumptions about routing, user navigation, or surrounding layout.
 
@@ -56,9 +54,9 @@ You do not manually instantiate plugins in code. Instead, you:
 
 1. Build a plugin as a DHIS2 app
 2. Install it into a DHIS2 instance like any other app
-3. Configure the host app to use it (for example in the Tracker Plugin Configurator for Capture plugins, or as a dashboard item for Dashboard plugins)
+3. Configure the host app to use it (for example in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin.mdx) for Capture plugins, or as a dashboard item for Dashboard plugins)
 
-## Common structure of a plugin app
+## Common structure of a plugin project
 
 All plugin types share the same basic app structure.
 
@@ -85,7 +83,7 @@ This section walks through scaffolding, configuration, a minimal example, and wh
 
 For a complete example with additional context and implementation details, see the [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin).
 
-### 1. Scaffold a Plugin App
+### 1. Scaffold a Plugin Project
 
 Use the [DHIS2 CLI](/docs/cli) to bootstrap your plugin project:
 
@@ -131,15 +129,13 @@ In most plugins you’ll do two things:
 -   render based on incoming props
 -   call host callbacks when you want to update something
 
-The example below is intentionally small. It’s just enough to show the props/callback loop.
+The example below illustrates a very simple props/callback loop.
 
 :::info Minimal functional example
 This example is intentionally minimal (but functional). It uses plain HTML elements and does not leverage the DHIS2 UI library.
 
 For a more complete example (including DHIS2 UI components, i18n patterns, and additional safeguards), see the [Reference Form Field Plugin](https://github.com/dhis2/reference-form-field-plugin).
 :::
-
-Here is a minimal Capture form field example:
 
 ```tsx
 // src/Plugin.tsx
@@ -173,9 +169,7 @@ This plugin reads the current value from `values` and updates the form by callin
 
 _Example: clicking "Generate ID" updates the mapped Capture form field via `setFieldValue`._
 
-:::tip Capture form field mapping
-For Capture form field plugins, the `fieldId` you pass to `setFieldValue` must match the field alias configured in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin.mdx) (or manually in the Capture app data store under the `dataEntryForms` key). If the field isn't mapped, the plugin won't receive the value and updates will have no effect.
-:::
+If you are building a Capture form field plugin, make sure the `fieldId` passed to `setFieldValue` matches your mapped field alias in the [Tracker Plugin Configurator](/docs/capture-plugins/developer/configure-a-capture-plugin).
 
 ### 4. Consuming Plugin Props
 
@@ -183,73 +177,17 @@ Plugins receive props from the host app to provide context and control interacti
 
 Treat props as the contract with the host app. Use them as the source of truth, and keep local state to a minimum.
 
-#### Capture Plugin Props
+Most plugin integrations follow the same model:
 
-Most Capture plugins work with some combination of:
+-   Input props from the host app provide context (for example, values, mode, filters, metadata).
+-   Callback props let the plugin request updates in the host app.
+-   Lifecycle props may be provided for workflow-style plugins.
 
--   `values` – current form values
--   `errors`, `warnings` – field-level errors and warnings
--   `formSubmitted` – boolean for form submit state
--   `fieldsMetadata` – field configuration and metadata
--   `setFieldValue()` – update a field
--   `setContextFieldValue()` – update context fields like `enrolledAt`
+Prop names and behavior differ by plugin type. Use the type-specific guides for the full contract:
 
-The Capture example above shows the basic pattern: read from props, call host callbacks to request updates.
-
-In a real plugin, you could expand that example by using `fieldsMetadata` to render the configured form label/placeholder and by using `errors`/`warnings` and `formSubmitted` to show validation feedback.
-
-Full details (form field/enrollment): [Capture Plugin Props](https://developers.dhis2.org/docs/capture-plugins/developer/form-field-plugins/developer-details#props)
-
-#### Bulk Data Entry plugin props
-
-Bulk Data Entry plugins have a different shape because they run as a workflow. The key thing to look for is lifecycle callbacks such as:
-
--   `onDefer()` – exit the plugin and return to the host view
--   `onComplete()` – close the plugin and clean up state
-
-Full details: [Bulk Data Entry Plugin developer details](/docs/capture-plugins/developer/bulk-data-entry-plugin/developer-details)
-
-#### Dashboard Plugin Props
-
-Dashboard plugins receive props such as:
-
--   `dashboardItemId` – unique ID of the widget
--   `dashboardItemFilters` – filters applied to the widget
--   `dashboardMode` – edit/view mode indicator
--   `setDashboardItemDetails()` – set the widget title or description
-
-This is the same overall pattern as in Capture, but with different props:
-
--   **Props as input**: dashboard filters and mode come in via props.
--   **Host callbacks as output**: you call `setDashboardItemDetails` to update widget metadata (like the title).
-
-Example usage:
-
-```tsx
-import React, { useEffect } from 'react'
-
-export default function Plugin({
-    dashboardItemId,
-    dashboardItemFilters,
-    dashboardMode,
-    setDashboardItemDetails,
-}) {
-    useEffect(() => {
-        setDashboardItemDetails({ itemTitle: 'My Plugin Title' })
-    }, [])
-
-    return (
-        <div>
-            <h3>Dashboard Mode: {dashboardMode}</h3>
-            <pre>{JSON.stringify(dashboardItemFilters, null, 2)}</pre>
-        </div>
-    )
-}
-```
-
-This example shows a Dashboard plugin that uses the widget context to set a title on mount and display the current filters and mode. It’s a quick way to verify that your plugin receives the expected dashboard props.
-
-Full details: [Dashboard Plugin Props](/docs/dashboard-plugins/developer/implement-a-dashboard-plugin#using-the-props-from-the-dashboard)
+-   Capture plugins (form field / enrollment): [Developer details](/docs/capture-plugins/developer/form-field-plugins/developer-details)
+-   Bulk Data Entry plugins: [Developer details](/docs/capture-plugins/developer/bulk-data-entry-plugin/developer-details)
+-   Dashboard plugins: [Using Dashboard props](/docs/dashboard-plugins/developer/implement-a-dashboard-plugin#using-the-props-from-the-dashboard)
 
 ## Developer workflow (recommended)
 
@@ -259,6 +197,7 @@ A common workflow that applies to all plugin types:
 2. Use mocked props in your wrapper so you can iterate quickly.
 3. Build a ZIP with `yarn build`.
 4. Install the ZIP into a DHIS2 instance and test in the host app (Capture/Dashboard).
+5. Complete host-specific configuration and validation based on plugin type.
 
 :::tip
 Plugins can only interact with fields they have been granted access to through configuration. Attempting to access other fields will result in errors.
@@ -299,7 +238,7 @@ For more detailed plugin usage and patterns, see the [reference form field plugi
 This guide covered the shared concepts behind all DHIS2 plugins. For more information, dive into the plugin-type-specific documentation:
 
 -   Capture plugins: [Getting started](/docs/capture-plugins/developer/getting-started/)
--   Bulk data entry plugins: [Introduction](/docs/capture-plugins/developer/bulk-data-entry-plugin/introduction.mdx)
+-   Bulk Data Entry plugins: [Introduction](/docs/capture-plugins/developer/bulk-data-entry-plugin/introduction.mdx)
 -   Form field plugins: [Introduction](/docs/capture-plugins/developer/form-field-plugins/introduction.md)
 -   Enrollment plugins: [Introduction](/docs/capture-plugins/developer/enrollment-plugins/introduction)
 -   Dashboard plugins: [Getting started](/docs/dashboard-plugins/developer/getting-started.md)
