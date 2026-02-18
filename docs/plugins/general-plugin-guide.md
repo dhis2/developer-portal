@@ -34,8 +34,6 @@ These are the currently documented plugin types for DHIS2 core apps. You can als
 
 All plugins are built as [DHIS2 App Platform apps](/docs/app-platform/getting-started.md) with a `plugin` entry point configured in `d2.config.js`. They receive context through props from the host app (see [Consuming plugin props](#4-consuming-plugin-props) below).
 
-For more information about how plugins are loaded at runtime, see the App Runtime [Plugin component](/docs/app-runtime/components/Plugin).
-
 ## What is a plugin?
 
 At runtime, a plugin is just a React component. The host app decides:
