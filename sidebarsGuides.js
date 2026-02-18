@@ -34,10 +34,10 @@ module.exports = {
             collapsible: true,
             link: {
                 type: 'doc',
-                id: 'general-plugin-guide',
+                id: 'plugins/general-plugin-guide',
             },
             items: [
-                'general-plugin-guide',
+                'plugins/general-plugin-guide',
                 {
                     label: 'Capture Plugins',
                     type: 'category',
