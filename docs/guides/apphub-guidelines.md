@@ -114,8 +114,18 @@ Consider implementing the following guidelines to address harden application sec
 
     -   Choose a unique and specific namespace which will not conflict with other applications
     -   Reserve the namespace used by your application by specifying it in the `manifest.webapp` file, so that only users with access to that application can access it (see an example of a manifest file [here](https://docs.dhis2.org/en/develop/loading-apps.html#apps_creating_apps)). Functionality to reserve namespaces is coming soon to the Application Platform tools.
-    -   When storing sensitive information (such as credentials for external systems) in the datastore, set the `?encrypt=true` [query string parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_create_values) in order to ensure that the value is encrypted at rest.
+    -   Do not store external service credentials in the DataStore or UserDataStore for use by browser-side code. Credentials for third-party services should never be available to the client.
+    -   If sensitive information must be stored in the datastore for server-side use, set the `?encrypt=true` [query string parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_create_values) in order to ensure that the value is encrypted at rest.
     -   Whenever possible, use the [DataStore sharing API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_sharing) to explicitly grant read and write permissions to the users which need them and **prevent access by any unprivileged users**. It is particularly important to lock down **write access** as much as possible.
+
+-   **External service communication**: Integrations with external systems (for example, other DHIS2 instances) should use DHIS2 routes for backend-to-backend communication:
+
+    -   When handling sensitive information such as credentials, use routes instead of DataStore or UserDataStore values exposed to the client.
+    -   Route configuration can be managed with the [Route Manager App](https://docs.dhis2.org/en/use/user-guides/dhis-core-version-master/maintaining-the-system/route-manager.html), which supports managing routes using the [DHIS2 Routes API](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/route.html).
+    -   Do not call external services directly from the browser when authentication credentials are required.
+    -   Do not fetch, expose, or manage third-party credentials in client-side application code, like in the dataStore or UserDataStore.
+    -   Configure credentials on the server side so the frontend never receives or handles them.
+    -   Avoid CORS-based patterns that require exposing external service endpoints broadly to browsers.
 
 -   **Authentication**: Using basic authentication to communicate with DHIS2 from a DHIS2 application which already uses cookie session authentication is not recommended. Consider implementing the following:
 
