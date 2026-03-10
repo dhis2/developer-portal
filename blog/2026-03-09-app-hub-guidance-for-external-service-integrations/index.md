@@ -1,13 +1,14 @@
 ---
 slug: 2026/03/app-hub-route-update
-title: Updating App Hub Guidance for External Service Integrations
-authors: [johan]
+title: Updating App Hub Guidelines for External Service Integrations
+authors: johan
+tags: [announcement, route, security]
 ---
 
 To ensure high quality of the apps on the App Hub, we have made updates to the App Hub security guidelines for apps that communicate with external services.
 Apps that connect to external APIs must no longer handle third-party credentials in browser-accessible storage for direct client-side use. Instead, external-service communication should be performed through [DHIS2 Routes](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/route.html) so that credentials and upstream authentication live on the server side, and access can be controlled through DHIS2 authorization and sharing.
 
-This change is reflected in the updated [App Hub Submission Guidelines](/docs/guides/apphub-guidelines.md). The use of hard-coded secrets is discouraged, and server-side synchronization processes are strongly recommended rather than browser-based ones.
+This change is reflected in the updated [App Hub Submission Guidelines](https://developers.dhis2.org/docs/guides/apphub-guidelines/). The use of hard-coded secrets is discouraged, and server-side synchronization processes are strongly recommended rather than browser-based ones.
 
 We recommend that all app maintainers implement these new security updates by **mid-June 2026** (ahead of the [DHIS2 Annual Conference](https://dac2026.dhis2.org/)). After the annual conference, the DHIS2 Extensibility Team will review all of the apps on the App Hub, and remove all apps that do not follow the updated security guidelines.
 
