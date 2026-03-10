@@ -10,7 +10,7 @@ Apps that connect to external APIs must no longer handle third-party credentials
 
 This change is reflected in the updated [App Hub Submission Guidelines](https://developers.dhis2.org/docs/guides/apphub-guidelines/). The use of hard-coded secrets is discouraged, and server-side synchronization processes are strongly recommended rather than browser-based ones.
 
-We recommend that all app maintainers implement these new security updates by **mid-June 2026** (ahead of the [DHIS2 Annual Conference](https://dac2026.dhis2.org/)). After the annual conference, the DHIS2 Extensibility Team will review all of the apps on the App Hub, and remove all apps that do not follow the updated security guidelines.
+We recommend that all app maintainers implement these new security updates by **mid-June 2026** (ahead of the [DHIS2 Annual Conference](https://dac2026.dhis2.org/)). After the annual conference, the DHIS2 Extensibility Team will review all of the apps on the App Hub, and remove all apps that do not follow the updated security guidelines. To help with the migration, we have included an example of the old pattern and how it can be updated using routes.
 
 <!-- truncate -->
 
