@@ -16,98 +16,23 @@ We recommend that all app maintainers implement these new security updates by **
 
 ## The old pattern
 
-A common older pattern has been to store API tokens or similar configurations in the [DataStore](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html) or [UserDataStore](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_user_data_store), read those values in the browser, and then send requests straight to the external service. Even when dataStore values are encrypted at rest, the core issue remains: if the browser can read a credential, the browser can expose said credential through network requests, logs or browser tooling. Here is what it looks like in code:
+A common older pattern has been to store API tokens or similar configurations in the [DataStore](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html) or [UserDataStore](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_user_data_store), read those values in the browser, and then send requests straight to the external service. Even when data store values are encrypted at rest, the core issue remains: if the browser can read a credential, the browser can expose said credential through network requests, logs or browser tooling.
 
 ### 1. User enters credentials through app UI
 
-One common pattern was for apps to have dedicated UI pages where the user would fill in URL, username and password for the external service. In some cases this was configured manually in the DataStore instead, but the effect is the same.
-
-```javaScript
-import React from 'react'
-import { useDataMutation } from '@dhis2/app-runtime'
-import { Form, InputField, Button } from '@dhis2/ui'
-
-const NAMESPACE = 'my-app-config'
-const KEY = 'externalService'
-
-const mutation = {
-    resource: `userDataStore/${NAMESPACE}/${KEY}`,
-    type: 'create',
-    params: { encrypt: true },
-    data: ({ url, username, password }) => ({ url, username, password }),
-}
-
-export const ExternalServiceConfigForm = () => {
-    const [saveCredentials] = useDataMutation(mutation)
-
-    const onSubmit = async (values) => {
-        await saveCredentials(values)
-    }
-
-    return (
-        <Form onSubmit={onSubmit}>
-            <InputField name="url" label="Server URL" />
-            <InputField name="username" label="Username" />
-            <InputField name="password" label="Password" type="password" />
-            <Button type="submit">Save</Button>
-        </Form>
-    )
-}
-```
+One common pattern was for apps to have dedicated UI pages where the user would fill in URL, username and password for the external service. In some cases this was configured manually in the data store instead, but the effect is the same.
 
 ### 2. Credentials are persisted in the UserDataStore
 
-The credentials were then written to the DHIS2 UserDataStore (or DataStore) under an app-specific namespace. At runtime, the app reads them back, delivering the plaintext values straight into the browser:
-
-```jsx
-import { useDataQuery } from '@dhis2/app-runtime'
-
-const NAMESPACE = 'my-app-config'
-const KEY = 'externalService'
-
-const query = {
-    credentials: {
-        resource: `userDataStore/${NAMESPACE}/${KEY}`,
-    },
-}
-
-export const useExternalCredentials = () => {
-    const { data, loading, error } = useDataQuery(query)
-
-    return {
-        credentials: data?.credentials,
-        loading,
-        error,
-    }
-}
-```
+The credentials were then written to the DHIS2 `UserDataStore` (or `DataStore`) under an app-specific namespace. At runtime, the app reads them back, delivering the plaintext values straight into the browser.
 
 ### 3. The app calls the external API directly
 
-With the credentials now available, the app authenticates against the external service and makes requests directly from the browser. In this example, we fetch event information from an external service:
+With the credentials now available, the app authenticates against the external service and makes requests directly from the browser. This is typically implemented by reading credentials from the data store, attaching them to outbound requests, and then calling the third-party API from frontend code.
 
-```jsx
-const { credentials } = useExternalCredentials()
+Regardless of which client-side data library is used, this pattern still exposes plaintext credentials to the browser runtime.
 
-const loginRes = await fetch(`${credentials.url}/api/users/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        username: credentials.username,
-        password: credentials.password,
-    }),
-})
-
-const session = await loginRes.json()
-
-const result = await fetch(
-    `${credentials.url}/api/events?access_token=${session.id}`
-)
-
-const events = await result.json()
-```
-
-Even though the DataStore and UserDataStore may encrypt values at rest on the server (by setting the `?encrypt=true` [query string parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_create_values)), the browser receives plaintext credentials to use them. From that point they are visible in JavaScript memory, network request payloads, console logs, and any XSS vulnerability.
+Even though the data store may encrypt values at rest on the server (by setting the `?encrypt=true` [query string parameter](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/data-store.html#webapi_data_store_create_values)), the browser receives plaintext credentials to use them. From that point they are visible in JavaScript memory, network request payloads, console logs, and any XSS vulnerability.
 
 ## The new required pattern using Routes
 
@@ -141,11 +66,15 @@ A few things to note:
 -   The `authorities` array lets users with that authority run the route without needing full route-management permissions.
 -   Several [authentication modes](https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/route.html#running-a-route-with-authentication) are supported, like `http-basic`, `api-token` and `oauth2-client-credentials`.
 
+:::note
 The DHIS2 server must also allow the target host in `dhis.conf`:
 
 ```properties
 route.remote_servers_allowed = https://external-service.example.com/
 ```
+
+As of DHIS2 v42 and later, the default permitted routes are `https://*`, so you may not need change the config if you are on a newer version of DHIS2.
+:::
 
 ### 2. The app can then call the external service through the route
 
@@ -169,7 +98,7 @@ export const useExternalEvents = () => {
 }
 ```
 
-The app will now only talk to the DHIS2 server, and the server will handle the upstream authentication. The app will therefore no longer need to maintain credential input forms, fetch credentials from the DataStore, or make direct requests to external services.
+The app will now only talk to the DHIS2 server, and the server will handle the upstream authentication. The app will therefore no longer need to maintain credential input forms, fetch credentials from the Data store, or make direct requests to external services.
 
 # Are you maintaining an app? This is what you should check
 
