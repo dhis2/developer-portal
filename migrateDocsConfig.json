@@ -71,6 +71,13 @@
             "sourceDir": "docs/developer"
         },
         {
+            "repo": "https://github.com/dhis2/dhis2-android-capture-app",
+            "tempDir": ".android-capture-app-temp",
+            "targetDir": "./docs/mobile/android-capture-app",
+            "branch": "main",
+            "sourceDir": "docs"
+        },
+        {
             "repo": "https://github.com/dhis2/dhis2-mobile-ui.git",
             "tempDir": ".mui-repo-temp",
             "targetDir": "./docs/mobile/mobile-ui",
