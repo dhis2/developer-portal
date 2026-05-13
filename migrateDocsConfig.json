@@ -74,7 +74,7 @@
             "repo": "https://github.com/dhis2/dhis2-android-capture-app",
             "tempDir": ".android-capture-app-temp",
             "targetDir": "./docs/mobile/android-capture-app",
-            "branch": "ANDROAPP-7477",
+            "branch": "release/3.4.1",
             "sourceDir": "docs"
         },
         {
