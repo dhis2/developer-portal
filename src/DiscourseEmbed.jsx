@@ -6,6 +6,7 @@ export default function DiscourseEmbed({
     tags,
     perPage = 5,
     template = 'complete',
+    order = 'created',
     loading,
 }) {
     const containerRef = useRef(null)
@@ -33,7 +34,8 @@ export default function DiscourseEmbed({
                 category,
                 tags,
                 per_page: perPage,
-                template,
+                template: template,
+                order: order
             })
 
             const iframe = document.createElement('iframe')
