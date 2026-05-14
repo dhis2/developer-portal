@@ -15,7 +15,7 @@ export default function DiscourseEmbed({
         const handleMessage = (e) => {
             if (e?.data?.type === 'discourse-resize' && e.data.embedId) {
                 const iframe = document.getElementById(e.data.embedId)
-                if (iframe) iframe.style.height = e.data.height + 'px'git add src/DiscourseEmbed.jsx
+                if (iframe) iframe.style.height = e.data.height + 'px'
             }
         }
 
