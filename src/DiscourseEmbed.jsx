@@ -15,7 +15,7 @@ export default function DiscourseEmbed({
         const handleMessage = (e) => {
             if (e?.data?.type === 'discourse-resize' && e.data.embedId) {
                 const iframe = document.getElementById(e.data.embedId)
-                if (iframe) iframe.height = e.data.height + 'px'
+                if (iframe) iframe.style.height = e.data.height + 'px'git add src/DiscourseEmbed.jsx
             }
         }
 
@@ -40,6 +40,9 @@ export default function DiscourseEmbed({
             iframe.id = frameId
             iframe.frameBorder = '0'
             iframe.scrolling = 'no'
+            iframe.style.width = '100%'
+            iframe.style.height = '600px'
+            iframe.style.border = '0'
             iframe.style.width = '100%'
             iframe.style.visibility = 'hidden' // Keep hidden until loaded
 
