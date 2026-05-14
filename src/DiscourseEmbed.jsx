@@ -13,6 +13,7 @@ export default function DiscourseEmbed({
 
     useEffect(() => {
         const handleMessage = (e) => {
+            if (e.origin !== discourseUrl) return
             if (e?.data?.type === 'discourse-resize' && e.data.embedId) {
                 const iframe = document.getElementById(e.data.embedId)
                 if (iframe) iframe.style.height = e.data.height + 'px'
