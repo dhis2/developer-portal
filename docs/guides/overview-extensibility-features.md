@@ -38,7 +38,7 @@ In addition to the core apps bundled with DHIS2, like the [Maintenance](https://
 
 -   [Multi-calendar dates](https://github.com/dhis2/multi-calendar-dates): The `@dhis2/multi-calendar-dates` package handles DHIS2 Periods across every calendar DHIS2 supports, which makes apps work for implementations that don't use the Gregorian calendar. The UI library exposes [`Calendar`](/docs/ui/components/calendar) and [`CalendarInput`](/docs/ui/components/calendar-input) components that build on top of this library.
 -   [Translation support (d2-i18n)](/docs/guides/translation-support.md): The internationalization helper used by the App Platform's i18n pipeline. Most apps interact with it via `i18n.t(...)` after running the platform's extract/generate scripts. If you're using the DHIS2 App Platform, much of the setup is handled automatically.
--   [Analytics](https://github.com/dhis2/analytics): The `@dhis2/analytics` package provides helper functions and shared React components used by the analytics apps (Data Visualizer, Line Listing, Pivot Tables) for building visualizations on top of the analytics API.
+-   [Analytics](https://github.com/dhis2/analytics): The `@dhis2/analytics` package provides helper functions and shared React components used by the analytics apps (Data Visualizer, Line Listing, Pivot Tables) for interacting with the analytics API. Valuable components include Data, Period, and Organisation Unit dimension selectors.
 
 ## Plugins
 
