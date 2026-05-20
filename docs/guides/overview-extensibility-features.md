@@ -31,7 +31,7 @@ In addition to the core apps bundled with DHIS2, like the [Maintenance](https://
 
 ### CLI tooling
 
--   [DHIS2 CLI](/docs/cli): The `d2` command-line tool. The `d2 app` subcommand wraps the App Platform scripts, and there are additional subcommands for cluster management and style configuration.
+-   [DHIS2 CLI](/docs/cli): The `d2` command-line tool. The `d2 app` subcommand wraps the App Platform scripts, and there are additional subcommands for cluster management and style configuration. You can also use these scripts to bootstrap new apps. See the [DHIS2 Web app page](/docs/quickstart/quickstart-web.md) for more information.
 -   [d2 style](/docs/cli/style/getting-started): Shared Prettier and ESLint configuration for DHIS2 projects, so all apps use a consistent code style.
 
 ### Helper libraries
@@ -42,7 +42,7 @@ In addition to the core apps bundled with DHIS2, like the [Maintenance](https://
 
 ## Plugins
 
-Plugins let you embed custom UI inside one of the core DHIS2 apps. They are themselves App Platform apps, but they expose a plugin entry point rather than a full standalone UI, so the host app can render your component at a specific extension point without having to fork the host app.
+Plugins let you embed custom UI inside one of the core DHIS2 apps. They are themselves App Platform apps, but they expose a plugin entry point rather than a full standalone UI, so the host app can render your component at a specific extension point without having to fork the host app. For more information, see the [general plugin guide](/docs/plugins/general-plugin-guide.md).
 
 The plugins leverage the [App Runtime `<Plugin>` component](/docs/app-runtime/components/Plugin). This is useful if you want to understand how plugins communicate with their host app, or if you want to embed a plugin inside another app you're building yourself.
 
