@@ -13,7 +13,7 @@ The DHIS2 ecosystem has many different libraries and with them come different do
 
 ### Command-line tools
 
--   [d2 utils docsite](https://cli-utils-docsite.dhis2.nu/#/) - Generate a documentation website with consistent structure and design
+-   [d2 utils docsite](https://github.com/dhis2/cli-utils-docsite) - Generate a documentation website with consistent structure and design
 
 ### Legacy libraries
 

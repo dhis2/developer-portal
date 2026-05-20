@@ -26,6 +26,7 @@ module.exports = {
                             type: 'doc',
                         },
                         'app-runtime/hooks/useConfig',
+                        'app-runtime/hooks/useCurrentUserInfo',
                         'app-runtime/hooks/useDataQuery',
                         'app-runtime/hooks/useDataMutation',
                         'app-runtime/hooks/useDataEngine',
@@ -153,6 +154,8 @@ module.exports = {
                         'app-platform/config/types',
                         'app-platform/config/d2-config-js-reference',
                         'app-platform/config/environment',
+                        'app-platform/config/extending-vite-config',
+                        'app-platform/config/adding-shortcuts',
                     ],
                 },
                 {
@@ -319,6 +322,7 @@ module.exports = {
             },
             items: [
                 'cli/readme',
+                'cli/cli/commands/create-app',
                 'cli/cli/commands/d2-overview',
                 {
                     'd2 cluster': [

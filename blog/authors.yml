@@ -38,6 +38,14 @@ claudemamo:
     socials:
         github: cjmamo
 
+johan:
+    name: Johan Gangsås Hole
+    title: DHIS2 Core Team
+    url: https://github.com/johanghole
+    image_url: https://github.com/johanghole.png
+    socials:
+        github: johanghole
+
 kai:
     name: Kai Vandivier
     title: DHIS2 Core Team

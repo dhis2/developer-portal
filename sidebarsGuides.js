@@ -29,44 +29,50 @@ module.exports = {
         },
         'tutorials/ui-library',
         {
-            label: 'Capture Plugins',
+            label: 'Plugins',
             type: 'category',
             collapsed: true,
             collapsible: true,
-            link: {
-                type: 'doc',
-                id: 'capture-plugins/developer/getting-started',
-            },
             items: [
-                'capture-plugins/developer/getting-started',
-                'capture-plugins/developer/develop-a-capture-plugin',
-                'capture-plugins/developer/configure-a-capture-plugin',
+                'plugins/general-plugin-guide',
                 {
-                    'Form Field Plugin': [
-                        'capture-plugins/developer/form-field-plugins/introduction',
-                        'capture-plugins/developer/form-field-plugins/developer-details',
-                        'capture-plugins/developer/form-field-plugins/manual-setup',
-                    ],
-                    'Enrollment Plugin': [
-                        'capture-plugins/developer/enrollment-plugins/introduction',
-                        'capture-plugins/developer/enrollment-plugins/developer-details',
-                        'capture-plugins/developer/enrollment-plugins/manual-setup',
+                    label: 'Capture Plugins',
+                    type: 'category',
+                    collapsed: true,
+                    collapsible: true,
+                    items: [
+                        'capture-plugins/developer/getting-started',
+                        'capture-plugins/developer/develop-a-capture-plugin',
+                        'capture-plugins/developer/configure-a-capture-plugin',
+                        {
+                            'Form Field Plugin': [
+                                'capture-plugins/developer/form-field-plugins/introduction',
+                                'capture-plugins/developer/form-field-plugins/developer-details',
+                                'capture-plugins/developer/form-field-plugins/manual-setup',
+                            ],
+                            'Enrollment Plugin': [
+                                'capture-plugins/developer/enrollment-plugins/introduction',
+                                'capture-plugins/developer/enrollment-plugins/developer-details',
+                                'capture-plugins/developer/enrollment-plugins/manual-setup',
+                            ],
+                            'Bulk data entry Plugin': [
+                                'capture-plugins/developer/bulk-data-entry-plugin/introduction',
+                                'capture-plugins/developer/bulk-data-entry-plugin/developer-details',
+                                'capture-plugins/developer/bulk-data-entry-plugin/manual-setup',
+                            ],
+                        },
                     ],
                 },
-            ],
-        },
-        {
-            label: 'Dashboard Plugins',
-            type: 'category',
-            collapsed: true,
-            collapsible: true,
-            link: {
-                type: 'doc',
-                id: 'dashboard-plugins/developer/getting-started',
-            },
-            items: [
-                'dashboard-plugins/developer/getting-started',
-                'dashboard-plugins/developer/implement-a-dashboard-plugin',
+                {
+                    label: 'Dashboard Plugins',
+                    type: 'category',
+                    collapsed: true,
+                    collapsible: true,
+                    items: [
+                        'dashboard-plugins/developer/getting-started',
+                        'dashboard-plugins/developer/implement-a-dashboard-plugin',
+                    ],
+                },
             ],
         },
         {
@@ -98,6 +104,7 @@ module.exports = {
                 {
                     'DHIS2 App Runtime': [
                         'tutorials/app-runtime-query',
+                        'tutorials/app-runtime-dynamic-query',
                         'tutorials/app-runtime-mutation',
                         'guides/query-playground',
                         'app-runtime/guides/display-alerts',
@@ -127,6 +134,7 @@ module.exports = {
 
         'integration/overview',
         'integration/dhis2-java-sdk',
+        'integration/dhis2-python-client',
         'integration/apache-camel',
         'integration/camel-dhis2-component',
         {
