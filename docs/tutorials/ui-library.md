@@ -10,7 +10,7 @@ In this tutorial you will do the following:
 
 ## Prerequisites
 
-Before we continue, make sure that you followed the steps provided in the first tutorial: [Environment Setup](/docs/tutorials/setup-env)
+Before we continue, make sure that you followed the steps provided in the first tutorial: [Creating a DHIS2 web app](/docs/quickstart/quickstart-web).
 
 ## 1. Getting started
 
@@ -20,7 +20,7 @@ The UI library is a collection of components which implement the DHIS2 Design Sy
 
 ### Web UI Components
 
-The [DHIS2 Design System](/design-system) contains a lot of guidance on *how to design an app*, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
+The [DHIS2 Design System](/design-system) contains a lot of guidance on _how to design an app_, but if you want to know about all the Web Components available, you can check the [Web Components documentation](/docs/ui/webcomponents) and check the interactive demo for each component at [Storybook](pathname:///demo/).
 
 ### Installation
 
