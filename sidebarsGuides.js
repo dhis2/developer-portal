@@ -143,6 +143,7 @@ module.exports = {
             defaultStyle: true,
         },
         'dev-videos',
+        'guides/ai-development',
         {
             Conceptual: [
                 'conceptual',
