@@ -7,7 +7,7 @@ tags: [webapp, ai, app development]
 
 ## From idea to implementation
 
-I started this little experiment as a test to see how close I could actually come to developing an app that would actually open and work in DHIS2. I didn’t have high expectations, I mostly just wanted to take the DHIS2 skills for a little test drive and see what they could do. After a couple of days I was pleasantly surprised with the result, a fully working app that might actually be useful for end users. To be clear, I still consider this a beta version and it needs much more refining, however as an exercise for understanding more about the realm of possible, it was a total success.
+I started this little experiment as a test to see how close I could actually come to developing an app that would actually open and work in DHIS2. I didn’t have high expectations, I mostly just wanted to take the DHIS2 skills for a little test drive and see what they could do. After a couple of days I was pleasantly surprised with the result, a fully working app that might actually be useful for end users. To be clear, I still consider this a beta version that needs much more refining, however as an exercise for understanding more about the realm of possible, it was a total success.
 
 <!-- truncate -->
 
@@ -23,7 +23,7 @@ I’ve had this idea in the back of my head for a while, what if we could use a 
 
 ### **Step One: Don't start with code \- Start with questions**
 
-Instead of opening up claude code and asking it to build the app first I wanted to use cowork to explore the idea and find out what was even possible. 
+Instead of opening up claude code and asking it to build the app, first I wanted to use cowork to explore the idea and find out what was even possible. 
 
 The first thing I did was invoke the **Grill Me** skill ( Available here https://github.com/mattpocock/skills) in Claude's Cowork mode alongside the **DHIS2 App Development** skill. Rather than asking Claude to start building, I described the idea and asked it to interrogate me.
 
@@ -31,22 +31,22 @@ The **Grill Me** skill is designed to surface every assumption you haven't exami
 
 I had some previous experience with graph databases and my starting point was to look at the Neo4 platform. The first question that emerged immediately reframed the whole project: **where does the graph actually live?**
 
-The DHIS2 App Development skill knows the platform's constraint that a DHIS2 embedded app ships as a `.zip`, runs in the browser, and has no backend. Neo4j requires a server. That constraint alone changed the entire architecture before we'd made a single decision about features.
+The DHIS2 App Development skill knows the platform's constraint that a DHIS2 embedded app ships as a `.zip`, runs in the browser, and has no backend. Neo4j requires a server. That constraint alone changed the entire architecture before I'd made a single decision about features.
 
 ### **How the interrogation shaped the spec**
 
 What followed was a structured conversation that worked through the decision tree branch by branch. Looking back, the discussion moved through three distinct phases.
 
-**Phase one was constraint discovery.** We established what the platform actually allows. An embedded app must be self-contained. Authentication is handled natively by DHIS2. There's no place to run a graph database. This forced a pivot: what are open source alternatives that can run in browser within the DHIS2 App Platform. Claude found me Graphology, a JavaScript graph library that runs in-browser, with Sigma.js as a WebGL renderer. Importantly, Graphology is Sigma's native format: no adapter layer, no translation step.
+**Phase one was constraint discovery.** Establishing what the platform actually allows. An embedded app must be self-contained. Authentication is handled natively by DHIS2. There's no place to run a graph database. This forced a pivot: what are open source alternatives that can run in browser within the DHIS2 App Platform. Claude found me Graphology, a JavaScript graph library that runs in-browser, with Sigma.js as a WebGL renderer. Importantly, Graphology is Sigma's native format: no adapter layer, no translation step.
 
 **Phase two was scope definition.** This is where the Grill Me helped to refine the idea 
 
 * Which metadata types actually matter for the core use case? We landed on data elements, indicators, programs, category combinations, categories, and category options. That might be enough to trace the main dependency chains without loading the entire instance on first render.  
 * Should org units and users be included as nodes and relationships? Yes, but they serve a different purpose. Understanding sharing and access rather than metadata integrity. The interrogation identified this as a fundamentally separate mode, which became the Access Explorer, kept independent from the Metadata Graph to avoid conflating two different administrative workflows.  
 * What about duplicates? Integrity checks can highlight true duplicates (same value type, domain type, category combo) but I wanted to add fuzzy name similarity, and crucially, a combined confidence score that gives admins a sliding scale rather than a binary flag.  
-* Should this app fix problems or be read only? This was a crucial step, for this first version I was clear I wanted this to be a tool admins could use to find issues, then be guided to the right place in the Metadata Management App to fix them. Maybe later iterations would include a way to generate scripts that could be used to fix the issues, helpful for managing changes across multiple instances, but for now we would be read only. 
+* Should this app fix problems or be read only? This was a crucial step, for this first version I was clear I wanted this to be a tool admins could use to find issues, then be guided to the right place in the Metadata Management App to fix them. Maybe later iterations would include a way to generate scripts that could be used to fix the issues, helpful for managing changes across multiple instances, but for now it would be read only. 
 
-**Phase three was interaction design.** The graph of a real DHIS2 instance can have thousands of nodes and rendering all of them at once was immediately ruled out as a performance issue. So I decided to start with a search-first model where the user searches for a metadata object, the app renders that node plus its direct neighbours, and the graph expands incrementally as the admin clicks into it. I wasn’t 100% sure that was the right starting point, maybe it could start with showing metadata that met some other criteria for example, but the beauty of this process is that I could just try it out, see how it looked and iterate later. Since I wasn’t relying on developer effort to build this, the equation for getting it right the first time shifts a little.
+**Phase three was interaction design.** The graph of a real DHIS2 instance can have thousands of nodes and rendering all of them at once was immediately ruled out as a performance issue. So I decided to start with a search-first model where the user searches for a metadata object, the app renders that node plus its direct neighbours, and the graph expands incrementally as the admin clicks into it. I wasn’t 100% sure that was the right starting point, maybe it could start with showing metadata that met some other criteria for example, but the beauty of this process is that I could just try it out, see how it looked, and then iterate later. Since I wasn’t relying on developer effort to build this, the equation for getting the design right the first time shifts and allows for more experimentation. 
 
 ---
 
@@ -102,11 +102,11 @@ The app was built and packaged as a zip file that I was able to manually install
 
 ![MetadatasGraph1](MetadataGraphapp1.png)
 
-I played around with it a little and then asked to add a few new features, for example different shapes for different objects and sliders to be able to choose the depth of relationships that show as edges and the size of nodes to make the graph more readable. It was very fast to edit the code to make those changes and then redeployed the package.
+I played around with it a little and then asked to add a few new features, for example; different shapes for different objects and sliders to be able to choose the depth of relationships that show as edges and another slider for the size of nodes to make the graph more readable. It was very fast to edit the code to make those changes and then redeployed the package.
 
 ![MetadatasGraph2](MetadataGraphapp2.png)
 
 ### **Conclusion** 
 
-The app still needs some work to make it properly useful for system admins, but I am quite amazed that I am now even thinking about that given that I started this experiment with the goal of just seeing if I could use these new tools to make an app that would just open. 
+The app still needs some work to make it properly useful for system admins, but given that I started this experiment with the goal of just seeing if I could use these new tools to make an app that would just open, I am quite amazed that I am now even thinking about this being a proper app.   
 
