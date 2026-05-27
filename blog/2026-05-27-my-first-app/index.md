@@ -104,7 +104,7 @@ The app was built and packaged as a zip file that I was able to manually install
 
 I played around with it a little and then asked to add a few new features, for example different shapes for different objects and sliders to be able to choose the depth of relationships that show as edges and the size of nodes to make the graph more readable. It was very fast to edit the code to make those changes and then redeployed the package.
 
-![MetadatasGraph1](MetadataGraphapp1.png)
+![MetadatasGraph2](MetadataGraphapp2.png)
 
 ### **Conclusion** 
 
