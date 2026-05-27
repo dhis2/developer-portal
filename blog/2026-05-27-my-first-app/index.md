@@ -1,16 +1,17 @@
 ---
 slug: 2026/05/my-first-app
-title: My First App
+title: Building my first DHIS2 app with AI
 authors: [david]
 tags: [webapp, ai, app development]
 ---
-# **From idea to implementation**  
 
-# Building my first DHIS2 app with AI 
+## From idea to implementation
 
 I started this little experiment as a test to see how close I could actually come to developing an app that would actually open and work in DHIS2. I didn’t have high expectations, I mostly just wanted to take the DHIS2 skills for a little test drive and see what they could do. After a couple of days I was pleasantly surprised with the result, a fully working app that might actually be useful for end users. To be clear, I still consider this a beta version and it needs much more refining, however as an exercise for understanding more about the realm of possible, it was a total success.
 
-## **The starting point: A vague but real problem**
+<!-- truncate -->
+
+### **The starting point: A vague but real problem**
 
 I have been working on the next generation of the Maintenance app for DHIS2 for some time now, which is the main place for creating, updating and managing metadata within DHIS2. The new Metadata Management App is more a less a like for like replacement for the old maintenance app and is basically built around individual lists of all the different metadata objects that make up DHIS2.  
    
@@ -20,7 +21,7 @@ We have the Metadata integrity checks that can help admins identify predefined k
 
 I’ve had this idea in the back of my head for a while, what if we could use a graph to visualise the metadata in a way that might make dependency between objects clearer and allow admins to identify issues and see the relationships at the same time to help with clean up. No one was asking for this so it wasn’t going to end up on the roadmap and the developers were busy delivering the app, so this remained just an idea… until my new friend Claude came to town.
 
-## **Step One: Don't start with code \- Start with questions**
+### **Step One: Don't start with code \- Start with questions**
 
 Instead of opening up claude code and asking it to build the app first I wanted to use cowork to explore the idea and find out what was even possible. 
 
@@ -32,7 +33,7 @@ I had some previous experience with graph databases and my starting point was to
 
 The DHIS2 App Development skill knows the platform's constraint that a DHIS2 embedded app ships as a `.zip`, runs in the browser, and has no backend. Neo4j requires a server. That constraint alone changed the entire architecture before we'd made a single decision about features.
 
-## **How the interrogation shaped the spec**
+### **How the interrogation shaped the spec**
 
 What followed was a structured conversation that worked through the decision tree branch by branch. Looking back, the discussion moved through three distinct phases.
 
@@ -49,7 +50,7 @@ What followed was a structured conversation that worked through the decision tre
 
 ---
 
-## **The Architecture Decision Record: Making choices explicit**
+### **The Architecture Decision Record: Making choices explicit**
 
 One of the most valuable outputs of this process that I would not have thought of at all is what ended up as Section 2 of the spec: an Architecture Decision Record. Every significant technical choice is recorded as a table row with three columns: the decision, the choice made, and the rationale.
 
@@ -59,7 +60,7 @@ That crash happened after the spec was handed to a coding agent. The spec had an
 
 ---
 
-## **The spec as a handover document**
+### **The spec as a handover document**
 
 The final spec document runs to around eighteen sections. It covers the tech stack, the project directory structure, the full list of DHIS2 API queries needed (with fields, paging, and filter parameters), the graph construction logic, the Web Worker architecture (including the actual hook implementations), the duplicate scoring algorithm, the visual encoding model for Sigma's node and edge reducers, the DataStore cache strategy, the navigation and interaction model, the CSV export format, and a phased implementation plan.
 
@@ -75,7 +76,7 @@ When these questions are answered in the spec, the coding agent builds the right
 
 ---
 
-## **What this process is, and what it isn't**
+### **What this process is, and what it isn't**
 
 This method is not about using AI to think for you. The decisions that shaped this spec like what metadata types to prioritise, what the dual-mode architecture looks like, how duplicate scoring should work, what the interaction model should be, were all made by a person. The AI's role was to ask the right questions in the right order, surface the implications of each choice before it was committed to, and then capture the decisions in a format precise enough to be executed.
 
@@ -85,7 +86,7 @@ The **DHIS2 App Development** skill adds a different kind of value: it knows the
 
 ---
 
-## **The method summarised**
+### **The method summarised**
 
 If I were to reduce this to a repeatable process, it looks like this:
 
@@ -95,17 +96,17 @@ The spec is not a design document in the traditional sense. It is a contract bet
 
 ---
 
-## **The Result** 
+### **The Result** 
 
 The app was built and packaged as a zip file that I was able to manually install via the **App Management** app in the DHIS2 play environment. The first two times I tried to open the app I got errors, and honestly my first reaction was “ahhh ok so this isn’t that easy, oh well it was worth a shot.” But I fed the errors back into claude and it rebuilt the app in a few seconds and on the third attempt the app opened\! It felt pretty good to see the app load and look like a proper app, woo hoo\! 
 
-![MetadatasGraph1](./assets/metadata-graph/MetadataGraphapp1.png)
+![MetadatasGraph1](MetadataGraphapp1.png)
 
 I played around with it a little and then asked to add a few new features, for example different shapes for different objects and sliders to be able to choose the depth of relationships that show as edges and the size of nodes to make the graph more readable. It was very fast to edit the code to make those changes and then redeployed the package.
 
-![MetadatasGraph1](./assets/metadata-graph/MetadataGraphapp2.png)
+![MetadatasGraph1](MetadataGraphapp1.png)
 
-## **Conclusion** 
+### **Conclusion** 
 
 The app still needs some work to make it properly useful for system admins, but I am quite amazed that I am now even thinking about that given that I started this experiment with the goal of just seeing if I could use these new tools to make an app that would just open. 
 
