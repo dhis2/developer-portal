@@ -24,7 +24,7 @@ I’ve had this idea in the back of my head for a while, what if we could use a 
 
 Instead of opening up claude code and asking it to build the app first I wanted to use cowork to explore the idea and find out what was even possible. 
 
-The first thing I did was invoke the **Grill Me** skill in Claude's Cowork mode alongside the **DHIS2 App Development** skill. Rather than asking Claude to start building, I described the idea and asked it to interrogate me.
+The first thing I did was invoke the **Grill Me** skill ( Available here https://github.com/mattpocock/skills) in Claude's Cowork mode alongside the **DHIS2 App Development** skill. Rather than asking Claude to start building, I described the idea and asked it to interrogate me.
 
 The **Grill Me** skill is designed to surface every assumption you haven't examined yet, it doesn't accept vague answers and won't let you move to the next branch of the decision tree until the current one is resolved.
 
