@@ -100,13 +100,13 @@ The spec is not a design document in the traditional sense. It is a contract bet
 
 The app was built and packaged as a zip file that I was able to manually install via the **App Management** app in the DHIS2 play environment. The first two times I tried to open the app I got errors, and honestly my first reaction was “ahhh ok so this isn’t that easy, oh well it was worth a shot.” But I fed the errors back into claude and it rebuilt the app in a few seconds and on the third attempt the app opened\! It felt pretty good to see the app load and look like a proper app, woo hoo\!
 
-[Download the app: dhis2-metadata-graph-explorer-1.0.0.zip](dhis2-metadata-graph-explorer-1.0.0.zip)
-
 ![MetadatasGraph1](MetadataGraphapp1.png)
 
 I played around with it a little and then asked to add a few new features, for example; different shapes for different objects and sliders to be able to choose the depth of relationships that show as edges and another slider for the size of nodes to make the graph more readable. It was very fast to edit the code to make those changes and then redeployed the package.
 
 ![MetadatasGraph2](MetadataGraphapp2.png)
+
+Click [here](dhis2-metadata-graph-explorer-1.0.0.zip) to download and try the app for yourself. 
 
 ### **Conclusion** 
 
