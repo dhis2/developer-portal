@@ -98,7 +98,9 @@ The spec is not a design document in the traditional sense. It is a contract bet
 
 ### **The Result** 
 
-The app was built and packaged as a zip file that I was able to manually install via the **App Management** app in the DHIS2 play environment. The first two times I tried to open the app I got errors, and honestly my first reaction was “ahhh ok so this isn’t that easy, oh well it was worth a shot.” But I fed the errors back into claude and it rebuilt the app in a few seconds and on the third attempt the app opened\! It felt pretty good to see the app load and look like a proper app, woo hoo\! 
+The app was built and packaged as a zip file that I was able to manually install via the **App Management** app in the DHIS2 play environment. The first two times I tried to open the app I got errors, and honestly my first reaction was “ahhh ok so this isn’t that easy, oh well it was worth a shot.” But I fed the errors back into claude and it rebuilt the app in a few seconds and on the third attempt the app opened\! It felt pretty good to see the app load and look like a proper app, woo hoo\!
+
+[Download the app: dhis2-metadata-graph-explorer-1.0.0.zip](dhis2-metadata-graph-explorer-1.0.0.zip)
 
 ![MetadatasGraph1](MetadataGraphapp1.png)
 
