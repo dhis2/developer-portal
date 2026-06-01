@@ -13,7 +13,7 @@ tags:
     ]
 ---
 
-From late 2025 into early 2026, the DHIS2 Extensibility team teamed up with the DHIS2 health domain experts to take a closer look at how EMRs are being used together with DHIS2 today. We ran two surveys to understand what implementers are actually building, and where the recurring pain points sit. This post walks through the headline findings. If you want to dig into the details, you can find the full report [here](#) (INSERT LINK HERE).
+From late 2025 into early 2026, the DHIS2 Extensibility team teamed up with the DHIS2 health domain experts to take a closer look at how EMRs are being used together with DHIS2 today. We ran two surveys to understand what implementers are actually building, and where the recurring pain points sit. This post walks through the headline findings. If you want to dig into the details, you can find the full report [here](https://drive.google.com/file/d/1--mxpTiePDsrBNzmiVy5ggqEmcjDtciU/view?pli=1).
 
 <!-- truncate -->
 
@@ -69,7 +69,7 @@ Two things stand out about how it's actually being used.
 
 First, the motivation respondents describe is mostly internal. Aligning with emerging interoperability standards and global best practices, rather than meeting an external mandate. Second, FHIR is rarely a direct system-to-system interface. It's typically used as an intermediate representation inside the transformation layer, where EMR data is normalized into FHIR before being mapped further into DHIS2. The important consequence is that adopting FHIR doesn't automatically make data mapping simpler. The hard parts like terminology alignment (ICD/LOINC), update semantics, validation, reporting period mismatches, stay hard regardless of whether the payload is FHIR-conformant or not.
 
-## What's working, and what isn't
+## Success stories and challenges
 
 The success stories share a common shape. A middleware layer doing the routing, automated transformation pipelines (often scheduled, like nightly jobs), and well-defined mappings between EMR data and DHIS2 metadata. Several teams also report integrations moving out of pilot phase and being scaled or replicated to additional programs, which suggests the underlying architectures hold up over time.
 
@@ -97,12 +97,12 @@ What we see from the survey results and the feedback we got is that there is a a
 
 ## Closing thoughts
 
-Going into this, we expected a fragmented landscape, and that turned out to be true. What surprised us was how much of that landscape clusters around three platforms: OpenMRS, Bahmni (which is itself a distribution of OpenMRS with additional modules), and DHIS2 Tracker. Together they account for most of the EMR implementations reported in the surveys. That gives us something concrete to work with. Even in a fragmented ecosystem, those concentrations are where reference implementations and shared tooling can land most effectively. Focusing on this core set of EMRs will hit the largest share of real-world integrations.
+Going into this, we expected a fragmented landscape, and that turned out to be true. What surprised us was how much of that landscape clusters around three platforms: [OpenMRS](https://openmrs.org/), [Bahmni](https://www.bahmni.org/) (which is itself a distribution of OpenMRS acting as an EMR + Hospital Information System), and DHIS2 Tracker. Together they account for most of the EMR implementations reported in the surveys. That gives us something concrete to work with. Even in a fragmented ecosystem, those concentrations are where reference implementations and shared tooling can land most effectively. Focusing on this core set of EMRs will hit the largest share of real-world integrations.
 
-On standards, the picture is more encouraging. For all the future integrations covered in the surveys, FHIR is named as the data exchange standard of choice, so on the protocol side we are converging. The catch is that FHIR doesn't make the hard parts of integration necessarily any easier. Terminology alignment, update semantics, validation, and reporting period mismatches stay hard whether or not the payload is FHIR-conformant. The protocol is settling, but the mapping work isn't going away.
+On standards, FHIR is the most prominant data-exchange standard reported. For all the future integrations covered in the surveys, FHIR is named as the data-exchange standard of choice, so on the protocol side we are converging. The catch is that FHIR doesn't make the hard parts of integration necessarily any easier. Terminology alignment, update semantics, validation, and reporting period mismatches stay hard whether or not the payload is FHIR-conformant. The protocol is settling, but the mapping work is still a challenge.
 
-Another pattern worth flagging is that more mature integration platforms like OpenFn and Apache Camel show up less often than their maturity might suggest. The cost of bringing in a new interoperability platform tends to outweigh the benefit, so teams stick with what they know. This is typically OpenHIM together with custom scripts. Reference implementations grounded in those familiar tools will probably land better than ones built on stacks teams haven't already invested in.
+Another pattern worth flagging is that more mature integration platforms like OpenFn and Apache Camel show up less often than their maturity might suggest. The cost of bringing in a new interoperability platform tends to outweigh the benefit, so teams stick with what they know and has worked in the past. The most reported integration architecture is OpenHIM together with custom scripts. Reference implementations grounded in those familiar tools will probably land better than ones built on stacks teams haven't already invested in.
 
 What's still missing across all of this is visibility. A lot of valuable work is happening across the community, but isn't being shared in a way that others can easily build on. Two concrete levers stand out: making more of that work public, and producing reference implementations targeted at the dominant EMRs. Better built-in DHIS2 support for transformations between DHIS2 and standards like FHIR would complement both.
 
-A big thank you to everyone who took the time to fill out the survey or sit through an interview, both the HISP groups and the wider community. The full report goes into much more detail across all of these areas, and is well worth a look if any of this resonates with the work you're doing.
+We would like to extend a big thank you to everyone who took the time to fill out the survey or sit through an interview, both the HISP groups and the wider community. The full report goes into much more detail across all of these areas, and is well worth a look if any of this resonates with the work you're doing.
