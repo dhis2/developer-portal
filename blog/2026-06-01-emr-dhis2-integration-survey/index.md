@@ -21,7 +21,7 @@ From late 2025 into early 2026, the DHIS2 Extensibility team teamed up with the 
 
 More specifically, we wanted to understand which EMRs are being used together with DHIS2 and what technologies are being used to connect them. We were also interested in how mature FHIR adoption is across the ecosystem, both for current integrations and for those being planned.
 
-A quick note on terminology: when we say "EMR" in the report, we mean EMRs specifically, but also any other digital health registry that collects longitudinal patient data.
+A quick note on terminology: when we say "EMR" in the report, we mean EMRs specifically, but also any other digital health registry that collects longitudinal patient data. For example DHIS2 Tracker programs. 
 
 ## How we ran the surveys
 
@@ -29,17 +29,17 @@ The work was split into two parts.
 
 The first was a more detailed survey done with selected HISP groups, mostly through interviews and walkthroughs of the questions. A good chunk of these were captured during our Ethiopia workshop in December 2025. That gave us 10 responses, with a lot of depth behind each one.
 
-The second was a shorter, online survey distributed through the [DHIS2 Community of Practice](https://community.dhis2.org/t/survey-emr-implementations-and-emr-dhis2-integrations/70022) in early 2026. The goal there was breadth, and we ended up with 35 responses spanning 30 different countries, regions or organizations. Respondents covered a mix of roles, with software developers (20%), program managers (17%) and systems administrators (17%) being the most common, alongside HIS advisors, consultants and data architects.
+The second was a shorter, [online survey](https://community.dhis2.org/t/survey-emr-implementations-and-emr-dhis2-integrations/70022) distributed through the DHIS2 Community of Practice in early 2026. The goal there was breadth, and we ended up with 35 responses spanning 30 different countries, regions or organizations. Respondents covered a mix of roles, with software developers (20%), program managers (17%) and systems administrators (17%) being the most common, alongside HIS advisors, consultants and data architects.
 
 In total we got 45 responses across the two surveys. That's a modest sample, and many of the questions were open-ended, so the findings are best read as directional rather than statistically representative. That said, the same themes show up consistently across both surveys, which gives us some confidence in the patterns.
 
 ## EMRs in use
 
-The clearest signal in the data is that the DHIS2 ecosystem isn't converging on a single EMR. The three platforms that show up most often are:
+The clearest signal in the data is that the DHIS2 ecosystem hasn't converged on a single EMR. But a few solutions definitely appear as most common:
 
 - **DHIS2 Tracker programs** (15/28 in the community survey) - used here as a lightweight EMR for specific programs or workflows
 - **OpenMRS** (12/28)
-- **Bahmni** (10/28)
+- **Bahmni** (10/28) - which is itself a distribution of OpenMRS acting as an EMR + Hospital Information System
 
 The HISP survey mirrors this pretty much exactly. OpenMRS and Bahmni tend to sit as the "full EMR backbone" in facility settings, while DHIS2 Tracker fills in around program-specific workflows.
 
@@ -87,7 +87,7 @@ When asked what would help most, respondents pointed to a recurring set of theme
 
 The most frequent ask is for practical, hands-on training. This was commonly phrased as "advanced" rather than introductory, and tied to specific tasks like working with APIs, building pipelines, or using FHIR and OpenHIM. Closely related is the request for reference implementations and reusable pipelines: concrete examples and starter configurations that teams can adapt instead of building the same thing from scratch each time. Several respondents also flagged data mapping and terminology alignment (ICD, LOINC, and similar) as an area where clearer guidance would go a long way.
 
-Beyond the "how" of integration, there's a recurring request for guidance on the "what". Teams want help deciding which data should actually be exchanged, and when individual-level exchange is worth the cost compared to aggregate reporting. There's also a wish for more standardized integration patterns and built-in services, like out-of-the-box support for transformations between DHIS2 and FHIR or CDA.
+Teams also want help deciding which data should actually be exchanged, and when individual-level exchange is worth the cost compared to aggregate reporting. There's also a wish for more standardized integration patterns and built-in services, like out-of-the-box support for transformations between DHIS2 and FHIR or CDA.
 
 What we see from the survey results and the feedback we got is that there is a a lot of duplicated effort happening across organizations, and people want shared starting points.
 
