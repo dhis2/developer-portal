@@ -19,3 +19,9 @@ DHIS2 Android SDK is a library that abstracts the complexity of interacting with
 to build Android apps for DHIS2, covering some tasks that any Android app should implement, like metadata and data synchronization.
 
 - [Android SDK documentation](/docs/mobile/android-sdk/overview)
+
+## Customizing the Android app
+
+The DHIS2 Android Capture App is a mobile application designed to function seamlessly with your DHIS2 instance. It supports data capture, both aggregated and individual, as well as instant analysis of the data collected on the device. While the application covers most user needs, sometimes it is necessary to customize it and create a custom version.
+
+- [Android Capture App customization](/docs/mobile/android-capture-app/overview)
