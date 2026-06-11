@@ -14,6 +14,8 @@ A short warning before you start: general-purpose AI agents are not yet reliable
 
 The advice below is opinionated and shaped by hands-on use of Claude Code together with the DHIS2 app development skill, since that is the combination we have the most experience with. Other agents such as Cursor or GitHub Copilot can do the same job, and the underlying ideas (working in small steps, prompting narrowly, managing your context, and reviewing everything) apply to all of them. The specific commands and recommendations below, however, are written with Claude Code in mind.
 
+One recommendation worth stating up front is to have the AI agent use TypeScript. AI agents lean heavily on type checking as a feedback loop, especially in React. Having types in your project makes the agent more predictable. It can catch its own mistakes, like wrong props or bad API shapes, by running the type checker after each change instead of discovering them at runtime. The DHIS2 skill mentioned below scaffolds a TypeScript app, which is part of why it works well.
+
 ## Before you start
 
 You need a working development environment. If you have not set one up yet, follow these first:
