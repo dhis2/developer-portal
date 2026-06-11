@@ -5,16 +5,16 @@ sidebar_label: AI-assisted Development
 ---
 
 :::warning
-AI tooling is moving fast and is still highly experimental. The recommendations on this page are a snapshot of what works at the time of writing. Use AI agents with caution and validate every change they make to your code.
+AI tooling is moving fast and is still highly experimental. The recommendations on this page are a snapshot of what works as of June 11, 2026. Use AI agents with caution and validate every change they make to your code.
 :::
 
-You have an idea for a DHIS2 app and want to try building it with an AI coding agent? This guide is for DHIS2 developers and implementers who are comfortable in a terminal and want to prototype with an agent. Treat it as a way to explore an idea and iterate against a DHIS2 instance, not a path to a production-ready app.
+You have an idea for a DHIS2 app and want to try building it with an AI coding agent. This guide is for DHIS2 developers and implementers who are comfortable in a terminal, and much of it is useful whether you write code daily or not. Non-technical implementers can use these tools to build quality prototypes, but at the time of publishing the DHIS2 development team's stance is that a human developer is necessary to make secure and sustainable production-ready apps. Treat this as a way to explore an idea and iterate against a DHIS2 instance, not a path to a production-ready app.
 
 A short warning before you start: general-purpose AI agents are not yet reliable to work out of the box on DHIS2. They tend to reach for outdated information, hallucinate Web API endpoints, and use generic patterns instead of DHIS2 App Platform conventions. The [Devotta](https://devotta.no/)-maintained [`dhis2-app-skills`](https://github.com/devotta-labs/dhis2-app-skills) project was created to close this gap. See the May 2026 developer meetup post [introducing the skill](https://community.dhis2.org/t/may-2026-developer-meetup-ai-agent-skill-for-dhis2-app-development-and-other-tips/72140) for the motivation. The rest of this page is about how to use AI-agents, and how to handle the parts the agent still gets wrong.
 
-The advice below is opinionated and shaped by hands-on use of Claude Code together with the DHIS2 app development skill, since that is the combination we have the most experience with. Other agents such as Cursor or GitHub Copilot can do the same job, and the underlying ideas (working in small steps, prompting narrowly, managing your context, and reviewing everything) apply to all of them. The specific commands and recommendations below, however, are written with Claude Code in mind.
+The advice below is opinionated and shaped by hands-on use of Claude Code together with the DHIS2 app development skill, since that is the combination we have the most experience with. Other agents such as Cursor, GitHub Copilot, Codex, or open-source tools like Aider can do similar jobs. Some commands and examples below use syntax particular to Claude Code, but all major agents share similar tools, and the principles outlined here are common to all of them.
 
-One recommendation worth stating up front is to have the AI agent use TypeScript. AI agents lean heavily on type checking as a feedback loop, especially in React. Having types in your project makes the agent more predictable. It can catch its own mistakes, like wrong props or bad API shapes, by running the type checker after each change instead of discovering them at runtime. The DHIS2 skill mentioned below scaffolds a TypeScript app, which is part of why it works well.
+One recommendation worth stating up front for frontend DHIS2 development is to have the AI agent use TypeScript. AI agents lean heavily on type checking as a feedback loop, especially in React. Having types in your project makes the agent more predictable. It can catch its own mistakes, like wrong props or bad API shapes, by running the type checker after each change instead of discovering them at runtime. If you use the DHIS2 skill mentioned below, it can scaffolds a TypeScript app for you.
 
 ## Before you start
 
@@ -33,6 +33,8 @@ A coding agent is a tool that can read and edit files in your project, run comma
 -   [Claude Code](https://docs.claude.com/en/docs/claude-code/overview): a CLI agent from Anthropic that runs in your terminal and reads from a project directory. This is the agent the DHIS2 skill is primarily tested with.
 -   [Cursor](https://docs.cursor.com/): an IDE that wraps editing and chat together, with built-in agent modes.
 -   [GitHub Copilot](https://docs.github.com/en/copilot): available as an inline assistant in many editors and as a more autonomous agent mode.
+-   [OpenAI Codex](https://developers.openai.com/codex/cli): a terminal-first CLI agent from OpenAI that reads your project, proposes changes, and runs commands behind an approval workflow.
+-   [Aider](https://aider.chat/): an open-source, terminal-based AI partner that works with almost any model (including local ones) and can commit changes to git.
 
 For occasional questions or quick lookups, a chat assistant in the browser is fine. For real feature work, use an agent that has direct access to your files so it can read what is already there before suggesting changes.
 
@@ -46,7 +48,7 @@ Install the [Devotta](https://devotta.no/)-maintained skill from [devotta-labs/d
 npx skills add devotta-labs/dhis2-app-skills
 ```
 
-Then invoke it inside your agent at the start of each new chat:
+In principle the agent loads the skill automatically when your request looks like DHIS2 work, since the skill's description tells it when to apply. In practice we have found this does not always trigger, so the reliable approach is to invoke it explicitly at the start of a DHIS2 task:
 
 ```
 /dhis2-app-development
@@ -77,7 +79,7 @@ The most common failure mode is to write one long prompt that describes a whole 
 3. Let the agent make the smallest useful change, like implementing one single component or a query.
 4. Run the app and check that the change works, then move to the next step.
 
-A useful prompt at the start of a task is something like: _"Do not write code yet. Using the DHIS2 skill, describe the smallest change that would add X and list the files you would touch. Use grill-me to challenge my assumptions first."_
+A useful pattern at the start of a task is to invoke `/dhis2-app-development` and other skills you might have installed, then ask for a plan before any code: _"Do not write code yet. Describe the smallest change that would add X and list the files you would touch. Use grill-me to challenge my assumptions first."_
 
 When you do ask for code, be specific about which DHIS2 libraries to use. If you are using the skill, it already enforces the platform's conventions, including its own data-fetching wrapper, so you can mostly describe what you want. Without the skill, name the [`@dhis2/ui`](/docs/tutorials/ui-library) component (`DataTable`, `Button`, `AlertBar`) and the [App Runtime](/docs/app-runtime/getting-started) hook (`useDataQuery`, `useDataMutation`) you want. Otherwise the agent may default to outdated structures or pull in unrelated libraries, not because it always does, but because there is no reason for it not to. Being explicit is what gets you DHIS2-shaped output reliably.
 
@@ -91,17 +93,26 @@ As a conversation grows, attention spreads thinner and earlier instructions, inc
 
 [Anthropic's rule of thumb for Claude Code](https://claude.com/blog/using-claude-code-session-management-and-1m-context) is: when you start a new _task_, start a new session. A related cluster of work, such as implementing a feature and then writing its docs, is fine to keep together. Switching to an unrelated task is the signal to reset.
 
-In practice you have more than one tool:
+In practice you have more than one tool. The conceptual moves are the same across agents; only the commands differ.
 
-| Situation                                                      | Try                 | Why                                                 |
-| -------------------------------------------------------------- | ------------------- | --------------------------------------------------- |
-| Same task, context still relevant                              | Just continue       | What is loaded is still load-bearing                |
-| Agent went down a wrong path                                   | `/rewind` (Esc Esc) | Drop the failed attempt; keep the useful file reads |
-| Mid-task but the session feels bloated                         | `/compact <hint>`   | The agent summarises; you can steer it with a hint  |
-| Genuinely new task                                             | `/clear`            | You decide what carries forward                     |
-| Next step will generate output you only need the conclusion of | Subagent            | Intermediate output stays in the child context      |
+| Situation | What to do | Why |
+| --- | --- | --- |
+| Same task, context still relevant | Keep going | What is loaded is still load-bearing |
+| Agent went down a wrong path | Roll back to before the detour | Drop the failed attempt; keep the useful file reads |
+| Mid-task but the session feels bloated | Summarise and compact the context | The summary replaces the bloat |
+| Genuinely new task | Clear the context and start fresh | You decide what carries forward |
+| Next step produces output you only need the conclusion of | Delegate it to a subagent | Intermediate output stays in the child context |
 
-The reliable signal to reset or compact is the agent's own behaviour, not a clock or a message count. Watch for:
+How each agent exposes these actions differs, and the commands change often, so treat this as a starting point and check the agent's own docs:
+
+| Action | Claude Code | Cursor | GitHub Copilot | Codex CLI | Aider |
+| --- | --- | --- | --- | --- | --- |
+| Clear / start fresh | `/clear` | New Chat (Cmd/Ctrl+N) | New Chat | `/clear` or `/new` | `/clear` |
+| Roll back a failed attempt | `/rewind` (Esc Esc) | Restore Checkpoint | Restore Checkpoint, or Undo Last Edit | none (use git) | `/undo` |
+| Summarise / compact context | `/compact` | `/summarize` (also automatic) | `/compact` (also automatic) | `/compact` | none (manage manually with `/drop`, `/tokens`) |
+| Delegate to a subagent | subagents | Cloud Agents | Copilot coding agent | `/agent` | none |
+
+The reliable signal to reset or compact is the agent's own behaviour. Watch for:
 
 -   Suggestions that repeat an approach already tried earlier in the session
 -   References to file paths, function names, or variables that no longer exist
@@ -109,18 +120,18 @@ The reliable signal to reset or compact is the agent's own behaviour, not a cloc
 -   Hallucinated imports or methods
 -   Noticeably shallower or hedgier responses
 
-When you see two or three of these together, that is the moment to `/compact`, `/clear`, or delegate to a subagent.
+When you see two or three of these together, that is the moment to compact, clear, or delegate to a subagent.
 
 A few habits also help across any session:
 
 -   Avoid pasting whole files into the prompt. The agent can read them itself when needed.
--   If a chat has become long but you want to keep going, ask the agent to summarise the decisions so far before you `/compact` or open a fresh session.
+-   If a chat has become long but you want to keep going, ask the agent to summarise the decisions so far before you compact or open a fresh session.
 
 The agent will follow your context-management instructions when you ask, but it won't save you from yourself. Once a chat is running, it has no incentive to suggest you leave it, so the discipline has to come from you, or from setup you do once at the start.
 
-### Document your workflow in a CLAUDE.md
+### Document your workflow in an instructions file
 
-Repeated instructions belong in a `CLAUDE.md` file at the root of your project: which libraries to use, the project layout, and the commands to build and test. The agent reads it at the start of every session, so it survives `/clear` and does not degrade the way mid-conversation instructions do. Start small and expand it as you notice the agent repeating the same mistakes, and ask the agent to draft or update it when that helps. Most agents support an equivalent instruction file if you are not using Claude Code.
+Repeated instructions belong in an agent instructions file at the root of your project. This contains which libraries to use, the project layout, and the commands to build and test. Most agents read such a file automatically at the start of every session (Claude Code uses `CLAUDE.md`, Cursor uses its rules files, and several tools read `AGENTS.md`), so it survives starting a fresh session and does not degrade the way mid-conversation instructions do. Start small and expand it as you notice the agent repeating the same mistakes, and ask the agent to draft or update it when that helps.
 
 ## Review what the agent changes
 
@@ -141,7 +152,7 @@ DHIS2 is used to manage health data and other sensitive information, so where yo
 A few things worth understanding:
 
 -   Consumer and free tiers increasingly train on your conversations by default unless you opt out, and may retain that data for years. Several major providers have moved in this direction.
--   Business, enterprise, and API plans usually offer stronger protections and do not train on your data by default. But commercial does not automatically mean safe. Even paid plans may use your data to train new models depending on the exact contract and settings, so read the terms that apply to you.
+-   Even if business, enterprise, and API plans often advertise stronger protections, you should still treat it with caution. Whether your prompts are used for training, how long data is retained, and who can access it all depend on the specific contract and settings. Research the exact terms that apply to you before sending anything sensitive.
 -   Locally hosted models keep data on your own infrastructure.
 -   If you handle personal data of EU/EEA residents, GDPR applies whichever tool you pick. It affects what you may send to a third-party service, where that data is processed and stored, and what agreements (such as a data processing agreement) you need in place. Your organisation's data-protection rules take precedence over any convenience.
 
@@ -149,7 +160,7 @@ Whatever plan you are on, a few rules are worth keeping:
 
 -   Do not paste real patient records, identifying information, or full database exports into a prompt unless you have explicitly cleared this against your organisation's policy.
 -   Do not paste production credentials, API tokens, or `.env` contents. If the agent needs to know that a variable exists, tell it the name, not the value.
--   Use the [DHIS2 play instances](https://im.dhis2.org/public/instances) or anonymised local data when you need realistic-looking examples.
+-   Use the [DHIS2 play instances](https://im.dhis2.org/public/instances), a demo database (such as Sierra Leone or HMIS), or anonymised local data when you need realistic-looking examples.
 
 ## When the agent gets DHIS2 wrong
 
@@ -168,14 +179,15 @@ When you have something that works and you are ready to share it, the [App Hub g
 A short list to keep nearby once you are working.
 
 -   If you use the [DHIS2 skill](https://github.com/devotta-labs/dhis2-app-skills), the agent can scaffold the project for you following current best practice. If you are not, scaffold it yourself with [`create-app`](/docs/quickstart/quickstart-web) rather than letting the agent improvise.
--   Invoke the [DHIS2 skill](https://github.com/devotta-labs/dhis2-app-skills) at the start of every new chat.
+-   Invoke the [DHIS2 skill](https://github.com/devotta-labs/dhis2-app-skills) with `/dhis2-app-development` at the start of a DHIS2 task.
 -   Plan in words before letting the agent edit code.
 -   Make one small change at a time and verify it before moving on.
 -   Name the [`@dhis2/ui`](/docs/tutorials/ui-library) component and [App Runtime](/docs/app-runtime/getting-started) hook you want.
 -   Read every diff before keeping it, do the commits yourself, and ask for tests (lint with [`d2 style`](/docs/guides/code-style), then run the app).
 -   Be transparent about AI use.
--   Document your workflow in a `CLAUDE.md` so repeated instructions carry across sessions.
--   Start a new session when you switch to an unrelated task, and reach for `/compact` or `/clear` when you spot [context rot](https://www.mindstudio.ai/blog/context-rot-ai-coding-agents-explained) symptoms (repeated suggestions, hallucinated names, contradictions).
+-   Document your workflow in an agent instructions file (such as `CLAUDE.md` or `AGENTS.md`) so repeated instructions carry across sessions.
+-   Start a new session when you switch to an unrelated task, and clear or compact the context when you spot [context rot](https://www.mindstudio.ai/blog/context-rot-ai-coding-agents-explained) symptoms (like repeated suggestions or hallucinated names).
+- AI agents can often leave outdated code in your project, especially if you go through many iterations in each session. Make sure to clean up any unused code. 
 -   Check the data policy of the AI service you are using before sending anything DHIS2-derived through it (see [DHIS2 & AI](https://dhis2.org/ai/)).
 
 ## Further reading
