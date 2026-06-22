@@ -5,12 +5,12 @@ sidebar_label: AI-assisted Development
 ---
 
 :::warning
-AI tooling is moving fast and is still highly experimental. The recommendations on this page are a snapshot of what works as of June 11, 2026. Use AI agents with caution and validate every change they make to your code.
+AI tooling is moving fast and is still highly experimental. The recommendations on this page are a snapshot of what works as of June 22, 2026. Use AI agents with caution and validate every change they make to your code.
 :::
 
 You have an idea for a DHIS2 app and want to try building it with an AI coding agent. This guide is for DHIS2 developers and implementers who are comfortable in a terminal, and much of it is useful whether you write code daily or not. Non-technical implementers can use these tools to build quality prototypes, but at the time of publishing the DHIS2 development team's stance is that a human developer is necessary to make secure and sustainable production-ready apps. Treat this as a way to explore an idea and iterate against a DHIS2 instance, not a path to a production-ready app.
 
-A short warning before you start: general-purpose AI agents are not yet reliable to work out of the box on DHIS2. They tend to reach for outdated information, hallucinate Web API endpoints, and use generic patterns instead of DHIS2 App Platform conventions. The [Devotta](https://devotta.no/)-maintained [`dhis2-app-skills`](https://github.com/devotta-labs/dhis2-app-skills) project was created to close this gap. See the May 2026 developer meetup post [introducing the skill](https://community.dhis2.org/t/may-2026-developer-meetup-ai-agent-skill-for-dhis2-app-development-and-other-tips/72140) for the motivation. The rest of this page is about how to use AI-agents, and how to handle the parts the agent still gets wrong.
+A short warning before you start: general-purpose AI agents are not yet reliable to work out of the box on DHIS2. They tend to reach for outdated information, hallucinate Web API endpoints, and use generic patterns instead of DHIS2 App Platform conventions. The DHIS2-maintained [`ai-devtools`](https://github.com/dhis2/ai-devtools) project was created to close this gap. See the May 2026 developer meetup post about [introducing the related devotta-maintained skill](https://community.dhis2.org/t/may-2026-developer-meetup-ai-agent-skill-for-dhis2-app-development-and-other-tips/72140). The rest of this page is about how to use AI-agents, and how to handle the parts the agent still gets wrong.
 
 The advice below is opinionated and shaped by hands-on use of Claude Code together with the DHIS2 app development skill, since that is the combination we have the most experience with. Other agents such as Cursor, GitHub Copilot, Codex, or open-source tools like Aider can do similar jobs. Some commands and examples below use syntax particular to Claude Code, but all major agents share similar tools, and the principles outlined here are common to all of them.
 
@@ -42,16 +42,22 @@ For occasional questions or quick lookups, a chat assistant in the browser is fi
 
 A _skill_ is a small package of instructions and reference material that you install into a coding agent. When invoked, it gives the agent focused knowledge of a topic so it stops guessing. See Anthropic's [Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) for a fuller description of the format.
 
-Install the [Devotta](https://devotta.no/)-maintained skill from [devotta-labs/dhis2-app-skills](https://github.com/devotta-labs/dhis2-app-skills):
+Install the DHIS2-maintained skill from [`dhis2/ai-devtools`](https://github.com/dhis2/ai-devtools). The `dhis2-apps` skill is published as `@dhis2/skill-dhis2-apps`:
 
 ```sh
-npx skills add devotta-labs/dhis2-app-skills
+# Pick from all skills in the repo (interactive prompt)
+npx skills add dhis2/ai-devtools
+
+# Or install the app development skill directly by name
+npx skills add dhis2/ai-devtools --skill dhis2-apps
 ```
+
+> **Attribution** — `@dhis2/skill-dhis2-apps` is based on [dhis2-app-skills](https://github.com/devotta-labs/dhis2-app-skills) by [Eirik Haugstulen](https://github.com/eirikur-haugstulen) at [Devotta Labs](https://github.com/devotta-labs).
 
 In principle the agent loads the skill automatically when your request looks like DHIS2 work, since the skill's description tells it when to apply. In practice we have found this does not always trigger, so the reliable approach is to invoke it explicitly at the start of a DHIS2 task:
 
 ```
-/dhis2-app-development
+/dhis2-apps
 ```
 
 The skill encodes the conventions of the [DHIS2 App Platform](/docs/app-platform/getting-started), the [App Runtime](/docs/app-runtime/getting-started) data layer, and the [`@dhis2/ui` component library](/docs/tutorials/ui-library), so the agent reaches for the right tools instead of writing its own. It is opinionated by design: rather than just describing the platform, it pins down a specific, vetted setup, reflecting the choices of an experienced DHIS2 developer who works closely with AI agents. That means some of the patterns it enforces are stronger than the platform defaults. A few worth knowing about:
@@ -63,7 +69,7 @@ The skill encodes the conventions of the [DHIS2 App Platform](/docs/app-platform
 This is part of why a skill helps. Left to its own devices, and without you spelling everything out, an agent tends to fall back on whatever its training data assumes, which for DHIS2 is often outdated: `yarn` classic instead of `pnpm`, deprecated endpoints, generic React patterns. A skill pins down the steps that matter, so the agent behaves more consistently from one run to the next.
 
 :::note
-The install script sometimes places the skill in `.agents/` even when your agent reads from `.claude/` (or vice versa). If `/dhis2-app-development` is not recognised, move the skill directory to the location your agent expects.
+The install script sometimes places the skill in `.agents/` even when your agent reads from `.claude/` (or vice versa). If `/dhis2-apps` is not recognised, move the skill directory to the location your agent expects.
 :::
 
 ### Other skills worth knowing
@@ -79,7 +85,7 @@ The most common failure mode is to write one long prompt that describes a whole 
 3. Let the agent make the smallest useful change, like implementing one single component or a query.
 4. Run the app and check that the change works, then move to the next step.
 
-A useful pattern at the start of a task is to invoke `/dhis2-app-development` and other skills you might have installed, then ask for a plan before any code: _"Do not write code yet. Describe the smallest change that would add X and list the files you would touch. Use grill-me to challenge my assumptions first."_
+A useful pattern at the start of a task is to invoke `/dhis2-apps` and other skills you might have installed, then ask for a plan before any code: _"Do not write code yet. Describe the smallest change that would add X and list the files you would touch. Use grill-me to challenge my assumptions first."_
 
 When you do ask for code, be specific about which DHIS2 libraries to use. If you are using the skill, it already enforces the platform's conventions, including its own data-fetching wrapper, so you can mostly describe what you want. Without the skill, name the [`@dhis2/ui`](/docs/tutorials/ui-library) component (`DataTable`, `Button`, `AlertBar`) and the [App Runtime](/docs/app-runtime/getting-started) hook (`useDataQuery`, `useDataMutation`) you want. Otherwise the agent may default to outdated structures or pull in unrelated libraries, not because it always does, but because there is no reason for it not to. Being explicit is what gets you DHIS2-shaped output reliably.
 
@@ -178,8 +184,8 @@ When you have something that works and you are ready to share it, the [App Hub g
 
 A short list to keep nearby once you are working.
 
--   If you use the [DHIS2 skill](https://github.com/devotta-labs/dhis2-app-skills), the agent can scaffold the project for you following current best practice. If you are not, scaffold it yourself with [`create-app`](/docs/quickstart/quickstart-web) rather than letting the agent improvise.
--   Invoke the [DHIS2 skill](https://github.com/devotta-labs/dhis2-app-skills) with `/dhis2-app-development` at the start of a DHIS2 task.
+-   If you use the [DHIS2 skill](https://github.com/dhis2/ai-devtools), the agent can scaffold the project for you following current best practice. If you are not, scaffold it yourself with [`create-app`](/docs/quickstart/quickstart-web) rather than letting the agent improvise.
+-   Invoke the [DHIS2 skill](https://github.com/dhis2/ai-devtools) with `/dhis2-apps` at the start of a DHIS2 task.
 -   Plan in words before letting the agent edit code.
 -   Make one small change at a time and verify it before moving on.
 -   Name the [`@dhis2/ui`](/docs/tutorials/ui-library) component and [App Runtime](/docs/app-runtime/getting-started) hook you want.
@@ -193,6 +199,6 @@ A short list to keep nearby once you are working.
 ## Further reading
 
 -   [DHIS2 & AI](https://dhis2.org/ai/): DHIS2's overview of AI across the platform
--   [devotta-labs/dhis2-app-skills](https://github.com/devotta-labs/dhis2-app-skills): the recommended agent skill, with its own README and changelog
+-   [dhis2/ai-devtools](https://github.com/dhis2/ai-devtools): the recommended agent skill (`@dhis2/skill-dhis2-apps`), with its own README and changelog. Based on [dhis2-app-skills](https://github.com/devotta-labs/dhis2-app-skills) by Eirik Haugstulen at Devotta Labs.
 -   [Anthropic Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview): what a skill is and how the format works
 -   [Blog post about developing a DHIS2 app using AI](https://developers.dhis2.org/blog/2026/05/my-first-app)
