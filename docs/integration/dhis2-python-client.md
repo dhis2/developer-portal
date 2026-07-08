@@ -12,4 +12,4 @@ The client makes it simple to pull data out of DHIS2 for analysis and push curat
 
 ## Getting started
 
-The library is packaged as part of the Climate Tools ecosystem but, if you want to use it outside this ecosystem, installation instructions and other details are available from the [DHIS2 Python Client GitHub repository](https://github.com/dhis2/dhis2-python-client). An example of using the client is documented in the [DHIS2 Climate Tools page](https://climate-tools.dhis2.org/org-units/download-web-api/).
+The library is packaged as part of the Climate Tools ecosystem but, if you want to use it outside this ecosystem, installation instructions and other details are available from the [DHIS2 Python Client GitHub repository](https://github.com/dhis2/dhis2-python-client). An example of using the client is documented in the [DHIS2 Climate Tools page](https://climate-tools.dhis2.org/guides/org-units/download-web-api/).

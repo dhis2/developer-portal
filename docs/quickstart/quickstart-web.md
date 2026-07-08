@@ -106,7 +106,7 @@ For more information about the @dhis2/create-app CLI and the options you can pas
 
 Now that you have created a DHIS2 app and connected it to a DHIS2 instance you can learn more about developing apps on DHIS2.
 
--   Learn more about DHIS2 apps from the [developer documentation](https://docs.dhis2.org/dhis2_developer_manual/apps.html)
+-   Learn more about DHIS2 apps from the [developer documentation](https://docs.dhis2.org/en/full/develop/dhis-core-version-master/developer-manual.html#apps)
 -   Watch training videos from the [videos section](../dev-videos.md)
 -   Join our Developer Events published in the [Events Calendar](https://dhis2.org/news-and-events)
 -   Join our next [Developer Academies](https://dhis2.org/academy/level-2)

@@ -24,12 +24,12 @@ The above diagram conceptualises this set of technologies as a stack. We suggest
 
 * [Apache Camel](https://camel.apache.org/) is a Java framework for building sustainable message-oriented middleware. It codifies enterprise integration patterns and comes packed with modules that add support for various data formats, protocols, libraries, and services. Among these are modules for supporting DHIS2, CSV, JSON, XML, JMS, Apache Kafka, FHIR, JDBC, and HL7v2. Apache Camel is a battle-tested, mature project with a vibrant community behind it and substantial tooling to aid development and server operations. Visit the [Apache Camel page](/docs/integration/apache-camel) to learn more.
 
-  * [DHIS2 Component](https://camel.apache.org/components/4.0.x/dhis2-component.html) leverages the DHIS2 Java SDK to integrate Apache Camel with DHIS2. Visit the [Camel DHIS2 Component page](/docs/integration/camel-dhis2-component) to learn more.
+  * [DHIS2 Component](https://camel.apache.org/components/next/dhis2-component.html) leverages the DHIS2 Java SDK to integrate Apache Camel with DHIS2. Visit the [Camel DHIS2 Component page](/docs/integration/camel-dhis2-component) to learn more.
   
     * [DHIS2 Java SDK](https://github.com/dhis2/dhis2-java-sdk) is a lightweight library that hides the nuts and bolts of DHIS2 Web API interactions behind a fluent Java API and type-safe resource models. Visit the [DHIS2 Java SDK page](/docs/integration/dhis2-java-sdk) to learn more.
     
-  * [DataSonnet Component](https://camel.apache.org/components/4.0.x/languages/datasonnet-language.html) applies JSON-extended templates to data in order to map it to a different structure (e.g., JSON to JSON) or transform it to a different format (e.g., JSON to XML). [DataSonnet](https://datasonnet.com/) is an extension of [Jsonnet](https://jsonnet.org/) and lends very well to the DHIS2 and FHIR JSON formats.
+  * [DataSonnet Component](https://camel.apache.org/components/next/languages/datasonnet-language.html) applies JSON-extended templates to data in order to map it to a different structure (e.g., JSON to JSON) or transform it to a different format (e.g., JSON to XML). [DataSonnet](https://datasonnet.github.io/datasonnet-mapper/datasonnet/latest/index.html) is an extension of [Jsonnet](https://jsonnet.org/) and lends very well to the DHIS2 and FHIR JSON formats.
   
-  * [FHIR Component](https://camel.apache.org/components/4.0.x/fhir-component.html) gives Camel the capability to exchange data with FHIR servers like HAPI FHIR. Combining the DHIS2 and FHIR components in your Camel solution effectively allows you to build a FHIR facade for DHIS2.
+  * [FHIR Component](https://camel.apache.org/components/next/fhir-component.html) gives Camel the capability to exchange data with FHIR servers like HAPI FHIR. Combining the DHIS2 and FHIR components in your Camel solution effectively allows you to build a FHIR facade for DHIS2.
 
 * [Hawtio](https://hawt.io/) is an extensible monitoring and management solution designed for Java programs. Among the many plugins, it has plugins for Apache Camel and Spring Boot.
