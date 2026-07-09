@@ -186,7 +186,7 @@ A collection of resources is fetched with the `collection` method name, for exam
             baseApiUrl: https://play.im.dhis2.org/stable-2-40-5/api
 ```
 
-Apart from the `path` parameter, `dhis2:get/collection` has a specific parameter called `arrayName`. This required parameter is the name of the JSON property containing the resource collection in the reply (e.g., `organisationUnits`). The type of the message body produced from `dhis2:get/collection` is `java.util.Iterator<org.apache.camel.component.dhis2.api.Dhis2Resource>`. `Dhis2Resource` is essentially a `java.util.HashMap`. One can choose to iterate over the body using a [splitter](https://camel.apache.org/components/4.0.x/eips/split-eip.html), like so:
+Apart from the `path` parameter, `dhis2:get/collection` has a specific parameter called `arrayName`. This required parameter is the name of the JSON property containing the resource collection in the reply (e.g., `organisationUnits`). The type of the message body produced from `dhis2:get/collection` is `java.util.Iterator<org.apache.camel.component.dhis2.api.Dhis2Resource>`. `Dhis2Resource` is essentially a `java.util.HashMap`. One can choose to iterate over the body using a [splitter](https://camel.apache.org/components/next/eips/split-eip.html), like so:
 
 ```yaml
 - from:
@@ -206,7 +206,7 @@ Apart from the `path` parameter, `dhis2:get/collection` has a specific parameter
             - log: ${body}
 ```
 
-Converting a `Dhis2Resource` item into POJO is accomplished with [`convertBodyTo(...)`](https://camel.apache.org/components/4.0.x/eips/convertBodyTo-eip.html):
+Converting a `Dhis2Resource` item into POJO is accomplished with [`convertBodyTo(...)`](https://camel.apache.org/components/next/eips/convertBodyTo-eip.html):
 
 ```yaml
 - from:
