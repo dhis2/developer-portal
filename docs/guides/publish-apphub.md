@@ -7,7 +7,7 @@ Once you have [submitted](/docs/guides/submit-apphub) your app and it's been rev
 
 :::note
 
-This guide assumes that your app is built using the [DHIS2 Application Platform](/docs/app-platform/getting-started). See the [tutorial](/docs/tutorials/setup-env) for how to build your first DHIS2 app.
+This guide assumes that your app is built using the [DHIS2 Application Platform](/docs/app-platform/getting-started). See the [tutorial](/docs/quickstart/quickstart-web) for how to build your first DHIS2 app.
 
 :::
 
@@ -97,7 +97,7 @@ jobs:
             - uses: actions/setup-node@v2
               with:
                   node-version: lts/*
-                  cache: "yarn"
+                  cache: 'yarn'
 
             - name: Install JS dependencies
               run: yarn install --frozen-lockfile

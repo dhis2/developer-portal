@@ -45,10 +45,6 @@ Follow the [DHIS2 in Docker guide](/docs/tutorials/dhis2-docker) to install the 
 
 Sign in as `admin` (username) and `district` (password). If you can load DHIS2 in the browser, you are ready to create a new app.
 
-:::note
-For more info on how to correctly set up command line tools please check our [Environment Setup tutorial](/docs/tutorials/setup-env).
-:::
-
 ### Next steps
 
 Now that you have a DHIS2 instance you can put it to the test by developing DHIS2 apps.
