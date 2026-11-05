@@ -79,6 +79,31 @@ These guidelines are for the app itself, rather than how it appears on the App H
 
 Apps available in the App Hub should, by default, run on any DHIS2 instance. Apps that are flexible and generic are useful for a large audience and can help many DHIS2 users around the world.
 
+Apps should not depend on the instance they were developed on. In practice, this means:
+
+-   No hard-coded metadata IDs, such as organisation units, programs or data elements.
+-   No hard-coded organisation unit level names, branding or contact details from a specific implementation. Including the developer's contact details is fine.
+-   No hard-coded DHIS2 API base URL. Resolve it through `@dhis2/app-runtime`.
+-   Configuration is read from the instance at runtime or set by the user, for example through a settings page within the app or in the DataStore.
+-   A configuration file shipped with the app is empty or contains example values only.
+
+Some apps are built for a specific metadata configuration, such as a particular tracker program or metadata package. This is acceptable, but the required metadata must be documented in the app description and in the README, so that users know what needs to be in place before installing the app.
+
+### Supported versions
+
+The DHIS2 versions an app supports are declared with `minDHIS2Version` and `maxDHIS2Version` in `d2.config.js`. Apps not built with the App Platform declare the same information in `manifest.webapp`. These values tell users which instances the app can be installed on, and they should reflect what has actually been tested.
+
+When an app declares a version as supported, it is expected to have been tested on that version before submission. If `minDHIS2Version` is set to `2.40`, the app should be tested on 2.40 and on each later DHIS2 release up to the declared maximum. Do not declare support for versions the app has not been tested on. The minimum version should be a released DHIS2 version, not a development or `-SNAPSHOT` build.
+
+### Reproducible build
+
+An app should build from a fresh clone, without depending on the author's environment.
+
+-   Do not rely on local paths, machine-specific scripts or resources that only exist in the author's environment.
+-   Use released versions of the build toolchain and dependencies, not alpha, prerelease or `-SNAPSHOT` builds.
+-   Commit a single lockfile that is in sync with `package.json`.
+-   For App Platform apps, let the platform generate `manifest.webapp` rather than committing a hand-written one.
+
 ### Useful
 
 Apps must be meaningful and useful. To best benefit DHIS2 users and maintain an easy-to-use App Hub, apps should solve specific problems and use-cases that are not already covered by other applications.
@@ -96,9 +121,32 @@ The Design System components are available as a set of pre-built React component
 
 Apps built using the [DHIS2 App Platform](/docs/app-platform/getting-started) will automatically include the necessary `Header Bar` component and functionality. Apps not using the App Platform need to manually include and set up the standalone [Header Bar component](pathname:///demo/?path=/story/header-bar--default) from `@dhis2/ui`. All DHIS2 apps must include the `Header Bar` component.
 
+From DHIS2 `2.42`, apps run inside the [global shell](/docs/references/global-shell), which provides its own header bar. App Platform apps hide their header bar automatically when running inside the global shell. Apps not using the App Platform must handle this themselves. If such an app supports versions both before and after `2.42`, it must show its own header bar on earlier versions and hide it inside the global shell. Examples on how to hide the header bar can be found [here](https://developers.dhis2.org/docs/references/global-shell/#header-bars). 
+
+If the app supports translations, all user-facing text should go through internationalisation (i18n). See [Translation support](/docs/guides/translation-support) for guidance.
+
 ### Documented
 
 Providing thorough documentation is essential for all apps. Documentation can be hosted on your website or a source control platform like Github. Think of documentation like an instruction manual for your app. Most users installing your app from the App Hub will not know how the app works. Documentation helps bridge this gap, introducing the main app interactions and providing guidance for common use cases.
+
+The README should be written for someone who did not build the app. A non-author should be able to install and set up the app using only the README and the documentation it links to. At a minimum, it should describe:
+
+-   What the app does and who it is for.
+-   The supported DHIS2 versions.
+-   How to install and run the app.
+-   What must be in place on the DHIS2 side, such as required metadata, user authorities, routes or system settings.
+-   How to configure the app itself, and who should have access to it.
+-   Any external services the app depends on, and how to set them up.
+
+Keep the README concise and focused on the user of the app. Development history, such as development logs, implementation notes and plans, is not relevant to someone using the app and should not be part of the README. Such information can be placed in separate developer documentation, for example a `docs/` folder or a `DEVELOPMENT.md` file.
+
+### Transparent about AI use
+
+We have no objection to apps developed with the help of AI tools, but we ask that this is stated openly. If AI tools were used in the development of the app, state this in the README together with the extent of the use, for example whether AI assisted with parts of the code, generated most of the code, or wrote the documentation.
+
+AI tools tend to produce verbose documentation and to fill the README with content that is not relevant to users. AI-generated documentation must therefore be reviewed and approved by a human before submission, and it is held to the same standard as any other documentation described in these guidelines.
+
+If you use a coding agent, we recommend the DHIS2 app development skill from [`dhis2/ai-devtools`](https://github.com/dhis2/ai-devtools), which guides the agent to follow App Platform conventions. See the [AI-assisted App Development guide](/docs/guides/ai-development) for how to get started. The skill does not replace testing the app on the supported DHIS2 versions.
 
 ### Secure
 
@@ -137,6 +185,10 @@ Consider implementing the following guidelines to address harden application sec
 
 -   **Avoid externally hosted scripts and stylesheets**: External scripts and stylesheets, such as those served by global CDNs, should be avoided unless absolutely necessary - these can cause security and performance issues when accessed in various global contexts.
 
+-   **Dependencies**: Dependencies are part of the app's security surface. All lockfile entries should resolve from the official package registry, not from git, http or tarball URLs. Install and lifecycle scripts (`preinstall`, `postinstall`, `prepare`) should only be present when needed. Remove unused dependencies, and avoid packages with known, unpatched security advisories.
+
+-   **Browser storage**: Never store credentials or tokens in `localStorage`, `sessionStorage` or IndexedDB. Rely on the user's existing session instead.
+
 ### Performant
 
 Apps should run smoothly on widely available hardware and with a reasonable internet connection. Consider the following guidelines to make sure your app is available to a wide range of users:
@@ -163,3 +215,17 @@ Upon submitting to the App Hub, the DHIS2 core team will review your app. Note t
 -   Providing example use-cases and any example data/metadata are always helpful.
     If your app is rejected, the core team will let you know why, so make sure your contact details are up to date. You can resubmit your app after addressing any issues.
 -   If your app is approved, it'll soon be available publicly on the App Hub. You can manage your app through your App Hub account.
+
+### Before you submit
+
+The list below summarises the main requirements in these guidelines. It is written to be followed by both people and coding agents preparing a submission.
+
+-   The app has no hard-coded instance-specific values, such as organisation unit or program IDs.
+-   Any metadata configuration the app depends on is documented.
+-   `minDHIS2Version` and `maxDHIS2Version` are set in `d2.config.js` (or `manifest.webapp`), and the app has been tested on every DHIS2 version in that range.
+-   The app shows the DHIS2 header bar on versions before 2.42, and does not show a duplicate header bar inside the global shell.
+-   The app builds from a fresh clone, with a single lockfile and released versions of all dependencies.
+-   The README allows a non-author to install and set up the app, and does not contain development logs.
+-   Any use of AI tools is stated in the README, and AI-generated documentation has been reviewed by a human.
+-   No credentials or encryption keys are included in the source code, the app archive or browser storage.
+-   All connections to external services are declared in the app description.
