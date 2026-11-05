@@ -114,6 +114,9 @@ Forking existing DHIS2 applications without providing new, different functionali
 
 Make sure all components, libraries and resources that are running on the DHIS2 instance **are open-source**. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
 
+-   To meet this requirement, the repository should include an open-source licence file.
+-   Choosing a licence upfront also makes it clear which libraries the app can use. Some libraries, including some charting and visualisation libraries, are free for non-commercial use only and are not compatible with an open-source licence.
+
 ### Well-designed
 
 The [DHIS2 Design System](https://github.com/dhis2/design-system) provides principles, guidelines and components for designing and building user-friendly apps. Follow the [principles](https://github.com/dhis2/design-system#design-principles) and use the [available components](https://github.com/dhis2/design-system#components) where possible. Apps should be user-friendly and respect a users' time and resources.
