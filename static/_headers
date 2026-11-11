@@ -1,0 +1,15 @@
+# Netlify headers: https://docs.netlify.com/routing/headers/
+# Serve the LLM-friendly files with explicit content types and allow
+# cross-origin fetches so browser-based tools can read them.
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms-full*
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *

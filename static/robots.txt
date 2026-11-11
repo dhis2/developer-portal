@@ -1,0 +1,11 @@
+# DHIS2 Developer Portal
+#
+# LLM-friendly versions of this site:
+#   https://developers.dhis2.org/llms.txt       (index)
+#   https://developers.dhis2.org/llms-full.txt  (all docs as Markdown)
+# Every docs page is also available as Markdown by appending .md to its URL.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://developers.dhis2.org/sitemap.xml
