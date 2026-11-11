@@ -82,10 +82,9 @@ Apps available in the App Hub should, by default, run on any DHIS2 instance. App
 Apps should not depend on the instance they were developed on. In practice, this means:
 
 -   No hard-coded metadata IDs, such as organisation units, programs or data elements.
--   No hard-coded organisation unit level names, branding or contact details from a specific implementation. Including the developer's contact details is fine.
--   No hard-coded DHIS2 API base URL. Resolve it through `@dhis2/app-runtime`.
--   Configuration is read from the instance at runtime or set by the user, for example through a settings page within the app or in the DataStore.
--   A configuration file shipped with the app is empty or contains example values only.
+-   No hard-coded organisation unit level names, branding or contact details from a specific implementation.
+-   No hard-coded DHIS2 API base URL. Resolve it through `@dhis2/app-runtime`'s `config.baseUrl` or by using the injected value in HTML (`document.querySelector('meta[name="dhis2-base-url"]')?.getAttribute('content')`) on v41+.
+-   App configuration (such as metadata linking) is read from the instance at runtime or set by the user, for example through a settings page within the app or in the DataStore.
 
 Some apps are built for a specific metadata configuration, such as a particular tracker program or metadata package. This is acceptable, but the required metadata must be documented in the app description and in the README, so that users know what needs to be in place before installing the app.
 
@@ -114,8 +113,7 @@ Forking existing DHIS2 applications without providing new, different functionali
 
 Make sure all components, libraries and resources that are running on the DHIS2 instance **are open-source**. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
 
--   To meet this requirement, the repository should include an open-source licence file.
--   Choosing a licence upfront also makes it clear which libraries the app can use. Some libraries, including some charting and visualisation libraries, are free for non-commercial use only and are not compatible with an open-source licence.
+- To meet this requirement, the repository should include an open-source licence file. Make sure dependencies like charting and visualisation libraries are also compatible with this licence.
 
 ### Well-designed
 
@@ -132,10 +130,10 @@ If the app supports translations, all user-facing text should go through interna
 
 Providing thorough documentation is essential for all apps. Documentation can be hosted on your website or a source control platform like Github. Think of documentation like an instruction manual for your app. Most users installing your app from the App Hub will not know how the app works. Documentation helps bridge this gap, introducing the main app interactions and providing guidance for common use cases.
 
-The README should be written for someone who did not build the app. A non-author should be able to install and set up the app using only the README and the documentation it links to. At a minimum, it should describe:
+The documentation should be written for someone who did not build the app. A non-author should be able to install and set up the app using only the provided documentation. At a minimum, it should describe:
 
 -   What the app does and who it is for.
--   The supported DHIS2 versions.
+-   How to use the main features of the app.
 -   How to install and run the app.
 -   What must be in place on the DHIS2 side, such as required metadata, user authorities, routes or system settings.
 -   How to configure the app itself, and who should have access to it.
@@ -190,7 +188,7 @@ Consider implementing the following guidelines to address harden application sec
 
 -   **Dependencies**: Dependencies are part of the app's security surface. All lockfile entries should resolve from the official package registry, not from git, http or tarball URLs. Install and lifecycle scripts (`preinstall`, `postinstall`, `prepare`) should only be present when needed. Remove unused dependencies, and avoid packages with known, unpatched security advisories.
 
--   **Browser storage**: Never store credentials or tokens in `localStorage`, `sessionStorage` or IndexedDB. Rely on the user's existing session instead.
+-   **Browser storage**: Never store credentials or tokens in `localStorage`, `sessionStorage` or IndexedDB. For DHIS2 access, rely on the user's existing session instead.
 
 ### Performant
 
@@ -218,17 +216,3 @@ Upon submitting to the App Hub, the DHIS2 core team will review your app. Note t
 -   Providing example use-cases and any example data/metadata are always helpful.
     If your app is rejected, the core team will let you know why, so make sure your contact details are up to date. You can resubmit your app after addressing any issues.
 -   If your app is approved, it'll soon be available publicly on the App Hub. You can manage your app through your App Hub account.
-
-### Before you submit
-
-The list below summarises the main requirements in these guidelines. It is written to be followed by both people and coding agents preparing a submission.
-
--   The app has no hard-coded instance-specific values, such as organisation unit or program IDs.
--   Any metadata configuration the app depends on is documented.
--   `minDHIS2Version` and `maxDHIS2Version` are set in `d2.config.js` (or `manifest.webapp`), and the app has been tested on every DHIS2 version in that range.
--   The app shows the DHIS2 header bar on versions before 2.42, and does not show a duplicate header bar inside the global shell.
--   The app builds from a fresh clone, with a single lockfile and released versions of all dependencies.
--   The README allows a non-author to install and set up the app, and does not contain development logs.
--   Any use of AI tools is stated in the README, and AI-generated documentation has been reviewed by a human.
--   No credentials or encryption keys are included in the source code, the app archive or browser storage.
--   All connections to external services are declared in the app description.
