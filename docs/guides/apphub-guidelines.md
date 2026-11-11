@@ -126,6 +126,10 @@ From DHIS2 `2.42`, apps run inside the [global shell](/docs/references/global-sh
 
 If the app supports translations, all user-facing text should go through internationalisation (i18n). See [Translation support](/docs/guides/translation-support) for guidance.
 
+### Use of AI agents
+
+If you use a coding agent, we recommend the DHIS2 app development skill from [`dhis2/ai-devtools`](https://github.com/dhis2/ai-devtools), which guides the agent to follow App Platform conventions. See the [AI-assisted App Development guide](/docs/guides/ai-development) for how to get started. The skill does not replace testing the app on the supported DHIS2 versions.
+
 ### Documented
 
 Providing thorough documentation is essential for all apps. Documentation can be hosted on your website or a source control platform like Github. Think of documentation like an instruction manual for your app. Most users installing your app from the App Hub will not know how the app works. Documentation helps bridge this gap, introducing the main app interactions and providing guidance for common use cases.
@@ -141,13 +145,9 @@ The documentation should be written for someone who did not build the app. A non
 
 Keep the README concise and focused on the user of the app. Development history, such as development logs, implementation notes and plans, is not relevant to someone using the app and should not be part of the README. Such information can be placed in separate developer documentation, for example a `docs/` folder or a `DEVELOPMENT.md` file.
 
-### Transparent about AI use
-
 We have no objection to apps developed with the help of AI tools, but we ask that this is stated openly. If AI tools were used in the development of the app, state this in the README together with the extent of the use, for example whether AI assisted with parts of the code, generated most of the code, or wrote the documentation.
 
 AI tools tend to produce verbose documentation and to fill the README with content that is not relevant to users. AI-generated documentation must therefore be reviewed and approved by a human before submission, and it is held to the same standard as any other documentation described in these guidelines.
-
-If you use a coding agent, we recommend the DHIS2 app development skill from [`dhis2/ai-devtools`](https://github.com/dhis2/ai-devtools), which guides the agent to follow App Platform conventions. See the [AI-assisted App Development guide](/docs/guides/ai-development) for how to get started. The skill does not replace testing the app on the supported DHIS2 versions.
 
 ### Secure
 
