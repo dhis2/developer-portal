@@ -113,7 +113,7 @@ Forking existing DHIS2 applications without providing new, different functionali
 
 Make sure all components, libraries and resources that are running on the DHIS2 instance **are open-source**. Connections to third-party services do not need to be open source, but must be clearly declared in the app description.
 
-- To meet this requirement, the repository should include an open-source licence file. Make sure dependencies like charting and visualisation libraries are also compatible with this licence.
+To meet this requirement, the repository should include an open-source license file. Make sure dependencies like charting and visualization libraries are also compatible with this license.
 
 ### Well-designed
 
@@ -124,7 +124,7 @@ Apps built using the [DHIS2 App Platform](/docs/app-platform/getting-started) wi
 
 From DHIS2 `2.42`, apps run inside the [global shell](/docs/references/global-shell), which provides its own header bar. App Platform apps hide their header bar automatically when running inside the global shell. Apps not using the App Platform must handle this themselves. If such an app supports versions both before and after `2.42`, it must show its own header bar on earlier versions and hide it inside the global shell. Examples on how to hide the header bar can be found [here](https://developers.dhis2.org/docs/references/global-shell/#header-bars). 
 
-If the app supports translations, all user-facing text should go through internationalisation (i18n). See [Translation support](/docs/guides/translation-support) for guidance.
+If the app supports translations, all user-facing text should go through internationalization (i18n). See [Translation support](/docs/guides/translation-support) for guidance.
 
 ### Use of AI agents
 
