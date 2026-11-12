@@ -5,7 +5,6 @@
  * - /llms-full.txt            all docs pages concatenated as Markdown
  * - /llms-full-<area>.txt     the same, split per area of the site
  * - /<permalink>.md           a clean Markdown version of every docs page and blog post
- * - <link rel="alternate" type="text/markdown"> in each page's HTML pointing to its .md
  *
  * Page metadata (permalinks, titles, descriptions, sidebars) comes from the
  * Docusaurus content plugins, so custom slugs and route base paths are respected.
@@ -27,6 +26,8 @@ const slugify = (text) =>
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-|-$/g, '')
 
+// Keep in sync with toMdPath in MarkdownAlternateLink.js (used by the theme wrappers
+// in src/theme/*/Metadata that add <link rel="alternate" type="text/markdown">)
 const toMdPath = (permalink) =>
     permalink.endsWith('/') ? `${permalink}index.md` : `${permalink}.md`
 
@@ -236,7 +237,7 @@ module.exports = function llmsPlugin(context, options) {
             const bySource = new Map(pages.map((p) => [p.source, p]))
             const resolveDoc = (file) => bySource.get(file)
 
-            // 1. Per-page markdown + alternate link in the HTML
+            // 1. Per-page markdown
             const markdownByPage = new Map()
             await Promise.all(
                 pages.map(async (page) => {
@@ -273,7 +274,6 @@ module.exports = function llmsPlugin(context, options) {
                         path.join(outDir, page.mdPath),
                         markdown
                     )
-                    await injectAlternateLink(outDir, page, siteUrl)
                 })
             )
 
@@ -362,25 +362,5 @@ module.exports = function llmsPlugin(context, options) {
                 `[llms-plugin] wrote llms.txt, llms-full.txt, ${fullBundles.length} area bundles and ${markdownByPage.size} markdown pages`
             )
         },
-    }
-}
-
-/** Adds <link rel="alternate" type="text/markdown"> to the page's generated HTML. */
-async function injectAlternateLink(outDir, page, siteUrl) {
-    const base = page.permalink.replace(/\/$/, '')
-    const candidates = [
-        path.join(outDir, base, 'index.html'),
-        path.join(outDir, `${base}.html`),
-    ]
-    for (const file of candidates) {
-        if (await fs.pathExists(file)) {
-            const html = await fs.readFile(file, 'utf8')
-            if (html.includes('type="text/markdown"')) {
-                return
-            }
-            const tag = `<link rel="alternate" type="text/markdown" href="${siteUrl}${page.mdPath}">`
-            await fs.writeFile(file, html.replace('</head>', `${tag}</head>`))
-            return
-        }
     }
 }
