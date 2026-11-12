@@ -134,6 +134,13 @@ If you use a coding agent, we recommend the DHIS2 app development skill from [`d
 
 Providing thorough documentation is essential for all apps. Documentation can be hosted on your website or a source control platform like Github. Think of documentation like an instruction manual for your app. Most users installing your app from the App Hub will not know how the app works. Documentation helps bridge this gap, introducing the main app interactions and providing guidance for common use cases.
 
+:::warning
+AI tools tend to produce verbose documentation and to fill it with content that is not relevant to users. AI-generated documentation must therefore be reviewed and approved by a human before submission, and it is held to the same standard as any other documentation described in these guidelines.
+:::
+
+We have no objection to apps developed with the help of AI tools, but we ask that this is stated openly. If AI tools were used in the development of the app, state this in the README together with the extent of the use, for example whether AI assisted with parts of the code, generated most of the code, or wrote the documentation.
+
+
 The documentation should be written for someone who did not build the app. A non-author should be able to install and set up the app using only the provided documentation. At a minimum, it should describe:
 
 -   What the app does and who it is for.
@@ -143,11 +150,7 @@ The documentation should be written for someone who did not build the app. A non
 -   How to configure the app itself, and who should have access to it.
 -   Any external services the app depends on, and how to set them up.
 
-Keep the README concise and focused on the user of the app. Development history, such as development logs, implementation notes and plans, is not relevant to someone using the app and should not be part of the README. Such information can be placed in separate developer documentation, for example a `docs/` folder or a `DEVELOPMENT.md` file.
-
-We have no objection to apps developed with the help of AI tools, but we ask that this is stated openly. If AI tools were used in the development of the app, state this in the README together with the extent of the use, for example whether AI assisted with parts of the code, generated most of the code, or wrote the documentation.
-
-AI tools tend to produce verbose documentation and to fill the README with content that is not relevant to users. AI-generated documentation must therefore be reviewed and approved by a human before submission, and it is held to the same standard as any other documentation described in these guidelines.
+Keep the user documentation concise. Development history, such as development logs, implementation notes and plans, is not relevant to someone using the app and should not be part of the user documentation, including the README. Such information can be placed in separate developer documentation, for example a `docs/` folder or a `DEVELOPMENT.md` file.
 
 ### Secure
 
