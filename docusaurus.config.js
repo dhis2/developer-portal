@@ -150,6 +150,30 @@ module.exports = {
             },
         ],
         [
+            require.resolve('./src/plugins/llms/index.js'),
+            {
+                title: 'DHIS2 Developer Portal',
+                summary:
+                    'Guides, tutorials and reference documentation for building apps and integrations on DHIS2, the open-source health information platform: the App Platform, App Runtime (data queries and mutations), the DHIS2 UI component library, the DHIS2 CLI, Capture and Dashboard plugins, Android development, and the DHIS2 Design System.',
+                details:
+                    'For the DHIS2 Web API and end-user/implementer documentation see https://docs.dhis2.org.',
+                docsAreas: {
+                    default: {
+                        title: 'Docs',
+                        sidebars: {
+                            docs: 'Guides & Tutorials',
+                            references: 'Reference Docs',
+                        },
+                    },
+                    design: { title: 'Design System' },
+                    community: { title: 'Community' },
+                    events: { title: 'Events' },
+                },
+                // Also generate one llms-full-*.txt per library (App Runtime, UI, CLI, ...)
+                splitAreas: ['Reference Docs'],
+            },
+        ],
+        [
             '@docusaurus/plugin-client-redirects',
             {
                 redirects,
