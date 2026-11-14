@@ -4,6 +4,27 @@ title: DHIS2 Developer Meetups
 ---
 
 import NextSecondThursday from '@site/src/nextSecondThursday';
+import DiscourseEmbed from '@site/src/DiscourseEmbed';
+
+<style>{`.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: var(--ifm-global-shadow-lw);
+  margin-bottom: var(--ifm-spacing-vertical);
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}`}</style>
+
 
 Did you know that the DHIS2 Developer Community hosts monthly meetups?
 
@@ -19,10 +40,21 @@ Topics range from meet and greet to technical web development discussions. These
 -   DHIS2 application testing with Cypress
 -   Meet and Greet, general Q&A
 
-## Next Meetup Time & Date
+
 The DHIS2 Developer Meetup is happening every second Thursday of the month.
 
-The next Developer Meetup is on ***<NextSecondThursday />\* at 11:00 CE(S)T\*\*.***
+## Next Meetup Time & Date
+
+The next Developer Meetup is on ***<NextSecondThursday />\* at 11:00 CE(S)T\*\*.*** Learn more about the latest meetup in the CoP announcement post. If you missed the meetup, it will be announced in the development category, [register here to receive a notification](https://community.dhis2.org/join-dev-meetup).
+
+<DiscourseEmbed 
+  category="10" 
+  tags="meetup"
+  perPage="1"
+  template='basic'
+  order='created'
+  loading="Loading the latest Developer Meetup topic" 
+/>
 
 In other time zones, this is:
 
@@ -40,31 +72,17 @@ In other time zones, this is:
 **CE(S)T stands for Central European (Summer) Time. This is the time zone in Oslo, Norway, where the DHIS2 Core Team is located. Remember that this time zone is subject to Daylight Saving Time changes and can differ from your time. Always check the calendar invite to ensure you have the correct time.
 :::
 
-### Register for the repeating meetup
-To join the DHIS2 Developer Meetup, you can [register for the repeating](https://us06web.zoom.us/meeting/register/tZcscOGqrzssGNCTNmlQs8Kay-lJa7TYbQec#/registration) event on Zoom. After registering you will get an invite for all future meetups.
-
-[Register on Zoom to join All Developer Meetups](https://us06web.zoom.us/meeting/register/tZcscOGqrzssGNCTNmlQs8Kay-lJa7TYbQec#/registration).
 
 ## Previous Meetups
 
-Sometimes we record the meetups and make them available on the [DHIS2 YouTube channel](https://www.youtube.com/channel/UCQI6z8JL1Z1z8J1ZJX3k9jA). Usually these recordings are community presentations or demos, but also product updates. Find some recordings below, but do check the Developer Meetup playlist on YouTube for more.
+Sometimes we record the meetups and make them available on the [DHIS2 YouTube channel - Developer Meetups playlist](https://www.youtube.com/channel/UCQI6z8JL1Z1z8J1ZJX3k9jA). Usually these recordings are community presentations or demos, but also product updates. Below is the latest meetup recording:
 
-### v41 Tracker API and Capture App changes, and Custom Plugins
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gqGoRF3ktw4?si=1mjtfIF7VPWzqCuQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-### SEMIS Capture App by Saudigitus
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Nuc8vLqRXtc?si=OE403p6EUhhWpqSb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-###  ICD-11 Cause of Death demonstration by HISP Vietnam
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6UMhi7_2NSc?si=TkabWw-aBP64YAku" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-###  JumpaDokter Ecoystem by HISP Indonesia 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-bYYKMor1ow?si=yXjd82N31mOYMoQw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-### Report Builder Demonstration by HISP WCA
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cePvIfGAsZo?si=iRtBrRfT_fzkj76q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div className="video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/videoseries?list=PLo6Seh-066RwjOT8EyrSJHrBmDQd9264e" 
+    title="DHIS2 Developer Meetup Playlist" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerPolicy="strict-origin-when-cross-origin" 
+    allowFullScreen
+  />
+</div>
